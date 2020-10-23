@@ -1,4 +1,5 @@
 ---
+
 name: Som Timer Feature request
 about: Suggest an idea for this project
 title: ''
@@ -22,4 +23,7 @@ assignees: ''
 
 
 **Additional context**
+
+
 Add any other context or screenshots about the feature.
+
