@@ -1,0 +1,34 @@
+@import '../../style/variables.scss';
+
+.video {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; 
+  margin: 5em; 
+}
+
+.video-player {
+  padding: 2em;
+  border-radius: 8px; 
+  background-color: $lightBlueAccent; 
+  border: 3px solid $darkBlue;
+  box-shadow: 8px 8px 6px $midBlue; 
+}
+
+.skip-btn {
+  background-color: $salmon;
+  border-radius: 8px; 
+  margin: 2em;
+  padding: 0.5em 1em; 
+  font-size: 1.2em; 
+  font-family: $primaryFont;
+  font-weight: 600;  
+  border: none;
+  box-shadow: 8px 8px 6px $midBlue; 
+}
+
+.skip-btn:hover {
+  background-color: $salmonHover;
+  color: $lightBlueAccent;
+}
