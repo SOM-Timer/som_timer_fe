@@ -1,7 +1,7 @@
 @import '../../style/variables.scss';
+@import '../../style/mixins.scss';
 
 h2 {
-  font-family: $primaryFont; 
   font-size: 2em;
 }
 
@@ -14,27 +14,21 @@ h2 {
 }
 
 .video-wrapper {
-  width: 60em;
-  height: 34em; 
+  @include size(60em, 34em);
 }
 
 .video-player {
+  @include borderAndShadow(3px solid $darkBlue, 8px, 8px 8px 6px $midBlue);
   background-color: $lightBlueAccent; 
-  padding: 2em;
-  border-radius: 8px; 
-  border: 3px solid $darkBlue;
-  box-shadow: 8px 8px 6px $midBlue;  
+  padding: 2em; 
 }
 
 .skip-btn {
+  @include borderAndShadow(none, 8px, 8px 8px 6px $midBlue);
   background-color: $salmon; 
   margin: 2em;
   padding: 0.5em 1em; 
-  border-radius: 8px;
-  border: none;
-  box-shadow: 8px 8px 6px $midBlue; 
-  font-size: 1.2em; 
-  font-family: $primaryFont;
+  font: 1.2em $primaryFont;
   font-weight: 600;  
 
     &:hover {
@@ -45,8 +39,7 @@ h2 {
 
 @media screen and (max-width: 992px) {
   .video-wrapper {
-    width: 42em;        
-    height: 24em;
+    @include size(42em, 24em);
   }
 
   .video-player {
@@ -56,8 +49,7 @@ h2 {
 
 @media screen and (max-width: 688px) {
   .video-wrapper {
-    width: 26em;        
-    height: 15em;
+    @include size(26em, 15em);
   }
 
   .video-player {
