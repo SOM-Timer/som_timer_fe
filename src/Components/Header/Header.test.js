@@ -41,7 +41,7 @@ describe('Header', () => {
     expect(statsButton).toBeInTheDocument()
   })
 
-  it('should have a button to navigate to the timer page', () => {
+  it('should have a button to navigate to the main timer page', () => {
     const { getByRole } = render(
       <MemoryRouter>
         <Header />
@@ -53,4 +53,15 @@ describe('Header', () => {
     expect(timerButton).toBeInTheDocument()
   })
 
+  it('should have a button to navigate to the about page', () => {
+    const { getByRole } = render(
+      <MemoryRouter>
+        <Header />
+      </MemoryRouter>
+    )
+
+    const aboutButton = getByRole('button', {name: /about/i})
+
+    expect(aboutButton).toBeInTheDocument()
+  })
 })
