@@ -16,4 +16,17 @@ describe('Header', () => {
 
     expect(title).toBeInTheDocument()
   })
+
+  it('should have a button to navigate to the settings page', () => {
+    const { getByRole } = render(
+      <MemoryRouter>
+        <Header />
+      </MemoryRouter>
+    )
+
+    const settingsButton = getByRole('button', { name: /settings/i })
+
+    expect(settingsButton).toBeInTheDocument()
+  })
+
 })
