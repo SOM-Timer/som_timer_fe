@@ -1,6 +1,6 @@
 import React from 'react'
 import Header from './Header'
-import { render, fireEvent } from '@testing-library/react'
+import { render } from '@testing-library/react'
 import '@testing-library/jest-dom'
 import { MemoryRouter } from 'react-router-dom'
 
@@ -24,9 +24,21 @@ describe('Header', () => {
       </MemoryRouter>
     )
 
-    const settingsButton = getByRole('button', { name: /settings/i })
+    const settingsButton = getByRole('button', {name: /settings/i})
 
     expect(settingsButton).toBeInTheDocument()
+  })
+
+  it('should have a button to navigate to the stats page', () => {
+    const { getByRole } = render(
+      <MemoryRouter>
+        <Header />
+      </MemoryRouter>
+    )
+
+    const statsButton = getByRole('button', {name: /stats/i})
+
+    expect(statsButton).toBeInTheDocument()
   })
 
 })
