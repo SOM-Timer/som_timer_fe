@@ -31,7 +31,15 @@
   outline: none;
 }
 
+.selected {
+  filter: drop-shadow(0px 0px 5px $salmon)
+}
+
 .icon {
- height: 60px; 
- filter: drop-shadow(0px 0px 5px $darkBlue);
+  height: 60px; 
+  filter: drop-shadow(0px 0px 5px $darkBlue);
+
+  &:hover {
+    cursor: pointer;
+  }
 }
