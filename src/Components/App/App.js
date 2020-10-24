@@ -4,9 +4,9 @@ import Header from '../Header/Header';
 
 function App() {
   return (
-    <div className="App">
+    <section className="App">
       <Header />
-    </div>
+    </section>
   );
 }
 
