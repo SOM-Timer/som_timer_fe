@@ -1,0 +1,59 @@
+@import '../../style/variables.scss';
+@import '../../style/mixins.scss';
+
+h2 {
+  font-size: 2em;
+}
+
+.video-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; 
+  margin: 1em; 
+}
+
+.video-wrapper {
+  @include size(60em, 34em);
+}
+
+.video-player {
+  @include borderAndShadow(3px solid $darkBlue, 8px, 8px 8px 6px $midBlue);
+  background-color: $lightBlueAccent; 
+  padding: 2em; 
+}
+
+.skip-btn {
+  @include borderAndShadow(none, 8px, 8px 8px 6px $midBlue);
+  background-color: $salmon; 
+  margin: 2em;
+  padding: 0.5em 1em; 
+  font: 1.2em $primaryFont;
+  font-weight: 600;  
+
+    &:hover {
+    background-color: $salmonHover;
+    color: $lightBlueAccent;
+    }
+}
+
+@media screen and (max-width: 992px) {
+  .video-wrapper {
+    @include size(42em, 24em);
+  }
+
+  .video-player {
+    padding: 1.5em;
+  }
+}
+
+@media screen and (max-width: 688px) {
+  .video-wrapper {
+    @include size(26em, 15em);
+  }
+
+  .video-player {
+    padding: 0.5em;
+  }
+}
+

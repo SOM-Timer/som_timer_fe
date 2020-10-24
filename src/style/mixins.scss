@@ -1,0 +1,10 @@
+@mixin size($width, $height) {
+  width: $width;
+  height: $height;
+}
+
+@mixin borderAndShadow($border, $radius, $shadow) {
+  border: $border;
+  border-radius: $radius;
+  box-shadow: $shadow; 
+}
