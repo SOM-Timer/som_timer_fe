@@ -13,6 +13,11 @@ h2 {
   margin: 1em; 
 }
 
+.videoSectionModal {
+  @extend .videoSection;
+  -webkit-filter: blur(5px) grayscale(50%);
+}
+
 .videoWrapper {
   @include size(60em, 34em);
 }
@@ -35,6 +40,25 @@ h2 {
     background-color: $salmonHover;
     color: $lightBlueAccent;
     }
+}
+
+//modal
+.workMsgModal {
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0; 
+  width: 100%;
+  height: 100%; 
+  text-align: center;
+}
+
+.modalContent {
+  background-color: $lightBlueAccent;
+  margin: 20% auto;
+  padding: 1em; 
+  border: 1px solid $midBlue;
+  width: 30%; 
 }
 
 @media screen and (max-width: 992px) {
