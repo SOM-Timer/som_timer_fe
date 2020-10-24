@@ -1,0 +1,37 @@
+@import '../../style/variables.scss';
+
+.header {
+  display: flex;
+  justify-content: flex-end;
+  height: 20%;
+  padding: 1em;
+  background-color: $midBlue;
+}
+
+.title {
+  text-decoration: none;
+  font-family: $primaryFont;
+  font-size: 2em;
+  color: $lightTan;
+  margin: 0 auto;
+  text-shadow: 3px 3px 5px $darkBlue;
+}
+
+.text {
+  margin: 0;
+}
+
+.navBar {
+  position: absolute;
+}
+
+.navButton {
+  background: none;
+  border: none;
+  outline: none;
+}
+
+.icon {
+ height: 60px; 
+ filter: drop-shadow(0px 0px 5px $darkBlue);
+}
