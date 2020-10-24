@@ -1,37 +1,54 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import style from './Header.module.scss'
 import metatronsSettings from '../../assets/metatronsSettings.png'
 
 const Header = () => {
   return (
-    <header>
-      <Link to="/">
-        <h1>Som Timer</h1>
+    <header className={style.header}>
+      <Link className={style.title} to="/">
+        <h1 className={style.text}>Som Timer</h1>
       </Link>
-      <nav>
+      <nav className={style.navBar}>
         <Link to="/">
-          <button aria-label="timer">
-            <img src={metatronsSettings} alt="hexagonal settings icon"/>
+          <button className={style.navButton} aria-label="timer">
+            <img
+              className={style.icon}
+              src={metatronsSettings}
+              alt="hexagonal settings icon"
+            />
           </button>
         </Link>
         <Link to="/stats">
-          <button aria-label="stats">
-            <img src={metatronsSettings} alt="hexagonal settings icon"/>
+          <button className={style.navButton} aria-label="stats">
+            <img
+              className={style.icon}
+              src={metatronsSettings}
+              alt="hexagonal settings icon"
+            />
           </button>
         </Link>
         <Link to="/settings">
-          <button aria-label="settings">
-            <img src={metatronsSettings} alt="hexagonal settings icon"/>
+          <button className={style.navButton} aria-label="settings">
+            <img
+              className={style.icon}
+              src={metatronsSettings}
+              alt="hexagonal settings icon"
+            />
           </button>
         </Link>
         <Link to="/about">
-          <button aria-label="about">
-            <img src={metatronsSettings} alt="hexagonal settings icon"/>
+          <button className={style.navButton} aria-label="about">
+            <img
+              className={style.icon}
+              src={metatronsSettings}
+              alt="hexagonal settings icon"
+            />
           </button>
         </Link>
       </nav>
     </header>
-  )
+  );
 }
 
 export default Header
