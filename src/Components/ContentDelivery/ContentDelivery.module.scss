@@ -5,7 +5,7 @@ h2 {
   font-size: 2em;
 }
 
-.video-section {
+.videoSection {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -13,17 +13,17 @@ h2 {
   margin: 1em; 
 }
 
-.video-wrapper {
+.videoWrapper {
   @include size(60em, 34em);
 }
 
-.video-player {
+.videoPlayer {
   @include borderAndShadow(3px solid $darkBlue, 8px, 8px 8px 6px $midBlue);
   background-color: $lightBlueAccent; 
   padding: 2em; 
 }
 
-.skip-btn {
+.skipBtn {
   @include borderAndShadow(none, 8px, 8px 8px 6px $midBlue);
   background-color: $salmon; 
   margin: 2em;
@@ -38,21 +38,21 @@ h2 {
 }
 
 @media screen and (max-width: 992px) {
-  .video-wrapper {
+  .videoWrapper {
     @include size(42em, 24em);
   }
 
-  .video-player {
+  .videoPlayer {
     padding: 1.5em;
   }
 }
 
 @media screen and (max-width: 688px) {
-  .video-wrapper {
+  .videoWrapper {
     @include size(26em, 15em);
   }
 
-  .video-player {
+  .videoPlayer {
     padding: 0.5em;
   }
 }

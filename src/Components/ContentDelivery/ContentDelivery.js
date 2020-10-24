@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import './ContentDelivery.scss'
+import style from './ContentDelivery.module.scss'
 import ReactPlayer from 'react-player'
 import { VideoContext } from '../../Context/VideoContext'
 import { ViewContext } from '../../Context/ViewContext'
@@ -9,11 +9,11 @@ const ContentDelivery = () => {
   const [ view, setView ] = useContext(ViewContext)
 
   return (
-    <section className="video-section">
+    <section className={style.videoSection}>
       <h2>Enjoy Your Break!</h2>
-      <div className="video-wrapper">
+      <div className={style.videoWrapper}>
         <ReactPlayer
-          className="video-player"
+          className={style.videoPlayer}
           url={videoLink}
           playing={false}
           controls={true}
@@ -21,7 +21,7 @@ const ContentDelivery = () => {
           height="90%"
         />
       </div>
-      <button className="skip-btn" onClick={() => setView('timer')}>Skip video</button>
+      <button className={style.skipBtn} onClick={() => setView('timer')}>Skip video</button>
     </section>
   )
 }
