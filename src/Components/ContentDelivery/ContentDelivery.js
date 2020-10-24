@@ -9,10 +9,9 @@ const ContentDelivery = () => {
   return (
     <section className="video-section">
       <h2>Enjoy Your Break!</h2>
-      <div class='video-wrapper'>
+      <div className="video-wrapper">
         <ReactPlayer
           className="video-player"
-          alt='Video for pom break'
           url={videoLink}
           playing={false}
           controls={true}
@@ -20,7 +19,7 @@ const ContentDelivery = () => {
           height="90%"
         />
       </div>
-      <button className='skip-btn'>Skip video</button>
+      <button className="skip-btn">Skip video</button>
     </section>
   )
 }
