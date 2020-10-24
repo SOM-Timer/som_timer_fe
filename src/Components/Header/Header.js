@@ -15,7 +15,7 @@ const Header = () => {
             <img
               className={style.icon}
               src={metatronsSettings}
-              alt="hexagonal settings icon"
+              alt="timer icon"
             />
           </button>
         </NavLink>
@@ -24,7 +24,7 @@ const Header = () => {
             <img
               className={style.icon}
               src={metatronsSettings}
-              alt="hexagonal settings icon"
+              alt="stats icon"
             />
           </button>
         </NavLink>
@@ -42,7 +42,7 @@ const Header = () => {
             <img
               className={style.icon}
               src={metatronsSettings}
-              alt="hexagonal settings icon"
+              alt="about icon"
             />
           </button>
         </NavLink>
