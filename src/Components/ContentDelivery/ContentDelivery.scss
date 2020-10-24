@@ -1,34 +1,67 @@
 @import '../../style/variables.scss';
 
-.video {
+h2 {
+  font-family: $primaryFont; 
+  font-size: 2em;
+}
+
+.video-section {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center; 
-  margin: 5em; 
+  margin: 1em; 
+}
+
+.video-wrapper {
+  width: 60em;
+  height: 34em; 
 }
 
 .video-player {
+  background-color: $lightBlueAccent; 
   padding: 2em;
   border-radius: 8px; 
-  background-color: $lightBlueAccent; 
   border: 3px solid $darkBlue;
-  box-shadow: 8px 8px 6px $midBlue; 
+  box-shadow: 8px 8px 6px $midBlue;  
 }
 
 .skip-btn {
-  background-color: $salmon;
-  border-radius: 8px; 
+  background-color: $salmon; 
   margin: 2em;
   padding: 0.5em 1em; 
+  border-radius: 8px;
+  border: none;
+  box-shadow: 8px 8px 6px $midBlue; 
   font-size: 1.2em; 
   font-family: $primaryFont;
   font-weight: 600;  
-  border: none;
-  box-shadow: 8px 8px 6px $midBlue; 
+
+    &:hover {
+    background-color: $salmonHover;
+    color: $lightBlueAccent;
+    }
 }
 
-.skip-btn:hover {
-  background-color: $salmonHover;
-  color: $lightBlueAccent;
+@media screen and (max-width: 992px) {
+  .video-wrapper {
+    width: 42em;        
+    height: 24em;
+  }
+
+  .video-player {
+    padding: 1.5em;
+  }
 }
+
+@media screen and (max-width: 688px) {
+  .video-wrapper {
+    width: 26em;        
+    height: 15em;
+  }
+
+  .video-player {
+    padding: 0.5em;
+  }
+}
+
