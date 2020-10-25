@@ -27,11 +27,24 @@
     padding-right: 5px;
 }
 
-.intervalDropdown {
+.minutesInput {
+    margin-right: 5px;
+    border-radius: 0.25em;
+    padding: 4px;
+    border: none;
+
+    &:focus {
+        outline: 1px solid $salmonHover;
+    }
+}
+
+.breakIntervalDropdown {
     width: fit-content;
     height: fit-content;
     padding: 4px;
+    margin-right: 5px;
     border-radius: 0.25em;
+    border: none;
     cursor: pointer;
 
     &:focus {
