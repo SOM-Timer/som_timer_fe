@@ -4,7 +4,7 @@ import style from './ContentSelection.module.scss'
 const ContentSelection = () => {
   return (
     <section className={style.ContentSelection}>
-      
+      <h2>How would you like to spend your break?</h2>
       <div>
         <button aria-label="yoga/movement"></button>
         <p>Yoga / Movement</p>
