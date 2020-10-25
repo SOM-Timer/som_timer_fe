@@ -4,6 +4,7 @@ import { ViewContext } from '../../Context/ViewContext'
 import { VideoProvider } from '../../Context/VideoContext'
 import ContentDelivery from '../ContentDelivery/ContentDelivery'
 import CountdownTimer from '../Timer/Timer'
+import ContentSelection from '../ContentSelection/ContentSelection'
 
 const HomeContainer = () => {
   const [ view ] = useContext(ViewContext)
@@ -14,8 +15,7 @@ const HomeContainer = () => {
         <CountdownTimer/>
       }
       { view === 'content-selection' &&
-      <h2>Content Selection View!</h2>
-        // <ContentSelection/>
+        <ContentSelection/>
       }
       { view === 'content-delivery' && 
         <ContentDelivery />

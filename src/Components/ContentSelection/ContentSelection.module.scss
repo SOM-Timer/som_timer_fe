@@ -1,0 +1,55 @@
+@import '../../style/variables.scss';
+@import '../../style/mixins.scss';
+
+* {
+  transition: all .24s ease-in-out;
+}
+
+.ContentSelection {
+  color: black;
+  text-shadow: 0px 0px 5px $darkBlue;
+}
+
+.prompt {
+  margin-top: 4em;
+}
+
+.options {
+  display: flex;
+  justify-content: center;
+  margin-top: 3em;
+}
+
+.button {
+  @include size(7em, 7em);
+  background-color: $midBlue;
+  border: none;
+  outline: none;
+  border-radius: 1.5em;
+  box-shadow: 0px 0px 10px $darkBlue;
+  margin: 2em 5.5em 0 5.5em;
+
+  &:hover {
+    box-shadow: 0px 0px 30px $lightBlueAccent;
+    cursor: pointer;
+  }
+}
+
+@media screen and (max-width: 688px) {
+
+  .prompt {
+    margin: 1.75em 2em 0;
+  }
+
+  .options {
+    flex-direction: column;
+    margin-top: 1em;
+  }
+}
+
+@media screen and (max-height: 740px) {
+
+  .button {
+    @include size(6.5em, 6.5em);
+  }
+}
