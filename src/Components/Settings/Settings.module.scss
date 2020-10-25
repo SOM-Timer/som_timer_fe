@@ -1,0 +1,40 @@
+@import '../../style/variables.scss';
+@import '../../style/mixins.scss';
+
+.settingsContainer {
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+    margin: auto;
+    background: $darkBlue;
+    color: #F8F8FF;
+    border-radius: 0.7em;
+    padding: 15px;
+}
+
+.settingsHeader {
+    text-align: center;
+    margin: 0;
+}
+
+.intervalContainer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.intervalLabel {
+    padding-right: 5px;
+}
+
+.intervalDropdown {
+    width: fit-content;
+    height: fit-content;
+    padding: 4px;
+    border-radius: 0.25em;
+    cursor: pointer;
+
+    &:focus {
+        outline: 1px solid $salmonHover;
+    }
+}
