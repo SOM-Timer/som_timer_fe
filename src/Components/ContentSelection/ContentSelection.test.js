@@ -4,7 +4,16 @@ import { render } from '@testing-library/react'
 import '@testing-library/jest-dom'
 
 describe('ContentSelection', () => {
-  it('should display the correct contents when rendered', () => {
+
+  it('should ask the user what kind of break they\'d like to take', () => {
+    const { getByRole } = render(<ContentSelection />)
+    
+    const contentPrompt = getByRole('heading', { name: /how would you like to spend your break?/i })
+
+    expect(contentPrompt).toBeInTheDocument()
+  })
+
+  it('should display the correct buttons', () => {
     const { getByRole } = render(<ContentSelection />)
 
     const yogaMovementButton = getByRole('button', { name: /yoga\/movement/i })
