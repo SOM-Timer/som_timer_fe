@@ -1,23 +1,26 @@
 import React from 'react'
 import ContentDelivery from './ContentDelivery.js'
-import { render, screen } from '@testing-library/react'
+import { render } from '@testing-library/react'
 import '@testing-library/jest-dom'
 import { BrowserRouter } from 'react-router-dom'
 import { VideoProvider } from '../../Context/VideoContext'
+import { ViewProvider } from '../../Context/ViewContext'
 
 describe('ContentDelivery component', () => {
   it('should display a video player and skip button when rendered', () => {
 
-    render(
+    const { getByRole } = render(
       <BrowserRouter>
-        <VideoProvider>
-          <ContentDelivery/>
-        </VideoProvider>
+      <ViewProvider>
+          <VideoProvider>
+            <ContentDelivery/>
+          </VideoProvider>
+        </ViewProvider>
       </BrowserRouter>
     )
 
-    const breakTitle = screen.getByRole('heading', { name: 'Enjoy Your Break!'})
-    const skipBtn = screen.getByRole('button', { name: 'Skip video' })
+    const breakTitle = getByRole('heading', { name: 'Enjoy Your Break!'})
+    const skipBtn = getByRole('button', { name: 'Skip video' })
 
     expect(breakTitle).toBeInTheDocument()
     expect(skipBtn).toBeInTheDocument()

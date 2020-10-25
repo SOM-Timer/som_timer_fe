@@ -5,7 +5,7 @@ h2 {
   font-size: 2em;
 }
 
-.video-section {
+.videoSection {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -13,17 +13,22 @@ h2 {
   margin: 1em; 
 }
 
-.video-wrapper {
+.videoSectionModal {
+  @extend .videoSection;
+  -webkit-filter: blur(5px) grayscale(50%);
+}
+
+.videoWrapper {
   @include size(60em, 34em);
 }
 
-.video-player {
+.videoPlayer {
   @include borderAndShadow(3px solid $darkBlue, 8px, 8px 8px 6px $midBlue);
   background-color: $lightBlueAccent; 
   padding: 2em; 
 }
 
-.skip-btn {
+.skipBtn {
   @include borderAndShadow(none, 8px, 8px 8px 6px $midBlue);
   background-color: $salmon; 
   margin: 2em;
@@ -37,22 +42,41 @@ h2 {
     }
 }
 
+//modal
+.workMsgModal {
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0; 
+  width: 100%;
+  height: 100%; 
+  text-align: center;
+}
+
+.modalContent {
+  background-color: $lightBlueAccent;
+  margin: 20% auto;
+  padding: 1em; 
+  border: 1px solid $midBlue;
+  width: 30%; 
+}
+
 @media screen and (max-width: 992px) {
-  .video-wrapper {
+  .videoWrapper {
     @include size(42em, 24em);
   }
 
-  .video-player {
+  .videoPlayer {
     padding: 1.5em;
   }
 }
 
 @media screen and (max-width: 688px) {
-  .video-wrapper {
+  .videoWrapper {
     @include size(26em, 15em);
   }
 
-  .video-player {
+  .videoPlayer {
     padding: 0.5em;
   }
 }
