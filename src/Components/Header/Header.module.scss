@@ -1,9 +1,12 @@
 @import '../../style/variables.scss';
 
+* {
+  transition: all .24s ease-in-out;
+}
+
 .header {
   display: flex;
   justify-content: flex-end;
-  height: 20%;
   padding: 1em;
   background-color: $midBlue;
   box-shadow: 0px 0px 20px $darkBlue;
@@ -34,7 +37,6 @@
 
 .selected {
   filter: drop-shadow(0px 0px 5px $salmon);
-  transition: all .24s ease-in-out;
 }
 
 .icon {
