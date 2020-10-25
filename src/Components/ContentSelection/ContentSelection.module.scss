@@ -1,0 +1,21 @@
+@import '../../style/variables.scss';
+
+.ContentSelection {
+  color: black;
+  text-shadow: 0px 0px 5px $darkBlue;
+}
+
+.prompt {
+  margin-top: 2em;
+}
+
+.button {
+  height: 6em;
+  width: 6em;
+  background-color: $midBlue;
+  border: none;
+  outline: none;
+  border-radius: 1.5em;
+  box-shadow: 0px 0px 10px $darkBlue;
+  margin-top: 2em;
+}
