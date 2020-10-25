@@ -36,6 +36,7 @@
   },
   "devDependencies": {
     "jest-environment-jsdom-sixteen": "^1.0.3",
-    "react-test-renderer": "^16.14.0"
+    "react-test-renderer": "^16.14.0",
+    "react-compound-timer": "^1.2.0"
   }
 }
