@@ -6,7 +6,7 @@ export const ViewProvider = ({ children }) => {
   const [ view, setView ] = useState('timer')
 
   return (
-    <ViewContext.Provider value={[view, setView]}>
+    <ViewContext.Provider value={[ view, setView ]}>
       { children}
     </ViewContext.Provider>
   )
