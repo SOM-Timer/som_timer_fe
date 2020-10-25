@@ -1,5 +1,9 @@
 @import '../../style/variables.scss';
 
+* {
+  transition: all .24s ease-in-out;
+}
+
 .ContentSelection {
   color: black;
   text-shadow: 0px 0px 5px $darkBlue;
@@ -18,4 +22,9 @@
   border-radius: 1.5em;
   box-shadow: 0px 0px 10px $darkBlue;
   margin-top: 2em;
+
+  &:hover {
+    box-shadow: 0px 0px 30px $darkBlue;
+    cursor: pointer;
+  }
 }
