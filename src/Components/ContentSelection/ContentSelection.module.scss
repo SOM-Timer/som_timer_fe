@@ -34,3 +34,23 @@
     cursor: pointer;
   }
 }
+
+@media screen and (max-width: 688px) {
+
+  .prompt {
+    margin: 1.75em 2em 0;
+  }
+
+  .options {
+    flex-direction: column;
+    margin-top: 1em;
+  }
+}
+
+@media screen and (max-height: 740px) {
+
+  .button {
+    height: 6.5em;
+    width: 6.5em;
+  }
+}
