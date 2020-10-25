@@ -8,42 +8,41 @@ const Settings = () => {
     const onChange = (event) => {
         setSettings({ 
             ...settings, 
-            [event.target.id]: event.target.value
+            [event.target.id]: +event.target.value
         })
     }
 
     return (
         <div className={style.settingsContainer}>
             <h1 className={style.settingsHeader}>Settings</h1>
-            <p>Currently, you are set to work for {settings.work} minutes and then take a {settings.break} minute break</p>
+            <p>Currently, you are set to work for {settings.workInterval} minutes and then take a {settings.breakInterval} minute break</p>
             <div className={style.intervalContainer}>
                 <p className={style.intervalLabel}>Select your work interval:</p>
-                <select 
+                {<input 
+                    type='number' 
+                    min={0} 
+                    max={240} 
+                    id='workInterval' 
+                    placeholder={settings.workInterval} 
                     onChange={onChange}
-                    className={style.intervalDropdown} 
-                    name='Work' 
-                    id='work' 
-                    data-testid='workInterval'
-                >
-                    <option value={25}>25</option>
-                    <option value={30}>30</option>
-                    <option value={45}>45</option>
-                    <option value={60}>60</option>
-                </select>
+                    className={style.minutesInput}
+                />}
+                <p>minutes</p>
             </div>
             <div className={style.intervalContainer}>
                 <p className={style.intervalLabel}>Select your break interval:</p>
                 <select 
                     onChange={onChange}
-                    className={style.intervalDropdown} 
+                    className={style.breakIntervalDropdown} 
                     name='Break' 
-                    id='break' 
+                    id='breakInterval' 
                     data-testid='breakInterval'
                 >
                     <option value={5}>5</option>
                     <option value={7}>7</option>
                     <option value={10}>10</option>
                 </select>
+                <p>minutes</p>
             </div>
         </div>
     )
