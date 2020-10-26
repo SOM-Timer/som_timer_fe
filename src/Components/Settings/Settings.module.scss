@@ -19,7 +19,6 @@
 
 .intervalContainer {
     display: flex;
-    flex-direction: row;
     align-items: center;
 }
 
@@ -39,12 +38,10 @@
 }
 
 .breakIntervalDropdown {
-    width: fit-content;
-    height: fit-content;
+    @include size(fit-content, fit-content);
+    @include borderAndShadow(none, 0.25em, none);
     padding: 4px;
     margin-right: 5px;
-    border-radius: 0.25em;
-    border: none;
     cursor: pointer;
 
     &:focus {

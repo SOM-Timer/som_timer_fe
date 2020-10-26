@@ -14,11 +14,10 @@ const Settings = () => {
 
     return (
         <div className={style.settingsContainer}>
-            <h1 className={style.settingsHeader}>Settings</h1>
-            <p>Currently, you are set to work for {settings.workInterval} minutes and then take a {settings.breakInterval} minute break</p>
+            <h2 className={style.settingsHeader}>Settings</h2>
             <div className={style.intervalContainer}>
                 <p className={style.intervalLabel}>Select your work interval:</p>
-                {<input 
+                <input 
                     type='number' 
                     min={0} 
                     max={240} 
@@ -26,7 +25,7 @@ const Settings = () => {
                     placeholder={settings.workInterval} 
                     onChange={onChange}
                     className={style.minutesInput}
-                />}
+                />
                 <p>minutes</p>
             </div>
             <div className={style.intervalContainer}>

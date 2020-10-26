@@ -1,6 +1,6 @@
 import React from 'react';
 import Settings from './Settings'
-import { fireEvent, getByRole, render } from '@testing-library/react';
+import { fireEvent, render } from '@testing-library/react';
 
 describe('Settings', () => {
     it('Should render the correct content', () => {
