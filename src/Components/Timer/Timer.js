@@ -38,7 +38,6 @@ const CountdownTimer = () => {
                 lastUnit='m'
                 startImmediately={false}
                 timeToUpdate={10}
-                formatValue={(value) => `${(value < 10? `0${value}` : value)}`}
                 checkpoints={[
                     {
                         time: 0,
