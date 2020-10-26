@@ -2,12 +2,15 @@ import React from 'react';
 import { render } from '@testing-library/react'
 import CountdownTimer from './Timer'
 import { SettingsProvider } from '../../Context/SettingsContext'
+import { ViewProvider } from '../../Context/ViewContext'
 
 describe('Timer', () => {
     it('Should have the correct content when rendered', () => {
         const { getByRole, getByText } = render(
             <SettingsProvider>
-                <CountdownTimer />
+                <ViewProvider>
+                    <CountdownTimer />
+                </ViewProvider>
             </SettingsProvider>
         )
 
