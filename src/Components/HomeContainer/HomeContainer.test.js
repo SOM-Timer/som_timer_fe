@@ -3,18 +3,25 @@ import HomeContainer from './HomeContainer.js'
 import { render } from '@testing-library/react'
 import '@testing-library/jest-dom'
 import { ViewProvider } from '../../Context/ViewContext'
+import { SettingsProvider } from '../../Context/SettingsContext'
 
 describe('HomeContainer', () => {
   //THIS TEST NEEDS TO BE EDITED ONCE HOMECONTAINER RENDERS ACTUALLY COUNTDOWNTIMER COMPONENT
   it('should render the Timer view on load', () => {
     const { getByRole } = render (
       <ViewProvider>
-        <HomeContainer/>
+        <SettingsProvider>
+          <HomeContainer/>
+        </SettingsProvider>
       </ViewProvider>
     )
 
-    const heading = getByRole('heading', { name: 'Pom Timer View!'})
+    const startButton = getByRole('button', { name: 'Start' })
+    const resetButton = getByRole('button', { name: 'Reset' })
+    const pauseButton = getByRole('button', { name: 'Pause' })
 
-    expect(heading).toBeInTheDocument(); 
+    expect(startButton).toBeInTheDocument();
+    expect(resetButton).toBeInTheDocument();
+    expect(pauseButton).toBeInTheDocument();
   })
 })
