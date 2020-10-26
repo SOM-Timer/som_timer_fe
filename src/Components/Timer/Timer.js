@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import Timer from 'react-compound-timer';
 import style from './Timer.module.scss';
+import { SettingsContext } from '../../Context/SettingsContext'
 
 // const COLOR_CODES = {
 //     info: {
@@ -10,7 +11,9 @@ import style from './Timer.module.scss';
 
 // let remainingPathColor = COLOR_CODES.info.color
 
-const CountdownTimer = (props) => {
+const CountdownTimer = () => {
+    const [ settings ] = useContext(SettingsContext)
+    
     // const calculateTimeFraction = () => {
     //     let timeLeft = this.context.value.m * 60 + this.context.value * 1000
     //     return timeLeft / props.initTime
@@ -26,10 +29,10 @@ const CountdownTimer = (props) => {
         <div className={style.countdownTimer}>
             <Timer 
                 direction='backward'
-                initialTime={props.initTime}
+                initialTime={settings.workInterval * 60000}
                 lastUnit='m'
                 startImmediately={false}
-                formatValue={(value) => `${(value < 10? `0${value}` : value)}`}
+                timeToUpdate={10}
             >
                 {({ start, pause, reset }) => (
                     <>
@@ -50,7 +53,11 @@ const CountdownTimer = (props) => {
                                     />
                                 </g>
                             </svg>
-                            <p className={style.baseTimerLabel}>{<Timer.Minutes />}:{<Timer.Seconds />}</p>
+                            <p className={style.baseTimerLabel}>
+                                {<Timer.Minutes />}:{<Timer.Seconds 
+                                    formatValue={(value) => `${(value < 10 ? `0${value}` : value)}`}
+                                />}
+                            </p>
                         </div>
                         <div className={style.timerControls}>
                             <button className={style.timerControlButton} onClick={() => {
