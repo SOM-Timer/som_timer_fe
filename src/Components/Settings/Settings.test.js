@@ -1,12 +1,17 @@
 import React from 'react';
 import Settings from './Settings'
 import { fireEvent, render } from '@testing-library/react';
+import { SettingsProvider } from '../../Context/SettingsContext';
 
 describe('Settings', () => {
     it('Should render the correct content', () => {
-        const { getByText, getByTestId } = render(<Settings />)
+        const { getByRole, getByTestId } = render(
+            <SettingsProvider>
+                <Settings />
+            </SettingsProvider>
+        )
 
-        const settingsHeader = getByText('Settings')
+        const settingsHeader = getByRole('heading', { name: 'Settings' })
         const workIntervalInput = getByTestId('workInterval')
         const breakIntervalInput = getByTestId('breakInterval')
         
@@ -15,18 +20,24 @@ describe('Settings', () => {
         expect(breakIntervalInput).toBeInTheDocument()
     })
 
-    it('Should have default values for each select', () => {
-        const { getByTestId } = render(<Settings />)
+    it('Should have default values for the breakInterval select', () => {
+        const { getByTestId } = render(
+            <SettingsProvider>
+                <Settings />
+            </SettingsProvider>
+        )
 
-        const workIntervalInput = getByTestId('workInterval')
         const breakIntervalInput = getByTestId('breakInterval')
 
-        expect(workIntervalInput.value).toBe('25')
         expect(breakIntervalInput.value).toBe('5')
     })
 
     it('Should update it\'s values on change', () => {
-        const { getByTestId } = render(<Settings />)
+        const { getByTestId } = render(
+            <SettingsProvider>
+                <Settings />
+            </SettingsProvider>
+        )
         
         const workIntervalInput = getByTestId('workInterval')
         const breakIntervalInput = getByTestId('breakInterval')

@@ -25,6 +25,7 @@ const Settings = () => {
                     placeholder={settings.workInterval} 
                     onChange={onChange}
                     className={style.minutesInput}
+                    data-testid='workInterval'
                 />
                 <p>minutes</p>
             </div>
