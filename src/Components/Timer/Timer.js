@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import Timer from 'react-compound-timer';
 import style from './Timer.module.scss';
 import { SettingsContext } from '../../Context/SettingsContext'
+import { ViewContext } from '../../Context/ViewContext'
 
 // const COLOR_CODES = {
 //     info: {
@@ -13,7 +14,7 @@ import { SettingsContext } from '../../Context/SettingsContext'
 
 const CountdownTimer = () => {
     const [ settings ] = useContext(SettingsContext)
-    
+    const [view, setView] = useContext(ViewContext)
     // const calculateTimeFraction = () => {
     //     let timeLeft = this.context.value.m * 60 + this.context.value * 1000
     //     return timeLeft / props.initTime
@@ -25,6 +26,10 @@ const CountdownTimer = () => {
     //         document.getElementById('base-timer-path-remaining').setAttribute('stroke-dasharray', circleDashArray)
     // }
 
+    const timerDone = () => {
+        setView('content-selection')
+    }
+
     return (
         <div className={style.countdownTimer}>
             <Timer 
@@ -33,6 +38,12 @@ const CountdownTimer = () => {
                 lastUnit='m'
                 startImmediately={false}
                 timeToUpdate={10}
+                checkpoints={[
+                    {
+                        time: 0,
+                        callback: () => timerDone(),
+                    },
+                ]}
             >
                 {({ start, pause, reset }) => (
                     <>
