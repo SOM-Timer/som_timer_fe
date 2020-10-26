@@ -10,7 +10,7 @@ const Header = () => {
         <h1 className={style.text}>Som Timer</h1>
       </Link>
       <nav className={style.navBar}>
-        <NavLink to="/" activeClassName={style.selected}>
+        <NavLink exact to="/" activeClassName={style.selected}>
           <button className={style.navButton} aria-label="timer">
             <img
               className={style.icon}
