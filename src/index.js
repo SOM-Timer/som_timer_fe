@@ -2,12 +2,18 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.scss';
 import App from './Components/App/App';
+import { ViewProvider } from './Context/ViewContext'
+import { SettingsProvider } from './Context/SettingsContext'
 import { BrowserRouter as Router } from 'react-router-dom'
 import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(
   <Router>
-    <App />
+    <SettingsProvider>
+      <ViewProvider>
+        <App />
+      </ViewProvider>
+    </SettingsProvider>
   </Router>,
   document.getElementById('root')
 );
