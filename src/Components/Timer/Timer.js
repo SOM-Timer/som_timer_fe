@@ -1,8 +1,8 @@
-import React, { useContext } from 'react';
-import Timer from 'react-compound-timer';
-import style from './Timer.module.scss';
-import { SettingsContext } from '../../Context/SettingsContext'
-import { ViewContext } from '../../Context/ViewContext'
+import React, { useContext } from "react";
+import Timer from "react-compound-timer";
+import style from "./Timer.module.scss";
+import { SettingsContext } from "../../Context/SettingsContext";
+import { ViewContext } from "../../Context/ViewContext";
 
 const CountdownTimer = () => {
   const [settings] = useContext(SettingsContext)
@@ -19,6 +19,7 @@ const CountdownTimer = () => {
 
   return (
     <div className={style.countdownTimer}>
+      <h2 className={style.prompt}>Click [PlayIcon]<br/>to Begin Working</h2>
       <Timer
         direction='backward'
         initialTime={settings.workInterval * 60000}
