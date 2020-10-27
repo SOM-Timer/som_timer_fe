@@ -49,7 +49,7 @@
 /* SVG path that displays timer's progress */
 .baseTimerPathElapsed {
     stroke-width: 7px;
-    stroke: grey;
+    stroke: $white;
 }
 
 /* Show timer value inside ring */
@@ -74,7 +74,7 @@
     stroke-linecap: round;
     transform: rotate(90deg);
     transform-origin: center;
-    transition: 1s linear all;
+    transition: .1s linear all;
     stroke: $salmon;
 }
 
