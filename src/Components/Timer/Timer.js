@@ -19,7 +19,7 @@ const CountdownTimer = () => {
 
   return (
     <div className={style.countdownTimer}>
-      <h2 className={style.prompt}>Click [PlayIcon]<br/>to Begin Working</h2>
+      <h2 className={style.prompt}>Click [PlayIcon] to Begin Working</h2>
       <Timer
         direction='backward'
         initialTime={settings.workInterval * 60000}
