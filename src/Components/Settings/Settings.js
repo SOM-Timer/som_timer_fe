@@ -44,7 +44,7 @@ const Settings = () => {
         </select>
         <p>minutes</p>
       </div>
-      <p>Settings will save automatically</p>
+      <p className={style.saveAutomatically}>Settings will save automagically</p>
     </div>
   )
 }
