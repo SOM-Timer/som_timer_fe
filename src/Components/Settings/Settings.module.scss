@@ -5,7 +5,7 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  width: 30%;
+  width: 500px;
   margin: 4em auto;
   background: $darkBlue;
   color: #F8F8FF;
@@ -45,7 +45,7 @@
   @include size(fit-content, fit-content);
   @include borderAndShadow(none, 0.25em, none);
   padding: 4px;
-  margin-right: 5px;
+  margin-right: .5em;
   cursor: pointer;
 
   &:focus {
@@ -56,4 +56,20 @@
 .saveAutomatically {
   margin-top: 1.6em;
   color: greenyellow;
+}
+
+@media screen and (max-width: 688px) {
+  .settingsContainer {
+    @include size(300px, 300px);
+    justify-content: flex-start;
+  }
+
+  .intervalLabel {
+    width: 7em;
+    margin: .5em 2em .5em 0;
+  }
+
+  .saveAutomatically {
+    margin-top: 3em
+  }
 }
