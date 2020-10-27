@@ -41,11 +41,11 @@ const Header = () => {
           </button>
         </NavLink>
         <NavLink to="/settings" activeClassName={style.selected}>
-          <button className={style.navButton} aria-label="settings">
+          <button className={style.settingsButton} aria-label="settings">
             <img
               className={style.icon}
               src={settingsNavIcon}
-              alt="hexagonal settings icon"
+              alt="settings icon"
             />
           </button>
         </NavLink>
