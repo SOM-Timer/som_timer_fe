@@ -1,0 +1,22 @@
+@import '../../style/variables.scss';
+
+.statsDesc {
+  text-align: left; 
+  font-size: 1.2em;
+  margin: 2em 18em;
+  padding: 1em; 
+  background-color: $midBlue;
+  box-shadow: 0px 0px 20px $darkBlue;
+}
+
+@media screen and (max-width: 1200px) {
+  .statsDesc {
+    margin: 2em 8em;
+  }
+}
+
+@media screen and (max-width: 688px) {
+  .statsDesc {
+    margin: 2em 2em;
+  }
+}
