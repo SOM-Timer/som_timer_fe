@@ -1,7 +1,10 @@
 import React from 'react'
 import { Link, NavLink } from 'react-router-dom'
 import style from './Header.module.scss'
-import metatronsSettings from '../../assets/metatronsSettings.png'
+import timerNavIcon from '../../assets/timerNavIcon.png'
+import statsNavIcon from '../../assets/statsNavIcon.png'
+import settingsNavIcon from '../../assets/settingsNavIcon.png'
+import aboutNavIcon from '../../assets/aboutNavIcon.png'
 
 const Header = () => {
   return (
@@ -14,7 +17,7 @@ const Header = () => {
           <button className={style.navButton} aria-label="timer">
             <img
               className={style.icon}
-              src={metatronsSettings}
+              src={timerNavIcon}
               alt="timer icon"
             />
           </button>
@@ -23,17 +26,8 @@ const Header = () => {
           <button className={style.navButton} aria-label="stats">
             <img
               className={style.icon}
-              src={metatronsSettings}
+              src={statsNavIcon}
               alt="stats icon"
-            />
-          </button>
-        </NavLink>
-        <NavLink to="/settings" activeClassName={style.selected}>
-          <button className={style.navButton} aria-label="settings">
-            <img
-              className={style.icon}
-              src={metatronsSettings}
-              alt="hexagonal settings icon"
             />
           </button>
         </NavLink>
@@ -41,8 +35,17 @@ const Header = () => {
           <button className={style.navButton} aria-label="about">
             <img
               className={style.icon}
-              src={metatronsSettings}
+              src={aboutNavIcon}
               alt="about icon"
+            />
+          </button>
+        </NavLink>
+        <NavLink to="/settings" activeClassName={style.selected}>
+          <button className={style.navButton} aria-label="settings">
+            <img
+              className={style.icon}
+              src={settingsNavIcon}
+              alt="hexagonal settings icon"
             />
           </button>
         </NavLink>
