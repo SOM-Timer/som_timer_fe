@@ -6,6 +6,7 @@ import HomeContainer from '../HomeContainer/HomeContainer'
 import Header from '../Header/Header'
 import Settings from '../Settings/Settings'
 import About from '../About/About'
+import Stats from '../Stats/Stats'
 import './App.css'
 
 function App() {
@@ -19,7 +20,7 @@ function App() {
           </ViewProvider>
           <Route exact path="/settings" render={() => <Settings />} />
           <Route exact path="/about" render={() => <About />} />
-          {/* <Route exact path="/stats" render={() => <UnderConstructon />} */}
+          <Route exact path="/stats" render={() => <Stats />} />
           {/* <Route render={() => <DoesNotExist />} /> */}
         </SettingsProvider>
       </Switch>
