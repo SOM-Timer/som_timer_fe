@@ -3,7 +3,7 @@ import style from './About.module.scss'
 
 const About = () => {
   return (
-    <section className={style.About}>
+    <article className={style.About}>
       <section>
         <h2>About Som Timer</h2>
         <section className={style.appDescription}>
@@ -27,7 +27,7 @@ const About = () => {
           <p><a href="https://github.com/sienna-kopf" target="_blank" rel="noopener noreferrer">Sienna Kopf</a></p>
         </section>
       </section>
-    </section>
+    </article>
   )
 }
 
