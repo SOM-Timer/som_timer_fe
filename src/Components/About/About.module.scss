@@ -28,12 +28,13 @@
 .disclaimer {
   margin-top: 2em;
   font-size: 0.7em;
+  text-align: center;
 }
 
 .broughtToYouBy {
   font-size: 2em;
   letter-spacing: 2px;
-
+  filter: drop-shadow(0px 0px 1.5px  $salmonHover);
 }
 
 .contributors {
