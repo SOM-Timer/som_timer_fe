@@ -12,6 +12,11 @@ const CountdownTimer = () => {
     setView('content-selection')
   }
 
+  const countdownColorChange = (color) => {
+    const circlePath = document.getElementById('base-timer-path-remaining')
+    circlePath.style.stroke = color
+  }
+
   return (
     <div className={style.countdownTimer}>
       <Timer
@@ -24,6 +29,19 @@ const CountdownTimer = () => {
           {
             time: 0,
             callback: () => timerDone(),
+          }, 
+          /* These colors can be found in our variables.scss file (salmon progression) */
+          {
+            time: settings.workInterval * 45000,
+            callback: () => countdownColorChange('#e19e9b')
+          },
+          {
+            time: settings.workInterval * 30000,
+            callback: () => countdownColorChange('#f06b64')
+          },
+          {
+            time: settings.workInterval * 15000,
+            callback: () => countdownColorChange('#e44f47')
           },
         ]}
       >
