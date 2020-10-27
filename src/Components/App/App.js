@@ -7,6 +7,7 @@ import Header from '../Header/Header'
 import Settings from '../Settings/Settings'
 import About from '../About/About'
 import Stats from '../Stats/Stats'
+import PageNotFound from '../PageNotFound/PageNotFound'
 import './App.css'
 
 function App() {
@@ -21,7 +22,7 @@ function App() {
           <Route exact path="/settings" render={() => <Settings />} />
           <Route exact path="/about" render={() => <About />} />
           <Route exact path="/stats" render={() => <Stats />} />
-          {/* <Route render={() => <DoesNotExist />} /> */}
+          <Route render={() => <PageNotFound/>} />
         </SettingsProvider>
       </Switch>
     </section>
