@@ -19,7 +19,7 @@ const CountdownTimer = () => {
 
   return (
     <div className={style.countdownTimer}>
-      <h2 className={style.prompt}>Click ▶ to Begin Working</h2>
+      <h2 className={style.prompt}>Click ▶ to Begin Focusing</h2>
       <Timer
         direction='backward'
         initialTime={settings.workInterval * 60000}
