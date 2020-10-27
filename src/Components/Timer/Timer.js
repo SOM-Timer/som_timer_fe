@@ -1,8 +1,8 @@
 import React, { useContext } from "react";
-import Timer from "react-compound-timer";
-import style from "./Timer.module.scss";
 import { SettingsContext } from "../../Context/SettingsContext";
 import { ViewContext } from "../../Context/ViewContext";
+import Timer from "react-compound-timer";
+import style from "./Timer.module.scss";
 
 const CountdownTimer = () => {
   const [settings] = useContext(SettingsContext)
