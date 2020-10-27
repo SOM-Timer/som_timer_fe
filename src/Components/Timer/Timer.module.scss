@@ -1,6 +1,10 @@
 @import '../../style/variables.scss';
 
 /* Structural Styling */
+.prompt {
+  margin: 1.5em 0 0 0;
+}
+
 .countdownTimer {
   display: flex;
   flex-direction: column;
@@ -38,6 +42,7 @@
   position: relative;
   height: 300px;
   width: 300px;
+  margin: 2em auto;
 }
 
 /* Removes svg styling that hides clock display */
