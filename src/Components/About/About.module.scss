@@ -26,3 +26,15 @@
 .engineerList {
   margin: 0 3em; 
 }
+
+@media screen and (max-width: 1200px) {
+  .appDescription {
+    margin: 2em 8em; 
+  }
+}
+
+@media screen and (max-width: 688px) {
+  .appDescription {
+    margin: 2em 2em; 
+  }
+}
