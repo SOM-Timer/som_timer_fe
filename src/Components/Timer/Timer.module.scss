@@ -1,8 +1,9 @@
 @import '../../style/variables.scss';
+@import '../../style/mixins.scss';
 
 /* Structural Styling */
 .prompt {
-  margin: 1.5em 0 0 0;
+  margin: 1.75em 0 0 0;
 }
 
 .countdownTimer {
@@ -19,12 +20,12 @@
 }
 
 .timerControlButton {
+  @include size(55px,55px);
   border-radius: 50%;
-  width: 50px;
-  height: 50px;
+  border: none;
   align-items: center;
-  background-color: $white;
-  color: $darkBlue;
+  background-color: $midBlue;
+  color: $white;
   font-family: $primaryFont;
   font-weight: 700;
 }
@@ -39,9 +40,8 @@
 /* Countdown Animation Styling */
 /* Sets height and width of timer container*/
 .baseTimer {
+  @include size(300px, 300px);
   position: relative;
-  height: 300px;
-  width: 300px;
   margin: 2em auto;
 }
 
@@ -86,4 +86,18 @@
 .baseTimerSvg {
   /* Makes our animation move counter-clockwise by flipping svg */
   transform: scaleX(-1);
+}
+
+@media screen and (max-height: 680px) {
+  .prompt {
+    font-size: 1.15em;
+  }
+
+  .baseTimer {
+    margin: 1.4em auto;
+  }
+
+  .timerControlButton {
+    @include size(60px, 60px);
+  }
 }
