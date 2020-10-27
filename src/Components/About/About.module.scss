@@ -4,17 +4,36 @@
   margin: 2em; 
 }
 
+.prompt {
+  letter-spacing: 1px;
+}
+
 .appDescription {
   text-align: left; 
   font-size: 1.2em;
   margin: 2em 15em;
-  padding: 1em; 
+  padding: 1em 1.5em; 
+  border-radius: 1em;
   background-color: $midBlue;
   box-shadow: 0px 0px 20px $darkBlue;
 }
 
+.somTimer {
+  color: white;
+  filter: drop-shadow(0px 0px 1.5px  $salmonHover);
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
 .disclaimer {
-  font-size: 0.8em;
+  margin-top: 2em;
+  font-size: 0.7em;
+}
+
+.broughtToYouBy {
+  font-size: 2em;
+  letter-spacing: 2px;
+
 }
 
 .contributors {
