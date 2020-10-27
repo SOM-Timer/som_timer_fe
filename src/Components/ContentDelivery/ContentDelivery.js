@@ -17,7 +17,7 @@ const ContentDelivery = () => {
   return (
     <>
       <section className={ !done ? style.videoSection : style.videoSectionModal}>
-        <h2>Enjoy Your Break!</h2>
+        <h2 className={style.prompt}>Enjoy Your Break!</h2>
         <div className={style.videoWrapper}>
           <ReactPlayer
             className={style.videoPlayer}
