@@ -24,13 +24,13 @@
 }
 
 .videoPlayer {
-  @include borderAndShadow(none, 1em, 0px 0px 20px 4px $darkBlue);
+  @include borderAndShadow(none, 1em, 0px 0px 20px 2px $midBlue);
   background-color: $midBlue; 
   padding: 2em; 
 }
 
 .skipBtn {
-  @include borderAndShadow(none, 8px, 8px 8px 6px $midBlue);
+  @include borderAndShadow(none, 8px, 0px 5px 6px $midBlue);
   background-color: $salmon; 
   margin: 2em;
   padding: 0.5em 1em; 
