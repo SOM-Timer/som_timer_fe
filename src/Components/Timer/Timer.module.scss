@@ -12,6 +12,7 @@
   flex-direction: column;
   margin: auto;
   width: 300px;
+  filter: drop-shadow(0px 0px 4px  $salmonHover);
 }
 
 .timerControls {
@@ -61,9 +62,8 @@
 /* Show timer value inside ring */
 /* Size needs to match base-timer container */
 .baseTimerLabel {
+  @include size(300px, 300px);
   position: absolute;
-  width: 300px;
-  height: 300px;
   top: 0;
   display: flex;
   align-items: center;
