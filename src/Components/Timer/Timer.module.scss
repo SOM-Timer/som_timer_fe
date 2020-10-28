@@ -2,83 +2,83 @@
 
 /* Structural Styling */
 .countdownTimer {
-    display: flex;
-    flex-direction: column;
-    margin: auto;
-    width: 300px;
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  width: 300px;
 }
 
 .timerControls {
-    width: 300px;
-    display: flex;
-    justify-content: space-around;
+  width: 300px;
+  display: flex;
+  justify-content: space-around;
 }
 
 .timerControlButton {
-    border-radius: 50%;
-    width: 50px;
-    height: 50px;
-    align-items: center;
-    background-color: $white;
-    color: $darkBlue;
-    font-family: $primaryFont;
-    font-weight: 700;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  align-items: center;
+  background-color: $white;
+  color: $darkBlue;
+  font-family: $primaryFont;
+  font-weight: 700;
 }
 
 .timerControlButton:hover {
-    background-color: $darkBlue;
-    color: $white;
-    cursor: pointer;
+  background-color: $darkBlue;
+  color: $white;
+  cursor: pointer;
 }
 
 
 /* Countdown Animation Styling */
 /* Sets height and width of timer container*/
 .baseTimer {
-    position: relative;
-    height: 300px;
-    width: 300px;
+  position: relative;
+  height: 300px;
+  width: 300px;
 }
 
 /* Removes svg styling that hides clock display */
 .baseTimerCircle {
-    fill: none;
-    stroke: none;
+  fill: none;
+  stroke: none;
 }
 
 /* SVG path that displays timer's progress */
 .baseTimerPathElapsed {
-    stroke-width: 7px;
-    stroke: grey;
+  stroke-width: 7px;
+  stroke: $white;
 }
 
 /* Show timer value inside ring */
 /* Size needs to match base-timer container */
 .baseTimerLabel {
-    position: absolute;
-    width: 300px;
-    height: 300px;
-    top: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: $primaryFont;
-    font-size: 3em;
-    font-weight: 600;
-    margin: 0;
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: $primaryFont;
+  font-size: 3em;
+  font-weight: 600;
+  margin: 0;
 }
 
 /* Path Remaining Styling */
 .baseTimerPathRemaining {
-    stroke-width: 7px;
-    stroke-linecap: round;
-    transform: rotate(90deg);
-    transform-origin: center;
-    transition: 1s linear all;
-    stroke: $salmon;
+  stroke-width: 7px;
+  stroke-linecap: round;
+  transform: rotate(90deg);
+  transform-origin: center;
+  transition: .1s linear all;
+  stroke: $salmon;
 }
 
 .baseTimerSvg {
-    /* Makes our animation move counter-clockwise by flipping svg */
-    transform: scaleX(-1);
+  /* Makes our animation move counter-clockwise by flipping svg */
+  transform: scaleX(-1);
 }

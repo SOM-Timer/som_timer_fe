@@ -2,24 +2,24 @@
 @import '../../style/mixins.scss';
 
 .settingsContainer {
-    display: flex;
-    flex-direction: column;
-    width: 30%;
-    margin: auto;
-    background: $darkBlue;
-    color: #F8F8FF;
-    border-radius: 0.7em;
-    padding: 15px;
+  display: flex;
+  flex-direction: column;
+  width: 30%;
+  margin: auto;
+  background: $darkBlue;
+  color: #F8F8FF;
+  border-radius: 0.7em;
+  padding: 15px;
 }
 
 .settingsHeader {
-    text-align: center;
-    margin: 0;
+  text-align: center;
+  margin: 0;
 }
 
 .intervalContainer {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 }
 
 .intervalLabel {
@@ -27,24 +27,24 @@
 }
 
 .minutesInput {
-    margin-right: 5px;
-    border-radius: 0.25em;
-    padding: 4px;
-    border: none;
+  margin-right: 5px;
+  border-radius: 0.25em;
+  padding: 4px;
+  border: none;
 
-    &:focus {
-        outline: 1px solid $salmonHover;
-    }
+  &:focus {
+    outline: 1px solid $salmonHover;
+  }
 }
 
 .breakIntervalDropdown {
-    @include size(fit-content, fit-content);
-    @include borderAndShadow(none, 0.25em, none);
-    padding: 4px;
-    margin-right: 5px;
-    cursor: pointer;
+  @include size(fit-content, fit-content);
+  @include borderAndShadow(none, 0.25em, none);
+  padding: 4px;
+  margin-right: 5px;
+  cursor: pointer;
 
-    &:focus {
-        outline: 1px solid $salmonHover;
-    }
+  &:focus {
+    outline: 1px solid $salmonHover;
+  }
 }
