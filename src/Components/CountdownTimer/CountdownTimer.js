@@ -8,10 +8,9 @@ import pauseTimerIcon from "../../assets/timer/pauseTimerIcon.png";
 import skipTimerIcon from "../../assets/timer/skipTimerIcon.png";
 import resetTimerIcon from "../../assets/timer/resetTimerIcon.png";
 
-
 const CountdownTimer = () => {
-  const [settings ] = useContext(SettingsContext)
-  const [view, setView] = useContext(ViewContext)
+  const [ settings ] = useContext(SettingsContext)
+  const [ view, setView ] = useContext(ViewContext)
 
   const timerDone = () => {
     setView('content-selection')
@@ -51,8 +50,9 @@ const CountdownTimer = () => {
           },
         ]}
       >
-        {({ start, pause, reset, getTime }) => (
+        {({ start, pause, reset, getTime, setTime }) => (
           <>
+            {setTime(settings.workInterval * 60000)}
             <div className={style.baseTimer}>
               <svg
                 className={style.baseTimerSvg}
@@ -93,6 +93,7 @@ const CountdownTimer = () => {
               </p>
             </div>
             <div className={style.timerControls}>
+<<<<<<< HEAD
               <button
                 className={style.timerControlButton}
                 aria-label="start"
@@ -125,6 +126,12 @@ const CountdownTimer = () => {
                   src={resetTimerIcon}
                   alt="reset symbol"
                 />
+=======
+              <button className={style.timerControlButton} onClick={() => {
+                start();
+              }}>
+                Start
+>>>>>>> 0e12152... Fix error with setSettings not re-rendering Timer correctly
               </button>
             </div>
           </>
