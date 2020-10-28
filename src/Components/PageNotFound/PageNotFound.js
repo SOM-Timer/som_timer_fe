@@ -20,13 +20,13 @@ const PageNotFound = () => {
       <section className={style.notFoundContent}>
         <p>Here are some helpful links to get you back on track:</p>
         <a href="/">
-          <p>Home / Timer</p>
+          <p className={style.links}>Home / Timer</p>
         </a>
         <a href="/settings">
-          <p>Settings</p>
+          <p className={style.links}>Settings</p>
         </a>
         <a href="/about">
-          <p>About</p>
+          <p className={style.links}>About</p>
         </a>
       </section>
     </section>
