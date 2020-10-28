@@ -52,7 +52,7 @@ const CountdownTimer = () => {
       >
         {({ start, pause, reset, getTime, setTime }) => (
           <>
-            {setTime(settings.workInterval * 60000)}
+            {/* { setTime()} */}
             <div className={style.baseTimer}>
               <svg
                 className={style.baseTimerSvg}
@@ -93,7 +93,6 @@ const CountdownTimer = () => {
               </p>
             </div>
             <div className={style.timerControls}>
-<<<<<<< HEAD
               <button
                 className={style.timerControlButton}
                 aria-label="start"
@@ -126,12 +125,6 @@ const CountdownTimer = () => {
                   src={resetTimerIcon}
                   alt="reset symbol"
                 />
-=======
-              <button className={style.timerControlButton} onClick={() => {
-                start();
-              }}>
-                Start
->>>>>>> 0e12152... Fix error with setSettings not re-rendering Timer correctly
               </button>
             </div>
           </>
