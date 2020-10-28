@@ -21,7 +21,26 @@
 
 .burnout {
   width: 15em; 
-  margin: 1em; 
+  margin: 0.5em; 
   object-fit: cover;
   border-radius: 1em;
+}
+
+.links {
+  margin: 0.5em;
+}
+
+@media screen and (max-width: 688px) {
+  
+  .errorCode {
+    margin: 0.65em 0 0 0;
+  }
+
+  .oopsMessage {
+    margin: 1em 1em;
+  }
+
+  .notFoundContent {
+    margin: 1em 2em;
+  }
 }
