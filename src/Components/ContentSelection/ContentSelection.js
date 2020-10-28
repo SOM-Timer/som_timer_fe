@@ -2,6 +2,7 @@ import React, { useContext} from 'react'
 import style from './ContentSelection.module.scss'
 import { ViewContext } from '../../Context/ViewContext'
 import { VideoContext } from '../../Context/VideoContext'
+import somaticContentIcon from '../../assets/somaticContentIcon.png'
 
 const ContentSelection = () => {
   const [view, setView] = useContext(ViewContext)
@@ -25,7 +26,13 @@ const ContentSelection = () => {
             aria-label="somatic exercise"
             name="somatic exercise"
             onClick={fetchVideo}
-          ></button>
+          >
+            <img
+              className={style.somaticIcon}
+              src={somaticContentIcon}
+              alt="human head with arrows connecting brain to body"
+            />
+          </button>
           <p>Somatic Exercise</p>
         </div>
         <div>
