@@ -1,10 +1,10 @@
 import React from 'react'
 import { Link, NavLink } from 'react-router-dom'
 import style from './Header.module.scss'
-import timerNavIcon from '../../assets/timerNavIcon.png'
-import statsNavIcon from '../../assets/statsNavIcon.png'
-import settingsNavIcon from '../../assets/settingsNavIcon.png'
-import aboutNavIcon from '../../assets/aboutNavIcon.png'
+import timerNavIcon from '../../assets/navbar/timerNavIcon.png'
+import statsNavIcon from '../../assets/navbar/statsNavIcon.png'
+import settingsNavIcon from '../../assets/navbar/settingsNavIcon.png'
+import aboutNavIcon from '../../assets/navbar/aboutNavIcon.png'
 
 const Header = () => {
   return (
