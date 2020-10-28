@@ -2,7 +2,8 @@ import React, { useContext} from 'react'
 import style from './ContentSelection.module.scss'
 import { ViewContext } from '../../Context/ViewContext'
 import { VideoContext } from '../../Context/VideoContext'
-import somaticContentIcon from '../../assets/somaticContentIcon.png'
+import somaticContentIcon from '../../assets/content/somaticContentIcon.png'
+import meditationContentIcon from '../../assets/content/meditationContentIcon.png'
 
 const ContentSelection = () => {
   const [view, setView] = useContext(ViewContext)
@@ -21,8 +22,8 @@ const ContentSelection = () => {
       <h2 className={style.prompt}>How would you like to spend your break?</h2>
       <div className={style.options}>
         <div>
-          <button 
-            className={style.button} 
+          <button
+            className={style.button}
             aria-label="somatic exercise"
             name="somatic exercise"
             onClick={fetchVideo}
@@ -41,12 +42,18 @@ const ContentSelection = () => {
             aria-label="breathwork/meditation"
             name="breathwork/meditation"
             onClick={fetchVideo}
-          ></button>
+          >
+            <img
+              className={style.meditationIcon}
+              src={meditationContentIcon}
+              alt="human sitting in meditation pose"
+            />
+          </button>
           <p>Breathwork / Meditation</p>
         </div>
         <div>
-          <button 
-            className={style.button} 
+          <button
+            className={style.button}
             aria-label="yoga/movement"
             name="yoga/movement"
             onClick={fetchVideo}
