@@ -3,6 +3,10 @@ import { SettingsContext } from "../../Context/SettingsContext";
 import { ViewContext } from "../../Context/ViewContext";
 import Timer from "react-compound-timer";
 import style from "./Timer.module.scss";
+import playTimerIcon from "../../assets/playTimerIcon.png";
+import pauseTimerIcon from "../../assets/pauseTimerIcon.png";
+import skipTimerIcon from "../../assets/skipTimerIcon.png";
+import resetTimerIcon from "../../assets/resetTimerIcon.png";
 
 const CountdownTimer = () => {
   const [settings] = useContext(SettingsContext)
@@ -72,14 +76,33 @@ const CountdownTimer = () => {
               </p>
             </div>
             <div className={style.timerControls}>
-              <button className={style.timerControlButton} onClick={() => {
-                start();
-                // setCircleDashArray();
-              }}>
-                Start
+              <button
+                className={style.timerControlButton}
+                onClick={() => {
+                  start();
+                  // setCircleDashArray();
+                }}
+              >
+                <img
+                  className={style.playTimerControlIcon}
+                  src={playTimerIcon}
+                  alt="play symbol"
+                />
               </button>
-              <button className={style.timerControlButton} onClick={pause}>Pause</button>
-              <button className={style.timerControlButton} onClick={reset}>Reset</button>
+              <button className={style.timerControlButton} onClick={pause}>
+                <img
+                  className={style.pauseTimerControlIcon}
+                  src={pauseTimerIcon}
+                  alt="pause symbol"
+                />
+              </button>
+              <button className={style.timerControlButton} onClick={reset}>
+                <img
+                  className={style.resetTimerControlIcon}
+                  src={resetTimerIcon}
+                  alt="reset symbol"
+                />
+              </button>
             </div>
           </>
         )}
