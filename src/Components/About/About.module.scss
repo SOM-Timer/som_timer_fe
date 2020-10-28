@@ -55,6 +55,16 @@
 
 @media screen and (max-width: 688px) {
   .appDescription {
-    margin: 2em 2em; 
+    margin: 2em 1em; 
+    font-size: 1em;
   }
+
+  contributors {
+    justify-content: space-evenly;
+  }
+
+  .engineerList {
+    margin: 0;
+  }
+
 }
