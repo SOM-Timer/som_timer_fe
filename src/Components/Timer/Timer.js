@@ -95,10 +95,7 @@ const CountdownTimer = () => {
               <button
                 className={style.timerControlButton}
                 aria-label="start"
-                onClick={() => {
-                  start();
-                  // setCircleDashArray();
-                }}
+                onClick={start}
               >
                 <img
                   className={style.playTimerControlIcon}
