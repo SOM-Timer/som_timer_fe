@@ -1,6 +1,6 @@
 import React from 'react';
 import { render } from '@testing-library/react'
-import CountdownTimer from './Timer'
+import CountdownTimer from './CountdownTimer'
 import { SettingsProvider } from '../../Context/SettingsContext'
 import { ViewProvider } from '../../Context/ViewContext'
 

@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { SettingsContext } from "../../Context/SettingsContext";
 import { ViewContext } from "../../Context/ViewContext";
 import Timer from "react-compound-timer";
-import style from "./Timer.module.scss";
+import style from "./CountdownTimer.module.scss";
 import playTimerIcon from "../../assets/timer/playTimerIcon.png";
 import pauseTimerIcon from "../../assets/timer/pauseTimerIcon.png";
 import skipTimerIcon from "../../assets/timer/skipTimerIcon.png";
