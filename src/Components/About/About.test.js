@@ -8,18 +8,18 @@ describe('About', () => {
 
     const { getByRole, getByText } = render(<About/>)
 
-    const aboutHeading = getByRole('heading', { name: 'About Som Timer'})
-    const appDescription1 = getByText('Inspired by the Pomodoro Technique®, the practice of ', { exact: false})
-    const appDescription2 = getByText('Mindfulness meditation and other somatic exercises have been linked to enhanced productivity', { exact: false})
-    const appDescription3 = getByText('This timer is not affiliated with, associated with, or endorsed by the Pomodoro Technique® or its creator, Francesco Cirillo.')
-    const frontEndHeading = getByRole('heading', { name: 'Front End Engineers:'})
-    const frontEndEngineer1 = getByText('Aaron Burris-DeBoskey')
-    const frontEndEngineer2 = getByText('Jake West')
-    const frontEndEngineer3 = getByText('Rachel Williams')
-    const backEndHeading = getByRole('heading', { name: 'Back End Engineers:' })
-    const backEndEngineer1 = getByText('Chandler Hulstrom')
-    const backEndEngineer2 = getByText('Dorion')
-    const backEndEngineer3 = getByText('Sienna Kopf')
+    const aboutHeading = getByRole('heading', { name: /about som timer/i })
+    const appDescription1 = getByText(/fight cognitive boredom and burnout/i)
+    const appDescription2 = getByText(/mindfulness meditation and other somatic exercises have been linked to enhanced productivity/i)
+    const appDescription3 = getByText(/this timer is not affiliated with, associated with, or endorsed by the Pomodoro Technique® or its creator, Francesco Cirillo\./i)
+    const frontEndHeading = getByRole('heading', { name: /front end engineers:/i })
+    const frontEndEngineer1 = getByText(/aaron burris-deboskey/i)
+    const frontEndEngineer2 = getByText(/jake west/i)
+    const frontEndEngineer3 = getByText(/rachel williams/i)
+    const backEndHeading = getByRole('heading', { name: /back end engineers:/i })
+    const backEndEngineer1 = getByText(/chandler hulstrom/i)
+    const backEndEngineer2 = getByText(/dorion/i)
+    const backEndEngineer3 = getByText(/sienna kopf/i)
 
     expect(aboutHeading).toBeInTheDocument();
     expect(appDescription1).toBeInTheDocument(); 
