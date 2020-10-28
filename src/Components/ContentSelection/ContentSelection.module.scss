@@ -11,7 +11,7 @@
 }
 
 .prompt {
-  margin-top: 4em;
+  margin-top: 2.4em;
 }
 
 .options {
@@ -27,12 +27,22 @@
   outline: none;
   border-radius: 1.5em;
   box-shadow: 0px 0px 10px $darkBlue;
-  margin: 2em 5.5em 0 5.5em;
+  margin: 2em 5.5em 1em 5.5em;
 
   &:hover {
+    background-color: $darkBlue;
     box-shadow: 0px 0px 30px $lightBlueAccent;
     cursor: pointer;
   }
+}
+
+.somaticIcon {
+  height: 70px;
+}
+
+.meditationIcon {
+  height: 65px;
+  opacity: .8;
 }
 
 @media screen and (max-width: 688px) {

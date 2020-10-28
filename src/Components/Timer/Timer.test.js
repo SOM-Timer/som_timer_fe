@@ -14,9 +14,9 @@ describe('Timer', () => {
       </SettingsProvider>
     )
 
-    const startButton = getByRole('button', { name: 'Start' })
-    const resetButton = getByRole('button', { name: 'Reset' })
-    const pauseButton = getByRole('button', { name: 'Pause' })
+    const startButton = getByRole('button', { name: /start/i })
+    const resetButton = getByRole('button', { name: /reset/i })
+    const pauseButton = getByRole('button', { name: /pause/i })
     const time = getByText('25:00')
 
     expect(startButton).toBeInTheDocument();

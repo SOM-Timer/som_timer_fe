@@ -13,8 +13,8 @@ describe('Stats', () => {
       </BrowserRouter>
     )
 
-    const statsHeading = getByRole('heading', { name: 'Stats Page Coming Soon!'})
-    const comingSoonText = getByText('Check back soon for personal stats so you can see the positive impact Som Timer is having on your productivity and mental health.', { exact: false});
+    const statsHeading = getByRole('heading', { name: /stats page coming soon!/i })
+    const comingSoonText = getByText(/check back soon/i);
 
     expect(statsHeading).toBeInTheDocument();
     expect(comingSoonText).toBeInTheDocument();

@@ -1,8 +1,9 @@
 @import '../../style/variables.scss';
 @import '../../style/mixins.scss';
 
-h2 {
-  font-size: 2em;
+.prompt {
+  font-size: 1.75em;
+  margin: .5em 0 1em;
 }
 
 .videoSection {
@@ -23,23 +24,23 @@ h2 {
 }
 
 .videoPlayer {
-  @include borderAndShadow(3px solid $darkBlue, 8px, 8px 8px 6px $midBlue);
-  background-color: $lightBlueAccent; 
+  @include borderAndShadow(none, 1em, 0px 0px 20px 2px $midBlue);
+  background-color: $midBlue; 
   padding: 2em; 
 }
 
 .skipBtn {
-  @include borderAndShadow(none, 8px, 8px 8px 6px $midBlue);
+  @include borderAndShadow(none, 8px, 0px 5px 6px $midBlue);
   background-color: $salmon; 
   margin: 2em;
   padding: 0.5em 1em; 
   font: 1.2em $primaryFont;
   font-weight: 600;  
 
-    &:hover {
+  &:hover {
     background-color: $salmonHover;
     color: $lightBlueAccent;
-    }
+  }
 }
 
 //modal

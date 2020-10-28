@@ -8,7 +8,7 @@ import Settings from '../Settings/Settings'
 import About from '../About/About'
 import Stats from '../Stats/Stats'
 import PageNotFound from '../PageNotFound/PageNotFound'
-import './App.css'
+import './App.scss'
 
 function App() {
   return (

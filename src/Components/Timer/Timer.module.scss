@@ -1,6 +1,12 @@
 @import '../../style/variables.scss';
+@import '../../style/mixins.scss';
 
 /* Structural Styling */
+.prompt {
+  font-size: 1.5em;
+  margin: 2.4em 0 0 0;
+}
+
 .countdownTimer {
   display: flex;
   flex-direction: column;
@@ -15,29 +21,48 @@
 }
 
 .timerControlButton {
+  @include size(55px,55px);
   border-radius: 50%;
-  width: 50px;
-  height: 50px;
+  border: none;
   align-items: center;
-  background-color: $white;
-  color: $darkBlue;
+  background-color: $midBlue;
+  color: $white;
   font-family: $primaryFont;
   font-weight: 700;
+  box-shadow: 0px 0px 10px 1px $darkBlue;
+
+  &:hover {
+    background-color: $darkBlue;
+    cursor: pointer;
+  }
 }
 
-.timerControlButton:hover {
-  background-color: $darkBlue;
-  color: $white;
-  cursor: pointer;
+
+.playTimerControlIcon {
+  height: 32px;
+  margin-top: 2px;
+  margin-left: 4px;
 }
 
+.pauseTimerControlIcon {
+  height: 30px;
+  margin-top: 2px;
+  margin-left: 1.5px;
+}
+
+.resetTimerControlIcon {
+  height: 35px;
+  width: 30px;
+  margin-top: 3px;
+  margin-left: 1px;
+}
 
 /* Countdown Animation Styling */
 /* Sets height and width of timer container*/
 .baseTimer {
+  @include size(300px, 300px);
   position: relative;
-  height: 300px;
-  width: 300px;
+  margin: 2em auto;
 }
 
 /* Removes svg styling that hides clock display */
@@ -55,9 +80,8 @@
 /* Show timer value inside ring */
 /* Size needs to match base-timer container */
 .baseTimerLabel {
+  @include size(300px, 300px);
   position: absolute;
-  width: 300px;
-  height: 300px;
   top: 0;
   display: flex;
   align-items: center;
@@ -81,4 +105,19 @@
 .baseTimerSvg {
   /* Makes our animation move counter-clockwise by flipping svg */
   transform: scaleX(-1);
+  filter: drop-shadow(0px 0px 4px  $salmonHover);
+}
+
+@media screen and (max-height: 680px) {
+  .prompt {
+    font-size: 1.15em;
+  }
+
+  .baseTimer {
+    margin: 1.4em auto;
+  }
+
+  .timerControlButton {
+    @include size(60px, 60px);
+  }
 }

@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext } from 'react'
 import style from './Settings.module.scss'
 import { SettingsContext } from '../../Context/SettingsContext'
 
@@ -44,6 +44,7 @@ const Settings = () => {
         </select>
         <p>minutes</p>
       </div>
+      <p className={style.saveAutomatically}>✨ Settings will save automagically ✨</p>
     </div>
   )
 }

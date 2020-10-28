@@ -1,14 +1,46 @@
 @import '../../style/variables.scss';
 
+.errorCode {
+  font-size: 3em;
+  margin: 1em 0 0 0;
+
+}
+
+.warning {
+  color: $salmonHover;
+}
+
+.oopsMessage {
+  margin-top: 1em;
+  font-size: 1.5em;
+}
+
 .notFoundContent {
   font-size: 1.4em;
 }
 
 .burnout {
   width: 15em; 
-  margin: 1em; 
+  margin: 0.5em; 
+  object-fit: cover;
+  border-radius: 1em;
 }
 
-ul {
-  list-style: none;
+.links {
+  margin: 0.5em;
+}
+
+@media screen and (max-width: 688px) {
+  
+  .errorCode {
+    margin: 0.65em 0 0 0;
+  }
+
+  .oopsMessage {
+    margin: 1em 1em;
+  }
+
+  .notFoundContent {
+    margin: 1em 2em;
+  }
 }

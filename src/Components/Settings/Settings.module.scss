@@ -4,30 +4,35 @@
 .settingsContainer {
   display: flex;
   flex-direction: column;
-  width: 30%;
-  margin: auto;
+  justify-content: center;
+  width: 500px;
+  margin: 4em auto;
   background: $darkBlue;
   color: #F8F8FF;
-  border-radius: 0.7em;
-  padding: 15px;
+  border-radius: 1em;
+  box-shadow: 0 0 20px 1px $darkBlue;
+  padding: 15px 15px 30px 15px;
 }
 
 .settingsHeader {
   text-align: center;
-  margin: 0;
+  margin: .7em 0 1em;
+  letter-spacing: 2px;
+  filter: drop-shadow(0px 0px 1.5px  $salmonHover);
 }
 
 .intervalContainer {
   display: flex;
   align-items: center;
+  justify-content: center;
 }
 
 .intervalLabel {
-    padding-right: 5px;
+  margin-right: .5em
 }
 
 .minutesInput {
-  margin-right: 5px;
+  margin-right: .5em;
   border-radius: 0.25em;
   padding: 4px;
   border: none;
@@ -41,10 +46,31 @@
   @include size(fit-content, fit-content);
   @include borderAndShadow(none, 0.25em, none);
   padding: 4px;
-  margin-right: 5px;
+  margin-right: .5em;
   cursor: pointer;
 
   &:focus {
     outline: 1px solid $salmonHover;
+  }
+}
+
+.saveAutomatically {
+  margin-top: 1.6em;
+  text-shadow: 0px 0px 2px;
+}
+
+@media screen and (max-width: 688px) {
+  .settingsContainer {
+    @include size(300px, 300px);
+    justify-content: flex-start;
+  }
+
+  .intervalLabel {
+    width: 7em;
+    margin: .5em 2em .5em 0;
+  }
+
+  .saveAutomatically {
+    margin-top: 3em
   }
 }
