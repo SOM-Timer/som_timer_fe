@@ -11,7 +11,8 @@
 .appDescription {
   text-align: left; 
   font-size: 1.2em;
-  margin: 2em 15em;
+  margin: 2em auto;
+  width: 700px;
   padding: 1em 1.5em; 
   border-radius: 1em;
   background-color: $midBlue;
@@ -50,6 +51,8 @@
 @media screen and (max-width: 1200px) {
   .appDescription {
     margin: 2em 8em; 
+    width: auto;
+    font-size: 1em;
   }
 }
 
