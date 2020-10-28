@@ -12,7 +12,6 @@
   flex-direction: column;
   margin: auto;
   width: 300px;
-  filter: drop-shadow(0px 0px 4px  $salmonHover);
 }
 
 .timerControls {
@@ -30,14 +29,32 @@
   color: $white;
   font-family: $primaryFont;
   font-weight: 700;
+
+  &:hover {
+    background-color: $darkBlue;
+    cursor: pointer;
+  }
 }
 
-.timerControlButton:hover {
-  background-color: $darkBlue;
-  color: $white;
-  cursor: pointer;
+
+.playTimerControlIcon {
+  height: 32px;
+  margin-top: 2px;
+  margin-left: 4px;
 }
 
+.pauseTimerControlIcon {
+  height: 30px;
+  margin-top: 2px;
+  margin-left: 1.5px;
+}
+
+.resetTimerControlIcon {
+  height: 35px;
+  width: 30px;
+  margin-top: 3px;
+  margin-left: 1px;
+}
 
 /* Countdown Animation Styling */
 /* Sets height and width of timer container*/
@@ -87,6 +104,7 @@
 .baseTimerSvg {
   /* Makes our animation move counter-clockwise by flipping svg */
   transform: scaleX(-1);
+  filter: drop-shadow(0px 0px 4px  $salmonHover);
 }
 
 @media screen and (max-height: 680px) {
