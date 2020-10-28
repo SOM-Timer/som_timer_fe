@@ -8,8 +8,9 @@ import pauseTimerIcon from "../../assets/timer/pauseTimerIcon.png";
 import skipTimerIcon from "../../assets/timer/skipTimerIcon.png";
 import resetTimerIcon from "../../assets/timer/resetTimerIcon.png";
 
+
 const CountdownTimer = () => {
-  const [settings] = useContext(SettingsContext)
+  const [settings ] = useContext(SettingsContext)
   const [view, setView] = useContext(ViewContext)
 
   const timerDone = () => {
