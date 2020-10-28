@@ -25,40 +25,51 @@ const CountdownTimer = () => {
     <div className={style.countdownTimer}>
       <h2 className={style.prompt}>Click ▶ to Begin Focusing</h2>
       <Timer
-        direction='backward'
+        direction="backward"
         initialTime={settings.workInterval * 60000}
-        lastUnit='m'
+        lastUnit="m"
         startImmediately={false}
         timeToUpdate={10}
         checkpoints={[
           {
             time: 0,
             callback: () => timerDone(),
-          }, 
+          },
           /* These colors can be found in our variables.scss file (salmon progression) */
           {
             time: settings.workInterval * 45000,
-            callback: () => countdownColorChange('#e19e9b')
+            callback: () => countdownColorChange("#e19e9b"),
           },
           {
             time: settings.workInterval * 30000,
-            callback: () => countdownColorChange('#f06b64')
+            callback: () => countdownColorChange("#f06b64"),
           },
           {
             time: settings.workInterval * 15000,
-            callback: () => countdownColorChange('#e44f47')
+            callback: () => countdownColorChange("#e44f47"),
           },
         ]}
       >
         {({ start, pause, reset, getTime }) => (
           <>
             <div className={style.baseTimer}>
-              <svg className={style.baseTimerSvg} viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'>
+              <svg
+                className={style.baseTimerSvg}
+                viewBox="0 0 100 100"
+                xmlns="http://www.w3.org/2000/svg"
+              >
                 <g className={style.baseTimerCircle}>
-                  <circle className={style.baseTimerPathElapsed} cx='50' cy='50' r='45' />
+                  <circle
+                    className={style.baseTimerPathElapsed}
+                    cx="50"
+                    cy="50"
+                    r="45"
+                  />
                   <path
-                    id='base-timer-path-remaining'
-                    strokeDasharray={`${getTime() / (settings.workInterval * 60000) * 283} 283`}
+                    id="base-timer-path-remaining"
+                    strokeDasharray={`${
+                      (getTime() / (settings.workInterval * 60000)) * 283
+                    } 283`}
                     className={style.baseTimerPathRemaining}
                     d="
                       M 50, 50
@@ -70,14 +81,20 @@ const CountdownTimer = () => {
                 </g>
               </svg>
               <p className={style.baseTimerLabel}>
-                {<Timer.Minutes />}:{<Timer.Seconds
-                  formatValue={(value) => `${(value < 10 ? `0${value}` : value)}`}
-                />}
+                {<Timer.Minutes />}:
+                {
+                  <Timer.Seconds
+                    formatValue={(value) =>
+                      `${value < 10 ? `0${value}` : value}`
+                    }
+                  />
+                }
               </p>
             </div>
             <div className={style.timerControls}>
               <button
                 className={style.timerControlButton}
+                aria-label="start"
                 onClick={() => {
                   start();
                   // setCircleDashArray();
@@ -89,14 +106,22 @@ const CountdownTimer = () => {
                   alt="play symbol"
                 />
               </button>
-              <button className={style.timerControlButton} onClick={pause}>
+              <button
+                className={style.timerControlButton}
+                aria-label="pause"
+                onClick={pause}
+              >
                 <img
                   className={style.pauseTimerControlIcon}
                   src={pauseTimerIcon}
                   alt="pause symbol"
                 />
               </button>
-              <button className={style.timerControlButton} onClick={reset}>
+              <button
+                className={style.timerControlButton}
+                aria-label="reset"
+                onClick={reset}
+              >
                 <img
                   className={style.resetTimerControlIcon}
                   src={resetTimerIcon}
@@ -108,7 +133,7 @@ const CountdownTimer = () => {
         )}
       </Timer>
     </div>
-  )
+  );
 }
 
 export default CountdownTimer;
