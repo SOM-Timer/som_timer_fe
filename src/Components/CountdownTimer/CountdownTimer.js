@@ -35,23 +35,11 @@ const CountdownTimer = () => {
             time: 0,
             callback: () => timerDone(),
           },
-          /* These colors can be found in our variables.scss file (salmon progression) */
-          {
-            time: settings.workInterval * 45000,
-            callback: () => countdownColorChange("#e19e9b"),
-          },
-          {
-            time: settings.workInterval * 30000,
-            callback: () => countdownColorChange("#f06b64"),
-          },
-          {
-            time: settings.workInterval * 15000,
-            callback: () => countdownColorChange("#e44f47"),
-          },
         ]}
       >
-        {({ start, pause, reset, getTime}) => (
+        {({ start, pause, getTime, getTimerState, setTime }) => (
           <>
+            {getTimerState() === 'INITED' ? setTime(settings.workInterval * 60000) : setTime(getTime())}
             <div className={style.baseTimer}>
               <svg
                 className={style.baseTimerSvg}
@@ -117,7 +105,10 @@ const CountdownTimer = () => {
               <button
                 className={style.timerControlButton}
                 aria-label="reset"
-                onClick={reset}
+                onClick={() => {
+                  pause()
+                  setTime(settings.workInterval * 60000)
+                }}
               >
                 <img
                   className={style.resetTimerControlIcon}
