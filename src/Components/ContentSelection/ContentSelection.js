@@ -13,11 +13,9 @@ const ContentSelection = () => {
   const [ settings ] = useContext(SettingsContext)
 
   const fetchVideo = (event) => {
-    debugger
     const category = event.target.name
     const duration = `${settings.breakInterval}:00`
-    //get a video from BE with parameters of category from above & breakInterval duration from settings context 
-      //when get video back, use setVideoLink function to set the video url
+    
     getRandomContent(duration, category)
       .then(response => {
         const videoLink = response.data.url
@@ -25,12 +23,10 @@ const ContentSelection = () => {
       })
       .catch(err => {
         if (err.response) {
-          console.log(err.response.status)
+          console.log(err.response)
         }
-      }
-    )
-    //may need a loading screen while this is happening? 
-    setView('content-delivery')
+      })
+      setView('content-delivery')
   }
 
   return (
@@ -41,13 +37,14 @@ const ContentSelection = () => {
           <button
             className={style.button}
             aria-label="somatic exercise"
-            name="somatic exercise"
+            name="SOMATIC"
             onClick={fetchVideo}
           >
             <img
               className={style.somaticIcon}
               src={somaticContentIcon}
               alt="human head with arrows connecting brain to body"
+              name="SOMATIC"
             />
           </button>
           <p>Somatic Exercise</p>
@@ -56,13 +53,14 @@ const ContentSelection = () => {
           <button
             className={style.button}
             aria-label="breathwork/meditation"
-            name="breathwork/meditation"
+            name="MEDITATION"
             onClick={fetchVideo}
-          >
+            >
             <img
               className={style.meditationIcon}
               src={meditationContentIcon}
               alt="human sitting in meditation pose"
+              name="MEDITATION"
             />
           </button>
           <p>Breathwork / Meditation</p>
@@ -71,7 +69,7 @@ const ContentSelection = () => {
           <button
             className={style.button}
             aria-label="yoga/movement"
-            name="yoga/movement"
+            name="MOVEMENT"
             onClick={fetchVideo}
           ></button>
           <p>Yoga / Movement</p>
