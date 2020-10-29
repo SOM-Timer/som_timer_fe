@@ -4,16 +4,19 @@ import { render } from '@testing-library/react'
 import '@testing-library/jest-dom'
 import { ViewProvider } from '../../Context/ViewContext'
 import { VideoProvider } from '../../Context/VideoContext'
+import { SettingsProvider } from '../../Context/SettingsContext'
 
 describe('ContentSelection', () => {
 
   it('should ask the user what kind of break they\'d like to take', () => {
     const { getByRole } = render(
-      <ViewProvider>
-        <VideoProvider>
-          <ContentSelection />
-        </VideoProvider>
-      </ViewProvider>
+      <SettingsProvider>
+        <ViewProvider>
+          <VideoProvider>
+            <ContentSelection />
+          </VideoProvider>
+        </ViewProvider>
+      </SettingsProvider>
     )
     
     const contentPrompt = getByRole('heading', { name: /how would you like to spend your break?/i })
@@ -23,11 +26,13 @@ describe('ContentSelection', () => {
 
   it('should display the correct buttons', () => {
     const { getByRole } = render(
-      <ViewProvider>
-        <VideoProvider>
-          <ContentSelection />
-        </VideoProvider>
-      </ViewProvider>
+      <SettingsProvider>
+        <ViewProvider>
+          <VideoProvider>
+            <ContentSelection />
+          </VideoProvider>
+        </ViewProvider>
+      </SettingsProvider>
     )
 
     const yogaMovementButton = getByRole('button', { name: /yoga\/movement/i })
