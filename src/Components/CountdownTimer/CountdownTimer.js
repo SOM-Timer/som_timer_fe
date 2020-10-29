@@ -2,15 +2,15 @@ import React, { useContext } from "react";
 import { SettingsContext } from "../../Context/SettingsContext";
 import { ViewContext } from "../../Context/ViewContext";
 import Timer from "react-compound-timer";
-import style from "./Timer.module.scss";
+import style from "./CountdownTimer.module.scss";
 import playTimerIcon from "../../assets/timer/playTimerIcon.png";
 import pauseTimerIcon from "../../assets/timer/pauseTimerIcon.png";
 import skipTimerIcon from "../../assets/timer/skipTimerIcon.png";
 import resetTimerIcon from "../../assets/timer/resetTimerIcon.png";
 
 const CountdownTimer = () => {
-  const [settings] = useContext(SettingsContext)
-  const [view, setView] = useContext(ViewContext)
+  const [ settings ] = useContext(SettingsContext)
+  const [ view, setView ] = useContext(ViewContext)
 
   const timerDone = () => {
     setView('content-selection')
@@ -50,9 +50,8 @@ const CountdownTimer = () => {
           },
         ]}
       >
-        {({ start, pause, reset, getTime, setTime }) => (
+        {({ start, pause, reset, getTime}) => (
           <>
-          {setTime()}
             <div className={style.baseTimer}>
               <svg
                 className={style.baseTimerSvg}
