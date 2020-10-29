@@ -1,9 +1,14 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import style from './Settings.module.scss'
 import { SettingsContext } from '../../Context/SettingsContext'
+import { updateSettings } from '../../apiCalls'
 
 const Settings = () => {
   const [settings, setSettings] = useContext(SettingsContext)
+
+  useEffect(() => {
+    updateSettings(settings)
+  }, [ settings ])
 
   const onChange = (event) => {
     setSettings({
@@ -23,7 +28,7 @@ const Settings = () => {
           max={240}
           id='workInterval'
           placeholder={settings.workInterval}
-          onChange={onChange}
+          onBlur={onChange}
           className={style.minutesInput}
           data-testid='workInterval'
         />
@@ -32,7 +37,7 @@ const Settings = () => {
       <div className={style.intervalContainer}>
         <p className={style.intervalLabel}>Select your break interval:</p>
         <select
-          onChange={onChange}
+          onBlur={onChange}
           className={style.breakIntervalDropdown}
           name='Break'
           id='breakInterval'
