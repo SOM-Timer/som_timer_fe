@@ -50,9 +50,8 @@ const CountdownTimer = () => {
           },
         ]}
       >
-        {({ start, pause, reset, getTime, setTime }) => (
+        {({ start, pause, reset, getTime}) => (
           <>
-            {/* { setTime()} */}
             <div className={style.baseTimer}>
               <svg
                 className={style.baseTimerSvg}

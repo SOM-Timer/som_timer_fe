@@ -6,7 +6,7 @@ import { ViewProvider } from '../../Context/ViewContext'
 
 describe('Timer', () => {
   it('Should have the correct content when rendered', () => {
-    const { getByRole, getByText } = render(
+    const { getByRole } = render(
       <SettingsProvider>
         <ViewProvider>
           <CountdownTimer />
@@ -14,14 +14,14 @@ describe('Timer', () => {
       </SettingsProvider>
     )
 
+    const focusHeading = getByRole('heading', { name: 'Click ▶ to Begin Focusing'})
     const startButton = getByRole('button', { name: /start/i })
     const resetButton = getByRole('button', { name: /reset/i })
     const pauseButton = getByRole('button', { name: /pause/i })
-    const time = getByText('25:00')
 
+    expect(focusHeading).toBeInTheDocument()
     expect(startButton).toBeInTheDocument();
     expect(resetButton).toBeInTheDocument();
     expect(pauseButton).toBeInTheDocument();
-    expect(time).toBeInTheDocument();
   })
 })
