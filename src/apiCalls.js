@@ -1,5 +1,5 @@
 import axios from 'axios'
-const rootUrl = 'https://som-timer-be.herokuapp.com'
+const rootUrl = 'https://som-timer-be.herokuapp.com/api'
 
 export const getSettings = () => {
   return axios.get('https://som-timer-be.herokuapp.com/api/timers/1')
@@ -13,9 +13,5 @@ export const updateSettings = (settings) => {
 }
 
 export const getRandomContent = (duration, category) => {
-  return axios.get(`${rootUrl}/api/rand_exercise`, {
-    //I think this body just be { duration, category }! (copied documentation for now)
-    "duration": duration,
-    "category": category,
-  })
+  return axios.get(`${rootUrl}/rand_exercise?duration=${duration}&category=${category}`)
 }
