@@ -16,10 +16,10 @@ const CountdownTimer = () => {
     setView('content-selection')
   }
 
-  const countdownColorChange = (color) => {
-    const circlePath = document.getElementById('base-timer-path-remaining')
-    circlePath.style.stroke = color
-  }
+  // const timerColorChange = () => {
+  //   const circlePath = document.getElementById('base-timer-path-remaining')
+  //   circlePath.style.animation = `countDown ${settings.workInterval * 60} linear`
+  // }
 
   return (
     <div className={style.countdownTimer}>
@@ -62,7 +62,7 @@ const CountdownTimer = () => {
                     strokeDasharray={`${
                       (getTime() / (settings.workInterval * 60000)) * 283
                     } 283`}
-                    className={style.baseTimerPathRemaining}
+                    className={getTimerState() === 'PLAYING' ? style.baseTimerPathAnimated : style.baseTimerPathRemaining}
                     d="
                       M 50, 50
                       m -45, 0
