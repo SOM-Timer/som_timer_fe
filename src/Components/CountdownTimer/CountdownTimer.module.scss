@@ -108,6 +108,20 @@
   stroke: $salmon;
 }
 
+.baseTimerPathAnimated {
+  @extend .baseTimerPathRemaining;
+  animation: countDown 3600s infinite; 
+}
+
+@keyframes countDown {
+  0% {
+    stroke: $salmon; 
+  }
+  100% {
+    stroke: $salmonDark;
+  }
+}
+
 .baseTimerSvg {
   /* Makes our animation move counter-clockwise by flipping svg */
   transform: scaleX(-1);
