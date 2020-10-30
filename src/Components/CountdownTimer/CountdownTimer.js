@@ -35,23 +35,15 @@ const CountdownTimer = () => {
             time: 0,
             callback: () => timerDone(),
           },
-          /* These colors can be found in our variables.scss file (salmon progression) */
-          {
-            time: settings.workInterval * 45000,
-            callback: () => countdownColorChange("#e19e9b"),
-          },
-          {
-            time: settings.workInterval * 30000,
-            callback: () => countdownColorChange("#f06b64"),
-          },
-          {
-            time: settings.workInterval * 15000,
-            callback: () => countdownColorChange("#e44f47"),
-          },
         ]}
       >
-        {({ start, pause, reset, getTime}) => (
+        {({ start, pause, getTime, getTimerState, setTime }) => (
           <>
+            {
+              getTimerState() === 'INITED' ? 
+              setTime(settings.workInterval * 60000) : 
+              setTime(getTime())
+            }
             <div className={style.baseTimer}>
               <svg
                 className={style.baseTimerSvg}
@@ -92,36 +84,54 @@ const CountdownTimer = () => {
               </p>
             </div>
             <div className={style.timerControls}>
-              <button
-                className={style.timerControlButton}
-                aria-label="start"
-                onClick={start}
-              >
-                <img
-                  className={style.playTimerControlIcon}
-                  src={playTimerIcon}
-                  alt="play symbol"
-                />
-              </button>
-              <button
-                className={style.timerControlButton}
-                aria-label="pause"
-                onClick={pause}
-              >
-                <img
-                  className={style.pauseTimerControlIcon}
-                  src={pauseTimerIcon}
-                  alt="pause symbol"
-                />
-              </button>
+              {getTimerState() !== 'PLAYING' && 
+                <button
+                  className={style.timerControlButton}
+                  aria-label="start"
+                  onClick={start}
+                >
+                  <img
+                    className={style.playTimerControlIcon}
+                    src={playTimerIcon}
+                    alt="play symbol"
+                  />
+                </button>
+              }
+              {getTimerState() === 'PLAYING' &&
+                <button
+                  className={style.timerControlButton}
+                  aria-label="pause"
+                  onClick={pause}
+                >
+                  <img
+                    className={style.pauseTimerControlIcon}
+                    src={pauseTimerIcon}
+                    alt="pause symbol"
+                  />
+                </button>
+              }
               <button
                 className={style.timerControlButton}
                 aria-label="reset"
-                onClick={reset}
+                onClick={() => {
+                  pause()
+                  setTime(settings.workInterval * 60000)
+                }}
               >
                 <img
                   className={style.resetTimerControlIcon}
                   src={resetTimerIcon}
+                  alt="reset symbol"
+                />
+              </button>
+              <button
+                className={style.timerControlButton}
+                aria-label="skip"
+                onClick={() => setView('content-selection')}
+              >
+                <img
+                  className={style.skipTimerControlIcon}
+                  src={skipTimerIcon}
                   alt="reset symbol"
                 />
               </button>

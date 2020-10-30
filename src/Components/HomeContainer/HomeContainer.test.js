@@ -18,10 +18,10 @@ describe('HomeContainer', () => {
 
     const startButton = getByRole('button', { name: /start/i })
     const resetButton = getByRole('button', { name: /reset/i })
-    const pauseButton = getByRole('button', { name: /pause/i })
+    const skipButton = getByRole('button', { name: /skip/i })
 
     expect(startButton).toBeInTheDocument();
     expect(resetButton).toBeInTheDocument();
-    expect(pauseButton).toBeInTheDocument();
+    expect(skipButton).toBeInTheDocument();
   })
 })

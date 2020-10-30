@@ -37,7 +37,6 @@
   }
 }
 
-
 .playTimerControlIcon {
   height: 32px;
   margin-top: 2px;
@@ -53,6 +52,13 @@
 .resetTimerControlIcon {
   height: 35px;
   width: 30px;
+  margin-top: 3px;
+  margin-left: 1px;
+}
+
+.skipTimerControlIcon {
+  height: 25px;
+  width: 90%;
   margin-top: 3px;
   margin-left: 1px;
 }
