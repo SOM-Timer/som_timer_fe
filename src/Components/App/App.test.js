@@ -1,14 +1,24 @@
 import React from 'react';
-import { render, fireEvent, getByAltText } from '@testing-library/react';
+import { render, fireEvent, waitFor } from '@testing-library/react';
 import App from './App';
 import '@testing-library/jest-dom'
 import { ViewProvider } from '../../Context/ViewContext'
 import { VideoProvider } from '../../Context/VideoContext'
 import { SettingsProvider } from '../../Context/SettingsContext'
 import { MemoryRouter } from 'react-router-dom'
+import { getSettings, updateSettings } from '../../apiCalls'
+jest.mock('../../apiCalls.js')
 
 describe('App', () => {
   it('should bring users to the timer view on load and allow them to visit the Stats, About, and Settings pages', () => {
+
+    getSettings.mockResolvedValue({
+      data: {
+        id: 1,
+        rest_interval: '5',
+        work_interval: '30'
+      }
+    })
 
     const { getByRole, getByAltText } = render(
       <MemoryRouter>
@@ -52,6 +62,8 @@ describe('App', () => {
     const homeIcon = getByAltText('timer icon')
     fireEvent.click(homeIcon)
 
-    expect(timerHeading).toBeInTheDocument()
+    const timerHeading2 = getByRole('heading', { name: /click ▶ to begin focusing/i })
+
+    expect(timerHeading2).toBeInTheDocument()
   })
 })
