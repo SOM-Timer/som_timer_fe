@@ -1,12 +1,13 @@
-import React, { useContext } from "react";
-import { SettingsContext } from "../../Context/SettingsContext";
-import { ViewContext } from "../../Context/ViewContext";
-import Timer from "react-compound-timer";
-import style from "./CountdownTimer.module.scss";
-import playTimerIcon from "../../assets/timer/playTimerIcon.png";
-import pauseTimerIcon from "../../assets/timer/pauseTimerIcon.png";
-import skipTimerIcon from "../../assets/timer/skipTimerIcon.png";
-import resetTimerIcon from "../../assets/timer/resetTimerIcon.png";
+import React, { useContext } from 'react'
+import { SettingsContext } from '../../Context/SettingsContext'
+import { ViewContext } from '../../Context/ViewContext'
+import Timer from 'react-compound-timer'
+import style from './CountdownTimer.module.scss'
+import playTimerIcon from '../../assets/timer/playTimerIcon.png'
+import pauseTimerIcon from '../../assets/timer/pauseTimerIcon.png'
+import skipTimerIcon from '../../assets/timer/skipTimerIcon.png'
+import resetTimerIcon from '../../assets/timer/resetTimerIcon.png'
+import shortGong from '../../assets/shortGong.mp3'
 
 const CountdownTimer = () => {
   const [ settings ] = useContext(SettingsContext)
@@ -14,6 +15,8 @@ const CountdownTimer = () => {
 
   const timerDone = () => {
     setView('content-selection')
+    const audioNotification = new Audio(shortGong)
+    audioNotification.play()
   }
 
   // const timerColorChange = () => {
