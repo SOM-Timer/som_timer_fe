@@ -7,7 +7,7 @@ import playTimerIcon from '../../assets/timer/playTimerIcon.png'
 import pauseTimerIcon from '../../assets/timer/pauseTimerIcon.png'
 import skipTimerIcon from '../../assets/timer/skipTimerIcon.png'
 import resetTimerIcon from '../../assets/timer/resetTimerIcon.png'
-import shortGong from '../../assets/shortGong.mp3'
+import gong from '../../assets/gong.mp3'
 
 const CountdownTimer = () => {
   const [ settings ] = useContext(SettingsContext)
@@ -15,7 +15,7 @@ const CountdownTimer = () => {
 
   const timerDone = () => {
     setView('content-selection')
-    const audioNotification = new Audio(shortGong)
+    const audioNotification = new Audio(gong)
     audioNotification.play()
   }
 
