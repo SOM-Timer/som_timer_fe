@@ -67,6 +67,24 @@ if ("function" === typeof importScripts) {
         ],
       })
     );
+
+    // Notification event listeners  
+    self.addEventListener('notificationclose', event => {
+      const notification = event.notification;
+      const primaryKey = notification.data.primaryKey;
+
+      console.log('Close notification: ' + primaryKey)
+    })
+
+    self.addEventListener('notificationclick', event => {
+      const notification = event.notification;
+      const action = event.action;
+
+      if (action === 'close') {
+        notification.close()
+      }
+    })
+
   } else {
     console.error("Workbox could not be loaded. No offline support");
   }
