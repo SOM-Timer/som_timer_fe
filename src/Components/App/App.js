@@ -11,6 +11,15 @@ import PageNotFound from '../PageNotFound/PageNotFound'
 import './App.scss'
 
 function App() {
+  if (!('Notification' in window)) {
+    console.log('This browser does not support notifications!')
+    return;
+  }
+
+  Notification.requestPermission(status => {
+    console.log('Notification permission status:', status)
+  })
+  
   return (
     <section className="App">
       <Header />
