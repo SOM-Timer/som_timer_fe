@@ -1,68 +1,36 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Som Timer
+Som Timer is a timer that cares. Based on the pomodoro technique™️, this application provides users with curated wellness content during break intervals. Build in rest, so you can focus best.
 
-## Available Scripts
+[Deployed Front End](https://som-timer.herokuapp.com/) | [Deployed Back End](https://som-timer-be.herokuapp.com/)
 
-In the project directory, you can run:
+## Project in Action
+- GIFs coming soon!
 
-### `npm start`
+## Future Directions
+- Mood tracking: we'd like to incorporate mood tracking functionality, so that users can provide a sense of how they are feeling before & after their POM break. 
+  - Eventually, we'd like to use these ratings to help curate content for users
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Installation Instructions
+1. Clone down the [Front End Repository](https://github.com/SOM-Timer/som_timer_fe)
+  - Run `git clone git@github.com:SOM-Timer/som_timer_fe.git <...>` in the terminal, where `<...>` is an optional way to customize the name of your local repo.
+2. Run `npm install` to install necessary dependencies
+3. Navigate to the root directory and run `npm run start` to view the app in action.
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+## Tech Stack
+- React
+- React Hooks
+- SCSS
+- [Notifications API](https://developer.mozilla.org/en-US/docs/Web/API/Notifications_API)
+- Testing with:
+  - React Testing Library
+  - Jest
 
-### `npm test`
-
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+## Contributors
+Front End Developers
+  - Aaron Burris-Deboskey: [GitHub](https://github.com/Abdeboskey) | [LinkedIn](https://www.linkedin.com/in/aaron-burris-deboskey/)
+  - Jake West: [GitHub](https://github.com/jkwest-93) | [LinkedIn](https://www.linkedin.com/in/jake-west-3840b71b4/)
+  - Rachel Williams: [GitHub](https://github.com/rwilliams659) | [LinkedIn](https://www.linkedin.com/in/rachelsarahwilliams/)
+Back End Developers 
+  - Chandler Hulstrom: [GitHub](https://github.com/Chulstro) | [LinkedIn](https://www.linkedin.com/in/chandler-hulstrom-34ab81150/)
+  - Dorion: [GitHub](https://github.com/sciencefixion)
+  - Sienna Kopf: [GitHub](https://github.com/sienna-kopf) | [LinkedIn](https://www.linkedin.com/in/sienna-kopf-b22b701b1/)
