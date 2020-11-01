@@ -268,4 +268,51 @@ describe('App', () => {
 
     expect(contentDeliveryHeading).toBeInTheDocument()
   })
+
+  it('should allow a user to select content when the timer runs down, see the video, skip it, and be taken back to the timer view', async () => {
+    getSettings.mockResolvedValueOnce({
+      data: {
+        id: 1,
+        rest_interval: '5',
+        work_interval: '30'
+      }
+    })
+
+    getRandomContent.mockResolvedValue({
+      data: {
+        category: "SomaticCategory.SOMATIC",
+        duration: "5:00",
+        id: 1,
+        url: "https://www.youtube.com/watch?v=dsmfIAyiois"
+      }
+    })
+
+    const { getByRole } = render(
+      <MemoryRouter>
+        <SettingsProvider>
+          <ViewProvider>
+            <VideoProvider>
+              <App />
+            </VideoProvider>
+          </ViewProvider>
+        </SettingsProvider>
+      </MemoryRouter>
+    )
+
+    const skipIcon = await waitFor(() => getByRole('button', { name: /skip/i }))
+
+    fireEvent.click(skipIcon)
+
+    const yogaBtn = getByRole('button', { name: /yoga\/movement/i })
+
+    fireEvent.click(yogaBtn)
+
+    const skipVideoBtn = await waitFor(() => getByRole('button', { name: /skip video/i }))
+
+    fireEvent.click(skipVideoBtn)
+
+    const timerHeading = getByRole('heading', { name: /click ▶ to begin focusing/i })
+
+    expect(timerHeading).toBeInTheDocument()
+  })
 })
