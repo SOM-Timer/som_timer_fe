@@ -4,7 +4,7 @@ import { getSettings } from '../apiCalls'
 export const SettingsContext = createContext();
 
 export const SettingsProvider = ({ children }) => {
-  const [ settings, setSettings ] = useState({ workInterval: 25, breakInterval: 5 })
+  const [ settings, setSettings ] = useState({ workInterval: 25, breakInterval: 5, sound: 'chordCliff' })
 
   useEffect(() => {
     getSettings()
