@@ -3,9 +3,10 @@ import style from './ContentSelection.module.scss'
 import { ViewContext } from '../../Context/ViewContext'
 import { VideoContext } from '../../Context/VideoContext'
 import { SettingsContext } from '../../Context/SettingsContext'
+import { getRandomContent } from '../../apiCalls'
 import somaticContentIcon from '../../assets/content/somaticContentIcon.png'
 import meditationContentIcon from '../../assets/content/meditationContentIcon.png'
-import { getRandomContent } from '../../apiCalls'
+import yogaContentIcon from '../../assets/content/yogaContentIcon.png'
 
 const ContentSelection = () => {
   const [view, setView] = useContext(ViewContext)
@@ -55,11 +56,11 @@ const ContentSelection = () => {
             aria-label="breathwork/meditation"
             name="MEDITATION"
             onClick={fetchVideo}
-            >
+          >
             <img
               className={style.meditationIcon}
               src={meditationContentIcon}
-              alt="human sitting in meditation pose"
+              alt="woman sitting in meditation pose"
               name="MEDITATION"
             />
           </button>
@@ -71,7 +72,14 @@ const ContentSelection = () => {
             aria-label="yoga/movement"
             name="MOVEMENT"
             onClick={fetchVideo}
-          ></button>
+          >
+            <img
+              className={style.meditationIcon}
+              src={yogaContentIcon}
+              alt="woman standing in warrior yoga pose"
+              name="MOVEMENT"
+            />
+          </button>
           <p>Yoga / Movement</p>
         </div>
       </div>
