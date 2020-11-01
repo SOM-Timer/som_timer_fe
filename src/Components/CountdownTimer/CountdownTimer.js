@@ -3,21 +3,13 @@ import { SettingsContext } from '../../Context/SettingsContext'
 import { ViewContext } from '../../Context/ViewContext'
 import Timer from 'react-compound-timer'
 import style from './CountdownTimer.module.scss'
+import playAlertSound from '../../helpers/audioHelper'
 
 // Icons ---------->
 import playTimerIcon from '../../assets/timer/playTimerIcon.png'
 import pauseTimerIcon from '../../assets/timer/pauseTimerIcon.png'
 import skipTimerIcon from '../../assets/timer/skipTimerIcon.png'
 import resetTimerIcon from '../../assets/timer/resetTimerIcon.png'
-
-// Sounds ---------->
-import gong from '../../assets/audio/gong.mp3'
-import goodOldSynths from '../../assets/audio/goodOldSynths.mp3'
-import pianoDreams from '../../assets/audio/pianoDreams.mp3'
-import chordCliff from '../../assets/audio/chordCliff.mp3'
-import levelUp from '../../assets/audio/levelUp.mp3'
-import birdChord from '../../assets/audio/birdChord.mp3'
-
 
 const CountdownTimer = () => {
   const [ settings ] = useContext(SettingsContext)
@@ -27,33 +19,6 @@ const CountdownTimer = () => {
     setView('content-selection')
     playAlertSound(settings.sound)
   }
-  
-  const playAlertSound = (sound) => {
-    let audioNotification = ''
-    switch (sound) {
-      case 'chordCliff':
-        audioNotification = new Audio(chordCliff)
-        break
-      case 'gong':
-        audioNotification = new Audio(gong)
-        break
-      case 'goodOldSynths':
-        audioNotification = new Audio(goodOldSynths)
-        break
-      case 'pianoDreams':
-        audioNotification = new Audio(pianoDreams)
-        break
-      case 'levelUp':
-        audioNotification = new Audio(levelUp)
-        break
-      case 'birdChord':
-        audioNotification = new Audio(birdChord)
-        break
-      default:
-        audioNotification = new Audio(goodOldSynths);
-    }
-    audioNotification.play()
-  } 
   
   // const timerColorChange = () => {
   //   const circlePath = document.getElementById('base-timer-path-remaining')
