@@ -14,10 +14,12 @@ describe('Settings', () => {
     const settingsHeader = getByRole('heading', { name: 'Settings' })
     const workIntervalInput = getByTestId('workInterval')
     const breakIntervalInput = getByTestId('breakInterval')
+    const soundInput = getByTestId('sound')
 
     expect(settingsHeader).toBeInTheDocument()
     expect(workIntervalInput).toBeInTheDocument()
     expect(breakIntervalInput).toBeInTheDocument()
+    expect(soundInput).toBeInTheDocument()
   })
 
   it('Should have default values for the breakInterval select', () => {
@@ -41,11 +43,14 @@ describe('Settings', () => {
 
     const workIntervalInput = getByTestId('workInterval')
     const breakIntervalInput = getByTestId('breakInterval')
+    const soundInput = getByTestId("sound");
 
     fireEvent.change(workIntervalInput, { target: { value: '45' } })
     fireEvent.change(breakIntervalInput, { target: { value: '10' } })
+    fireEvent.change(soundInput, { target: { value: 'gong' } })
 
     expect(workIntervalInput.value).toBe('45')
     expect(breakIntervalInput.value).toBe('10')
+    expect(soundInput.value).toBe('gong')
   })
 })
