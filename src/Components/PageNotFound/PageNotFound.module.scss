@@ -7,7 +7,8 @@
 }
 
 .warning {
-  color: $salmonHover;
+  color: #F48375;
+  text-shadow: 0 0 3px $darkBlue;
 }
 
 .oopsMessage {
@@ -24,6 +25,7 @@
   margin: 0.5em; 
   object-fit: cover;
   border-radius: 1em;
+  box-shadow: 0 0 7px $darkBlue;
 }
 
 .links {
