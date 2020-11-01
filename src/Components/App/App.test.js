@@ -1,7 +1,6 @@
 import React from 'react';
 import { render, fireEvent, waitFor } from '@testing-library/react';
 import App from './App';
-import { act } from 'react-dom/test-utils'
 import '@testing-library/jest-dom'
 import { ViewProvider } from '../../Context/ViewContext'
 import { VideoProvider } from '../../Context/VideoContext'
@@ -110,7 +109,7 @@ describe('App', () => {
     expect(timerLength).toBeInTheDocument()
   })
 
-  it('should take you to a content selection screen when the timer runs out or is skipped', async () => {
+  it('should take you to a content selection screen when the timer is skipped', async () => {
     getSettings.mockResolvedValueOnce({
       data: {
         id: 1,
@@ -178,7 +177,7 @@ describe('App', () => {
 
     fireEvent.click(somaticBtn)
 
-    const contentDeliveryHeading = await waitFor(() =>getByRole('heading', { name: /enjoy your break!/i }))
+    const contentDeliveryHeading = await waitFor(() => getByRole('heading', { name: /enjoy your break!/i }))
     
     expect(contentDeliveryHeading).toBeInTheDocument()
   })
@@ -192,6 +191,7 @@ describe('App', () => {
       }
     })
 
+    //change to meditation video 
     getRandomContent.mockResolvedValue({
       data: {
         category: "SomaticCategory.SOMATIC",
@@ -235,6 +235,7 @@ describe('App', () => {
       }
     })
 
+    //get yoga video back 
     getRandomContent.mockResolvedValue({
       data: {
         category: "SomaticCategory.SOMATIC",
@@ -352,4 +353,49 @@ describe('App', () => {
       expect(contentSelectionHeading).toBeInTheDocument()
     }, 6000)
   })
+
+    // it.only('should allow a user to select content when the timer runs down, watch the full video, and be taken back to the timer view', async () => {
+  //   getSettings.mockResolvedValueOnce({
+  //     data: {
+  //       id: 1,
+  //       rest_interval: '5',
+  //       work_interval: '30'
+  //     }
+  //   })
+
+  //   getRandomContent.mockResolvedValue({
+  //     data: {
+  //       category: "SomaticCategory.SOMATIC",
+  //       duration: "5:00",
+  //       id: 1,
+  //       url: "https://www.youtube.com/watch?v=dsmfIAyiois"
+  //     }
+  //   })
+
+  //   const { getByRole } = render(
+  //     <MemoryRouter>
+  //       <SettingsProvider>
+  //         <ViewProvider>
+  //           <VideoProvider>
+  //             <App />
+  //           </VideoProvider>
+  //         </ViewProvider>
+  //       </SettingsProvider>
+  //     </MemoryRouter>
+  //   )
+
+  //   const skipIcon = await waitFor(() => getByRole('button', { name: /skip/i }))
+
+  //   fireEvent.click(skipIcon)
+
+  //   const yogaBtn = getByRole('button', { name: /yoga\/movement/i })
+
+  //   fireEvent.click(yogaBtn)
+
+  //   const videoHeading = await waitFor(() => getByRole('heading', { name: /enjoy your break!/i }))
+
+    // const timerHeading = getByRole('heading', { name: /click ▶ to begin focusing/i })
+
+    // expect(timerHeading).toBeInTheDocument()
+  // })
 })

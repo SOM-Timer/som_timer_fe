@@ -34,7 +34,7 @@ describe('Settings', () => {
     expect(breakIntervalInput.value).toBe('5')
   })
 
-  it('Should update it\'s values on change', () => {
+  it('Should update its values on change', () => {
     const { getByTestId } = render(
       <SettingsProvider>
         <Settings />
