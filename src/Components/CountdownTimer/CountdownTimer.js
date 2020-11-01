@@ -9,6 +9,8 @@ import skipTimerIcon from '../../assets/timer/skipTimerIcon.png'
 import resetTimerIcon from '../../assets/timer/resetTimerIcon.png'
 import gong from '../../assets/audio/gong.mp3'
 import goodOldSynths from '../../assets/audio/goodOldSynths.mp3'
+import pianoDreams from '../../assets/audio/pianoDreams.mp3'
+import chordCliff from '../../assets/audio/chordCliff.mp3'
 
 const CountdownTimer = () => {
   const [ settings ] = useContext(SettingsContext)
@@ -16,7 +18,7 @@ const CountdownTimer = () => {
 
   const timerDone = () => {
     setView('content-selection')
-    const audioNotification = new Audio(goodOldSynths)
+    const audioNotification = new Audio(chordCliff)
     audioNotification.play()
   }
 
