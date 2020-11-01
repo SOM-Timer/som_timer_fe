@@ -1,4 +1,4 @@
-import React, { useContext} from 'react'
+import React, { useContext } from 'react'
 import style from './ContentSelection.module.scss'
 import { ViewContext } from '../../Context/ViewContext'
 import { VideoContext } from '../../Context/VideoContext'

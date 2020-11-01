@@ -31,6 +31,7 @@ const Settings = () => {
           min={0}
           max={240}
           id='workInterval'
+          name='workInterval'
           placeholder={settings.workInterval}
           onBlur={onChange}
           className={style.minutesInput}

@@ -4,7 +4,7 @@ import CountdownTimer from './CountdownTimer'
 import { SettingsProvider } from '../../Context/SettingsContext'
 import { ViewProvider } from '../../Context/ViewContext'
 
-describe('Timer', () => {
+describe('CountdownTimer', () => {
   it('Should have the correct content when rendered', () => {
     const { getByRole } = render(
       <SettingsProvider>

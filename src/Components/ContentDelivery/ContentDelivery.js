@@ -35,7 +35,7 @@ const ContentDelivery = () => {
       </section>
       { done && 
         <div className={style.workMsgModal}>
-          <h2 className={style.modalContent}>Let's get back to work!</h2>
+          <h2 className={style.modalContent}>Time to focus again!</h2>
         </div> 
       }
     </>       
