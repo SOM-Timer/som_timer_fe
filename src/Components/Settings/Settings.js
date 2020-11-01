@@ -2,14 +2,7 @@ import React, { useContext, useEffect } from 'react'
 import style from './Settings.module.scss'
 import { SettingsContext } from '../../Context/SettingsContext'
 import { updateSettings } from '../../apiCalls'
-// import gong from '../../assets/audio/gong.mp3'
-// import goodOldSynths from '../../assets/audio/goodOldSynths.mp3'
-// import pianoDreams from '../../assets/audio/pianoDreams.mp3'
-// import chordCliff from '../../assets/audio/chordCliff.mp3'
-// import levelUp from '../../assets/audio/levelUp.mp3'
-// import birdChord from '../../assets/audio/birdChord.mp3'
-// These ↑ are here in case we want the sounds to play onSelect from the settings menu
-
+import playAlertSound from '../../helpers/audioHelper'
 
 const Settings = () => {
   const [settings, setSettings] = useContext(SettingsContext)
@@ -19,6 +12,9 @@ const Settings = () => {
   }, [ settings ])
 
   const onChange = (event) => {
+    if (event.target.id === 'sound') {
+      playAlertSound(event.target.value)
+    }
     setSettings({
       ...settings,
       [event.target.id]: event.target.value
