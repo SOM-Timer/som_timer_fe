@@ -8,7 +8,8 @@ export const getSettings = () => {
 export const updateSettings = (settings) => {
   return axios.put(`${rootUrl}/timers/1`, {
     work_interval: settings.workInterval,
-    rest_interval: settings.breakInterval
+    rest_interval: settings.breakInterval,
+    sound: settings.sound
   })
 }
 
