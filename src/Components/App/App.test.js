@@ -1,7 +1,7 @@
 import React from 'react';
-import { act } from 'react-dom/test-utils'
 import { render, fireEvent, waitFor } from '@testing-library/react';
 import App from './App';
+import { act } from 'react-dom/test-utils'
 import '@testing-library/jest-dom'
 import { ViewProvider } from '../../Context/ViewContext'
 import { VideoProvider } from '../../Context/VideoContext'
@@ -108,5 +108,35 @@ describe('App', () => {
     const timerLength = await waitFor(() => getByText(/45:00/i))
 
     expect(timerLength).toBeInTheDocument()
+  })
+
+  it('should take you to a content selection screen when the timer runs out or is skipped', async () => {
+    getSettings.mockResolvedValueOnce({
+      data: {
+        id: 1,
+        rest_interval: '5',
+        work_interval: '30'
+      }
+    })
+
+    const { getByRole } = render(
+      <MemoryRouter>
+        <SettingsProvider>
+          <ViewProvider>
+            <VideoProvider>
+              <App />
+            </VideoProvider>
+          </ViewProvider>
+        </SettingsProvider>
+      </MemoryRouter>
+    )
+
+    const skipIcon = await waitFor(() => getByRole('button', { name: /skip/i }))
+
+    fireEvent.click(skipIcon)
+
+    const contentSelectionHeading = getByRole('heading', { name: /how would you like to spend your break\?/i })
+
+    expect(contentSelectionHeading).toBeInTheDocument()
   })
 })
