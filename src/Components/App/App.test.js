@@ -7,7 +7,7 @@ import { ViewProvider } from '../../Context/ViewContext'
 import { VideoProvider } from '../../Context/VideoContext'
 import { SettingsProvider } from '../../Context/SettingsContext'
 import { MemoryRouter } from 'react-router-dom'
-import { getSettings, updateSettings } from '../../apiCalls'
+import { getSettings, updateSettings, getRandomContent } from '../../apiCalls'
 jest.mock('../../apiCalls.js')
 
 
@@ -138,5 +138,134 @@ describe('App', () => {
     const contentSelectionHeading = getByRole('heading', { name: /how would you like to spend your break\?/i })
 
     expect(contentSelectionHeading).toBeInTheDocument()
+  })
+
+  it('should allow a user to select somatic content when the timer runs down and see the content delivery & video screen', async () => {
+    getSettings.mockResolvedValueOnce({
+      data: {
+        id: 1,
+        rest_interval: '5',
+        work_interval: '30'
+      }
+    })
+
+    getRandomContent.mockResolvedValue({
+      data: {
+        category: "SomaticCategory.SOMATIC",
+        duration: "5:00",
+        id: 1,
+        url: "https://www.youtube.com/watch?v=dsmfIAyiois"
+      }
+    })
+
+    const { getByRole } = render(
+      <MemoryRouter>
+        <SettingsProvider>
+          <ViewProvider>
+            <VideoProvider>
+              <App />
+            </VideoProvider>
+          </ViewProvider>
+        </SettingsProvider>
+      </MemoryRouter>
+    )
+
+    const skipIcon = await waitFor(() => getByRole('button', { name: /skip/i }))
+
+    fireEvent.click(skipIcon)
+
+    const somaticBtn = getByRole('button', { name: /somatic exercise/i })
+
+    fireEvent.click(somaticBtn)
+
+    const contentDeliveryHeading = await waitFor(() =>getByRole('heading', { name: /enjoy your break!/i }))
+    
+    expect(contentDeliveryHeading).toBeInTheDocument()
+  })
+
+  it('should allow a user to select breathwork/meditation content when the timer runs down and see the content delivery & video screen', async () => {
+    getSettings.mockResolvedValueOnce({
+      data: {
+        id: 1,
+        rest_interval: '5',
+        work_interval: '30'
+      }
+    })
+
+    getRandomContent.mockResolvedValue({
+      data: {
+        category: "SomaticCategory.SOMATIC",
+        duration: "5:00",
+        id: 1,
+        url: "https://www.youtube.com/watch?v=dsmfIAyiois"
+      }
+    })
+
+    const { getByRole } = render(
+      <MemoryRouter>
+        <SettingsProvider>
+          <ViewProvider>
+            <VideoProvider>
+              <App />
+            </VideoProvider>
+          </ViewProvider>
+        </SettingsProvider>
+      </MemoryRouter>
+    )
+
+    const skipIcon = await waitFor(() => getByRole('button', { name: /skip/i }))
+
+    fireEvent.click(skipIcon)
+
+    const meditationBtn = getByRole('button', { name: /breathwork\/meditation/i })
+
+    fireEvent.click(meditationBtn)
+
+    const contentDeliveryHeading = await waitFor(() => getByRole('heading', { name: /enjoy your break!/i }))
+
+    expect(contentDeliveryHeading).toBeInTheDocument()
+  })
+
+  it('should allow a user to select yoga/movement content when the timer runs down and see the content delivery & video screen', async () => {
+    getSettings.mockResolvedValueOnce({
+      data: {
+        id: 1,
+        rest_interval: '5',
+        work_interval: '30'
+      }
+    })
+
+    getRandomContent.mockResolvedValue({
+      data: {
+        category: "SomaticCategory.SOMATIC",
+        duration: "5:00",
+        id: 1,
+        url: "https://www.youtube.com/watch?v=dsmfIAyiois"
+      }
+    })
+
+    const { getByRole } = render(
+      <MemoryRouter>
+        <SettingsProvider>
+          <ViewProvider>
+            <VideoProvider>
+              <App />
+            </VideoProvider>
+          </ViewProvider>
+        </SettingsProvider>
+      </MemoryRouter>
+    )
+
+    const skipIcon = await waitFor(() => getByRole('button', { name: /skip/i }))
+
+    fireEvent.click(skipIcon)
+
+    const yogaBtn = getByRole('button', { name: /yoga\/movement/i })
+
+    fireEvent.click(yogaBtn)
+
+    const contentDeliveryHeading = await waitFor(() => getByRole('heading', { name: /enjoy your break!/i }))
+
+    expect(contentDeliveryHeading).toBeInTheDocument()
   })
 })
