@@ -8,6 +8,7 @@ import { updateSettings } from '../../apiCalls'
 // import chordCliff from '../../assets/audio/chordCliff.mp3'
 // import levelUp from '../../assets/audio/levelUp.mp3'
 // import birdChord from '../../assets/audio/birdChord.mp3'
+// These ↑ are here in case we want the sounds to play onSelect from the settings menu
 
 
 const Settings = () => {
