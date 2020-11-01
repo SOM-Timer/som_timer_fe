@@ -11,7 +11,8 @@ export const SettingsProvider = ({ children }) => {
       .then(response => {
         const workInterval = +response.data.work_interval.split(':')[0]
         const breakInterval = +response.data.rest_interval.split(':')[0]
-        setSettings({ workInterval, breakInterval })
+        const sound = response.data.sound
+        setSettings({ workInterval, breakInterval, sound})
       })
       .catch(err => {
         if (err.response) {
@@ -19,7 +20,6 @@ export const SettingsProvider = ({ children }) => {
         }
       })
   }, [])
-
 
   return (
     <SettingsContext.Provider value={[ settings, setSettings ]}>
