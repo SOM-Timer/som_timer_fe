@@ -315,4 +315,41 @@ describe('App', () => {
 
     expect(timerHeading).toBeInTheDocument()
   })
+
+  it('should allow a user to start the timer and see the content selection screen when it runs down', async () => {
+
+    getSettings.mockResolvedValueOnce({
+      data: {
+        id: 1,
+        rest_interval: '5',
+        work_interval: '0.1'
+      }
+    })
+
+    const { getByRole, getByText } = render(
+      <MemoryRouter>
+        <SettingsProvider>
+          <ViewProvider>
+            <VideoProvider>
+              <App />
+            </VideoProvider>
+          </ViewProvider>
+        </SettingsProvider>
+      </MemoryRouter>
+    )
+
+    const timerLength = await waitFor(() => getByText(/0:06/i))
+
+    expect(timerLength).toBeInTheDocument()
+
+    const startBtn = getByRole('button', { name: /start/i })
+
+    fireEvent.click(startBtn)
+
+    setTimeout(() => {
+      const contentSelectionHeading = getByRole('heading', { name: /how would you like to spend your break\?/i })
+
+      expect(contentSelectionHeading).toBeInTheDocument()
+    }, 6000)
+  })
 })
