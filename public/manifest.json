@@ -9,12 +9,12 @@
       "type": "image/x-icon"
     },
     {
-      "src": "timerNavIcon.png",
+      "src": "timerIcon192.png",
       "type": "image/png",
       "sizes": "192x192"
     },
     {
-      "src": "timerNavIcon.png",
+      "src": "timerIcon512.png",
       "type": "image/png",
       "sizes": "512x512",
       "purpose": "maskable any"

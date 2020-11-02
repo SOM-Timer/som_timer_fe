@@ -1,6 +1,6 @@
 import React from 'react'
 import style from './PageNotFound.module.scss'
-import burnout from '../../assets/burnout3.jpg'
+import burnout from '../../assets/burnout3.png'
 
 const PageNotFound = () => {
   return (
