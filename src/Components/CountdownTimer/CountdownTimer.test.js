@@ -66,6 +66,5 @@ describe('CountdownTimer', () => {
       expect(playAlertSound).toHaveBeenCalledTimes(1)
       expect(playAlertSound).toHaveBeenCalledWith('chordCliff')
     }, 6000)
-
   })
 })

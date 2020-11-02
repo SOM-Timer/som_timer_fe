@@ -17,7 +17,8 @@ describe('App', () => {
       data: {
         id: 1,
         rest_interval: '5',
-        work_interval: '30'
+        work_interval: '30',
+        sound: 'chordCliff'
       }
     })
 
@@ -76,7 +77,8 @@ describe('App', () => {
       data: {
         id: 1,
         rest_interval: '5',
-        work_interval: '30'
+        work_interval: '30',
+        sound: 'chordCliff'
       }
     })
 
@@ -114,7 +116,8 @@ describe('App', () => {
       data: {
         id: 1,
         rest_interval: '5',
-        work_interval: '30'
+        work_interval: '30',
+        sound: 'chordCliff'
       }
     })
 
@@ -144,7 +147,8 @@ describe('App', () => {
       data: {
         id: 1,
         rest_interval: '5',
-        work_interval: '30'
+        work_interval: '30',
+        sound: 'chordCliff'
       }
     })
 
@@ -187,7 +191,8 @@ describe('App', () => {
       data: {
         id: 1,
         rest_interval: '5',
-        work_interval: '30'
+        work_interval: '30',
+        sound: 'chordCliff'
       }
     })
 
@@ -231,7 +236,8 @@ describe('App', () => {
       data: {
         id: 1,
         rest_interval: '5',
-        work_interval: '30'
+        work_interval: '30',
+        sound: 'chordCliff'
       }
     })
 
@@ -275,7 +281,8 @@ describe('App', () => {
       data: {
         id: 1,
         rest_interval: '5',
-        work_interval: '30'
+        work_interval: '30',
+        sound: 'chordCliff'
       }
     })
 
@@ -323,7 +330,8 @@ describe('App', () => {
       data: {
         id: 1,
         rest_interval: '5',
-        work_interval: '0.1'
+        work_interval: '0.1',
+        sound: 'chordCliff'
       }
     })
 
@@ -359,7 +367,7 @@ describe('App', () => {
   //     data: {
   //       id: 1,
   //       rest_interval: '5',
-  //       work_interval: '30'
+  //       work_interval: '30',
   //     }
   //   })
 
