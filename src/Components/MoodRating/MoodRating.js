@@ -1,15 +1,33 @@
 import React, { useState, useContext } from 'react'
 import style from './MoodRating.module.scss'
 import { ViewContext } from '../../Context/ViewContext'
+import { SessionContext } from '../../Context/SessionContext'
 
 const MoodRating = () => {
   const [ moodRating, setMoodRating ] = useState(null)
   const [ error, setError ] = useState(false)
   const [ view, setView] = useContext(ViewContext)
+  const [ session, setSession ] = useContext(SessionContext)
 
   const rateMood = (event) => {
     setMoodRating(event.target.value)
     setError(false)
+  }
+
+  const recordMood = () => {
+    if(view === 'mood-rating-1') {
+      setSession({
+        ...session,
+        moodRating1: moodRating
+      })
+      setView('content-selection')
+    } else if(view === 'mood-rating-2') {
+      setSession({
+        ...session,
+        moodRating2: moodRating
+      })
+      setView('timer')
+    }
   }
 
   const checkSubmit = (event) => {
@@ -17,7 +35,7 @@ const MoodRating = () => {
     if(!moodRating) {
       setError(true)
     } else {
-      view === 'mood-rating-1' ? setView('content-selection') : setView('timer')
+      recordMood()
     }
   }
 
