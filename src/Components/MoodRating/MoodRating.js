@@ -1,18 +1,35 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import style from './MoodRating.module.scss'
+import { ViewContext } from '../../Context/ViewContext'
 
 const MoodRating = () => {
-  const [ moodRating, selectMoodRating ] = useState(0)
+  const [ moodRating, setMoodRating ] = useState(null)
+  const [ error, setError ] = useState(false)
+  const [ view, setView] = useContext(ViewContext)
+
+  const rateMood = (event) => {
+    setMoodRating(event.target.value)
+    setError(false)
+  }
+
+  const checkSubmit = (event) => {
+    event.preventDefault()
+    if(!moodRating) {
+      setError(true)
+    } else {
+      view === 'mood-rating-1' ? setView('content-selection') : setView('timer')
+    }
+  }
 
   return (
     <section className={style.moodRatingContainer}>
       <h2>Please select a face below to indicate how you are feeling</h2>
-      <form>
+      <form onSubmit={checkSubmit}>
         <div className={style.facesContainer}>
           <button 
             type='button'
             className={`${style.moodRating1} ${style.moodRatingButton}`}
-            onClick={(event) => selectMoodRating(event.target.value)}
+            onClick={rateMood}
             value={1}
           >
             1
@@ -20,7 +37,7 @@ const MoodRating = () => {
           <button 
             type='button'
             className={`${style.moodRating2} ${style.moodRatingButton}`}
-            onClick={(event) => selectMoodRating(event.target.value)}
+            onClick={rateMood}
             value={2}
           >
             2
@@ -28,7 +45,7 @@ const MoodRating = () => {
           <button 
             type='button'
             className={`${style.moodRating3} ${style.moodRatingButton}`}
-            onClick={(event) => selectMoodRating(event.target.value)}
+            onClick={rateMood}
             value={3}
           >
             3
@@ -36,7 +53,7 @@ const MoodRating = () => {
           <button 
             type='button'
             className={`${style.moodRating4} ${style.moodRatingButton}`}
-            onClick={(event) => selectMoodRating(event.target.value)}
+            onClick={rateMood}
             value={4}
           >
             4
@@ -44,22 +61,18 @@ const MoodRating = () => {
           <button 
             type='button'
             className={`${style.moodRating5} ${style.moodRatingButton}`}
-            onClick={(event) => selectMoodRating(event.target.value)}
+            onClick={rateMood}
             value={5}
           >
             5
           </button>
         </div>
+        <div className={style.errorContainer}>
+          {error && <p className={style.errorMessage}>⚠ Please select a face to continue! ⚠</p>}
+        </div>
         <button 
           type='submit'
           className={style.moodRatingSubmit}
-          onClick={(event) => {
-            event.preventDefault()
-            console.log({
-              timestamp: Date.now(),
-              moodRating: moodRating
-            })
-          }}
         >
           Submit  
         </button>
