@@ -4,6 +4,7 @@ import { ViewContext } from '../../Context/ViewContext'
 import Timer from 'react-compound-timer'
 import style from './CountdownTimer.module.scss'
 import playAlertSound from '../../helpers/audioHelper'
+import { displayNotification } from '../../helpers/notificationHelpers'
 
 // Icons ---------->
 import playTimerIcon from '../../assets/timer/playTimerIcon.png'
@@ -24,26 +25,6 @@ const CountdownTimer = () => {
   //   const circlePath = document.getElementById('base-timer-path-remaining')
   //   circlePath.style.animation = `countDown ${settings.workInterval * 60} linear`
   // }
-
-  const displayNotification = () => {
-    if(Notification.permission == 'granted') {
-      navigator.serviceWorker.getRegistration().then(reg => {
-        const options = {
-          body: 'Return to Som Timer to choose your break content',
-          icon: '/favicon.ico',
-          vibrate: [100, 50, 100],
-          data: {
-            dateOfArrival: Date.now(),
-            primaryKey: 999
-          },
-          actions: [
-            {action: 'close', title: 'Close the notification', icon: ''}
-          ]
-        }
-        reg.showNotification('Focus Interval Complete', options)
-      })
-    }
-  }
 
   return (
     <div className={style.countdownTimer}>
