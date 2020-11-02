@@ -7,17 +7,10 @@ import About from '../About/About'
 import Stats from '../Stats/Stats'
 import PageNotFound from '../PageNotFound/PageNotFound'
 import './App.scss'
+import { enableNotifications } from '../../helpers/notificationHelpers'
 
 function App() {
   enableNotifications()
-  // if (!('Notification' in window)) {
-  //   console.log('This browser does not support notifications!')
-  //   return;
-  // }
-
-  // Notification.requestPermission(status => {
-  //   console.log('Notification permission status:', status)
-  // })
   
   return (
     <section className="App">
@@ -34,14 +27,3 @@ function App() {
 }
 
 export default App
-
-function enableNotifications() {
-  if (!('Notification' in window)) {
-    console.log('This browser does not support notifications!')
-    return;
-  }
-
-  Notification.requestPermission(status => {
-    console.log('Notification permission status:', status)
-  })
-}
