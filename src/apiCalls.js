@@ -16,3 +16,7 @@ export const updateSettings = (settings) => {
 export const getRandomContent = (duration, category) => {
   return axios.get(`${rootUrl}/rand_exercise?duration=${duration}&category=${category}`)
 }
+
+export const postMoodRating = (moodRating) => {
+  return axios.post(`${rootUrl}/moodRating`)
+}
