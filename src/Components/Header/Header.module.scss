@@ -10,6 +10,7 @@
   padding: 1em;
   background-color: $midBlue;
   box-shadow: 0px 0px 20px $darkBlue;
+  background: linear-gradient(to top right, $midBlue 75%, $darkBlue)
 }
 
 .title {
