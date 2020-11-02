@@ -5,10 +5,10 @@ export const SessionContext = createContext();
 export const SessionProvider = ({ children }) => {
   const [session, setSession] = useState({
     focusInterval: null, 
-    mood1Rating: null,
+    moodRating1: null,
     contentSelected: null,
     restInterval: null,
-    mood2Rating: null,
+    moodRating2: null,
   })
 
   return (
