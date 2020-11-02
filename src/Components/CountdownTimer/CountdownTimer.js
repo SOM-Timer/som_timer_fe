@@ -17,13 +17,33 @@ const CountdownTimer = () => {
   const [ view, setView ] = useContext(ViewContext)
   
   const timerDone = () => {
-    setView('content-selection')
+    setView('mood-rating-1')
     playAlertSound(settings.sound)
   }
   
   // const timerColorChange = () => {
   //   const circlePath = document.getElementById('base-timer-path-remaining')
   //   circlePath.style.animation = `countDown ${settings.workInterval * 60} linear`
+  // }
+
+  // const displayNotification = () => {
+  //   if(Notification.permission == 'granted') {
+  //     navigator.serviceWorker.getRegistration().then(reg => {
+  //       const options = {
+  //         body: 'Return to Som Timer to choose your break content',
+  //         icon: '/favicon.ico',
+  //         vibrate: [100, 50, 100],
+  //         data: {
+  //           dateOfArrival: Date.now(),
+  //           primaryKey: 999
+  //         },
+  //         actions: [
+  //           {action: 'close', title: 'Close the notification', icon: ''}
+  //         ]
+  //       }
+  //       reg.showNotification('Focus Interval Complete', options)
+  //     })
+  //   }
   // }
 
   return (
@@ -39,7 +59,7 @@ const CountdownTimer = () => {
           {
             time: 0,
             callback: () => {
-              displayNotification()
+              // displayNotification()
               timerDone()
             },
           },

@@ -11,7 +11,7 @@ const ContentDelivery = () => {
 
   const handleEnded = () => {
     setDone(true)
-    setTimeout(() => setView('timer'), 2000)
+    setTimeout(() => setView('mood-rating-2'), 2000)
   }
 
   return (
@@ -30,7 +30,7 @@ const ContentDelivery = () => {
           />
         </div>
         { !done &&
-          <button className={style.skipBtn} onClick={() => setView('timer')}>Skip video</button>     
+          <button className={style.skipBtn} onClick={() => setView('mood-rating-2')}>Skip video</button>     
         }
       </section>
       { done && 
