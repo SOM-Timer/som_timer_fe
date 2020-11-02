@@ -2,9 +2,11 @@ import React from 'react';
 import Settings from './Settings'
 import { fireEvent, render } from '@testing-library/react';
 import { SettingsProvider } from '../../Context/SettingsContext';
+jest.mock('../../helpers/audioHelper.js')
 
 describe('Settings', () => {
   it('Should render the correct content', () => {
+
     const { getByRole, getByTestId } = render(
       <SettingsProvider>
         <Settings />
@@ -23,6 +25,7 @@ describe('Settings', () => {
   })
 
   it('Should have default values for the breakInterval select', () => {
+
     const { getByTestId } = render(
       <SettingsProvider>
         <Settings />
@@ -35,6 +38,7 @@ describe('Settings', () => {
   })
 
   it('Should update its values on change', () => {
+
     const { getByTestId } = render(
       <SettingsProvider>
         <Settings />
@@ -45,8 +49,8 @@ describe('Settings', () => {
     const breakIntervalInput = getByTestId('breakInterval')
     const soundInput = getByTestId("sound");
 
-    fireEvent.change(workIntervalInput, { target: { value: '45' } })
-    fireEvent.change(breakIntervalInput, { target: { value: '10' } })
+    fireEvent.blur(workIntervalInput, { target: { value: '45' } })
+    fireEvent.blur(breakIntervalInput, { target: { value: '10' } })
     fireEvent.change(soundInput, { target: { value: 'gong' } })
 
     expect(workIntervalInput.value).toBe('45')
