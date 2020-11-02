@@ -3,20 +3,30 @@ import style from './ContentSelection.module.scss'
 import { ViewContext } from '../../Context/ViewContext'
 import { VideoContext } from '../../Context/VideoContext'
 import { SettingsContext } from '../../Context/SettingsContext'
+import { SessionContext } from '../../Context/SessionContext'
 import { getRandomContent } from '../../apiCalls'
 import somaticContentIcon from '../../assets/content/somaticContentIcon.png'
 import meditationContentIcon from '../../assets/content/meditationContentIcon.png'
 import yogaContentIcon from '../../assets/content/yogaContentIcon.png'
 
 const ContentSelection = () => {
-  const [view, setView] = useContext(ViewContext)
-  const [videoLink, setVideoLink] = useContext(VideoContext)
+  const [ view, setView ] = useContext(ViewContext)
+  const [ videoLink, setVideoLink ] = useContext(VideoContext)
   const [ settings ] = useContext(SettingsContext)
+  const [ session, setSession ] = useContext(SessionContext)
+
+  const recordCategory = (category) => {
+    setSession({
+      ...session,
+      contentSelected: category
+    })
+  }
 
   const fetchVideo = (event) => {
     const category = event.target.name
     const duration = `${settings.breakInterval}:00`
     
+    recordCategory(category)
     getRandomContent(duration, category)
       .then(response => {
         const videoLink = response.data.url
@@ -27,7 +37,7 @@ const ContentSelection = () => {
           console.log(err.response)
         }
       })
-      setView('content-delivery')
+    setView('content-delivery')
   }
 
   return (
