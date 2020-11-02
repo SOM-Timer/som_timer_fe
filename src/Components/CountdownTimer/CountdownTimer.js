@@ -1,6 +1,7 @@
 import React, { useContext } from 'react'
 import { SettingsContext } from '../../Context/SettingsContext'
 import { ViewContext } from '../../Context/ViewContext'
+import { SessionContext } from '../../Context/SessionContext'
 import Timer from 'react-compound-timer'
 import style from './CountdownTimer.module.scss'
 import playAlertSound from '../../helpers/audioHelper'
@@ -15,10 +16,15 @@ import resetTimerIcon from '../../assets/timer/resetTimerIcon.png'
 const CountdownTimer = () => {
   const [ settings ] = useContext(SettingsContext)
   const [ view, setView ] = useContext(ViewContext)
+  const [ session, setSession ] = useContext(SessionContext)
   
   const timerDone = () => {
     setView('mood-rating-1')
     playAlertSound(settings.sound)
+    setSession({
+      ...session, 
+      focusInterval: settings.workInterval
+    })
   }
   
   return (
@@ -130,7 +136,14 @@ const CountdownTimer = () => {
               <button
                 className={style.timerControlButton}
                 aria-label="skip"
-                onClick={() => setView('content-selection')}
+                onClick={() => {
+                  const timeElapsed = (((settings.workInterval * 60000) - getTime()) / 60000).toFixed(2)
+                  setSession({
+                    ...session,
+                    focusInterval: timeElapsed
+                  })
+                  setView('content-selection')
+                }}
               >
                 <img
                   className={style.skipTimerControlIcon}
