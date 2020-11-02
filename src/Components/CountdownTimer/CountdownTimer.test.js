@@ -1,5 +1,6 @@
 import React from 'react';
 import playAlertSound from '../../helpers/audioHelper'
+import { displayNotification } from '../../helpers/notificationHelpers'
 import { fireEvent, render, waitFor } from '@testing-library/react'
 import '@testing-library/jest-dom'
 import CountdownTimer from './CountdownTimer'
@@ -39,7 +40,7 @@ describe('CountdownTimer', () => {
     expect(skipButton).toBeInTheDocument();
   })
 
-  it('should fire the timerDone function when the timer runs out', async () => {
+  it('should fire the appropriate functions when the timer runs out', async () => {
 
     getSettings.mockResolvedValue({
       data: {
@@ -64,6 +65,7 @@ describe('CountdownTimer', () => {
 
     setTimeout(() => {
       expect(playAlertSound).toHaveBeenCalledTimes(1)
+      expect(displayNotification).toHaveBeenCalledTimes(1)
       expect(playAlertSound).toHaveBeenCalledWith('chordCliff')
     }, 6000)
   })
