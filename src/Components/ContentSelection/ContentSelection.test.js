@@ -5,6 +5,7 @@ import '@testing-library/jest-dom'
 import { ViewProvider } from '../../Context/ViewContext'
 import { VideoProvider } from '../../Context/VideoContext'
 import { SettingsProvider } from '../../Context/SettingsContext'
+import { SessionProvider } from '../../Context/SessionContext'
 
 describe('ContentSelection', () => {
 
@@ -12,9 +13,11 @@ describe('ContentSelection', () => {
     const { getByRole } = render(
       <SettingsProvider>
         <ViewProvider>
-          <VideoProvider>
-            <ContentSelection />
-          </VideoProvider>
+          <SessionProvider>
+            <VideoProvider>
+              <ContentSelection />
+            </VideoProvider>
+          </SessionProvider>
         </ViewProvider>
       </SettingsProvider>
     )
