@@ -65,8 +65,8 @@ const Settings = () => {
           data-testid='sound'
           value={settings.sound}
         >
-          <option value={'chordCliff'}>Reverb Splash</option>
-          <option value={'gong'}>Balinese Gong</option>
+          <option value={'reverbSplash'}>Reverb Splash</option>
+          <option value={'balineseGong'}>Balinese Gong</option>
           <option value={'goodOldSynths'}>Good Ol' Synthesizers</option>
           <option value={'pianoDreams'}>Piano Dreams</option>
           <option value={'levelUp'}>Level Up</option>
