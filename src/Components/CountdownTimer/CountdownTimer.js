@@ -18,13 +18,21 @@ const CountdownTimer = () => {
   const [ view, setView ] = useContext(ViewContext)
   const [ session, setSession ] = useContext(SessionContext)
   
+  const recordFocusInterval = (interval) => {
+    setSession({
+      ...session,
+      focusInterval: interval,
+      moodRating1: null,
+      contentSelected: null,
+      moodRating2: null,
+      restInterval: null,
+    })
+  }
+
   const timerDone = () => {
     setView('mood-rating-1')
     playAlertSound(settings.sound)
-    setSession({
-      ...session, 
-      focusInterval: settings.workInterval
-    })
+    recordFocusInterval(settings.workInterval)
   }
   
   return (
@@ -138,10 +146,7 @@ const CountdownTimer = () => {
                 aria-label="skip"
                 onClick={() => {
                   const timeElapsed = (((settings.workInterval * 60000) - getTime()) / 60000).toFixed(2)
-                  setSession({
-                    ...session,
-                    focusInterval: timeElapsed
-                  })
+                  recordFocusInterval(timeElapsed)
                   setView('content-selection')
                 }}
               >
