@@ -59,11 +59,12 @@ const MoodRating = () => {
             className={`${style.moodRating1} ${style.moodRatingButton}`}
             onClick={rateMood}
             name={1}
+            aria-label="Rate mood 1 out of 5"
           >
             <img 
               className={style.moodIcon}
               src={moodIcon1} 
-              alt="My mood rating is a 1 out of 5" 
+              alt="Unhappy face"
               name={1}
             /> 
           </button>
@@ -72,11 +73,12 @@ const MoodRating = () => {
             className={`${style.moodRating2} ${style.moodRatingButton}`}
             onClick={rateMood}
             name={2}
+            aria-label="Rate mood 2 out of 5"
           >
             <img
               className={style.moodIcon}
               src={moodIcon2}
-              alt="My mood rating is a 2 out of 5"
+              alt="Slightly unhappy face"
               name={2}
             /> 
           </button>
@@ -85,11 +87,12 @@ const MoodRating = () => {
             className={`${style.moodRating3} ${style.moodRatingButton}`}
             onClick={rateMood}
             name={3}
+            aria-label="Rate mood 3 out of 5"
           >
             <img
               className={style.moodIcon}
               src={moodIcon3}
-              alt="My mood rating is a 3 out of 5"
+              alt="Neutral face"
               name={3}
             /> 
           </button>
@@ -98,11 +101,12 @@ const MoodRating = () => {
             className={`${style.moodRating4} ${style.moodRatingButton}`}
             onClick={rateMood}
             name={4}
+            aria-label="Rate mood 4 out of 5"
           >
             <img
               className={style.moodIcon}
               src={moodIcon4}
-              alt="My mood rating is a 4 out of 5"
+              alt="Slightly happy face"
               name={4}
             /> 
           </button>
@@ -110,13 +114,14 @@ const MoodRating = () => {
             type='button'
             className={`${style.moodRating5} ${style.moodRatingButton}`}
             onClick={rateMood}
-            name={5}
+            name='5'
+            aria-label="Rate mood 5 out of 5"
           >
             <img
               className={style.moodIcon}
               src={moodIcon5}
-              alt="My mood rating is a 5 out of 5"
-              name={5}
+              alt="Happy face"
+              name='5'
             /> 
           </button>
         </div>

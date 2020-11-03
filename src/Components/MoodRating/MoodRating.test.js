@@ -8,7 +8,7 @@ jest.mock('../../apiCalls')
 
 describe('MoodRating', () => {
   it('Should have the correct content when rendered', () => {
-    const { getByRole, debug } = render(
+    const { getByRole } = render(
         <ViewProvider>
           <SessionProvider>
             <MoodRating />
@@ -17,11 +17,11 @@ describe('MoodRating', () => {
     )
 
     const moodHeading = getByRole('heading', /please select a face/i)
-    const moodRating1 = getByRole('button', { name: /1/ })
-    const moodRating2 = getByRole('button', { name: /2/ })
-    const moodRating3 = getByRole('button', { name: /3/ })
-    const moodRating4 = getByRole('button', { name: /4/ })
-    const moodRating5 = getByRole('button', { name: /5/ })
+    const moodRating1 = getByRole('button', { name: /1 out of 5/ })
+    const moodRating2 = getByRole('button', { name: /2 out of 5/ })
+    const moodRating3 = getByRole('button', { name: /3 out of 5/ })
+    const moodRating4 = getByRole('button', { name: /4 out of 5/ })
+    const moodRating5 = getByRole('button', { name: /5 out of 5/ })
     const submitButton = getByRole('button', { name: /Submit/})
     
     expect(moodHeading).toBeInTheDocument()
