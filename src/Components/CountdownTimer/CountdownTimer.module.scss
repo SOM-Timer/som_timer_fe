@@ -25,15 +25,15 @@
   border-radius: 50%;
   border: none;
   align-items: center;
-  // background-color: $midBlue;
-  background: radial-gradient($midBlue, $darkBlue);
+  background: radial-gradient($midBlue, #7987a1ab);
   color: $white;
   font-family: $primaryFont;
   font-weight: 700;
-  box-shadow: 0px 0px 10px 0.5px $darkBlue, inset 0px 0px 1px rgba(0, 0, 0, 0.239);
+  box-shadow: 0px 0px 10px 0.5px $darkBlue, inset 0px 0px 5px rgba(0, 0, 0, 0.239);
 
   &:hover {
     background-color: $darkBlue;
+    box-shadow: 0px 0px 30px $lightBlueAccent, inset 0px 0px 5px rgba(0, 0, 0, 0.239);
     cursor: pointer;
   }
 }
