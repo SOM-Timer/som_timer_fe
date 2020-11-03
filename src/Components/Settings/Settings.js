@@ -77,7 +77,13 @@ const Settings = () => {
       </div>
       <div className={style.line}></div>
       <p className={style.saveAutomatically}>
-        ✨ Settings will save automagically ✨
+        <span role="img" alt="sparkle emoji" aria-label="sparkle emoji">
+          ✨
+        </span>{" "}
+        Settings will save automagically{" "}
+        <span role="img" alt="sparkle emoji" aria-label="sparkle emoji">
+          ✨
+        </span>
       </p>
     </div>
   );
