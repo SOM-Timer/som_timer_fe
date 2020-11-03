@@ -9,11 +9,11 @@
   font-size: 1.2em;
   margin: 2em auto;
   width: 505px;
-  padding: 1em 3em 1.5em; 
+  padding: .7em 2em 1.5em; 
   color: white;
   background-color: $darkBlue;
-  box-shadow: 0px 0px 20px $darkBlue, inset 0px 0px 1px rgba(0, 0, 0, 0.239);
-  border-radius: 4em;
+  box-shadow: 0px 0px 20px $darkBlue, inset 0px 0px 5px rgba(0, 0, 0, 0.239);
+  border-radius: 1em;
 }
 
 .strong {
@@ -25,6 +25,6 @@
     width: 312px;
     margin: 2em auto;
     padding: 1em .5em 1em 1.5em;
-    border-radius: 3em;
+    border-radius: 1em;
   }
 }
