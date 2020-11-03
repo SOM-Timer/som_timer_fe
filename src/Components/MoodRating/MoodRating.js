@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from 'react'
+import React, { useState, useContext } from 'react'
 import style from './MoodRating.module.scss'
 import { ViewContext } from '../../Context/ViewContext'
 import { SessionContext } from '../../Context/SessionContext'
@@ -121,7 +121,15 @@ const MoodRating = () => {
           </button>
         </div>
         <div className={style.errorContainer}>
-          {error && <p className={style.errorMessage}>⚠ Please select an option above to continue! ⚠</p>}
+          {error && <p className={style.errorMessage}>
+            <span role='img' alt='Error sign'>
+              ⚠
+            </span>
+            Please select an option above to continue! 
+            <span role='img' alt='Error sign'>
+              ⚠
+            </span>
+          </p>}
         </div>
         <button 
           type='submit'
