@@ -147,7 +147,7 @@ const CountdownTimer = () => {
                 onClick={() => {
                   const timeElapsed = (((settings.workInterval * 60000) - getTime()) / 60000).toFixed(2)
                   recordFocusInterval(timeElapsed)
-                  setView('content-selection')
+                  setView('mood-rating-1')
                 }}
               >
                 <img
