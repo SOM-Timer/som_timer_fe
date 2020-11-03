@@ -9,8 +9,8 @@
   justify-content: flex-end;
   padding: 1em;
   background-color: $midBlue;
-  box-shadow: 0px 0px 20px $darkBlue;
-  background: linear-gradient(to top right, $midBlue 75%, $darkBlue)
+  box-shadow: 0px 0px 20px $darkBlue, inset 0px 3px 5px rgba(0, 0, 0, 0.239);
+  background: radial-gradient($midBlue, $darkBlue)
 }
 
 .title {
