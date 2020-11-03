@@ -28,7 +28,7 @@
 
 .skipBtn {
   @include borderAndShadow(none, 8px, 0px 5px 6px $midBlue);
-  background-color: $salmon; 
+  background: radial-gradient($salmon, #e9adaa); 
   margin: 2em;
   padding: 0.5em 1em; 
   font: 1.2em $primaryFont;
@@ -36,7 +36,9 @@
 
   &:hover {
     background-color: $salmonHover;
-    color: $lightBlueAccent;
+    background: radial-gradient(#e9adaa, $salmon);
+    color: $white;
+    text-shadow: 0px 0px 1px rgba(0, 0, 0, 0.239);
   }
 }
 
