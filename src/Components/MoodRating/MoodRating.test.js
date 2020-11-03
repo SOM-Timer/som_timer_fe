@@ -69,32 +69,4 @@ describe('MoodRating', () => {
     
     expect(errorMessage).not.toBeInTheDocument()
   })
-
-  it('Should make a post request at the end of mood rating 2', () => {
-    const setViewMock = jest.fn()
-    postSession.mockResolvedValueOnce({
-      "id": 1,
-      "mood_rating_1": 3,
-      "mood_rating_2": 5,
-      "content_selected": "MOVEMENT",
-      "focus_interval": "25",
-      "rest_interval": "5"
-    })
-
-    const { getByRole } = render(
-      <ViewContext.Provider value={['mood-rating-2', setViewMock]}>
-        <SessionProvider>
-          <MoodRating />
-        </SessionProvider>
-      </ViewContext.Provider>
-    )
-
-    const moodRating1 = getByRole('button', { name: /1 out of 5/ })
-    const submitButton = getByRole('button', { name: /Submit/ })
-
-    fireEvent.click(moodRating1)
-    fireEvent.click(submitButton)
-
-    expect(postSession).toBeCalled();
-  })
 })
