@@ -48,7 +48,7 @@ const CountdownTimer = () => {
           {
             time: 0,
             callback: () => {
-              // displayNotification()
+              displayNotification()
               timerDone()
             },
           },
