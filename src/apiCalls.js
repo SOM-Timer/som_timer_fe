@@ -17,6 +17,13 @@ export const getRandomContent = (duration, category) => {
   return axios.get(`${rootUrl}/rand_exercise?duration=${duration}&category=${category}`)
 }
 
-export const postMoodRating = (moodRating) => {
-  return axios.post(`${rootUrl}/moodRating`)
+export const postSession = (session) => {
+  console.log(session)
+  return axios.post(`${rootUrl}/rests`, {
+    focus_interval: session.focusInterval,
+    mood_rating_1: session.moodRating1,
+    content_selected: session.contentSelected,
+    rest_interval: session.restInterval,
+    mood_rating_2: session.moodRating2
+  })
 }
