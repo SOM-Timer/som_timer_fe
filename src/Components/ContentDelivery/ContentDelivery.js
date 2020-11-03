@@ -53,11 +53,6 @@ const ContentDelivery = () => {
           </button>     
         }
       </section>
-      { done && 
-        <div className={style.workMsgModal}>
-          <h2 className={style.modalContent}>Time to focus again!</h2>
-        </div> 
-      }
     </>       
   )
 }
