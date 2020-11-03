@@ -49,7 +49,7 @@ const MoodRating = () => {
   return (
     <>
       <section className={!sessionComplete ? style.moodRatingContainer : style.moodRatingModal}>
-        <h2>Please select a face below to indicate how you are feeling</h2>
+        <h2 className={style.prompt}>How are you feeling right now?</h2>
         <form onSubmit={checkSubmit}>
           <div className={style.facesContainer}>
             <button 
@@ -64,7 +64,8 @@ const MoodRating = () => {
                 src={moodIcon1} 
                 alt="Unhappy face"
                 name={1}
-              /> 
+                aria-label="Rate mood 1 out of 5"
+              />
             </button>
             <button 
               type='button'
@@ -127,8 +128,8 @@ const MoodRating = () => {
             {error && <p className={style.errorMessage}>
               <span role='img' alt='Error sign'>
                 ⚠
-              </span>
-              Please select an option above to continue! 
+              </span>{" "}
+              Please select one of the faces above to continue!{" "}
               <span role='img' alt='Error sign'>
                 ⚠
               </span>
@@ -142,7 +143,7 @@ const MoodRating = () => {
           </button>
         </form>
       </section>
-      {sessionComplete && <FocusModal />}
+        {sessionComplete && <FocusModal />}
     </>
   )
 }
