@@ -403,7 +403,7 @@ describe('App', () => {
     expect(moodHeading).toBeInTheDocument()
   })
 
-  it.only('should make a post request with session data once the user has completed a full cycle', async () => {
+  it('should make a post request with session data once the user has completed a full cycle', async () => {
     getSettings.mockResolvedValueOnce({
       data: {
         id: 1,
@@ -476,7 +476,7 @@ describe('App', () => {
       contentSelected: "MOVEMENT",
       //we expect timer to return 0 for focusInterval when skipped immediately
       focusInterval: "0.00",
-      restInterval: 5
+      restInterval: "5"
     })
   })
 
