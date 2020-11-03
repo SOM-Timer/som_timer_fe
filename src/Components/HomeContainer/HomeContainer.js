@@ -4,8 +4,9 @@ import { VideoProvider } from '../../Context/VideoContext'
 import ContentDelivery from '../ContentDelivery/ContentDelivery'
 import CountdownTimer from '../CountdownTimer/CountdownTimer'
 import ContentSelection from '../ContentSelection/ContentSelection'
-import style from './HomeContainer.module.scss'
 import MoodRating from '../MoodRating/MoodRating'
+import FocusModal from '../FocusModal/FocusModal'
+import style from './HomeContainer.module.scss'
 
 const HomeContainer = () => {
   const [ view ] = useContext(ViewContext)
@@ -25,6 +26,9 @@ const HomeContainer = () => {
         { (view === 'mood-rating-1' || view === 'mood-rating-2') && 
           <MoodRating />
         }
+        { (view === 'focus-modal' &&
+          <FocusModal />
+        )}
       </VideoProvider>  
     </div>
   )
