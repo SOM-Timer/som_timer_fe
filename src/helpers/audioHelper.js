@@ -1,18 +1,18 @@
-import gong from "../assets/audio/gong.mp3";
+import balineseGong from "../assets/audio/balineseGong.mp3";
 import goodOldSynths from "../assets/audio/goodOldSynths.mp3";
 import pianoDreams from "../assets/audio/pianoDreams.mp3";
-import chordCliff from "../assets/audio/chordCliff.mp3";
+import reverbSplash from "../assets/audio/reverbSplash.mp3";
 import levelUp from "../assets/audio/levelUp.mp3";
 import birdChord from "../assets/audio/birdChord.mp3";
 
 const playAlertSound = (sound) => {
   let audioNotification = "";
   switch (sound) {
-    case "chordCliff":
-      audioNotification = new Audio(chordCliff);
+    case "reverbSplash":
+      audioNotification = new Audio(reverbSplash);
       break;
-    case "gong":
-      audioNotification = new Audio(gong);
+    case "balineseGong":
+      audioNotification = new Audio(balineseGong);
       break;
     case "goodOldSynths":
       audioNotification = new Audio(goodOldSynths);

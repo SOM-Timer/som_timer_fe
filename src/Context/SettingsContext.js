@@ -4,13 +4,13 @@ import { getSettings } from '../apiCalls'
 export const SettingsContext = createContext();
 
 export const SettingsProvider = ({ children }) => {
-  const [ settings, setSettings ] = useState({ workInterval: 25, breakInterval: 5, sound: 'chordCliff' })
+  const [settings, setSettings] = useState({ workInterval: '25', breakInterval: '5', sound: 'reverbSplash' })
 
   useEffect(() => {
     getSettings()
       .then(response => {
-        const workInterval = +response.data.work_interval.split(':')[0]
-        const breakInterval = +response.data.rest_interval.split(':')[0]
+        const workInterval = response.data.work_interval.split(':')[0]
+        const breakInterval = response.data.rest_interval.split(':')[0]
         const sound = response.data.sound
         setSettings({ workInterval, breakInterval, sound})
       })

@@ -51,10 +51,10 @@ describe('Settings', () => {
 
     fireEvent.blur(workIntervalInput, { target: { value: '45' } })
     fireEvent.blur(breakIntervalInput, { target: { value: '10' } })
-    fireEvent.change(soundInput, { target: { value: 'gong' } })
+    fireEvent.change(soundInput, { target: { value: 'balineseGong' } })
 
     expect(workIntervalInput.value).toBe('45')
     expect(breakIntervalInput.value).toBe('10')
-    expect(soundInput.value).toBe('gong')
+    expect(soundInput.value).toBe('balineseGong')
   })
 })
