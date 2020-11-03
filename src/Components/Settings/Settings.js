@@ -47,6 +47,7 @@ const Settings = () => {
           name='Break'
           id='breakInterval'
           data-testid='breakInterval'
+          defaultValue={settings.breakInterval}
         >
           <option value={5}>5</option>
           <option value={7}>7</option>
