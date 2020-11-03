@@ -7,7 +7,7 @@ import { VideoProvider } from '../../Context/VideoContext'
 import { SettingsProvider } from '../../Context/SettingsContext'
 import { SessionProvider } from '../../Context/SessionContext'
 import { MemoryRouter } from 'react-router-dom'
-import { getSettings, updateSettings, getRandomContent } from '../../apiCalls'
+import { getSettings, updateSettings, getRandomContent, postSession } from '../../apiCalls'
 jest.mock('../../apiCalls.js')
 // jest.useFakeTimers()
 
@@ -359,7 +359,7 @@ describe('App', () => {
 
     getRandomContent.mockResolvedValue({
       data: {
-        category: "SomaticCategory.SOMATIC",
+        category: "SomaticCategory.MOVEMENT",
         duration: "5:00",
         id: 1,
         url: "https://www.youtube.com/watch?v=dsmfIAyiois"
@@ -401,6 +401,83 @@ describe('App', () => {
     const moodHeading = getByRole('heading', { name: /please select a face below/i })
 
     expect(moodHeading).toBeInTheDocument()
+  })
+
+  it.only('should make a post request with session data once the user has completed a full cycle', async () => {
+    getSettings.mockResolvedValueOnce({
+      data: {
+        id: 1,
+        rest_interval: '5',
+        work_interval: '30',
+        sound: 'chordCliff'
+      }
+    })
+
+    getRandomContent.mockResolvedValue({
+      data: {
+        category: "SomaticCategory.MOVEMENT",
+        duration: "5:00",
+        id: 1,
+        url: "https://www.youtube.com/watch?v=dsmfIAyiois"
+      }
+    })
+
+    postSession.mockResolvedValueOnce({
+      "id": 1,
+      "mood_rating_1": 1,
+      "mood_rating_2": 5,
+      "content_selected": "MOVEMENT",
+      "focus_interval": "30",
+      "rest_interval": "5"
+    })
+
+    const { getByRole } = render(
+      <MemoryRouter>
+        <SettingsProvider>
+          <ViewProvider>
+            <SessionProvider>
+              <VideoProvider>
+                <App />
+              </VideoProvider>
+            </SessionProvider>
+          </ViewProvider>
+        </SettingsProvider>
+      </MemoryRouter>
+    )
+
+    const skipIcon = await waitFor(() => getByRole('button', { name: /skip/i }))
+
+    fireEvent.click(skipIcon)
+
+    const moodRating1 = getByRole('button', { name: /1 out of 5/ })
+    const moodSubmitButton1 = getByRole('button', { name: /submit/i })
+
+    fireEvent.click(moodRating1)
+    fireEvent.click(moodSubmitButton1)
+
+    const yogaBtn = getByRole('button', { name: /yoga\/movement/i })
+
+    fireEvent.click(yogaBtn)
+
+    const skipVideoBtn = await waitFor(() => getByRole('button', { name: /skip video/i }))
+
+    fireEvent.click(skipVideoBtn)
+
+    const moodRating2 = getByRole('button', { name: /5 out of 5/ })
+    const moodSubmitButton2 = getByRole('button', { name: /submit/i })
+
+    fireEvent.click(moodRating2)
+    fireEvent.click(moodSubmitButton2)
+    
+    expect(postSession).toBeCalled()
+    expect(postSession).toBeCalledWith({
+      moodRating1: "1",
+      moodRating2: "5",
+      contentSelected: "MOVEMENT",
+      //we expect timer to return 0 for focusInterval when skipped immediately
+      focusInterval: "0.00",
+      restInterval: 5
+    })
   })
 
   // it.only('should allow a user to start the timer and see the content selection screen when it runs down', async () => {
