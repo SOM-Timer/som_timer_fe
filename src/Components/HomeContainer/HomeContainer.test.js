@@ -7,7 +7,6 @@ import { SettingsProvider } from '../../Context/SettingsContext'
 import { SessionProvider } from '../../Context/SessionContext'
 
 describe('HomeContainer', () => {
-  //THIS TEST NEEDS TO BE EDITED ONCE HOMECONTAINER RENDERS ACTUALLY COUNTDOWNTIMER COMPONENT
   it('should render the Timer view on load', () => {
     const { getByRole } = render (
       <ViewProvider>
