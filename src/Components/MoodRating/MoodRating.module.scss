@@ -1,0 +1,83 @@
+@import '../../style/mixins.scss';
+@import '../../style/variables.scss';
+
+.moodRatingButton {
+  @include size(100px, 100px);
+  border-radius: 50%;
+  color: white;
+  font-family: $primaryFont;
+  font-weight: 700;
+  font-size: 64px;
+  box-shadow: 0px 0px 10px 1px $darkBlue;
+  border: none;
+  padding: 0px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.moodRatingSubmit {
+  @include size(90px, 50px);
+  background-color: $midBlue;
+  color: $white;
+  font-family: $primaryFont;
+  font-weight: 700;
+  font-size: 20px;
+  box-shadow: 0px 0px 10px 1px $darkBlue;
+  border: none;
+  border-radius: 0.5em;
+
+  &:hover {
+    background-color: $darkBlue;
+    cursor: pointer;
+  }
+}
+
+.moodRatingContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.facesContainer {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 0.8em;
+}
+
+.errorContainer {
+  height: 80px;
+}
+
+.errorMessage {
+  color: crimson;
+  font-weight: 600;
+  font-size: 1.2em;
+  margin: auto;
+  padding-top: 25px;
+}
+
+/* Faces Buttons Styling */
+.moodIcon {
+  @include size(103px, 103px);
+}
+
+.moodRating1 {
+  background-color: #9A031E;
+}
+
+.moodRating2 {
+  background-color: #DF6407;
+}
+
+.moodRating3 {
+  background-color: #DFAC07;
+}
+
+.moodRating4 {
+  background-color: #55A630;
+}
+
+.moodRating5 {
+  background-color: #007F5F;
+}

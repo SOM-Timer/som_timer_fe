@@ -4,14 +4,16 @@ import { render } from '@testing-library/react'
 import '@testing-library/jest-dom'
 import { ViewProvider } from '../../Context/ViewContext'
 import { SettingsProvider } from '../../Context/SettingsContext'
+import { SessionProvider } from '../../Context/SessionContext'
 
 describe('HomeContainer', () => {
-  //THIS TEST NEEDS TO BE EDITED ONCE HOMECONTAINER RENDERS ACTUALLY COUNTDOWNTIMER COMPONENT
   it('should render the Timer view on load', () => {
     const { getByRole } = render (
       <ViewProvider>
         <SettingsProvider>
-          <HomeContainer/>
+          <SessionProvider>
+            <HomeContainer/>
+          </SessionProvider>
         </SettingsProvider>
       </ViewProvider>
     )

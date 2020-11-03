@@ -1,6 +1,7 @@
 import React, { useContext } from 'react'
 import { SettingsContext } from '../../Context/SettingsContext'
 import { ViewContext } from '../../Context/ViewContext'
+import { SessionContext } from '../../Context/SessionContext'
 import Timer from 'react-compound-timer'
 import style from './CountdownTimer.module.scss'
 import playAlertSound from '../../helpers/audioHelper'
@@ -15,17 +16,25 @@ import resetTimerIcon from '../../assets/timer/resetTimerIcon.png'
 const CountdownTimer = () => {
   const [ settings ] = useContext(SettingsContext)
   const [ view, setView ] = useContext(ViewContext)
+  const [ session, setSession ] = useContext(SessionContext)
   
+  const recordFocusInterval = (interval) => {
+    setSession({
+      ...session,
+      focusInterval: interval,
+      moodRating1: null,
+      contentSelected: null,
+      moodRating2: null,
+      restInterval: null,
+    })
+  }
+
   const timerDone = () => {
-    setView('content-selection')
+    setView('mood-rating-1')
     playAlertSound(settings.sound)
+    recordFocusInterval(settings.workInterval)
   }
   
-  // const timerColorChange = () => {
-  //   const circlePath = document.getElementById('base-timer-path-remaining')
-  //   circlePath.style.animation = `countDown ${settings.workInterval * 60} linear`
-  // }
-
   return (
     <div className={style.countdownTimer}>
       <h2 className={style.prompt}>Click ▶ to Begin Focusing</h2>
@@ -135,7 +144,11 @@ const CountdownTimer = () => {
               <button
                 className={style.timerControlButton}
                 aria-label="skip"
-                onClick={() => setView('content-selection')}
+                onClick={() => {
+                  const timeElapsed = (((settings.workInterval * 60000) - getTime()) / 60000).toFixed(2)
+                  recordFocusInterval(timeElapsed)
+                  setView('mood-rating-1')
+                }}
               >
                 <img
                   className={style.skipTimerControlIcon}

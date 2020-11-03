@@ -5,10 +5,11 @@ import '@testing-library/jest-dom'
 import { ViewProvider } from '../../Context/ViewContext'
 import { VideoProvider } from '../../Context/VideoContext'
 import { SettingsProvider } from '../../Context/SettingsContext'
+import { SessionProvider } from '../../Context/SessionContext'
 import { MemoryRouter } from 'react-router-dom'
-import { getSettings, updateSettings, getRandomContent } from '../../apiCalls'
+import { getSettings, updateSettings, getRandomContent, postSession } from '../../apiCalls'
 jest.mock('../../apiCalls.js')
-
+// jest.useFakeTimers()
 
 describe('App', () => {
   it('should bring users to the timer view on load and allow them to visit the Stats, About, and Settings pages', async () => {
@@ -26,9 +27,11 @@ describe('App', () => {
       <MemoryRouter>
         <SettingsProvider>
           <ViewProvider>
-            <VideoProvider>
-              <App />
-            </VideoProvider>
+            <SessionProvider>
+              <VideoProvider>
+                <App />
+              </VideoProvider>
+            </SessionProvider>
           </ViewProvider>
         </SettingsProvider>
       </MemoryRouter>
@@ -88,9 +91,11 @@ describe('App', () => {
       <MemoryRouter>
         <SettingsProvider>
           <ViewProvider>
-            <VideoProvider>
-              <App />
-            </VideoProvider>
+            <SessionProvider>
+              <VideoProvider>
+                <App />
+              </VideoProvider>
+            </SessionProvider>
           </ViewProvider>
         </SettingsProvider>
       </MemoryRouter>
@@ -111,7 +116,7 @@ describe('App', () => {
     expect(timerLength).toBeInTheDocument()
   })
 
-  it('should take you to a content selection screen when the timer is skipped', async () => {
+  it('should take you to a mood rating screen when the timer is skipped', async () => {
     getSettings.mockResolvedValueOnce({
       data: {
         id: 1,
@@ -125,9 +130,11 @@ describe('App', () => {
       <MemoryRouter>
         <SettingsProvider>
           <ViewProvider>
-            <VideoProvider>
-              <App />
-            </VideoProvider>
+            <SessionProvider>
+              <VideoProvider>
+                <App />
+              </VideoProvider>
+            </SessionProvider>
           </ViewProvider>
         </SettingsProvider>
       </MemoryRouter>
@@ -137,12 +144,52 @@ describe('App', () => {
 
     fireEvent.click(skipIcon)
 
+    const moodRatingHeading = getByRole('heading', { name: /please select a face below/i })
+
+    expect(moodRatingHeading).toBeInTheDocument()
+  })
+
+  it('should take you to a content selection screen after the first mood rating', async () => {
+    getSettings.mockResolvedValueOnce({
+      data: {
+        id: 1,
+        rest_interval: '5',
+        work_interval: '30',
+        sound: 'chordCliff'
+      }
+    })
+
+    const { getByRole } = render(
+      <MemoryRouter>
+        <SettingsProvider>
+          <ViewProvider>
+            <SessionProvider>
+              <VideoProvider>
+                <App />
+              </VideoProvider>
+            </SessionProvider>
+          </ViewProvider>
+        </SettingsProvider>
+      </MemoryRouter>
+    )
+
+    
+    const skipIcon = await waitFor(() => getByRole('button', { name: /skip/i }))
+    
+    fireEvent.click(skipIcon)
+
+    const moodRating1 = getByRole('button', { name: /1 out of 5/ })
+    const submitButton = getByRole('button', { name: /submit/i })
+
+    fireEvent.click(moodRating1)
+    fireEvent.click(submitButton)
+
     const contentSelectionHeading = getByRole('heading', { name: /how would you like to spend your break\?/i })
 
     expect(contentSelectionHeading).toBeInTheDocument()
   })
 
-  it('should allow a user to select somatic content when the timer runs down and see the content delivery & video screen', async () => {
+  it('should allow a user to select somatic content when mood rating 1 is complete, and receive somatic content', async () => {
     getSettings.mockResolvedValueOnce({
       data: {
         id: 1,
@@ -165,9 +212,11 @@ describe('App', () => {
       <MemoryRouter>
         <SettingsProvider>
           <ViewProvider>
-            <VideoProvider>
-              <App />
-            </VideoProvider>
+            <SessionProvider>
+              <VideoProvider>
+                <App />
+              </VideoProvider>
+            </SessionProvider>
           </ViewProvider>
         </SettingsProvider>
       </MemoryRouter>
@@ -176,6 +225,12 @@ describe('App', () => {
     const skipIcon = await waitFor(() => getByRole('button', { name: /skip/i }))
 
     fireEvent.click(skipIcon)
+
+    const moodRating1 = getByRole('button', { name: /1 out of 5/ })
+    const submitButton = getByRole('button', { name: /submit/i })
+
+    fireEvent.click(moodRating1)
+    fireEvent.click(submitButton)
 
     const somaticBtn = getByRole('button', { name: /somatic exercise/i })
 
@@ -186,7 +241,7 @@ describe('App', () => {
     expect(contentDeliveryHeading).toBeInTheDocument()
   })
 
-  it('should allow a user to select breathwork/meditation content when the timer runs down and see the content delivery & video screen', async () => {
+  it('should allow a user to select breathwork/meditation content when mood rating 1 is complete and receive meditation content', async () => {
     getSettings.mockResolvedValueOnce({
       data: {
         id: 1,
@@ -210,9 +265,11 @@ describe('App', () => {
       <MemoryRouter>
         <SettingsProvider>
           <ViewProvider>
-            <VideoProvider>
-              <App />
-            </VideoProvider>
+            <SessionProvider>
+              <VideoProvider>
+                <App />
+              </VideoProvider>
+            </SessionProvider>
           </ViewProvider>
         </SettingsProvider>
       </MemoryRouter>
@@ -221,6 +278,12 @@ describe('App', () => {
     const skipIcon = await waitFor(() => getByRole('button', { name: /skip/i }))
 
     fireEvent.click(skipIcon)
+
+    const moodRating1 = getByRole('button', { name: /1 out of 5/ })
+    const submitButton = getByRole('button', { name: /submit/i })
+
+    fireEvent.click(moodRating1)
+    fireEvent.click(submitButton)
 
     const meditationBtn = getByRole('button', { name: /breathwork\/meditation/i })
 
@@ -231,7 +294,7 @@ describe('App', () => {
     expect(contentDeliveryHeading).toBeInTheDocument()
   })
 
-  it('should allow a user to select yoga/movement content when the timer runs down and see the content delivery & video screen', async () => {
+  it('should allow a user to select yoga/movement content when mood rating 1 is complete and receive yoga/movement content', async () => {
     getSettings.mockResolvedValueOnce({
       data: {
         id: 1,
@@ -255,9 +318,11 @@ describe('App', () => {
       <MemoryRouter>
         <SettingsProvider>
           <ViewProvider>
-            <VideoProvider>
-              <App />
-            </VideoProvider>
+            <SessionProvider>
+              <VideoProvider>
+                <App />
+              </VideoProvider>
+            </SessionProvider>
           </ViewProvider>
         </SettingsProvider>
       </MemoryRouter>
@@ -266,6 +331,12 @@ describe('App', () => {
     const skipIcon = await waitFor(() => getByRole('button', { name: /skip/i }))
 
     fireEvent.click(skipIcon)
+
+    const moodRating1 = getByRole('button', { name: /1 out of 5/ })
+    const submitButton = getByRole('button', { name: /submit/i })
+
+    fireEvent.click(moodRating1)
+    fireEvent.click(submitButton)
 
     const yogaBtn = getByRole('button', { name: /yoga\/movement/i })
 
@@ -276,7 +347,7 @@ describe('App', () => {
     expect(contentDeliveryHeading).toBeInTheDocument()
   })
 
-  it('should allow a user to select content when the timer runs down, see the video, skip it, and be taken back to the timer view', async () => {
+  it('should allow a user to select content when the timer runs down, mood rating 1 is complete, & then see the video, skip it, and be taken to mood rating 2', async () => {
     getSettings.mockResolvedValueOnce({
       data: {
         id: 1,
@@ -288,7 +359,7 @@ describe('App', () => {
 
     getRandomContent.mockResolvedValue({
       data: {
-        category: "SomaticCategory.SOMATIC",
+        category: "SomaticCategory.MOVEMENT",
         duration: "5:00",
         id: 1,
         url: "https://www.youtube.com/watch?v=dsmfIAyiois"
@@ -299,9 +370,11 @@ describe('App', () => {
       <MemoryRouter>
         <SettingsProvider>
           <ViewProvider>
-            <VideoProvider>
-              <App />
-            </VideoProvider>
+            <SessionProvider>
+              <VideoProvider>
+                <App />
+              </VideoProvider>
+            </SessionProvider>
           </ViewProvider>
         </SettingsProvider>
       </MemoryRouter>
@@ -311,6 +384,12 @@ describe('App', () => {
 
     fireEvent.click(skipIcon)
 
+    const moodRating1 = getByRole('button', { name: /1 out of 5/ })
+    const submitButton = getByRole('button', { name: /submit/i })
+
+    fireEvent.click(moodRating1)
+    fireEvent.click(submitButton)
+
     const yogaBtn = getByRole('button', { name: /yoga\/movement/i })
 
     fireEvent.click(yogaBtn)
@@ -319,91 +398,85 @@ describe('App', () => {
 
     fireEvent.click(skipVideoBtn)
 
-    const timerHeading = getByRole('heading', { name: /click ▶ to begin focusing/i })
+    const moodHeading = getByRole('heading', { name: /please select a face below/i })
 
-    expect(timerHeading).toBeInTheDocument()
+    expect(moodHeading).toBeInTheDocument()
   })
 
-  it('should allow a user to start the timer and see the content selection screen when it runs down', async () => {
-
+  it('should make a post request with session data once the user has completed a full cycle', async () => {
     getSettings.mockResolvedValueOnce({
       data: {
         id: 1,
         rest_interval: '5',
-        work_interval: '0.1',
+        work_interval: '30',
         sound: 'chordCliff'
       }
     })
 
-    const { getByRole, getByText } = render(
+    getRandomContent.mockResolvedValue({
+      data: {
+        category: "SomaticCategory.MOVEMENT",
+        duration: "5:00",
+        id: 1,
+        url: "https://www.youtube.com/watch?v=dsmfIAyiois"
+      }
+    })
+
+    postSession.mockResolvedValueOnce({
+      "id": 1,
+      "mood_rating_1": 1,
+      "mood_rating_2": 5,
+      "content_selected": "MOVEMENT",
+      "focus_interval": "30",
+      "rest_interval": "5"
+    })
+
+    const { getByRole } = render(
       <MemoryRouter>
         <SettingsProvider>
           <ViewProvider>
-            <VideoProvider>
-              <App />
-            </VideoProvider>
+            <SessionProvider>
+              <VideoProvider>
+                <App />
+              </VideoProvider>
+            </SessionProvider>
           </ViewProvider>
         </SettingsProvider>
       </MemoryRouter>
     )
 
-    const timerLength = await waitFor(() => getByText(/0:06/i))
+    const skipIcon = await waitFor(() => getByRole('button', { name: /skip/i }))
 
-    expect(timerLength).toBeInTheDocument()
+    fireEvent.click(skipIcon)
 
-    const startBtn = getByRole('button', { name: /start/i })
+    const moodRating1 = getByRole('button', { name: /1 out of 5/ })
+    const moodSubmitButton1 = getByRole('button', { name: /submit/i })
 
-    fireEvent.click(startBtn)
+    fireEvent.click(moodRating1)
+    fireEvent.click(moodSubmitButton1)
 
-    setTimeout(() => {
-      const contentSelectionHeading = getByRole('heading', { name: /how would you like to spend your break\?/i })
+    const yogaBtn = getByRole('button', { name: /yoga\/movement/i })
 
-      expect(contentSelectionHeading).toBeInTheDocument()
-    }, 6000)
+    fireEvent.click(yogaBtn)
+
+    const skipVideoBtn = await waitFor(() => getByRole('button', { name: /skip video/i }))
+
+    fireEvent.click(skipVideoBtn)
+
+    const moodRating2 = getByRole('button', { name: /5 out of 5/ })
+    const moodSubmitButton2 = getByRole('button', { name: /submit/i })
+
+    fireEvent.click(moodRating2)
+    fireEvent.click(moodSubmitButton2)
+    
+    expect(postSession).toBeCalled()
+    expect(postSession).toBeCalledWith({
+      moodRating1: "1",
+      moodRating2: "5",
+      contentSelected: "MOVEMENT",
+      //we expect timer to return 0 for focusInterval when skipped immediately
+      focusInterval: "0.00",
+      restInterval: "5"
+    })
   })
-
-    // it.only('should allow a user to select content when the timer runs down, watch the full video, and be taken back to the timer view', async () => {
-  //   getSettings.mockResolvedValueOnce({
-  //     data: {
-  //       id: 1,
-  //       rest_interval: '5',
-  //       work_interval: '30',
-  //     }
-  //   })
-
-  //   getRandomContent.mockResolvedValue({
-  //     data: {
-  //       category: "SomaticCategory.SOMATIC",
-  //       duration: "5:00",
-  //       id: 1,
-  //       url: "https://www.youtube.com/watch?v=dsmfIAyiois"
-  //     }
-  //   })
-
-  //   const { getByRole } = render(
-  //     <MemoryRouter>
-  //       <SettingsProvider>
-  //         <ViewProvider>
-  //           <VideoProvider>
-  //             <App />
-  //           </VideoProvider>
-  //         </ViewProvider>
-  //       </SettingsProvider>
-  //     </MemoryRouter>
-  //   )
-
-  //   const skipIcon = await waitFor(() => getByRole('button', { name: /skip/i }))
-
-  //   fireEvent.click(skipIcon)
-
-  //   const yogaBtn = getByRole('button', { name: /yoga\/movement/i })
-
-  //   fireEvent.click(yogaBtn)
-
-  //   const videoHeading = await waitFor(() => getByRole('heading', { name: /enjoy your break!/i }))
-
-    // const timerHeading = getByRole('heading', { name: /click ▶ to begin focusing/i })
-
-    // expect(timerHeading).toBeInTheDocument()
-  // })
 })

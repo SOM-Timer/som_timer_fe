@@ -6,6 +6,7 @@ import '@testing-library/jest-dom'
 import CountdownTimer from './CountdownTimer'
 import { SettingsProvider } from '../../Context/SettingsContext'
 import { ViewProvider } from '../../Context/ViewContext'
+import { SessionProvider } from '../../Context/SessionContext'
 import { getSettings } from '../../apiCalls'
 jest.mock('../../apiCalls.js')
 
@@ -24,7 +25,9 @@ describe('CountdownTimer', () => {
     const { getByRole } = render(
       <SettingsProvider>
         <ViewProvider>
-          <CountdownTimer />
+          <SessionProvider>
+            <CountdownTimer />
+          </SessionProvider>
         </ViewProvider>
       </SettingsProvider>
     )
@@ -54,7 +57,9 @@ describe('CountdownTimer', () => {
     const { getByRole } = render(
       <SettingsProvider>
         <ViewProvider>
-          <CountdownTimer />
+          <SessionProvider>
+            <CountdownTimer />
+          </SessionProvider>
         </ViewProvider>
       </SettingsProvider>
     )

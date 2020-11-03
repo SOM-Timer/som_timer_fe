@@ -5,6 +5,7 @@ import ContentDelivery from '../ContentDelivery/ContentDelivery'
 import CountdownTimer from '../CountdownTimer/CountdownTimer'
 import ContentSelection from '../ContentSelection/ContentSelection'
 import style from './HomeContainer.module.scss'
+import MoodRating from '../MoodRating/MoodRating'
 
 const HomeContainer = () => {
   const [ view ] = useContext(ViewContext)
@@ -13,13 +14,16 @@ const HomeContainer = () => {
     <div className={style.HomeContainer}>
       <VideoProvider>
         { view === 'timer' &&  
-          <CountdownTimer/>
+          <CountdownTimer />
         }
         { view === 'content-selection' &&
           <ContentSelection/>
         }
         { view === 'content-delivery' && 
           <ContentDelivery />
+        }
+        { (view === 'mood-rating-1' || view === 'mood-rating-2') && 
+          <MoodRating />
         }
       </VideoProvider>  
     </div>

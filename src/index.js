@@ -4,6 +4,7 @@ import './index.scss';
 import App from './Components/App/App';
 import { ViewProvider } from './Context/ViewContext'
 import { SettingsProvider } from './Context/SettingsContext'
+import { SessionProvider } from './Context/SessionContext'
 import { BrowserRouter as Router } from 'react-router-dom'
 import * as serviceWorker from './serviceWorker';
 
@@ -11,7 +12,9 @@ ReactDOM.render(
   <Router>
     <SettingsProvider>
       <ViewProvider>
-        <App />
+        <SessionProvider>
+          <App />
+        </SessionProvider>
       </ViewProvider>
     </SettingsProvider>
   </Router>,
