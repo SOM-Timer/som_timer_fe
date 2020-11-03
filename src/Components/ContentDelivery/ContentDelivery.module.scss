@@ -43,25 +43,6 @@
   }
 }
 
-//modal
-.workMsgModal {
-  position: fixed;
-  z-index: 1;
-  left: 0;
-  top: 0; 
-  width: 100%;
-  height: 100%; 
-  text-align: center;
-}
-
-.modalContent {
-  background-color: $lightBlueAccent;
-  margin: 20% auto;
-  padding: 1em; 
-  border: 1px solid $midBlue;
-  width: 30%; 
-}
-
 @media screen and (max-width: 992px) {
   .videoWrapper {
     @include size(42em, 24em);
