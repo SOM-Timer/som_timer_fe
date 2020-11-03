@@ -13,18 +13,18 @@ export const displayNotification = () => {
   if (Notification.permission === 'granted') {
     navigator.serviceWorker.getRegistration().then(reg => {
       const options = {
-        body: 'Return to Som Timer to choose your break content',
+        body: 'Choose your break content on Som Timer',
         icon: '/favicon.ico',
-        vibrate: [100, 50, 100],
+        vibrate: [300, 300, 300],
         data: {
           dateOfArrival: Date.now(),
           primaryKey: 999
         },
         actions: [
-          { action: 'close', title: 'Close the notification', icon: '' }
+          { action: 'close', title: 'Close notification', icon: '' }
         ]
       }
-      reg.showNotification('Focus Interval Complete', options)
+      reg.showNotification('Time\'s up!', options)
     })
   }
 }
