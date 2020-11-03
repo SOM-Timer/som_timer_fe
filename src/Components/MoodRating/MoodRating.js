@@ -2,7 +2,6 @@ import React, { useState, useContext } from 'react'
 import style from './MoodRating.module.scss'
 import { ViewContext } from '../../Context/ViewContext'
 import { SessionContext } from '../../Context/SessionContext'
-import { postSession } from '../../apiCalls'
 import moodIcon1 from '../../assets/moodIcons/moodIcon1.png'
 import moodIcon2 from '../../assets/moodIcons/moodIcon2.png'
 import moodIcon3 from '../../assets/moodIcons/moodIcon3.png'
@@ -17,26 +16,22 @@ const MoodRating = () => {
 
   const rateMood = (event) => {
     setMoodRating(event.target.name)
-    if (view === 'mood-rating-1') {
-      setSession({
-        ...session,
-        moodRating1: event.target.name
-      })
-    } else if (view === 'mood-rating-2') {
-      setSession({
-        ...session,
-        moodRating2: event.target.name
-      })
-    }
     setError(false)
   }
 
   const recordMood = () => {
     if (view === 'mood-rating-1') {
+      setSession({
+        ...session,
+        moodRating1: moodRating
+      })
       setView('content-selection')
     } else if (view === 'mood-rating-2') {
-      setView('timer')
-      postSession(session)
+      setSession({
+        ...session,
+        moodRating2: moodRating
+      })
+      setView('focus-modal')
     }
   }
 
@@ -45,7 +40,7 @@ const MoodRating = () => {
     if(!moodRating) {
       setError(true)
     } else {
-      recordMood()
+      recordMood(event)
     }
   }
 
