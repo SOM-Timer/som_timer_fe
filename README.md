@@ -3,7 +3,7 @@
 [![Issues][issues-shield]][issues-url]
 [![Issues][issues-closed-shield]][issues-closed-url]
 
-<div align="center"><img src="src/assets/readme-gifs/SomaticDark.png" alt="woman sitting in meditation pose" height="150px"/></div>
+<div align="center"><img src="src/assets/readme-gifs/SomaticDark.png" alt="human head with arrows pointing to body" height="150px"/></div>
 
 # <div align="center">Som Timer</div>
 
@@ -17,7 +17,7 @@ This application was created as our capstone project for the Front End Engineeri
 
 - [Installation Instructions](#installation-instructions)
 - [Project in Action](#project-in-action)
-- [Tech Stack](#tech-stack-&-external-libraries)
+- [Tech Stack](#tech-stack--external-libraries)
 - [Future Directions](#future-directions)
 - [Back End Information](#back-end-information)
 - [Contributors](#contributors)
@@ -33,34 +33,52 @@ If you would like to install the repos locally instead of visiting the deployed 
 
 #### Timer Cycle Part 1
 Users can set a timer for a focus interval and then be served wellness content from their selected category during breaks. 
+
+
 ![timer cycle 1](src/assets/readme-gifs/timer-cycle-1.gif)
+
 
 #### Timer Cycle Part 2
 After the break content is complete, users return to the focus interval timer. Mood is also rated before and after the break content. 
 
+
 ![timer cycle 2](src/assets/readme-gifs/timer-cycle-2.gif)
+
 
 #### Mood Selection
 When users visit our mood selection screen, they are met with a pleasing aesthetic and visual indications of their interaction with the form. Any time a face is clicked on, the others fade away a bit. If a user attempts to click the submit button without selecting a face, they receive a warning message.
 
+
 ![mood selection](src/assets/readme-gifs/MoodSelection1.gif)
+
 
 #### Changing Settings
 Users can customize their focus and break intervals, as well as the audio clip that will be used to notify them when the focus interval has ended. 
+
+
 ![changing settings](src/assets/readme-gifs/changeTimerSettings.gif)
+
 
 #### Dynamic Timer Settings
 On the main timer view, the heading will change based on whether the user has not yet begun the timer, it is playing, or if it is paused.
 
+
 ![dynamic timer settings](src/assets/readme-gifs/dynamicTimerMessages.gif)
+
 
 #### 404 Page
 If users visit a url they shouldn't, they receive a 404 screen.
+
+
 ![404 page](src/assets/readme-gifs/404-page.png)
+
 
 #### About Page
 When users visit the About Page, they receive information about our application, the pomodoro technique, and the contributors.
+
+
 ![About page](src/assets/readme-gifs/aboutPage.gif)
+
 
 ## Tech Stack & External Libraries
 - React
