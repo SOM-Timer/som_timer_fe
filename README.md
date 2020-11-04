@@ -3,7 +3,11 @@
 [![Issues][issues-shield]][issues-url]
 [![Issues][issues-closed-shield]][issues-closed-url]
 
-# Som Timer
+<div align="center"><img src="src/assets/content/meditationContentIcon.png" alt="woman sitting in meditation pose" height="30px"/>
+<img src="src/assets/content/somaticContentIcon.png" alt="human head with arrows connecting to body" height="30px"/>
+<img src="src/assets/content/yogaContentIcon.png" alt="woman in warrior yoga pose" height="30px"/></div>
+
+# <div align="center">Som Timer</div>
 
 Som Timer is a timer that cares. Based on the Pomodoro technique™️, this application provides users with curated wellness content during break intervals. Build in rest, so you can focus best.
 
