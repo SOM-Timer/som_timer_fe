@@ -26,11 +26,34 @@ const About = () => {
           <div className={style.line}></div>
           <p>
             Mindfulness meditation and other somatic exercises have been linked
-            to enhanced productivity, boosted mental health, and stress
-            reduction. To encourage this state of mind and take the guesswork
-            out of your breaks, Som Timer provides mindfulness-related content
-            for you during your break intervals, so you can get back to work
-            feeling refreshed, calm, and ready to tackle the next task.
+            to{" "}
+            <a
+              href="https://zapier.com/blog/mindfulness-and-productivity/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              enhanced productivity
+            </a>
+            , boosted{" "}
+            <a
+              href="https://www.mentalhealth.org.uk/a-to-z/m/mindfulness"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              mental health
+            </a>
+            , and{" "}
+            <a
+              href="https://www.ncbi.nlm.nih.gov/books/NBK70854/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              stress reduction
+            </a>
+            . To encourage this state of mind and take the guesswork out of your
+            breaks, Som Timer provides mindfulness-related content for
+            you during your break intervals, so you can get back to work feeling
+            refreshed, calm, and ready to tackle the next task.
           </p>
           <p className={style.disclaimer}>
             This timer is not affiliated with, associated with, or endorsed by
