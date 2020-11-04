@@ -22,9 +22,9 @@ const CountdownTimer = () => {
   }
 
   const [ settings ] = useContext(SettingsContext)
-  const [ view, setView ] = useContext(ViewContext)
-  const [session, setSession] = useContext(SessionContext)
-
+  const setView = useContext(ViewContext)[1]
+  const [ session, setSession ] = useContext(SessionContext)
+  
   const recordFocusInterval = (interval) => {
     setSession({
       ...session,

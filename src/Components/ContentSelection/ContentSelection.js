@@ -10,8 +10,8 @@ import meditationContentIcon from '../../assets/content/meditationContentIcon.pn
 import yogaContentIcon from '../../assets/content/yogaContentIcon.png'
 
 const ContentSelection = () => {
-  const [ view, setView ] = useContext(ViewContext)
-  const [ videoLink, setVideoLink ] = useContext(VideoContext)
+  const setView = useContext(ViewContext)[1]
+  const setVideoLink = useContext(VideoContext)[1]
   const [ settings ] = useContext(SettingsContext)
   const [ session, setSession ] = useContext(SessionContext)
 

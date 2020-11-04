@@ -8,7 +8,7 @@ import { SessionContext } from '../../Context/SessionContext'
 
 const ContentDelivery = () => {
   const [ videoLink ] = useContext(VideoContext)
-  const [ view, setView ] = useContext(ViewContext)
+  const setView = useContext(ViewContext)[1]
   const [ settings ] = useContext(SettingsContext)
   const [ session, setSession ] = useContext(SessionContext)
 
