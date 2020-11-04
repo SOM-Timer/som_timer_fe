@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext } from 'react'
 import style from './ContentDelivery.module.scss'
 import ReactPlayer from 'react-player'
 import { VideoContext } from '../../Context/VideoContext'
