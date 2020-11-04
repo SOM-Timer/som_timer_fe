@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import { SettingsContext } from '../../Context/SettingsContext'
 import { ViewContext } from '../../Context/ViewContext'
 import { SessionContext } from '../../Context/SessionContext'
@@ -16,14 +16,10 @@ import skipTimerIcon from '../../assets/timer/skipTimerIcon.png'
 import resetTimerIcon from '../../assets/timer/resetTimerIcon.png'
 
 const CountdownTimer = () => {
-  const toastNotify = () => { 
-    toast.dark('⌛️ Time\'s up! ⌛️', {
-    })
-  }
-
   const [ settings ] = useContext(SettingsContext)
   const setView = useContext(ViewContext)[1]
   const [ session, setSession ] = useContext(SessionContext)
+  const [ focusMessage, setFocusMessage ] = useState('Click ▶ to Begin Focusing')
   
   const recordFocusInterval = (interval) => {
     setSession({
@@ -36,6 +32,11 @@ const CountdownTimer = () => {
     })
   }
   
+  const toastNotify = () => { 
+    toast.dark('⌛️ Time\'s up! ⌛️', {
+    })
+  }
+
   const timerDone = () => {
     setView('mood-rating-1')
     if (!('Notification' in window) || Notification.permission !== 'granted') {
@@ -49,7 +50,7 @@ const CountdownTimer = () => {
 
   return (
     <div className={style.countdownTimer}>
-      <h2 className={style.prompt}>Click ▶ to Begin Focusing</h2>
+      <h2 className={style.prompt}>{focusMessage}</h2>
       <Timer
         direction="backward"
         initialTime={settings.workInterval * 60000}
@@ -116,7 +117,10 @@ const CountdownTimer = () => {
                 <button
                   className={style.timerControlButton}
                   aria-label="start"
-                  onClick={start}
+                  onClick={() => {
+                    start()
+                    setFocusMessage('Stay focused, you got this!')
+                  }}
                 >
                   <img
                     className={style.playTimerControlIcon}
@@ -129,7 +133,10 @@ const CountdownTimer = () => {
                 <button
                   className={style.timerControlButton}
                   aria-label="pause"
-                  onClick={pause}
+                  onClick={() => {
+                    pause()
+                    setFocusMessage('Click ▶ to Continue Focusing');
+                  }}
                 >
                   <img
                     className={style.pauseTimerControlIcon}
@@ -143,6 +150,7 @@ const CountdownTimer = () => {
                 aria-label="reset"
                 onClick={() => {
                   pause()
+                  setFocusMessage('Click ▶ to Begin Focusing')
                   setTime(settings.workInterval * 60000)
                 }}
               >
