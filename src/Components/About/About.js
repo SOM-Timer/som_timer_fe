@@ -23,6 +23,7 @@ const About = () => {
             Timer believe that what you do on your breaks is just as important
             as the decision to take those breaks.{" "}
           </p>
+          <div className={style.line}></div>
           <p>
             Mindfulness meditation and other somatic exercises have been linked
             to enhanced productivity, boosted mental health, and stress
