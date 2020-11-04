@@ -1,10 +1,19 @@
-import React, { useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import style from './Stats.module.scss'
+import { getAllSessions } from '../../apiCalls'
 
 const Stats = ({ toggleTimerView }) => {
-  useEffect(() => toggleTimerView(true))
-  
+  const [ sessionsLog, setSessionLog ] = useState(null)
+
+  useEffect(() => {
+    toggleTimerView(true)
+    getAllSessions()
+    .then(results => results.data.rests)
+    .then(rests => setSessionLog(rests))
+    .catch(error => console.log(error))
+  })
+
   return (
     <article>
       <h2 className={style.prompt}>
