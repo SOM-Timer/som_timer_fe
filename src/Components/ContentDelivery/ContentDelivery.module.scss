@@ -14,11 +14,6 @@
   margin: 1em; 
 }
 
-.videoSectionModal {
-  @extend .videoSection;
-  -webkit-filter: blur(5px) grayscale(50%);
-}
-
 .videoWrapper {
   @include size(60em, 34em);
 }
