@@ -32,11 +32,6 @@ const CountdownTimer = () => {
     }
     playAlertSound(settings.sound)
   }
-  
-  // const timerColorChange = () => {
-  //   const circlePath = document.getElementById('base-timer-path-remaining')
-  //   circlePath.style.animation = `countDown ${settings.workInterval * 60} linear`
-  // }
 
   return (
     <div className={style.countdownTimer}>
