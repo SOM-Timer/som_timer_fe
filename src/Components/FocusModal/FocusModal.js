@@ -9,7 +9,7 @@ const FocusModal = () => {
   const session = useContext(SessionContext)[0] 
 
   useEffect(() => {
-    setTimeout(() => setView('timer'), 2000)
+    setTimeout(() => setView('timer'), 3000)
     postSession(session)
   })
 
