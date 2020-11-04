@@ -33,6 +33,7 @@ const ContentSelection = () => {
         setVideoLink(videoLink)
       })
       .catch(err => {
+        setVideoLink('https://www.youtube.com/watch?v=4C-gxOE0j7s')
         if (err.response) {
           console.log(err.response)
         }
