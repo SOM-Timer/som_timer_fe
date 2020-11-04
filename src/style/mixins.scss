@@ -8,3 +8,11 @@
   border-radius: $radius;
   box-shadow: $shadow; 
 }
+
+@mixin line() {
+  height: 1px;
+  width: 70%;
+  border-radius: 50%;
+  margin: .7em auto .7em;
+  background-color: rgba(216, 216, 216, 0.664);
+}

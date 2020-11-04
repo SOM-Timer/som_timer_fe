@@ -25,8 +25,8 @@ describe('ContentDelivery component', () => {
       </BrowserRouter>
     )
 
-    const breakTitle = getByRole('heading', { name: 'Enjoy Your Break!'})
-    const skipBtn = getByRole('button', { name: 'Skip video' })
+    const breakTitle = getByRole('heading', { name: /enjoy your break/i })
+    const skipBtn = getByRole('button', { name: /skip break/i })
 
     expect(breakTitle).toBeInTheDocument()
     expect(skipBtn).toBeInTheDocument()

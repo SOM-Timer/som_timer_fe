@@ -10,7 +10,7 @@ describe('About', () => {
 
     const aboutHeading = getByRole('heading', { name: /about som timer/i })
     const appDescription1 = getByText(/fight cognitive boredom and burnout/i)
-    const appDescription2 = getByText(/mindfulness meditation and other somatic exercises have been linked to enhanced productivity/i)
+    const appDescription2 = getByText(/mindfulness meditation and other somatic exercises have been linked to/i)
     const appDescription3 = getByText(/this timer is not affiliated with, associated with, or endorsed by the Pomodoro Technique® or its creator, Francesco Cirillo\./i)
     const frontEndHeading = getByRole('heading', { name: /front end engineers:/i })
     const frontEndEngineer1 = getByText(/aaron burris-deboskey/i)

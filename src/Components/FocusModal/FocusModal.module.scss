@@ -14,6 +14,7 @@
 .modalContent {
   @include size(250px, 40px);
   background-color: $lightBlueAccent;
+  height: fit-content;
   margin: 20% auto;
   padding: 1em; 
   border: 1px solid $midBlue;

@@ -42,9 +42,9 @@ describe('MoodRating', () => {
       </ViewProvider>
     )
 
-    const submitButton = getByRole('button', { name: /Submit/ })
+    const submitButton = getByRole('button', { name: /submit/i })
     fireEvent.click(submitButton)
-    const errorMessage = getByText(/please select an option above to continue/i)
+    const errorMessage = getByText(/please select one of the faces above to continue!/i)
 
     expect(errorMessage).toBeInTheDocument()
   })
@@ -58,9 +58,9 @@ describe('MoodRating', () => {
       </ViewProvider>
     )
 
-    const submitButton = getByRole('button', { name: /Submit/ })
+    const submitButton = getByRole('button', { name: /submit/i })
     fireEvent.click(submitButton)
-    const errorMessage = getByText(/please select an option above to continue/i)
+    const errorMessage = getByText(/please select one of the faces above to continue!/i)
     
     expect(errorMessage).toBeInTheDocument()
 

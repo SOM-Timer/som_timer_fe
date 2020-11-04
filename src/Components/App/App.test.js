@@ -48,7 +48,7 @@ describe('App', () => {
     const statsIcon = getByAltText('stats icon')
     fireEvent.click(statsIcon)
 
-    const statsHeading = getByRole('heading', { name: /⏳ stats page coming soon! ⏳/i })
+    const statsHeading = getByRole('heading', { name: /stats page coming soon!/i })
 
     expect(statsHeading).toBeInTheDocument()
 
@@ -144,7 +144,7 @@ describe('App', () => {
 
     fireEvent.click(skipIcon)
 
-    const moodRatingHeading = getByRole('heading', { name: /please select a face below/i })
+    const moodRatingHeading = getByRole('heading', { name: /how are you feeling right now?/i })
 
     expect(moodRatingHeading).toBeInTheDocument()
   })
@@ -394,11 +394,11 @@ describe('App', () => {
 
     fireEvent.click(yogaBtn)
 
-    const skipVideoBtn = await waitFor(() => getByRole('button', { name: /skip video/i }))
+    const skipVideoBtn = await waitFor(() => getByRole('button', { name: /skip break/i }))
 
     fireEvent.click(skipVideoBtn)
 
-    const moodHeading = getByRole('heading', { name: /please select a face below/i })
+    const moodHeading = getByRole('heading', { name: /how are you feeling right now?/i })
 
     expect(moodHeading).toBeInTheDocument()
   })
@@ -459,7 +459,7 @@ describe('App', () => {
 
     fireEvent.click(yogaBtn)
 
-    const skipVideoBtn = await waitFor(() => getByRole('button', { name: /skip video/i }))
+    const skipVideoBtn = await waitFor(() => getByRole('button', { name: /skip break/i }))
 
     fireEvent.click(skipVideoBtn)
 
@@ -469,7 +469,7 @@ describe('App', () => {
     fireEvent.click(moodRating2)
     fireEvent.click(moodSubmitButton2)
     
-    const modalText = getByRole('heading', { name: /time to focus/i })
+    const modalText = getByRole('heading', { name: /get ready to focus/i })
 
     expect(modalText).toBeInTheDocument()
     expect(postSession).toBeCalled()

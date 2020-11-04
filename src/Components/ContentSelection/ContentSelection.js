@@ -10,8 +10,8 @@ import meditationContentIcon from '../../assets/content/meditationContentIcon.pn
 import yogaContentIcon from '../../assets/content/yogaContentIcon.png'
 
 const ContentSelection = () => {
-  const [ view, setView ] = useContext(ViewContext)
-  const [ videoLink, setVideoLink ] = useContext(VideoContext)
+  const setView = useContext(ViewContext)[1]
+  const setVideoLink = useContext(VideoContext)[1]
   const [ settings ] = useContext(SettingsContext)
   const [ session, setSession ] = useContext(SessionContext)
 
@@ -33,6 +33,7 @@ const ContentSelection = () => {
         setVideoLink(videoLink)
       })
       .catch(err => {
+        setVideoLink('https://www.youtube.com/watch?v=4C-gxOE0j7s')
         if (err.response) {
           console.log(err.response)
         }

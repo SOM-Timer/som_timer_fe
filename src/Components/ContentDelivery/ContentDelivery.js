@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext } from 'react'
 import style from './ContentDelivery.module.scss'
 import ReactPlayer from 'react-player'
 import { VideoContext } from '../../Context/VideoContext'
@@ -8,7 +8,7 @@ import { SessionContext } from '../../Context/SessionContext'
 
 const ContentDelivery = () => {
   const [ videoLink ] = useContext(VideoContext)
-  const [ view, setView ] = useContext(ViewContext)
+  const setView = useContext(ViewContext)[1]
   const [ settings ] = useContext(SettingsContext)
   const [ session, setSession ] = useContext(SessionContext)
 
@@ -34,8 +34,8 @@ const ContentDelivery = () => {
             url={videoLink}
             playing={false}
             controls={true}
-            width="90%"
-            height="90%"
+            width="100%"
+            height="100%"
             onEnded={handleEnded}
           />
         </div>
@@ -46,7 +46,7 @@ const ContentDelivery = () => {
             recordBreakInterval()
           }}
         >
-          Skip video
+          Skip Break
         </button>
       </section>
     </>       

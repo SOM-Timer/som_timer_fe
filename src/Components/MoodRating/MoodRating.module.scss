@@ -1,9 +1,14 @@
 @import '../../style/mixins.scss';
 @import '../../style/variables.scss';
 
+.prompt {
+  margin: 2.4em auto;
+}
+
 .moodRatingButton {
   @include size(100px, 100px);
   border-radius: 50%;
+  margin: 5px;
   color: white;
   font-family: $primaryFont;
   font-weight: 700;
@@ -18,17 +23,18 @@
 
 .moodRatingSubmit {
   @include size(90px, 50px);
-  background-color: $midBlue;
+  background: radial-gradient($midBlue, #7987a1ab);
   color: $white;
   font-family: $primaryFont;
   font-weight: 700;
   font-size: 20px;
-  box-shadow: 0px 0px 10px 1px $darkBlue;
+  box-shadow: 0px 0px 10px $darkBlue, inset 0px 0px 5px rgba(0, 0, 0, 0.239);
   border: none;
   border-radius: 0.5em;
 
   &:hover {
     background-color: $darkBlue;
+    box-shadow: 0px 0px 30px $lightBlueAccent, inset 0px 0px 5px rgba(0, 0, 0, 0.239);
     cursor: pointer;
   }
 }
@@ -50,6 +56,10 @@
   margin-top: 0.8em;
 }
 
+.unselected {
+  filter: opacity(50%) grayscale(50%);
+}
+
 .errorContainer {
   height: 80px;
 }
@@ -69,20 +79,40 @@
 
 .moodRating1 {
   background-color: #9A031E;
+  outline-color: #9A031E;
 }
 
 .moodRating2 {
   background-color: #DF6407;
+  outline-color: #DF6407;
 }
 
 .moodRating3 {
   background-color: #DFAC07;
+  outline-color: #DFAC07;
 }
 
 .moodRating4 {
   background-color: #55A630;
+  outline-color: #55A630;
 }
 
 .moodRating5 {
   background-color: #007F5F;
+  outline-color: #007F5F;
+}
+
+@media screen and (max-width: 688px) {
+  .facesContainer {
+    flex-direction: column-reverse;
+    margin: 5px;
+  }
+
+  .moodRatingSubmit {
+    margin-bottom: 2em;
+  }
+
+  .moodRatingButton {
+    @include size(80px, 80px)
+  }
 }

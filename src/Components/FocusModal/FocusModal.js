@@ -9,14 +9,15 @@ const FocusModal = () => {
   const session = useContext(SessionContext)[0] 
 
   useEffect(() => {
-    setTimeout(() => setView('timer'), 2000)
+    setTimeout(() => setView('timer'), 3000)
     postSession(session)
   })
 
   return (
     <div className={style.workMsgModal}>
       <h2 className={style.modalContent}>
-        Time to focus again!
+        You're doing great.<br/>
+        Get ready to focus. 
       </h2>
     </div>)
 }

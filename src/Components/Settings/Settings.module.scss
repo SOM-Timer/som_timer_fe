@@ -8,17 +8,22 @@
   width: 500px;
   margin: 4em auto;
   background: $darkBlue;
-  color: #F8F8FF;
+  color: #f8f8ff;
   border-radius: 1em;
-  box-shadow: 0 0 20px 1px $darkBlue;
+  box-shadow: $divShadow;
   padding: 15px 15px 30px 15px;
 }
 
 .settingsHeader {
+  font-size: 1.7em;
   text-align: center;
-  margin: .7em 0 1em;
+  margin: .7em 0;
   letter-spacing: 2px;
   filter: drop-shadow(0px 0px 1.5px  $salmonHover);
+}
+
+.line {
+  @include line();
 }
 
 .intervalContainer {
@@ -28,7 +33,8 @@
 }
 
 .intervalLabel {
-  margin-right: .5em
+  margin-right: .5em;
+  letter-spacing: 1px;
 }
 
 .minutesInput {
@@ -57,11 +63,12 @@
 .saveAutomatically {
   margin-top: 1.6em;
   text-shadow: 0px 0px 2px;
+  letter-spacing: 1px;
 }
 
 @media screen and (max-width: 688px) {
   .settingsContainer {
-    @include size(300px, 300px);
+    @include size(300px, 400px);
     justify-content: flex-start;
   }
 

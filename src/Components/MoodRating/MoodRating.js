@@ -17,6 +17,7 @@ const MoodRating = () => {
   const [ session, setSession ] = useContext(SessionContext)
 
   const rateMood = (event) => {
+    selectFace(event)
     setMoodRating(event.target.name)
     setError(false)
   }
@@ -37,6 +38,17 @@ const MoodRating = () => {
     }
   }
 
+  const selectFace = event => {
+    const faces = event.target.parentNode.parentNode.children
+    for (let i = 0; i < faces.length; i++) {
+      if (faces[i].name !== event.target.name) {
+        faces[i].classList.add(style.unselected)
+      } else {
+        faces[i].classList.remove(style.unselected)
+      } 
+    }
+  }
+
   const checkSubmit = (event) => {
     event.preventDefault()
     if(!moodRating) {
@@ -49,7 +61,7 @@ const MoodRating = () => {
   return (
     <>
       <section className={!sessionComplete ? style.moodRatingContainer : style.moodRatingModal}>
-        <h2>Please select a face below to indicate how you are feeling</h2>
+        <h2 className={style.prompt}>How are you feeling right now?</h2>
         <form onSubmit={checkSubmit}>
           <div className={style.facesContainer}>
             <button 
@@ -64,7 +76,8 @@ const MoodRating = () => {
                 src={moodIcon1} 
                 alt="Unhappy face"
                 name={1}
-              /> 
+                aria-label="Rate mood 1 out of 5"
+              />
             </button>
             <button 
               type='button'
@@ -127,8 +140,8 @@ const MoodRating = () => {
             {error && <p className={style.errorMessage}>
               <span role='img' alt='Error sign'>
                 ⚠
-              </span>
-              Please select an option above to continue! 
+              </span>{" "}
+              Please select one of the faces above to continue!{" "}
               <span role='img' alt='Error sign'>
                 ⚠
               </span>
@@ -142,7 +155,7 @@ const MoodRating = () => {
           </button>
         </form>
       </section>
-      {sessionComplete && <FocusModal />}
+        {sessionComplete && <FocusModal />}
     </>
   )
 }

@@ -24,10 +24,11 @@ const Settings = () => {
   return (
     <div className={style.settingsContainer}>
       <h2 className={style.settingsHeader}>Settings</h2>
+      <div className={style.line}></div>
       <div className={style.intervalContainer}>
-        <p className={style.intervalLabel}>Select your work interval:</p>
+        <p className={style.intervalLabel}>Select your focus interval:</p>
         <input
-          type='number'
+          type="number"
           min={0}
           max={240}
           id='workInterval'
@@ -35,7 +36,7 @@ const Settings = () => {
           placeholder={settings.workInterval}
           onBlur={onChange}
           className={style.minutesInput}
-          data-testid='workInterval'
+          data-testid="workInterval"
         />
         <p>minutes</p>
       </div>
@@ -55,14 +56,15 @@ const Settings = () => {
         </select>
         <p>minutes</p>
       </div>
+      <div className={style.line}></div>
       <div className={style.intervalContainer}>
         <p className={style.intervalLabel}>Select your alert sound:</p>
         <select
           onChange={onChange}
           className={style.breakIntervalDropdown}
-          name='Sound'
-          id='sound'
-          data-testid='sound'
+          name="Sound"
+          id="sound"
+          data-testid="sound"
           value={settings.sound}
         >
           <option value={'reverbSplash'}>Reverb Splash</option>
@@ -73,9 +75,18 @@ const Settings = () => {
           <option value={'birdChord'}>Bird Chord</option>
         </select>
       </div>
-      <p className={style.saveAutomatically}>✨ Settings will save automagically ✨</p>
+      <div className={style.line}></div>
+      <p className={style.saveAutomatically}>
+        <span role="img" alt="sparkle emoji" aria-label="sparkle emoji">
+          ✨
+        </span>{" "}
+        Settings will save automagically{" "}
+        <span role="img" alt="sparkle emoji" aria-label="sparkle emoji">
+          ✨
+        </span>
+      </p>
     </div>
-  )
+  );
 }
 
 export default Settings
