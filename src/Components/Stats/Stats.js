@@ -5,23 +5,27 @@ import { getAllSessions } from '../../apiCalls'
 import { PieChart } from 'react-minimal-pie-chart'
 
 const Stats = ({ toggleTimerView }) => {
-  const [sessionsLog, setSessionLog] = useState({
-    count: 0,
-    sessions: []
-  })
+  const [ sessionLog, setSessionLog ] = useState([])
   const [ pieChartData, setPieChartData ] = useState([])
+  const [ frequencyStatistics, setFrequencyStatistics ] = useState({
+    sessionCount: 0,
+    averageFocusInterval: 0,
+    averageRestInterval: 0
+  })
 
   useEffect(() => {
     toggleTimerView(true)
     getAllSessions()
     .then(results => results.data)
     .then(results => {
-      setSessionLog({
-        ...sessionLog,
-        count: results.count,
-        sessions: results.rests
-      })
+      setSessionLog(results.rests)
       createPieChart(results.rests)
+      setFrequencyStatistics({
+        ...frequencyStatistics,
+        sessionCount: results.count,
+        averageFocusInterval: getAverageInterval('focus_interval', results.rests),
+        averageRestInterval: getAverageInterval('rest_interval', results.rests)
+      })
     })
     .catch(error => console.log(error))
   }, [])
@@ -46,6 +50,20 @@ const Stats = ({ toggleTimerView }) => {
     }
 
     return setPieChartData(newPieChartData)
+  }
+
+  const getAverageInterval = (intervalType, sessions) => {
+    let intervalSum = sessions.reduce((sum, session) => {
+      if (session[intervalType]) {
+        let num = parseFloat(session[intervalType])
+        console.log(num)
+        let newSum = sum + num
+        console.log(newSum)
+        return newSum
+      }
+    }, 0)
+
+    return intervalSum / sessions.length
   }
 
   return (
@@ -84,17 +102,17 @@ const Stats = ({ toggleTimerView }) => {
         <section className={style.frequencyModalsContainer}>
           <h3 className={style.frequencyModal}>
             You have completed
-            <h2 className={style.frequencyStatisticValue}>{sessionLog.count}</h2>
+            <h2 className={style.frequencyStatisticValue}>{frequencyStatistics.sessionCount}</h2>
             sessions
           </h3>
           <h3 className={style.frequencyModal}>
             Average focus interval
-            <h2 className={style.frequencyStatisticValue}>{sessionLog.count}</h2>
+            <h2 className={style.frequencyStatisticValue}>{frequencyStatistics.averageFocusInterval}</h2>
             in minutes
           </h3>
           <h3 className={style.frequencyModal}>
             Average rest interval
-            <h2 className={style.frequencyStatisticValue}>{sessionLog.count}</h2>
+            <h2 className={style.frequencyStatisticValue}>{frequencyStatistics.averageRestInterval.toFixed(2)}</h2>
             in minutes
           </h3>
         </section>
