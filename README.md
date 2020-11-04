@@ -1,3 +1,15 @@
+[![Build Status](https://travis-ci.org/SOM-Timer/som_timer_fe.svg?branch=main)](https://travis-ci.org/SOM-Timer/som_timer_fe) 
+
+## Table of Contents
+
+- [Brief Description](#brief-description)
+- [How to use](#how-to-use)
+- [Installation](#installation)
+- [Functionality](#functionality)
+- [Contributing](#contributing)
+- [Acknowledgements and Resources](#acknowledgements-and-resources)
+
+
 # Som Timer
 Som Timer is a timer that cares. Based on the Pomodoro technique™️, this application provides users with curated wellness content during break intervals. Build in rest, so you can focus best.
 
@@ -36,11 +48,17 @@ This current version of the app is just the beginning, and we would like to sign
 - Allow a user to upload content
   - In the vein of expanding customization, we would also like to give the user the ability to add new content to their personal library by uploading links from YouTube, Vimeo, SoundCloud, and other platforms. 
 
+## Back End Information
+
+[Back End Som Timer Repo](https://github.com/SOM-Timer/som_timer_be)  
+[Back End Som Timer Ruby Gem](https://github.com/SOM-Timer/som_timer_gem)
+
 ## Contributors
 Front End Developers
   - Aaron Burris-Deboskey: [GitHub](https://github.com/Abdeboskey) | [LinkedIn](https://www.linkedin.com/in/aaron-burris-deboskey/)
   - Jake West: [GitHub](https://github.com/jkwest-93) | [LinkedIn](https://www.linkedin.com/in/jake-west-3840b71b4/)
-  - Rachel Williams: [GitHub](https://github.com/rwilliams659) | [LinkedIn](https://www.linkedin.com/in/rachelsarahwilliams/)
+  - Rachel Williams: [GitHub](https://github.com/rwilliams659) | [LinkedIn](https://www.linkedin.com/in/rachelsarahwilliams/)  
+
 Back End Developers 
   - Chandler Hulstrom: [GitHub](https://github.com/Chulstro) | [LinkedIn](https://www.linkedin.com/in/chandler-hulstrom-34ab81150/)
   - Dorion: [GitHub](https://github.com/sciencefixion)
