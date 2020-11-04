@@ -42,33 +42,65 @@ const Stats = ({ toggleTimerView }) => {
   }
 
   return (
-    <article>
-      <h2 className={style.prompt}>
-        <span role="img" alt="hourglass emoji" aria-label="hourglass emoji">
-          ⏳
+    <> 
+      <div className={style.pieChart}>
+        <PieChart
+          data={
+            [
+              { title: 'Yoga', value: pieChartData.movementTotal, color: '#F4D2D0'},
+              { title: 'Meditation', value: pieChartData.meditationTotal, color: '#7987A1' },
+              { title: 'Somatics', value: pieChartData.somaticTotal, color: '#FFFFFF' },
+            ]
+          }
+          style={{ height: '250px' }}
+          lineWidth={60}
+          labelStyle={{ fontSize: '12px', fontWeight: '600' }}
+          label={({ dataEntry }) => Math.round(dataEntry.percentage) + '%'}
+          labelPosition={68}
+        />
+        <div className={style.pieChartLegend}>
+          <div className={style.labelContainer}>
+            <p className={style.legendLabel}>Somatic Exercises</p>
+            <div className={style.somaticLabelSwatch} />
+          </div>
+          <div className={style.labelContainer}>
+            <p className={style.legendLabel}>Yoga/Movement </p>
+            <div className={style.movementLabelSwatch} />
+          </div>
+          <div className={style.labelContainer}>
+            <p className={style.legendLabel}>Meditation/Breathwork</p>
+            <div className={style.meditationLabelSwatch} />
+
+          </div>
+        </div>
+      </div>
+      <article>
+        <h2 className={style.prompt}>
+          <span role="img" alt="hourglass emoji" aria-label="hourglass emoji">
+            ⏳
         </span>{" "}
         Stats Page Coming Soon!{" "}
-        <span role="img" alt="hourglass emoji" aria-label="hourglass emoji">
-          ⏳
+          <span role="img" alt="hourglass emoji" aria-label="hourglass emoji">
+            ⏳
         </span>
-      </h2>
-      <section className={style.statsDesc}>
-        <div className={style.line}></div>
-        <p>
-          <strong className={style.strong}>Check back soon</strong> for personal
+        </h2>
+        <section className={style.statsDesc}>
+          <div className={style.line}></div>
+          <p>
+            <strong className={style.strong}>Check back soon</strong> for personal
           stats, so you can see the positive impact Som Timer is having on your
           productivity and mental health. Stats will include data such as a log
           of pom cycles taken, mood and engagement tracking, and what types of
           content work best for you!
         </p>
-        <div className={style.line}></div>
-      </section>
-    </article>
-  );
+          <div className={style.line}></div>
+        </section>
+      </article>
+    </>
+  )
 }
 
 export default Stats
-
 Stats.propTypes = {
   toggleTimerView: PropTypes.func
 }
