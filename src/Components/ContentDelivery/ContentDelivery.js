@@ -34,8 +34,8 @@ const ContentDelivery = () => {
             url={videoLink}
             playing={false}
             controls={true}
-            width="90%"
-            height="90%"
+            width="100%"
+            height="100%"
             onEnded={handleEnded}
           />
         </div>
@@ -46,7 +46,7 @@ const ContentDelivery = () => {
             recordBreakInterval()
           }}
         >
-          Skip video
+          Skip Break
         </button>
       </section>
     </>       
