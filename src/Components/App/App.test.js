@@ -469,7 +469,7 @@ describe('App', () => {
     fireEvent.click(moodRating2)
     fireEvent.click(moodSubmitButton2)
     
-    const modalText = getByRole('heading', { name: /time to focus/i })
+    const modalText = getByRole('heading', { name: /get ready to focus/i })
 
     expect(modalText).toBeInTheDocument()
     expect(postSession).toBeCalled()

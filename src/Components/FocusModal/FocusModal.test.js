@@ -16,7 +16,7 @@ describe('FocusModal', () => {
       </ViewProvider>
     )
 
-    const modalText = getByRole('heading', { name: /time to focus/i })
+    const modalText = getByRole('heading', { name: /get ready to focus/i })
 
     expect(modalText).toBeInTheDocument()
   })
