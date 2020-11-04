@@ -6,6 +6,8 @@ import Timer from 'react-compound-timer'
 import style from './CountdownTimer.module.scss'
 import playAlertSound from '../../helpers/audioHelper'
 import { displayNotification } from '../../helpers/notificationHelpers'
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 // Icons ---------->
 import playTimerIcon from '../../assets/timer/playTimerIcon.png'
@@ -14,10 +16,15 @@ import skipTimerIcon from '../../assets/timer/skipTimerIcon.png'
 import resetTimerIcon from '../../assets/timer/resetTimerIcon.png'
 
 const CountdownTimer = () => {
+  const toastNotify = () => { 
+    toast.dark('⌛️ Time\'s up! ⌛️', {
+    })
+  }
+
   const [ settings ] = useContext(SettingsContext)
   const [ view, setView ] = useContext(ViewContext)
-  const [ session, setSession ] = useContext(SessionContext)
-  
+  const [session, setSession] = useContext(SessionContext)
+
   const recordFocusInterval = (interval) => {
     setSession({
       ...session,
@@ -28,13 +35,18 @@ const CountdownTimer = () => {
       restInterval: null,
     })
   }
-
+  
   const timerDone = () => {
     setView('mood-rating-1')
+    if (!('Notification' in window) || Notification.permission !== 'granted') {
+      toastNotify()
+    } else {
+      displayNotification()
+    }
     playAlertSound(settings.sound)
     recordFocusInterval(settings.workInterval)
   }
-  
+
   return (
     <div className={style.countdownTimer}>
       <h2 className={style.prompt}>Click ▶ to Begin Focusing</h2>
@@ -48,7 +60,6 @@ const CountdownTimer = () => {
           {
             time: 0,
             callback: () => {
-              displayNotification()
               timerDone()
             },
           },
