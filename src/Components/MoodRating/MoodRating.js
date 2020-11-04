@@ -17,6 +17,7 @@ const MoodRating = () => {
   const [ session, setSession ] = useContext(SessionContext)
 
   const rateMood = (event) => {
+    selectFace(event)
     setMoodRating(event.target.name)
     setError(false)
   }
@@ -34,6 +35,17 @@ const MoodRating = () => {
         moodRating2: moodRating
       })
       setSessionComplete(true)
+    }
+  }
+
+  const selectFace = event => {
+    const faces = event.target.parentNode.parentNode.children
+    for (let i = 0; i < faces.length; i++) {
+      if (faces[i].name !== event.target.name) {
+        faces[i].classList.add(style.unselected)
+      } else {
+        faces[i].classList.remove(style.unselected)
+      } 
     }
   }
 
