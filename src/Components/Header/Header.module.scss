@@ -53,11 +53,11 @@
 .settingsButton {
   @extend .navButton;
   &:hover {
-    animation: infinite-spinning 3s ;
+    animation: spinning 3s ;
   }
 }
 
-@keyframes infinite-spinning {
+@keyframes spinning {
   from {
     transform: rotate(0deg);
   }
