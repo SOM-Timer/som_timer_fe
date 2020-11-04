@@ -24,7 +24,7 @@
   @include borderAndShadow(none, 1em, 0px 0px 20px 2px $midBlue);
   background-color: $midBlue; 
   background: radial-gradient($midBlue, #7987a1ab);
-  box-shadow: 0px 0px 20px $darkBlue, inset 0px 0px 5px rgba(0, 0, 0, 0.239);
+  box-shadow: $divShadow;
   padding: 2em; 
 }
 
@@ -40,6 +40,7 @@
   &:hover {
     background-color: $salmonHover;
     background: radial-gradient(#e9adaa, $salmon);
+    box-shadow: 0px 0px 30px $lightBlueAccent, inset 0px 0px 5px rgba(0, 0, 0, 0.239);
     text-shadow: 0px 0px 1px rgba(0, 0, 0, 0.239);
   }
 }
