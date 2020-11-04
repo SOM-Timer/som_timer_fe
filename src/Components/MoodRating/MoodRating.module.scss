@@ -57,7 +57,7 @@
 }
 
 .unselected {
-  filter: grayscale(100%);
+  filter: opacity(50%) grayscale(50%);
 }
 
 .errorContainer {
@@ -79,27 +79,33 @@
 
 .moodRating1 {
   background-color: #9A031E;
+  outline-color: #9A031E;
 }
 
 .moodRating2 {
   background-color: #DF6407;
+  outline-color: #DF6407;
 }
 
 .moodRating3 {
   background-color: #DFAC07;
+  outline-color: #DFAC07;
 }
 
 .moodRating4 {
   background-color: #55A630;
+  outline-color: #55A630;
 }
 
 .moodRating5 {
   background-color: #007F5F;
+  outline-color: #007F5F;
 }
 
 @media screen and (max-width: 688px) {
   .facesContainer {
     flex-direction: column-reverse;
+    margin: 5px;
   }
 
   .moodRatingSubmit {
