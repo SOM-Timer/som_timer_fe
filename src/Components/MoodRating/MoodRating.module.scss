@@ -8,6 +8,7 @@
 .moodRatingButton {
   @include size(100px, 100px);
   border-radius: 50%;
+  margin: 5px;
   color: white;
   font-family: $primaryFont;
   font-weight: 700;
@@ -55,6 +56,10 @@
   margin-top: 0.8em;
 }
 
+.unselected {
+  filter: grayscale(100%);
+}
+
 .errorContainer {
   height: 80px;
 }
@@ -90,4 +95,18 @@
 
 .moodRating5 {
   background-color: #007F5F;
+}
+
+@media screen and (max-width: 688px) {
+  .facesContainer {
+    flex-direction: column-reverse;
+  }
+
+  .moodRatingSubmit {
+    margin-bottom: 2em;
+  }
+
+  .moodRatingButton {
+    @include size(80px, 80px)
+  }
 }
