@@ -5,16 +5,23 @@ import { getAllSessions } from '../../apiCalls'
 import { PieChart } from 'react-minimal-pie-chart'
 
 const Stats = ({ toggleTimerView }) => {
-  const [ sessionsLog, setSessionLog ] = useState(null)
+  const [sessionsLog, setSessionLog] = useState({
+    count: 0,
+    sessions: []
+  })
   const [ pieChartData, setPieChartData ] = useState([])
 
   useEffect(() => {
     toggleTimerView(true)
     getAllSessions()
-    .then(results => results.data.rests)
-    .then(rests => {
-      setSessionLog(rests)
-      createPieChart(rests)
+    .then(results => results.data)
+    .then(results => {
+      setSessionLog({
+        ...sessionLog,
+        count: results.count,
+        sessions: results.rests
+      })
+      createPieChart(results.rests)
     })
     .catch(error => console.log(error))
   }, [])
@@ -42,37 +49,55 @@ const Stats = ({ toggleTimerView }) => {
   }
 
   return (
-    <> 
-      <div className={style.pieChart}>
-        <PieChart
-          data={
-            [
-              { title: 'Yoga', value: pieChartData.movementTotal, color: '#F4D2D0'},
-              { title: 'Meditation', value: pieChartData.meditationTotal, color: '#7987A1' },
-              { title: 'Somatics', value: pieChartData.somaticTotal, color: '#FFFFFF' },
-            ]
-          }
-          style={{ height: '250px' }}
-          lineWidth={60}
-          labelStyle={{ fontSize: '12px', fontWeight: '600' }}
-          label={({ dataEntry }) => Math.round(dataEntry.percentage) + '%'}
-          labelPosition={68}
-        />
-        <div className={style.pieChartLegend}>
-          <div className={style.labelContainer}>
-            <p className={style.legendLabel}>Somatic Exercises</p>
-            <div className={style.somaticLabelSwatch} />
-          </div>
-          <div className={style.labelContainer}>
-            <p className={style.legendLabel}>Yoga/Movement </p>
-            <div className={style.movementLabelSwatch} />
-          </div>
-          <div className={style.labelContainer}>
-            <p className={style.legendLabel}>Meditation/Breathwork</p>
-            <div className={style.meditationLabelSwatch} />
-
-          </div>
-        </div>
+    <>
+      <div className={style.frequencyStatisticsContainer}>
+        <section className={style.pieChart}>
+          <PieChart
+            data={
+              [
+                { title: 'Yoga', value: pieChartData.movementTotal, color: '#F4D2D0'},
+                { title: 'Meditation', value: pieChartData.meditationTotal, color: '#7987A1' },
+                { title: 'Somatics', value: pieChartData.somaticTotal, color: '#FFFFFF' },
+              ]
+            }
+            style={{ height: '250px' }}
+            lineWidth={60}
+            labelStyle={{ fontSize: '12px', fontWeight: '600' }}
+            label={({ dataEntry }) => Math.round(dataEntry.percentage) + '%'}
+            labelPosition={68}
+          />
+          <section className={style.pieChartLegend}>
+            <div className={style.labelContainer}>
+              <p className={style.legendLabel}>Somatic Exercises</p>
+              <div className={style.somaticLabelSwatch} />
+            </div>
+            <div className={style.labelContainer}>
+              <p className={style.legendLabel}>Yoga/Movement </p>
+              <div className={style.movementLabelSwatch} />
+            </div>
+            <div className={style.labelContainer}>
+              <p className={style.legendLabel}>Meditation/Breathwork</p>
+              <div className={style.meditationLabelSwatch} />
+            </div>
+          </section>
+        </section>
+        <section className={style.frequencyModalsContainer}>
+          <h3 className={style.frequencyModal}>
+            You have completed
+            <h2 className={style.frequencyStatisticValue}>{sessionLog.count}</h2>
+            sessions
+          </h3>
+          <h3 className={style.frequencyModal}>
+            Average focus interval
+            <h2 className={style.frequencyStatisticValue}>{sessionLog.count}</h2>
+            in minutes
+          </h3>
+          <h3 className={style.frequencyModal}>
+            Average rest interval
+            <h2 className={style.frequencyStatisticValue}>{sessionLog.count}</h2>
+            in minutes
+          </h3>
+        </section>
       </div>
       <article>
         <h2 className={style.prompt}>
