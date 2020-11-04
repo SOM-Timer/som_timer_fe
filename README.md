@@ -44,17 +44,17 @@ If you would like to install the repos locally instead of visiting the deployed 
 
 ## Future Directions
 This current version of the app is just the beginning, and we would like to significantly expand our scope. The following are our plans for future iterations: 
-- Add Users
+#### Add Users
   - As this app was initially built in just 2 weeks, the demo does not include unique users. We would like to add the ability to create users, complete with sign-up and log-in screens. 
-- Expand customization
-  - We want to ensure that Som Timer works well for all users, so we would like to expand our customization options on the Settings page. Current ideas for this include adding the ability to disable mood ratings, toggle between themes, such as a light and dark mood, and select the categories of content the user can then choose from during breaks. 
-- Allow a user to upload content
+#### Expand customization
+  - We want to ensure that Som Timer works well for all users, so we would like to expand our customization options on the Settings page. Current ideas for this include adding the ability to disable mood ratings, toggle between themes, such as light and dark mode, and select the categories of content the user can then choose from during breaks. 
+#### Allow a user to upload content
   - In the vein of expanding customization, we would also like to give the user the ability to add new content to their personal library by uploading links from YouTube, Vimeo, SoundCloud, and other platforms. 
 
 ## Back End Information
 
-[Back End Som Timer Repo](https://github.com/SOM-Timer/som_timer_be)  
-[Back End Som Timer Ruby Gem](https://github.com/SOM-Timer/som_timer_gem)
+- [Back End Som Timer Repo](https://github.com/SOM-Timer/som_timer_be)  
+- [Back End Som Timer Ruby Gem](https://github.com/SOM-Timer/som_timer_gem)
 
 ## Contributors
 Front End Developers
@@ -69,13 +69,9 @@ Back End Developers
 
 
 <!-- MARKDOWN LINKS & IMAGES -->
-
 [contributors-shield]: https://img.shields.io/github/contributors/SOM-Timer/som_timer_fe.svg
 [contributors-url]: https://github.com/SOM-Timer/som_timer_fe/graphs/contributors 
 [issues-shield]: https://img.shields.io/github/issues-raw/SOM-Timer/som_timer_fe
 [issues-url]: https://github.com/issues-raw/SOM-Timer/som_timer_fe/
-
-
 [issues-closed-shield]: https://img.shields.io/github/issues-closed-raw/SOM-Timer/som_timer_fe
 [issues-closed-url]: https://github.com/issues-closed/SOM-Timer/som_timer_fe/
-
