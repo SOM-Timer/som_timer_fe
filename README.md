@@ -2,12 +2,12 @@
 
 ## Table of Contents
 
-- [Brief Description](#brief-description)
-- [How to use](#how-to-use)
-- [Installation](#installation)
-- [Functionality](#functionality)
-- [Contributing](#contributing)
-- [Acknowledgements and Resources](#acknowledgements-and-resources)
+- [Installation Instructions](#installation-instructions)
+- [Project in Action](#project-in-action)
+- [Tech Stack](#tech-stack)
+- [Future Directions](#future-directions)
+- [Back End Information](#back-end-information)
+- [Contributors](#contributors)
 
 
 # Som Timer
