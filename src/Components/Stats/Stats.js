@@ -2,17 +2,44 @@ import React, { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import style from './Stats.module.scss'
 import { getAllSessions } from '../../apiCalls'
+import { PieChart } from 'react-minimal-pie-chart'
 
 const Stats = ({ toggleTimerView }) => {
   const [ sessionsLog, setSessionLog ] = useState(null)
+  const [ pieChartData, setPieChartData ] = useState([])
 
   useEffect(() => {
     toggleTimerView(true)
     getAllSessions()
     .then(results => results.data.rests)
-    .then(rests => setSessionLog(rests))
+    .then(rests => {
+      setSessionLog(rests)
+      createPieChart(rests)
+    })
     .catch(error => console.log(error))
-  })
+  }, [])
+
+  const createPieChart = (rests) => {
+    const newPieChartData = { 
+      somaticTotal: 0, 
+      movementTotal: 0, 
+      meditationTotal: 0 
+    }
+
+    for(let i = 0; i < rests.length; i++) {
+      if(rests[i]['content_selected'] === 'MOVEMENT') {
+        newPieChartData.movementTotal += 1
+      }
+      if (rests[i]['content_selected'] === 'SOMATIC') {
+        newPieChartData.somaticTotal += 1
+      }
+      if (rests[i]['content_selected'] === 'MEDITATION') {
+        newPieChartData.meditationTotal += 1
+      }
+    }
+
+    return setPieChartData(newPieChartData)
+  }
 
   return (
     <article>
