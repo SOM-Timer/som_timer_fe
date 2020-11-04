@@ -26,7 +26,7 @@ const Settings = () => {
       <h2 className={style.settingsHeader}>Settings</h2>
       <div className={style.line}></div>
       <div className={style.intervalContainer}>
-        <p className={style.intervalLabel}>Select your work interval:</p>
+        <p className={style.intervalLabel}>Select your focus interval:</p>
         <input
           type="number"
           min={0}
