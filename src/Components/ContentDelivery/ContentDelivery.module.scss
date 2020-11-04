@@ -11,11 +11,13 @@
   flex-direction: column;
   align-items: center;
   justify-content: center; 
-  margin: 1em;
+  margin: 1em 1em 0;
 }
 
 .videoWrapper {
-  @include size(60em, 34em);
+  @include size(42em, 21.4em);
+  display: flex;
+  justify-content: center;
 }
 
 .videoPlayer {
@@ -29,7 +31,7 @@
 .skipBtn {
   @include borderAndShadow(none, 8px, 0px 5px 6px $midBlue);
   background: radial-gradient($salmon, #e9adaa); 
-  margin: 2em;
+  margin-top: 5em;
   padding: 0.5em 1em; 
   font: 1.2em $primaryFont;
   font-weight: 600;
@@ -43,10 +45,6 @@
 }
 
 @media screen and (max-width: 992px) {
-  .videoWrapper {
-    @include size(42em, 24em);
-  }
-
   .videoPlayer {
     padding: 1.5em;
   }
@@ -54,11 +52,16 @@
 
 @media screen and (max-width: 688px) {
   .videoWrapper {
-    @include size(26em, 15em);
+    @include size(23em, 12em);
   }
 
   .videoPlayer {
-    padding: 0.5em;
+    padding: 1em;
+  }
+
+  .skipBtn {
+    width: 150px;
+    height: 60px;
   }
 }
 
