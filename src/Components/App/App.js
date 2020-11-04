@@ -8,12 +8,19 @@ import Stats from '../Stats/Stats'
 import PageNotFound from '../PageNotFound/PageNotFound'
 import './App.scss'
 import { enableNotifications } from '../../helpers/notificationHelpers'
+import { ToastContainer } from 'react-toastify';
 
 function App() {
   enableNotifications()
   
   return (
     <section className="App">
+      <ToastContainer 
+        position="top-center"
+        autoClose={10000}
+        closeOnClick
+        pauseOnHover={false}
+      />
       <Header />
       <Switch>
         <Route exact path="/" render={() => <HomeContainer />} />
