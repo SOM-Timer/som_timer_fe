@@ -16,7 +16,8 @@ const FocusModal = () => {
   return (
     <div className={style.workMsgModal}>
       <h2 className={style.modalContent}>
-        Time to focus again!
+        You're doing great.<br/>
+        Get ready to focus. 
       </h2>
     </div>)
 }
