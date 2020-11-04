@@ -403,7 +403,7 @@ describe('App', () => {
     expect(moodHeading).toBeInTheDocument()
   })
 
-  it('should make a post request with session data once the user has completed a full cycle', async () => {
+  it('should display the FocusModal text & make a post request with session data once the user has completed a full cycle', async () => {
     getSettings.mockResolvedValueOnce({
       data: {
         id: 1,
@@ -469,6 +469,9 @@ describe('App', () => {
     fireEvent.click(moodRating2)
     fireEvent.click(moodSubmitButton2)
     
+    const modalText = getByRole('heading', { name: /time to focus/i })
+
+    expect(modalText).toBeInTheDocument()
     expect(postSession).toBeCalled()
     expect(postSession).toBeCalledWith({
       moodRating1: "1",

@@ -7,7 +7,6 @@ import { SettingsContext } from '../../Context/SettingsContext'
 import { SessionContext } from '../../Context/SessionContext'
 
 const ContentDelivery = () => {
-  const [ done, setDone ] = useState(false)
   const [ videoLink ] = useContext(VideoContext)
   const [ view, setView ] = useContext(ViewContext)
   const [ settings ] = useContext(SettingsContext)
@@ -21,14 +20,13 @@ const ContentDelivery = () => {
   }
 
   const handleEnded = () => {
-    setDone(true)
     recordBreakInterval()
-    setTimeout(() => setView('mood-rating-2'), 2000)
+    setView('mood-rating-2')
   }
 
   return (
     <>
-      <section className={ !done ? style.videoSection : style.videoSectionModal}>
+      <section className={style.videoSection}>
         <h2 className={style.prompt}>Enjoy Your Break!</h2>
         <div className={style.videoWrapper}>
           <ReactPlayer
@@ -41,23 +39,16 @@ const ContentDelivery = () => {
             onEnded={handleEnded}
           />
         </div>
-        { !done &&
-          <button 
-            className={style.skipBtn} 
-            onClick={() => {
-              setView('mood-rating-2')
-              recordBreakInterval()
-            }}
-          >
-            Skip video
-          </button>     
-        }
+        <button 
+          className={style.skipBtn} 
+          onClick={() => {
+            setView('mood-rating-2')
+            recordBreakInterval()
+          }}
+        >
+          Skip video
+        </button>
       </section>
-      { done && 
-        <div className={style.workMsgModal}>
-          <h2 className={style.modalContent}>Time to focus again!</h2>
-        </div> 
-      }
     </>       
   )
 }

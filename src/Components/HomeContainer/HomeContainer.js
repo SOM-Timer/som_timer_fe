@@ -4,8 +4,8 @@ import { VideoProvider } from '../../Context/VideoContext'
 import ContentDelivery from '../ContentDelivery/ContentDelivery'
 import CountdownTimer from '../CountdownTimer/CountdownTimer'
 import ContentSelection from '../ContentSelection/ContentSelection'
-import style from './HomeContainer.module.scss'
 import MoodRating from '../MoodRating/MoodRating'
+import style from './HomeContainer.module.scss'
 
 const HomeContainer = () => {
   const [ view ] = useContext(ViewContext)

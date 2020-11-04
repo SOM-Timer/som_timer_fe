@@ -39,6 +39,11 @@
   align-items: center;
 }
 
+.moodRatingModal {
+  @extend .moodRatingContainer;
+  -webkit-filter: blur(5px) grayscale(50%);
+}
+
 .facesContainer {
   display: flex;
   justify-content: space-around;
