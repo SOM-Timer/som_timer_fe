@@ -2,7 +2,7 @@ import React, { useContext, useEffect } from 'react'
 import style from './Settings.module.scss'
 import { SettingsContext } from '../../Context/SettingsContext'
 import { updateSettings } from '../../apiCalls'
-import playAlertSound from '../../helpers/audioHelper'
+import { playAlertSound } from '../../helpers/audioHelper'
 
 const Settings = () => {
   const [settings, setSettings] = useContext(SettingsContext)
@@ -73,6 +73,7 @@ const Settings = () => {
           <option value={'pianoDreams'}>Piano Dreams</option>
           <option value={'levelUp'}>Level Up</option>
           <option value={'birdChord'}>Bird Chord</option>
+          <option value={'random'}>Randomize My Sounds</option>
         </select>
       </div>
       <div className={style.line}></div>
