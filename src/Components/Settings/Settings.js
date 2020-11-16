@@ -76,6 +76,13 @@ const Settings = () => {
           <option value={'random'}>Randomize My Sounds</option>
         </select>
       </div>
+      <div className={style.intervalContainer}>
+        <p className={style.intervalLabel}>Toggle mood ratings</p>
+        <label class={style.switch}>
+          <input type="checkbox" className={style.inputToggle}/>
+          <span class={style.slider}></span>
+        </label>
+      </div>
       <div className={style.line}></div>
       <p className={style.saveAutomatically}>
         <span role="img" alt="sparkle emoji" aria-label="sparkle emoji">
