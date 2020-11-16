@@ -9,7 +9,6 @@ const notificationSounds = [balineseGong, goodOldSynths, pianoDreams, reverbSpla
 
 const getRandomNotification = (sounds) => {
   const randomIndex =  Math.floor(Math.random() * sounds.length)
-  console.log(sounds[randomIndex])
   return sounds[randomIndex]
 }
 
@@ -35,7 +34,6 @@ export const playAlertSound = (sound) => {
       audioNotification = new Audio(birdChord);
       break;
     case "random":
-      console.log('random!!')
       audioNotification = new Audio(getRandomNotification(notificationSounds))
       break;
     default:

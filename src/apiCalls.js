@@ -18,7 +18,6 @@ export const getRandomContent = (duration, category) => {
 }
 
 export const postSession = (session) => {
-  console.log(session)
   return axios.post(`${rootUrl}/rests`, {
     focus_interval: session.focusInterval,
     mood_rating_1: session.moodRating1,
