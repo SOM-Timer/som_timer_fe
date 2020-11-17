@@ -76,10 +76,11 @@ const Settings = () => {
           <option value={'random'}>Randomize My Sounds</option>
         </select>
       </div>
+      <div className={style.line}></div>
       <div className={style.intervalContainer}>
-        <p className={style.intervalLabel}>Toggle mood ratings</p>
+        <p className={style.intervalLabel}>{settings.moodRating ? 'Disable' : 'Enable'} mood ratings</p>
         <label class={style.switch}>
-          <input type="checkbox" className={style.inputToggle}/>
+          <input type="checkbox" className={style.inputToggle} checked={settings.moodRating}/>
           <span class={style.slider}></span>
         </label>
       </div>

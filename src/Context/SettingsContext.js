@@ -13,8 +13,9 @@ export const SettingsProvider = ({ children }) => {
         const breakInterval = response.data.rest_interval.split(':')[0]
         const sound = response.data.sound
         // const moodRating = response.data.mood_rating
-        //NOTE: add 'moodRating' to setSettings below
-        setSettings({ workInterval, breakInterval, sound})
+        //NOTE: delete line below
+        const moodRating = true
+        setSettings({ workInterval, breakInterval, sound, moodRating})
       })
       .catch(err => {
         if (err.response) {
