@@ -91,6 +91,7 @@ const Settings = () => {
             type="checkbox" 
             className={style.inputToggle} 
             checked={settings.moodRating}
+            data-testid="moodRating"
             onClick={toggleMood}
           />
           <span class={style.slider}></span>
