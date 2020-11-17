@@ -21,6 +21,13 @@ const Settings = () => {
     })
   }
 
+  const toggleMood = () => {
+    setSettings({
+      ...settings,
+      moodRating: !settings.moodRating
+    })
+  }
+
   return (
     <div className={style.settingsContainer}>
       <h2 className={style.settingsHeader}>Settings</h2>
@@ -80,7 +87,12 @@ const Settings = () => {
       <div className={style.intervalContainer}>
         <p className={style.intervalLabel}>{settings.moodRating ? 'Disable' : 'Enable'} mood ratings</p>
         <label class={style.switch}>
-          <input type="checkbox" className={style.inputToggle} checked={settings.moodRating}/>
+          <input 
+            type="checkbox" 
+            className={style.inputToggle} 
+            checked={settings.moodRating}
+            onClick={toggleMood}
+          />
           <span class={style.slider}></span>
         </label>
       </div>
