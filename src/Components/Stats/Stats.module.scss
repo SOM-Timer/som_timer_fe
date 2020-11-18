@@ -89,6 +89,7 @@
   @include size(50px, 18px);
   stroke-linecap: round;
   margin-top: 4px;
+  box-shadow: 0px 0px 5px $darkBlue, inset 0px 0px 5px rgba(0, 0, 0, 0.239);
 }
 
 .somaticLabelSwatch {
@@ -104,6 +105,33 @@
 .meditationLabelSwatch {
   background-color: #7987A1;
   border-radius: 35%;
+}
+
+// Table (session log) styling
+.sessionLog {
+  @include size(600px, 300px);
+  margin: auto;
+  margin-top: 2.4em;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.tableHead {
+  position: sticky;
+  display: flex;
+  justify-content: space-between;
+}
+
+.tableRow {
+  display: flex;
+  align-content: center;
+  justify-content: space-between;
+}
+
+.tableRowsContainer {
+  @include size(600px, 300px);
+  overflow: scroll;
 }
 
 @media screen and (max-width: 1200px) {

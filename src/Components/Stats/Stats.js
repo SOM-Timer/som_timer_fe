@@ -54,7 +54,8 @@ const Stats = ({ toggleTimerView }) => {
 
   const getAverageInterval = (intervalType, sessions) => {
     let intervalSum = sessions.reduce((sum, session) => {
-      if (session[intervalType]) {
+      if (session[intervalType] !== null) {
+        console.log(session[intervalType])
         let num = parseFloat(session[intervalType])
         console.log(num)
         let newSum = sum + num
@@ -66,10 +67,24 @@ const Stats = ({ toggleTimerView }) => {
     return intervalSum / sessions.length
   }
 
+  const createTableData = () => {
+    return sessionLog.map(session => {
+      return (
+        <tr className={style.tableRow}>
+          <td>{session['focus_interval']}</td>
+          <td>{session['rest_interval']}</td>
+          <td>{session['mood_rating_1']}</td>
+          <td>{session['content_selected']}</td>
+          <td>{session['mood_rating_2']}</td>
+        </tr>
+      )
+    })
+  }
+
   return (
     <>
       <div className={style.frequencyStatisticsContainer}>
-        <section className={style.pieChart}>
+        <section className={style.pieChartContainer}>
           <PieChart
             data={
               [
@@ -83,6 +98,7 @@ const Stats = ({ toggleTimerView }) => {
             labelStyle={{ fontSize: '12px', fontWeight: '600' }}
             label={({ dataEntry }) => Math.round(dataEntry.percentage) + '%'}
             labelPosition={68}
+            className={style.pieChart}
           />
           <section className={style.pieChartLegend}>
             <div className={style.labelContainer}>
@@ -117,6 +133,18 @@ const Stats = ({ toggleTimerView }) => {
           </h3>
         </section>
       </div>
+      <table className={style.sessionLog}>
+        <tr className={style.tableHead}>
+          <th>Focus<br />Interval</th>
+          <th>Break<br />Interval</th>
+          <th>Mood<br />Rating 1</th>
+          <th>Content<br />Selected</th>
+          <th>Mood<br />Rating 2</th>
+        </tr>
+        <div className={style.tableRows}>
+          {createTableData()}
+        </div>
+      </table>
     </>
   )
 }
