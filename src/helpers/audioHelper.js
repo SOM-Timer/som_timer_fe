@@ -5,7 +5,14 @@ import reverbSplash from "../assets/audio/reverbSplash.mp3";
 import levelUp from "../assets/audio/levelUp.mp3";
 import birdChord from "../assets/audio/birdChord.mp3";
 
-const playAlertSound = (sound) => {
+const notificationSounds = [balineseGong, goodOldSynths, pianoDreams, reverbSplash, levelUp, birdChord]
+
+const getRandomNotification = (sounds) => {
+  const randomIndex =  Math.floor(Math.random() * sounds.length)
+  return sounds[randomIndex]
+}
+
+export const playAlertSound = (sound) => {
   let audioNotification = "";
   switch (sound) {
     case "reverbSplash":
@@ -26,10 +33,11 @@ const playAlertSound = (sound) => {
     case "birdChord":
       audioNotification = new Audio(birdChord);
       break;
+    case "random":
+      audioNotification = new Audio(getRandomNotification(notificationSounds))
+      break;
     default:
       audioNotification = new Audio(goodOldSynths);
   }
   audioNotification.play();
 };
-
-export default playAlertSound

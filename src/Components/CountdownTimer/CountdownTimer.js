@@ -4,7 +4,7 @@ import { ViewContext } from '../../Context/ViewContext'
 import { SessionContext } from '../../Context/SessionContext'
 import Timer from 'react-compound-timer'
 import style from './CountdownTimer.module.scss'
-import playAlertSound from '../../helpers/audioHelper'
+import { playAlertSound } from '../../helpers/audioHelper'
 import { displayNotification } from '../../helpers/notificationHelpers'
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
