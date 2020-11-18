@@ -12,7 +12,7 @@ export const SettingsProvider = ({ children }) => {
         const workInterval = response.data.work_interval.split(':')[0]
         const breakInterval = response.data.rest_interval.split(':')[0]
         const sound = response.data.sound
-        // const moodRating = response.data.mood_rating
+        // const moodRating = response.data.mood
         //NOTE: delete line below
         const moodRating = true
         setSettings({ workInterval, breakInterval, sound, moodRating})

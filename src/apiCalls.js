@@ -10,6 +10,7 @@ export const updateSettings = (settings) => {
     work_interval: settings.workInterval,
     rest_interval: settings.breakInterval,
     sound: settings.sound
+    //mood: settings.moodRating
   })
 }
 
