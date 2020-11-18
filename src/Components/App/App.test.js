@@ -149,6 +149,40 @@ describe('App', () => {
     expect(moodRatingHeading).toBeInTheDocument()
   })
 
+  it('should take you to the content selection screen when the timer is skipped if mood is disabled', async () => {
+    getSettings.mockResolvedValueOnce({
+      data: {
+        id: 1,
+        rest_interval: '5',
+        work_interval: '30',
+        sound: 'reverbSplash',
+        mood: false
+      }
+    })
+
+    const { getByRole } = render(
+      <MemoryRouter>
+        <SettingsProvider>
+          <ViewProvider>
+            <SessionProvider>
+              <VideoProvider>
+                <App />
+              </VideoProvider>
+            </SessionProvider>
+          </ViewProvider>
+        </SettingsProvider>
+      </MemoryRouter>
+    )
+
+    const skipIcon = await waitFor(() => getByRole('button', { name: /skip/i }))
+
+    fireEvent.click(skipIcon)
+
+    const contentSelectionHeading = getByRole('heading', { name: /how would you like to spend your break\?/i })
+
+    expect(contentSelectionHeading).toBeInTheDocument()
+  })
+
   it('should take you to a content selection screen after the first mood rating', async () => {
     getSettings.mockResolvedValueOnce({
       data: {
