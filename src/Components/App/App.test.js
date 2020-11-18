@@ -9,7 +9,6 @@ import { SessionProvider } from '../../Context/SessionContext'
 import { MemoryRouter } from 'react-router-dom'
 import { getSettings, updateSettings, getRandomContent, postSession } from '../../apiCalls'
 jest.mock('../../apiCalls.js')
-// jest.useFakeTimers()
 
 describe('App', () => {
   it('should bring users to the timer view on load and allow them to visit the Stats, About, and Settings pages', async () => {
@@ -116,13 +115,14 @@ describe('App', () => {
     expect(timerLength).toBeInTheDocument()
   })
 
-  it('should take you to a mood rating screen when the timer is skipped', async () => {
+  it('should take you to a mood rating screen when the timer is skipped if mood is enabled', async () => {
     getSettings.mockResolvedValueOnce({
       data: {
         id: 1,
         rest_interval: '5',
         work_interval: '30',
-        sound: 'chordCliff'
+        sound: 'reverbSplash',
+        mood: true
       }
     })
 
@@ -155,7 +155,8 @@ describe('App', () => {
         id: 1,
         rest_interval: '5',
         work_interval: '30',
-        sound: 'chordCliff'
+        sound: 'reverbSplash',
+        mood: true
       }
     })
 
@@ -195,7 +196,8 @@ describe('App', () => {
         id: 1,
         rest_interval: '5',
         work_interval: '30',
-        sound: 'chordCliff'
+        sound: 'reverbSplash',
+        mood: true
       }
     })
 
@@ -247,7 +249,8 @@ describe('App', () => {
         id: 1,
         rest_interval: '5',
         work_interval: '30',
-        sound: 'chordCliff'
+        sound: 'reverbSplash',
+        mood: true
       }
     })
 
@@ -300,7 +303,8 @@ describe('App', () => {
         id: 1,
         rest_interval: '5',
         work_interval: '30',
-        sound: 'chordCliff'
+        sound: 'reverbSplash',
+        mood: true
       }
     })
 
@@ -353,7 +357,8 @@ describe('App', () => {
         id: 1,
         rest_interval: '5',
         work_interval: '30',
-        sound: 'chordCliff'
+        sound: 'reverbSplash',
+        mood: true
       }
     })
 
@@ -409,7 +414,8 @@ describe('App', () => {
         id: 1,
         rest_interval: '5',
         work_interval: '30',
-        sound: 'chordCliff'
+        sound: 'reverbSplash',
+        mood: true
       }
     })
 
