@@ -23,7 +23,6 @@ const ContentDelivery = () => {
 
   const handleEnded = () => {
     recordBreakInterval()
-    // setView('mood-rating-2')
     settings.moodRating ? setView('mood-rating-2') : setSessionComplete(true)
   }
 
