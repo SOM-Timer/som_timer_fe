@@ -19,7 +19,7 @@ function App() {
     hide
       ? homeContainer.classList.add("hidden")
       : homeContainer.classList.remove("hidden")
-  };
+  }
   
   return (
     <section className="App">
