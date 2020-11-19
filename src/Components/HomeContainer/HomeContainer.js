@@ -10,24 +10,18 @@ import style from './HomeContainer.module.scss'
 const HomeContainer = () => {
   const [ view ] = useContext(ViewContext)
 
-  return ( 
-    <div className={style.HomeContainer}>
+  return (
+    <div className={style.HomeContainer} id="HomeContainer">
       <VideoProvider>
-        { view === 'timer' &&  
-          <CountdownTimer />
-        }
-        { view === 'content-selection' &&
-          <ContentSelection/>
-        }
-        { view === 'content-delivery' && 
-          <ContentDelivery />
-        }
-        { (view === 'mood-rating-1' || view === 'mood-rating-2') && 
+        {view === "timer" && <CountdownTimer />}
+        {view === "content-selection" && <ContentSelection />}
+        {view === "content-delivery" && <ContentDelivery />}
+        {(view === "mood-rating-1" || view === "mood-rating-2") && (
           <MoodRating />
-        }
-      </VideoProvider>  
+        )}
+      </VideoProvider>
     </div>
-  )
+  );
 
 }
 
