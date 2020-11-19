@@ -22,8 +22,9 @@ function App() {
         pauseOnHover={false}
       />
       <Header />
+      <HomeContainer />
       <Switch>
-        <Route exact path="/" render={() => <HomeContainer />} />
+        <Route exact path="/"/>
         <Route exact path="/settings" render={() => <Settings />} />
         <Route exact path="/about" render={() => <About />} />
         <Route exact path="/stats" render={() => <Stats />} />
