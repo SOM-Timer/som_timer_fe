@@ -7,6 +7,14 @@ import settingsNavIcon from '../../assets/navbar/settingsNavIcon.png'
 import aboutNavIcon from '../../assets/navbar/aboutNavIcon.png'
 
 const Header = () => {
+
+  const toggleTimerView = hide => {
+    const homeContainer = document.getElementById('HomeContainer')
+    hide ? 
+      homeContainer.classList.add(style.hidden) :
+      homeContainer.classList.remove(style.hidden)
+  }
+
   return (
     <header className={style.header}>
       <Link className={style.title} to="/">
