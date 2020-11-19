@@ -16,9 +16,11 @@ function App() {
 
   const toggleTimerView = (hide) => {
     const homeContainer = document.getElementById("HomeContainer")
-    hide
-      ? homeContainer.classList.add("hidden")
-      : homeContainer.classList.remove("hidden")
+    if (hide) {
+      homeContainer.classList.add("hidden")
+    } else {
+      homeContainer.classList.remove("hidden")
+    }
   }
   
   return (
