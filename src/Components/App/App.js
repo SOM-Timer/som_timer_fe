@@ -6,29 +6,51 @@ import Settings from '../Settings/Settings'
 import About from '../About/About'
 import Stats from '../Stats/Stats'
 import PageNotFound from '../PageNotFound/PageNotFound'
-import './App.scss'
 import { enableNotifications } from '../../helpers/notificationHelpers'
-import { ToastContainer } from 'react-toastify';
+import { ToastContainer } from 'react-toastify'
+import './App.scss'
+
 
 function App() {
   enableNotifications()
+
+  const toggleTimerView = (hide) => {
+    const homeContainer = document.getElementById("HomeContainer")
+    hide
+      ? homeContainer.classList.add("hidden")
+      : homeContainer.classList.remove("hidden")
+  };
   
   return (
     <section className="App">
-      <ToastContainer 
+      <ToastContainer
         position="top-center"
         autoClose={10000}
         closeOnClick
         pauseOnHover={false}
       />
-      <Header />
-      <HomeContainer />
+      <Header toggleTimerView={toggleTimerView} />
+      <HomeContainer toggleTimerView={toggleTimerView} />
       <Switch>
-        <Route exact path="/"/>
-        <Route exact path="/settings" render={() => <Settings />} />
-        <Route exact path="/about" render={() => <About />} />
-        <Route exact path="/stats" render={() => <Stats />} />
-        <Route render={() => <PageNotFound />} />
+        <Route exact path="/" />
+        <Route
+          exact
+          path="/settings"
+          render={() => <Settings toggleTimerView={toggleTimerView} />}
+        />
+        <Route
+          exact
+          path="/about"
+          render={() => <About toggleTimerView={toggleTimerView} />}
+        />
+        <Route
+          exact
+          path="/stats"
+          render={() => <Stats toggleTimerView={toggleTimerView} />}
+        />
+        <Route
+          render={() => <PageNotFound toggleTimerView={toggleTimerView} />}
+        />
       </Switch>
     </section>
   );
