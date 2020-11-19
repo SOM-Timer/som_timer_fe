@@ -25,8 +25,6 @@ describe('Stats', () => {
 
     expect(statsHeading).toBeInTheDocument()
     expect(comingSoonText).toBeInTheDocument()
-    expect(toggleTimerView).toHaveBeenCalledTimes(1)
-    expect(toggleTimerView).toHaveBeenCalledWith(true)
   })
 
   it('should hide the Homecontainer when rendered', () => {
