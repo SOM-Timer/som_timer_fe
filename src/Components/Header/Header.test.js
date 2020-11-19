@@ -32,8 +32,7 @@ describe('Header', () => {
     expect(aboutButton).toBeInTheDocument()
   })
 
-  it('should show the homecontainer when the timer navlink is clicked', () => {
-
+  it('should show the homecontainer when the timer navlink or title is clicked', () => {
     const { getByRole } = render(
       <MemoryRouter>
         <Header toggleTimerView={toggleTimerView} />
@@ -43,7 +42,10 @@ describe('Header', () => {
     const timerButton = getByRole("button", { name: /timer/i })
     fireEvent.click(timerButton)
 
-    expect(toggleTimerView).toHaveBeenCalledTimes(1)
+    const title = getByRole("heading", { name: /som timer/i })
+    fireEvent.click(title)
+
+    expect(toggleTimerView).toHaveBeenCalledTimes(2)
     expect(toggleTimerView).toHaveBeenCalledWith(false)
   })
 })
