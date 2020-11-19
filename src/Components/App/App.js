@@ -15,11 +15,11 @@ function App() {
   enableNotifications()
 
   const toggleTimerView = (hide) => {
-    const homeContainer = document.getElementById("HomeContainer")
+    const homeContainer = document.getElementById('HomeContainer')
     if (hide) {
-      homeContainer.classList.add("hidden")
+      homeContainer.classList.add('hidden')
     } else {
-      homeContainer.classList.remove("hidden")
+      homeContainer.classList.remove('hidden')
     }
   }
   
@@ -36,18 +36,15 @@ function App() {
       <Switch>
         <Route exact path="/" />
         <Route
-          exact
-          path="/settings"
+          exact path="/settings"
           render={() => <Settings toggleTimerView={toggleTimerView} />}
         />
         <Route
-          exact
-          path="/about"
+          exact path="/about"
           render={() => <About toggleTimerView={toggleTimerView} />}
         />
         <Route
-          exact
-          path="/stats"
+          exact path="/stats"
           render={() => <Stats toggleTimerView={toggleTimerView} />}
         />
         <Route
