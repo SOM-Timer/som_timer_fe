@@ -6,27 +6,30 @@ import statsNavIcon from '../../assets/navbar/statsNavIcon.png'
 import settingsNavIcon from '../../assets/navbar/settingsNavIcon.png'
 import aboutNavIcon from '../../assets/navbar/aboutNavIcon.png'
 
-const Header = () => {
-
-  const toggleTimerView = hide => {
-    const homeContainer = document.getElementById('HomeContainer')
-    hide ? 
-      homeContainer.classList.add(style.hidden) :
-      homeContainer.classList.remove(style.hidden)
-  }
+const Header = ({ toggleTimerView }) => {
 
   return (
     <header className={style.header}>
       <Link className={style.title} to="/">
-        <h1 className={style.text}>Som Timer</h1>
+        <h1 
+          className={style.text}
+          onClick={() => toggleTimerView(false)}
+        >
+          Som Timer
+        </h1>
       </Link>
       <nav className={style.navBar}>
         <NavLink exact to="/" activeClassName={style.selected}>
-          <button className={style.navButton} aria-label="timer">
+          <button 
+            className={style.navButton} 
+            aria-label="timer"
+            onClick={() => toggleTimerView(false)}
+          >
             <img
               className={style.icon}
               src={timerNavIcon}
               alt="timer icon"
+              onClick={() => toggleTimerView(false)}
             />
           </button>
         </NavLink>
@@ -41,11 +44,7 @@ const Header = () => {
         </NavLink>
         <NavLink to="/about" activeClassName={style.selected}>
           <button className={style.navButton} aria-label="about">
-            <img
-              className={style.icon}
-              src={aboutNavIcon}
-              alt="about icon"
-            />
+            <img className={style.icon} src={aboutNavIcon} alt="about icon" />
           </button>
         </NavLink>
         <NavLink to="/settings" activeClassName={style.selected}>
