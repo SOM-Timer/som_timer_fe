@@ -4,6 +4,10 @@
   transition: all .24s ease-in-out;
 }
 
+.hidden {
+  display: none;
+}
+
 .header {
   display: flex;
   justify-content: flex-end;
