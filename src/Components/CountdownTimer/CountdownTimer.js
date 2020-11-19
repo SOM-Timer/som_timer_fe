@@ -37,8 +37,11 @@ const CountdownTimer = () => {
     })
   }
 
+  const setNextView = () => {
+    settings.moodRating ? setView('mood-rating-1') : setView('content-selection')
+  }
+
   const timerDone = () => {
-    setView('mood-rating-1')
     if (!('Notification' in window) || Notification.permission !== 'granted') {
       toastNotify()
     } else {
@@ -46,6 +49,7 @@ const CountdownTimer = () => {
     }
     playAlertSound(settings.sound)
     recordFocusInterval(settings.workInterval)
+    setNextView()
   }
 
   return (
@@ -166,7 +170,7 @@ const CountdownTimer = () => {
                 onClick={() => {
                   const timeElapsed = (((settings.workInterval * 60000) - getTime()) / 60000).toFixed(2)
                   recordFocusInterval(timeElapsed)
-                  setView('mood-rating-1')
+                  setNextView()
                 }}
               >
                 <img
