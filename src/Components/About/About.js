@@ -1,9 +1,11 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import style from './About.module.scss'
 
-const About = () => {
+const About = ({ toggleTimerView }) => {
+  useEffect(() => toggleTimerView(true))
+  
   return (
-    <article className={style.About}>
+    <article>
       <section>
         <h2 className={style.prompt}>About Som Timer</h2>
         <article className={style.appDescription}>
