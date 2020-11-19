@@ -1,5 +1,6 @@
-import React, { useContext } from 'react'
+import React, { useState, useContext } from 'react'
 import style from './ContentDelivery.module.scss'
+import FocusModal from '../FocusModal/FocusModal'
 import ReactPlayer from 'react-player'
 import { VideoContext } from '../../Context/VideoContext'
 import { ViewContext } from '../../Context/ViewContext'
@@ -7,6 +8,7 @@ import { SettingsContext } from '../../Context/SettingsContext'
 import { SessionContext } from '../../Context/SessionContext'
 
 const ContentDelivery = () => {
+  const [sessionComplete, setSessionComplete] = useState(false)
   const [ videoLink ] = useContext(VideoContext)
   const setView = useContext(ViewContext)[1]
   const [ settings ] = useContext(SettingsContext)
@@ -21,12 +23,12 @@ const ContentDelivery = () => {
 
   const handleEnded = () => {
     recordBreakInterval()
-    setView('mood-rating-2')
+    settings.moodRating ? setView('mood-rating-2') : setSessionComplete(true)
   }
 
   return (
     <>
-      <section className={style.videoSection}>
+      <section className={!sessionComplete ? style.videoSection : style.endSessionModal}>
         <h2 className={style.prompt}>Enjoy Your Break!</h2>
         <div className={style.videoWrapper}>
           <ReactPlayer
@@ -41,14 +43,12 @@ const ContentDelivery = () => {
         </div>
         <button 
           className={style.skipBtn} 
-          onClick={() => {
-            setView('mood-rating-2')
-            recordBreakInterval()
-          }}
+          onClick={handleEnded}
         >
           Skip Break
         </button>
       </section>
+      {sessionComplete && <FocusModal />}
     </>       
   )
 }
