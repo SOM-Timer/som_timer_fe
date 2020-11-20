@@ -1,8 +1,10 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import style from './PageNotFound.module.scss'
 import burnout from '../../assets/burnout3.png'
 
-const PageNotFound = () => {
+const PageNotFound = ({ toggleTimerView }) => {
+  useEffect(() => toggleTimerView(true))
+  
   return (
     <section>
       <h2 className={style.errorCode}>

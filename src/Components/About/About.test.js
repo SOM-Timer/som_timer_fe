@@ -4,9 +4,15 @@ import { render } from '@testing-library/react'
 import '@testing-library/jest-dom'
 
 describe('About', () => {
-  it('should display the correct content when rendered', () => {
 
-    const { getByRole, getByText } = render(<About/>)
+  let toggleTimerView
+
+  beforeEach(() => {
+    toggleTimerView = jest.fn()
+  })
+
+  it('should display the correct content when rendered', () => {
+    const { getByRole, getByText } = render(<About toggleTimerView={toggleTimerView}/>)
 
     const aboutHeading = getByRole('heading', { name: /about som timer/i })
     const appDescription1 = getByText(/fight cognitive boredom and burnout/i)
@@ -21,17 +27,25 @@ describe('About', () => {
     const backEndEngineer2 = getByText(/dorion/i)
     const backEndEngineer3 = getByText(/sienna kopf/i)
 
-    expect(aboutHeading).toBeInTheDocument();
-    expect(appDescription1).toBeInTheDocument(); 
-    expect(appDescription2).toBeInTheDocument(); 
-    expect(appDescription3).toBeInTheDocument(); 
-    expect(frontEndHeading).toBeInTheDocument();
-    expect(frontEndEngineer1).toBeInTheDocument(); 
-    expect(frontEndEngineer2).toBeInTheDocument(); 
-    expect(frontEndEngineer3).toBeInTheDocument(); 
-    expect(backEndHeading).toBeInTheDocument();
-    expect(backEndEngineer1).toBeInTheDocument();
-    expect(backEndEngineer2).toBeInTheDocument();
-    expect(backEndEngineer3).toBeInTheDocument();
+    expect(aboutHeading).toBeInTheDocument()
+    expect(appDescription1).toBeInTheDocument() 
+    expect(appDescription2).toBeInTheDocument() 
+    expect(appDescription3).toBeInTheDocument() 
+    expect(frontEndHeading).toBeInTheDocument()
+    expect(frontEndEngineer1).toBeInTheDocument() 
+    expect(frontEndEngineer2).toBeInTheDocument() 
+    expect(frontEndEngineer3).toBeInTheDocument() 
+    expect(backEndHeading).toBeInTheDocument()
+    expect(backEndEngineer1).toBeInTheDocument()
+    expect(backEndEngineer2).toBeInTheDocument()
+    expect(backEndEngineer3).toBeInTheDocument()
+  })
+
+  it('should hide the Homecontainer when rendered', () => {
+
+    render(<About toggleTimerView={toggleTimerView} />)
+
+    expect(toggleTimerView).toHaveBeenCalledTimes(1)
+    expect(toggleTimerView).toHaveBeenCalledWith(true)
   })
 })

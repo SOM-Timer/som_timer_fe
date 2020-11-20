@@ -5,11 +5,19 @@ import { SettingsProvider } from '../../Context/SettingsContext';
 jest.mock('../../helpers/audioHelper.js')
 
 describe('Settings', () => {
+  
+  let toggleTimerView
+
+  beforeEach(() => {
+    toggleTimerView = jest.fn()
+  })
+
   it('Should render the correct content', () => {
 
     const { getByRole, getByTestId } = render(
+      
       <SettingsProvider>
-        <Settings />
+        <Settings toggleTimerView={toggleTimerView} />
       </SettingsProvider>
     )
 
@@ -26,11 +34,23 @@ describe('Settings', () => {
     expect(moodRatingInput).toBeInTheDocument()
   })
 
-  it('Should have default values for the breakInterval select and moodRating slider', () => {
+  it('should hide the Homecontainer when rendered', () => {
 
+    render(
+      <SettingsProvider>
+        <Settings toggleTimerView={toggleTimerView} />
+      </SettingsProvider>
+    )
+
+    expect(toggleTimerView).toHaveBeenCalledTimes(1)
+    expect(toggleTimerView).toHaveBeenCalledWith(true)
+  })
+
+  it('Should have default values for the breakInterval select and moodRating slider', () => {
+    
     const { getByTestId } = render(
       <SettingsProvider>
-        <Settings />
+        <Settings toggleTimerView={toggleTimerView} />
       </SettingsProvider>
     )
 
@@ -45,7 +65,7 @@ describe('Settings', () => {
 
     const { getByTestId } = render(
       <SettingsProvider>
-        <Settings />
+        <Settings toggleTimerView={toggleTimerView} />
       </SettingsProvider>
     )
 

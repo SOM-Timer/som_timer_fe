@@ -1,7 +1,9 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import style from './Stats.module.scss'
 
-const Stats = () => {
+const Stats = ({ toggleTimerView }) => {
+  useEffect(() => toggleTimerView(true))
+  
   return (
     <article>
       <h2 className={style.prompt}>

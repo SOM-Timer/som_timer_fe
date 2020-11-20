@@ -5,10 +5,18 @@ import '@testing-library/jest-dom'
 import { BrowserRouter } from 'react-router-dom'
 
 describe('PageNotFound', () => {
+
+  let toggleTimerView
+
+  beforeEach(() => {
+    toggleTimerView = jest.fn()
+  })
+
   it('should display the correct content when rendered', () => {
+  
     const { getByRole, getByAltText, getByText } = render(
       <BrowserRouter>
-        <PageNotFound/>
+        <PageNotFound toggleTimerView={toggleTimerView} />
       </BrowserRouter>
     )
 
@@ -25,5 +33,17 @@ describe('PageNotFound', () => {
     expect(homeLink).toBeInTheDocument()
     expect(settingsLink).toBeInTheDocument()
     expect(aboutLink).toBeInTheDocument()
+  })
+
+  it('should hide the Homecontainer when rendered', () => {
+
+    render(
+      <BrowserRouter>
+        <PageNotFound toggleTimerView={toggleTimerView} />
+      </BrowserRouter>
+    )
+
+    expect(toggleTimerView).toHaveBeenCalledTimes(1)
+    expect(toggleTimerView).toHaveBeenCalledWith(true)
   })
 })

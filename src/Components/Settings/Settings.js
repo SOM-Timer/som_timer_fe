@@ -4,12 +4,13 @@ import { SettingsContext } from '../../Context/SettingsContext'
 import { updateSettings } from '../../apiCalls'
 import { playAlertSound } from '../../helpers/audioHelper'
 
-const Settings = () => {
+const Settings = ({ toggleTimerView }) => {
   const [settings, setSettings] = useContext(SettingsContext)
 
   useEffect(() => {
+    toggleTimerView(true)
     updateSettings(settings)
-  }, [ settings ])
+  }, [ settings, toggleTimerView ])
 
   const onChange = (event) => {
     if (event.target.id === 'sound') {
