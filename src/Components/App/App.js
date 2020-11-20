@@ -30,7 +30,7 @@ function App() {
         pauseOnHover={false}
       />
       <Header toggleTimerView={toggleTimerView} />
-      <HomeContainer toggleTimerView={toggleTimerView} />
+      <HomeContainer />
       <Switch>
         <Route exact path="/" />
         <Route
