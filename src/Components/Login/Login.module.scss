@@ -5,6 +5,7 @@
   flex-direction: column;
   margin: auto;
   width: 40%;
+  align-items: center;
 }
 
 .loginHeader {
@@ -14,11 +15,12 @@
 .somTimerWalkthrough {
   display: flex;
   flex-direction: column;
-  margin-top: 2.5em;
+  margin-top: 1.5em;
 }
 
 .appDescription {
   margin-top: 0;
+  margin-bottom: 0.5em;
 }
 
 .icon {
