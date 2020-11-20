@@ -30,7 +30,7 @@
 
 .walkthroughArticle {
   display: flex;
-  margin-bottom: 1.8em;
+  margin-bottom: 1.2em;
   text-align: left;
   align-items: center;
 }
@@ -48,4 +48,18 @@
 
 .walkthroughDescription {
   margin: 0;
+}
+
+@media screen and (max-width: 992px) {
+  .loginContainer {
+    width: 60%;
+  }
+
+}
+
+@media screen and (max-width: 688px) {
+  .loginContainer {
+    width: 80%;
+  }
+
 }
