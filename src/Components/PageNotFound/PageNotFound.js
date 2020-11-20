@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react'
+import PropTypes from 'prop-types'
 import style from './PageNotFound.module.scss'
 import burnout from '../../assets/burnout3.png'
 
@@ -36,3 +37,7 @@ const PageNotFound = ({ toggleTimerView }) => {
 }
 
 export default PageNotFound
+
+PageNotFound.propTypes = {
+  toggleTimerView: PropTypes.func
+}

@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react'
+import PropTypes from 'prop-types'
 import style from './Stats.module.scss'
 
 const Stats = ({ toggleTimerView }) => {
@@ -31,3 +32,7 @@ const Stats = ({ toggleTimerView }) => {
 }
 
 export default Stats
+
+Stats.propTypes = {
+  toggleTimerView: PropTypes.func
+}

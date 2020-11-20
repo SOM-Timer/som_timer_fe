@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react'
+import PropTypes from 'prop-types'
 import style from './About.module.scss'
 
 const About = ({ toggleTimerView }) => {
@@ -133,3 +134,7 @@ const About = ({ toggleTimerView }) => {
 }
 
 export default About
+
+About.propTypes = {
+  toggleTimerView: PropTypes.func
+}

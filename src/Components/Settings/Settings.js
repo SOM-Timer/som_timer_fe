@@ -1,8 +1,9 @@
 import React, { useContext, useEffect } from 'react'
-import style from './Settings.module.scss'
-import { SettingsContext } from '../../Context/SettingsContext'
+import PropTypes from 'prop-types'
+import { SettingsContext, SettingsProvider } from '../../Context/SettingsContext'
 import { updateSettings } from '../../apiCalls'
 import { playAlertSound } from '../../helpers/audioHelper'
+import style from './Settings.module.scss'
 
 const Settings = ({ toggleTimerView }) => {
   const [settings, setSettings] = useContext(SettingsContext)
@@ -113,3 +114,7 @@ const Settings = ({ toggleTimerView }) => {
 }
 
 export default Settings
+
+Settings.propTypes = {
+  toggleTimerView: PropTypes.func
+}
