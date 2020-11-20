@@ -9,7 +9,11 @@ const Login = () => {
   return (
     <section className={style.loginContainer}>
       <h2 className={style.loginHeader}>Welcome to Som Timer</h2>
-      <p className={style.appDescription}>Som Timer is a timer that cares. This application serves curated wellness content on break intervals. Build in rest so you can focus best!</p>
+      <p className={style.appDescription}>
+        Som Timer is a timer that cares. This application serves curated wellness content on break intervals. Build in rest so you can focus best!
+        <br /><br />
+        Sign in with Google to get started.
+      </p>
       {/* This login button comes from these docs https://developers.google.com/identity/sign-in/web/sign-in; We should explore these further for methods we'll need for Login */}
       <div className='g-signin2' data-onsuccess='onSignIn' aria-label='Google Login Button'></div>
       <section className={style.somTimerWalkthrough}>
