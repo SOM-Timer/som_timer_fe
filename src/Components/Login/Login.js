@@ -10,7 +10,7 @@ const Login = () => {
     <section className={style.loginContainer}>
       <h2 className={style.loginHeader}>Welcome to Som Timer</h2>
       <p className={style.appDescription}>
-        Som Timer is a timer that cares. This application serves curated wellness content on break intervals. Build in rest so you can focus best!
+        Som Timer is a timer that cares. This application serves curated wellness content on break intervals. Be mindful of rest so you can focus best!
         <br /><br />
         Sign in with Google to get started.
       </p>
