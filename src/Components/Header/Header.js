@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link, NavLink } from 'react-router-dom'
+import PropTypes from 'prop-types'
 import style from './Header.module.scss'
 import timerNavIcon from '../../assets/navbar/timerNavIcon.png'
 import statsNavIcon from '../../assets/navbar/statsNavIcon.png'
@@ -62,3 +63,7 @@ const Header = ({ toggleTimerView }) => {
 }
 
 export default Header
+
+Header.propTypes = {
+  toggleTimerView: PropTypes.func
+}
