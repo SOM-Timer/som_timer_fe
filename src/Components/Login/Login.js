@@ -1,4 +1,6 @@
-import React from 'react'
+import React, { useContext, useEffect } from 'react'
+import { loginUser } from '../../apiCalls'
+import { UserContext } from '../../Context/UserContext'
 import style from './Login.module.scss'
 import aboutIcon from '../../assets/navbar/aboutNavIcon.png'
 import settingsIcon from '../../assets/navbar/settingsNavIcon.png'
@@ -6,6 +8,35 @@ import statsIcon from '../../assets/navbar/statsNavIcon.png'
 import timerIcon from '../../assets/navbar/timerNavIcon.png'
 
 const Login = () => {
+  const [user, setUser] = useContext(UserContext)
+
+  useEffect(() => {
+    window.gapi.signin2.render("g-signin2", {
+      scope: "https://www.googleapis.com/auth/plus.login",
+      width: 200,
+      height: 50,
+      longtitle: true,
+      theme: "dark",
+      onsuccess: onSignIn,
+    })
+  })
+  
+  const onSignIn = googleUser => {
+    const userName = googleUser.getBasicProfile().getName()
+    const token = googleUser.getAuthResponse().id_token
+    loginUser(userName, token)
+      .then(response => {
+        const userData = response.data
+        setUser({
+          ...user,
+          userName: userData.user_name,
+          token: userData.token,
+          userId: userData.id
+        })
+      })
+      .catch(error => console.log(error))
+  }
+
   return (
     <section className={style.loginContainer}>
       <h2 className={style.loginHeader}>Welcome to Som Timer</h2>
@@ -59,7 +90,7 @@ const Login = () => {
         </article>
       </section>
       {/* This login button comes from these docs https://developers.google.com/identity/sign-in/web/sign-in; We should explore these further for methods we'll need for Login */}
-      <div className='g-signin2' data-onsuccess='onSignIn' aria-label='Google Login Button'></div>
+      <div id='g-signin2' aria-label='Google Login Button' />
       <p>
         Sign in with Google to get started.
       </p>
