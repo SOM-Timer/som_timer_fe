@@ -5,7 +5,7 @@ import '@testing-library/jest-dom'
 import { ViewProvider } from '../../Context/ViewContext'
 import { SettingsProvider } from '../../Context/SettingsContext'
 import { SessionProvider } from '../../Context/SessionContext'
-import { UserProvider } from '../../Context/UserContext.js'
+import { UserProvider, UserContext } from '../../Context/UserContext.js'
 
 describe('HomeContainer', () => {
   it('should render the login page on load', () => {
@@ -40,9 +40,9 @@ describe('HomeContainer', () => {
     expect(statsPageHeader).toBeInTheDocument()
   })
 
-  it('should render the Timer view on load', () => {
-    const { getByRole } = render (
-      <UserProvider>
+  it('should render the Timer view if a user is logged in', async () => {
+    const { findByRole } = render (
+      <UserContext.Provider value={[{userName: 'Fran', token:'200', userId: 3}]}>
         <ViewProvider>
           <SettingsProvider>
             <SessionProvider>
@@ -50,12 +50,12 @@ describe('HomeContainer', () => {
             </SessionProvider>
           </SettingsProvider>
         </ViewProvider>
-      </UserProvider>
+      </UserContext.Provider>
     )
 
-    const startButton = getByRole('button', { name: /start/i })
-    const resetButton = getByRole('button', { name: /reset/i })
-    const skipButton = getByRole('button', { name: /skip/i })
+    const startButton = await findByRole('button', { name: /start/i })
+    const resetButton = await findByRole('button', { name: /reset/i })
+    const skipButton = await findByRole('button', { name: /skip/i })
 
     expect(startButton).toBeInTheDocument()
     expect(resetButton).toBeInTheDocument()
