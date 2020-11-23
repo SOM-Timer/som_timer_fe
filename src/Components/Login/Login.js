@@ -33,6 +33,11 @@ const Login = () => {
           token: userData.token,
           userId: userData.id
         })
+        localStorage.setItem('somTimerUser', JSON.stringify({
+          userName: userData.user_name,
+          token: userData.token,
+          userId: userData.id
+        }))
       })
       .catch(error => console.log(error))
   }
