@@ -16,8 +16,8 @@ const HomeContainer = () => {
   return (
     <div className={style.HomeContainer} id="HomeContainer">
       <VideoProvider>
-        {!user && <Login />}
-        {user && (
+        {!user.token && <Login />}
+        {user.token && (
           <>
             {view === "timer" && <CountdownTimer />}
             {view === "content-selection" && <ContentSelection />}
