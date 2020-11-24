@@ -11,7 +11,7 @@ import { ToastContainer } from 'react-toastify'
 import './App.scss'
 
 
-function App() {
+const App = () => {
   enableNotifications()
 
   const toggleTimerView = (hide) => {
