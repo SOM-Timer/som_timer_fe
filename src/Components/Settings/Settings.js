@@ -117,8 +117,10 @@ const Settings = ({ toggleTimerView }) => {
           ✨
         </span>
       </p>
-      <a href="#" onClick={signOut}>
-        Log Out
+      <a href="/">
+        <button className={style.skipBtn} onClick={signOut}>
+          Log Out
+        </button>
       </a>
     </div>
   );
