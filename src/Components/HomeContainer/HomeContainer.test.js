@@ -1,6 +1,6 @@
 import React from 'react'
 import HomeContainer from './HomeContainer.js'
-import { render } from '@testing-library/react'
+import { render, waitFor } from '@testing-library/react'
 import '@testing-library/jest-dom'
 import { ViewProvider } from '../../Context/ViewContext'
 import { SettingsProvider } from '../../Context/SettingsContext'
@@ -57,8 +57,10 @@ describe('HomeContainer', () => {
     const resetButton = await findByRole('button', { name: /reset/i })
     const skipButton = await findByRole('button', { name: /skip/i })
 
-    expect(startButton).toBeInTheDocument()
-    expect(resetButton).toBeInTheDocument()
-    expect(skipButton).toBeInTheDocument()
+    await waitFor(() => {
+      expect(startButton).toBeInTheDocument()
+      expect(resetButton).toBeInTheDocument()
+      expect(skipButton).toBeInTheDocument()
+    })
   })
 })

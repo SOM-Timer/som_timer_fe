@@ -1,6 +1,6 @@
 import React from 'react'
 import About from './About'
-import { render } from '@testing-library/react'
+import { render, waitFor } from '@testing-library/react'
 import '@testing-library/jest-dom'
 
 describe('About', () => {
@@ -41,11 +41,13 @@ describe('About', () => {
     expect(backEndEngineer3).toBeInTheDocument()
   })
 
-  it('should hide the Homecontainer when rendered', () => {
+  it('should hide the Homecontainer when rendered', async () => {
 
     render(<About toggleTimerView={toggleTimerView} />)
 
-    expect(toggleTimerView).toHaveBeenCalledTimes(1)
-    expect(toggleTimerView).toHaveBeenCalledWith(true)
+    await waitFor(() => {
+      expect(toggleTimerView).toHaveBeenCalledTimes(1)
+      expect(toggleTimerView).toHaveBeenCalledWith(true)
+    })
   })
 })

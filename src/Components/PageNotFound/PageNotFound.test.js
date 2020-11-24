@@ -1,6 +1,6 @@
 import React from 'react'
 import PageNotFound from './PageNotFound'
-import { render } from '@testing-library/react'
+import { render, waitFor } from '@testing-library/react'
 import '@testing-library/jest-dom'
 import { BrowserRouter } from 'react-router-dom'
 
@@ -12,20 +12,20 @@ describe('PageNotFound', () => {
     toggleTimerView = jest.fn()
   })
 
-  it('should display the correct content when rendered', () => {
+  it('should display the correct content when rendered', async () => {
   
-    const { getByRole, getByAltText, getByText } = render(
+    const { findByRole, findByAltText, findByText } = render(
       <BrowserRouter>
         <PageNotFound toggleTimerView={toggleTimerView} />
       </BrowserRouter>
     )
 
-    const notFoundHeading = getByRole('heading', { name: 'Oops, we can\'t seem to find the page you\'re looking for!'})
-    const notFoundImg = getByAltText('distressed internet user')
-    const helpfulLinksText = getByText('Here are some helpful links to get you back on track:')
-    const homeLink = getByRole('link', { name: 'Home / Timer'})
-    const settingsLink = getByRole('link', { name: 'Settings'})
-    const aboutLink = getByRole('link', { name: 'About'})
+    const notFoundHeading = await findByRole('heading', { name: 'Oops, we can\'t seem to find the page you\'re looking for!'})
+    const notFoundImg = await findByAltText('distressed internet user')
+    const helpfulLinksText = await findByText('Here are some helpful links to get you back on track:')
+    const homeLink = await findByRole('link', { name: 'Home / Timer'})
+    const settingsLink = await findByRole('link', { name: 'Settings'})
+    const aboutLink = await findByRole('link', { name: 'About'})
 
     expect(notFoundHeading).toBeInTheDocument()
     expect(notFoundImg).toBeInTheDocument()
@@ -35,7 +35,7 @@ describe('PageNotFound', () => {
     expect(aboutLink).toBeInTheDocument()
   })
 
-  it('should hide the Homecontainer when rendered', () => {
+  it('should hide the Homecontainer when rendered', async () => {
 
     render(
       <BrowserRouter>
@@ -43,7 +43,9 @@ describe('PageNotFound', () => {
       </BrowserRouter>
     )
 
-    expect(toggleTimerView).toHaveBeenCalledTimes(1)
-    expect(toggleTimerView).toHaveBeenCalledWith(true)
+    await waitFor(() => {
+      expect(toggleTimerView).toHaveBeenCalledTimes(1)
+      expect(toggleTimerView).toHaveBeenCalledWith(true)
+    })
   })
 })

@@ -1,14 +1,14 @@
 import React from 'react'
 import FocusModal from './FocusModal'
-import { render } from '@testing-library/react'
+import { render, waitFor } from '@testing-library/react'
 import { ViewProvider } from '../../Context/ViewContext'
 import { SessionProvider } from '../../Context/SessionContext'
 import { postSession } from '../../apiCalls'
 jest.mock('../../apiCalls')
 
 describe('FocusModal', () => {
-  it('Should have the correct content on load', () => {
-    const { getByRole } = render(
+  it('Should have the correct content on load', async () => {
+    const { findByRole } = render(
       <ViewProvider>
         <SessionProvider>
           <FocusModal />
@@ -16,12 +16,12 @@ describe('FocusModal', () => {
       </ViewProvider>
     )
 
-    const modalText = getByRole('heading', { name: /get ready to focus/i })
+    const modalText = await findByRole('heading', { name: /get ready to focus/i })
 
     expect(modalText).toBeInTheDocument()
   })
 
-  it('Should make a network request when rendered', () => {
+  it('Should make a network request when rendered', async () => {
     render(
       <ViewProvider>
         <SessionProvider>
@@ -30,6 +30,6 @@ describe('FocusModal', () => {
       </ViewProvider>
     )
 
-    expect(postSession).toBeCalled()
+    await waitFor(() => expect(postSession).toBeCalled())
   })
 })

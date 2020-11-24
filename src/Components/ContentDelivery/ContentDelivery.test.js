@@ -1,6 +1,6 @@
 import React from 'react'
 import ContentDelivery from './ContentDelivery.js'
-import { render } from '@testing-library/react'
+import { render, waitFor } from '@testing-library/react'
 import '@testing-library/jest-dom'
 import { BrowserRouter } from 'react-router-dom'
 import { VideoProvider } from '../../Context/VideoContext'
@@ -9,9 +9,9 @@ import { SessionProvider } from '../../Context/SessionContext'
 import { SettingsProvider } from '../../Context/SettingsContext'
 
 describe('ContentDelivery component', () => {
-  it('should display a video player and skip button when rendered', () => {
+  it('should display a video player and skip button when rendered', async () => {
 
-    const { getByRole } = render(
+    const { findByRole } = render(
       <BrowserRouter>
         <ViewProvider>
           <SessionProvider>
@@ -25,10 +25,12 @@ describe('ContentDelivery component', () => {
       </BrowserRouter>
     )
 
-    const breakTitle = getByRole('heading', { name: /enjoy your break/i })
-    const skipBtn = getByRole('button', { name: /skip break/i })
+    const breakTitle = await findByRole('heading', { name: /enjoy your break/i })
+    const skipBtn = await findByRole('button', { name: /skip break/i })
 
-    expect(breakTitle).toBeInTheDocument()
-    expect(skipBtn).toBeInTheDocument()
-  });
+    await waitFor(() => {
+      expect(breakTitle).toBeInTheDocument()
+      expect(skipBtn).toBeInTheDocument()
+    })
+  })
 })
