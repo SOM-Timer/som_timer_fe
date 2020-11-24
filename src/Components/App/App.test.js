@@ -7,10 +7,20 @@ import { VideoProvider } from '../../Context/VideoContext'
 import { SettingsProvider } from '../../Context/SettingsContext'
 import { SessionProvider } from '../../Context/SessionContext'
 import { MemoryRouter } from 'react-router-dom'
+import { UserProvider, UserContext } from '../../Context/UserContext'
 import { getSettings, updateSettings, getRandomContent, postSession } from '../../apiCalls'
 jest.mock('../../apiCalls.js')
 
 describe('App', () => {
+
+  beforeEach(() => {
+    window.gapi = {
+      signin2: {
+        render: jest.fn()
+      }
+    }
+  })
+
   it('should bring users to the timer view on load and allow them to visit the Stats, About, and Settings pages', async () => {
 
     getSettings.mockResolvedValue({
@@ -24,15 +34,19 @@ describe('App', () => {
 
     const { getByRole, getByAltText, getByText } = render(
       <MemoryRouter>
-        <SettingsProvider>
-          <ViewProvider>
-            <SessionProvider>
-              <VideoProvider>
-                <App />
-              </VideoProvider>
-            </SessionProvider>
-          </ViewProvider>
-        </SettingsProvider>
+        <UserContext.Provider
+          value={[{ userName: "Fran", token: "200", userId: 3 }]}
+        >
+          <SettingsProvider>
+            <ViewProvider>
+              <SessionProvider>
+                <VideoProvider>
+                  <App />
+                </VideoProvider>
+              </SessionProvider>
+            </ViewProvider>
+          </SettingsProvider>
+        </UserContext.Provider>
       </MemoryRouter>
     )
 
@@ -88,15 +102,19 @@ describe('App', () => {
 
     const { getByRole, getByAltText, getByText } = render(
       <MemoryRouter>
-        <SettingsProvider>
-          <ViewProvider>
-            <SessionProvider>
-              <VideoProvider>
-                <App />
-              </VideoProvider>
-            </SessionProvider>
-          </ViewProvider>
-        </SettingsProvider>
+        <UserContext.Provider
+          value={[{ userName: "Fran", token: "200", userId: 3 }]}
+        >
+          <SettingsProvider>
+            <ViewProvider>
+              <SessionProvider>
+                <VideoProvider>
+                  <App />
+                </VideoProvider>
+              </SessionProvider>
+            </ViewProvider>
+          </SettingsProvider>
+        </UserContext.Provider>
       </MemoryRouter>
     )
 
@@ -128,15 +146,19 @@ describe('App', () => {
 
     const { getByRole } = render(
       <MemoryRouter>
-        <SettingsProvider>
-          <ViewProvider>
-            <SessionProvider>
-              <VideoProvider>
-                <App />
-              </VideoProvider>
-            </SessionProvider>
-          </ViewProvider>
-        </SettingsProvider>
+        <UserContext.Provider
+          value={[{ userName: "Fran", token: "200", userId: 3 }]}
+        >
+          <SettingsProvider>
+            <ViewProvider>
+              <SessionProvider>
+                <VideoProvider>
+                  <App />
+                </VideoProvider>
+              </SessionProvider>
+            </ViewProvider>
+          </SettingsProvider>
+        </UserContext.Provider>
       </MemoryRouter>
     )
 
@@ -162,15 +184,19 @@ describe('App', () => {
 
     const { getByRole } = render(
       <MemoryRouter>
-        <SettingsProvider>
-          <ViewProvider>
-            <SessionProvider>
-              <VideoProvider>
-                <App />
-              </VideoProvider>
-            </SessionProvider>
-          </ViewProvider>
-        </SettingsProvider>
+        <UserContext.Provider
+          value={[{ userName: "Fran", token: "200", userId: 3 }]}
+        >
+          <SettingsProvider>
+            <ViewProvider>
+              <SessionProvider>
+                <VideoProvider>
+                  <App />
+                </VideoProvider>
+              </SessionProvider>
+            </ViewProvider>
+          </SettingsProvider>
+        </UserContext.Provider>
       </MemoryRouter>
     )
 
@@ -196,15 +222,19 @@ describe('App', () => {
 
     const { getByRole } = render(
       <MemoryRouter>
-        <SettingsProvider>
-          <ViewProvider>
-            <SessionProvider>
-              <VideoProvider>
-                <App />
-              </VideoProvider>
-            </SessionProvider>
-          </ViewProvider>
-        </SettingsProvider>
+        <UserContext.Provider
+          value={[{ userName: "Fran", token: "200", userId: 3 }]}
+        >
+          <SettingsProvider>
+            <ViewProvider>
+              <SessionProvider>
+                <VideoProvider>
+                  <App />
+                </VideoProvider>
+              </SessionProvider>
+            </ViewProvider>
+          </SettingsProvider>
+        </UserContext.Provider>
       </MemoryRouter>
     )
 
@@ -246,15 +276,19 @@ describe('App', () => {
 
     const { getByRole } = render(
       <MemoryRouter>
-        <SettingsProvider>
-          <ViewProvider>
-            <SessionProvider>
-              <VideoProvider>
-                <App />
-              </VideoProvider>
-            </SessionProvider>
-          </ViewProvider>
-        </SettingsProvider>
+        <UserContext.Provider
+          value={[{ userName: "Fran", token: "200", userId: 3 }]}
+        >
+          <SettingsProvider>
+            <ViewProvider>
+              <SessionProvider>
+                <VideoProvider>
+                  <App />
+                </VideoProvider>
+              </SessionProvider>
+            </ViewProvider>
+          </SettingsProvider>
+        </UserContext.Provider>
       </MemoryRouter>
     )
 
@@ -300,15 +334,19 @@ describe('App', () => {
 
     const { getByRole } = render(
       <MemoryRouter>
-        <SettingsProvider>
-          <ViewProvider>
-            <SessionProvider>
-              <VideoProvider>
-                <App />
-              </VideoProvider>
-            </SessionProvider>
-          </ViewProvider>
-        </SettingsProvider>
+        <UserContext.Provider
+          value={[{ userName: "Fran", token: "200", userId: 3 }]}
+        >
+          <SettingsProvider>
+            <ViewProvider>
+              <SessionProvider>
+                <VideoProvider>
+                  <App />
+                </VideoProvider>
+              </SessionProvider>
+            </ViewProvider>
+          </SettingsProvider>
+        </UserContext.Provider>
       </MemoryRouter>
     )
 
@@ -348,15 +386,19 @@ describe('App', () => {
 
     const { getByRole } = render(
       <MemoryRouter>
-        <SettingsProvider>
-          <ViewProvider>
-            <SessionProvider>
-              <VideoProvider>
-                <App />
-              </VideoProvider>
-            </SessionProvider>
-          </ViewProvider>
-        </SettingsProvider>
+        <UserContext.Provider
+          value={[{ userName: "Fran", token: "200", userId: 3 }]}
+        >
+          <SettingsProvider>
+            <ViewProvider>
+              <SessionProvider>
+                <VideoProvider>
+                  <App />
+                </VideoProvider>
+              </SessionProvider>
+            </ViewProvider>
+          </SettingsProvider>
+        </UserContext.Provider>
       </MemoryRouter>
     )
 
@@ -401,15 +443,19 @@ describe('App', () => {
 
     const { getByRole } = render(
       <MemoryRouter>
-        <SettingsProvider>
-          <ViewProvider>
-            <SessionProvider>
-              <VideoProvider>
-                <App />
-              </VideoProvider>
-            </SessionProvider>
-          </ViewProvider>
-        </SettingsProvider>
+        <UserContext.Provider
+          value={[{ userName: "Fran", token: "200", userId: 3 }]}
+        >
+          <SettingsProvider>
+            <ViewProvider>
+              <SessionProvider>
+                <VideoProvider>
+                  <App />
+                </VideoProvider>
+              </SessionProvider>
+            </ViewProvider>
+          </SettingsProvider>
+        </UserContext.Provider>
       </MemoryRouter>
     )
 
@@ -458,15 +504,19 @@ describe('App', () => {
 
     const { getByRole } = render(
       <MemoryRouter>
-        <SettingsProvider>
-          <ViewProvider>
-            <SessionProvider>
-              <VideoProvider>
-                <App />
-              </VideoProvider>
-            </SessionProvider>
-          </ViewProvider>
-        </SettingsProvider>
+        <UserContext.Provider
+          value={[{ userName: "Fran", token: "200", userId: 3 }]}
+        >
+          <SettingsProvider>
+            <ViewProvider>
+              <SessionProvider>
+                <VideoProvider>
+                  <App />
+                </VideoProvider>
+              </SessionProvider>
+            </ViewProvider>
+          </SettingsProvider>
+        </UserContext.Provider>
       </MemoryRouter>
     )
 
@@ -518,15 +568,19 @@ describe('App', () => {
 
     const { getByRole } = render(
       <MemoryRouter>
-        <SettingsProvider>
-          <ViewProvider>
-            <SessionProvider>
-              <VideoProvider>
-                <App />
-              </VideoProvider>
-            </SessionProvider>
-          </ViewProvider>
-        </SettingsProvider>
+        <UserContext.Provider
+          value={[{ userName: "Fran", token: "200", userId: 3 }]}
+        >
+          <SettingsProvider>
+            <ViewProvider>
+              <SessionProvider>
+                <VideoProvider>
+                  <App />
+                </VideoProvider>
+              </SessionProvider>
+            </ViewProvider>
+          </SettingsProvider>
+        </UserContext.Provider>
       </MemoryRouter>
     )
 

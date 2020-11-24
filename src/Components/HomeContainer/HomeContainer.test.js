@@ -5,7 +5,7 @@ import '@testing-library/jest-dom'
 import { ViewProvider } from '../../Context/ViewContext'
 import { SettingsProvider } from '../../Context/SettingsContext'
 import { SessionProvider } from '../../Context/SessionContext'
-import { UserProvider, UserContext } from '../../Context/UserContext.js'
+import { UserProvider, UserContext } from '../../Context/UserContext'
 
 describe('HomeContainer', () => {
   it('should render the login page on load', () => {
