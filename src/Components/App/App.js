@@ -10,9 +10,7 @@ import { UserContext } from '../../Context/UserContext'
 import PageNotFound from '../PageNotFound/PageNotFound'
 import { enableNotifications } from '../../helpers/notificationHelpers'
 import { ToastContainer } from 'react-toastify'
-
 import './App.scss'
-
 
 const App = () => {
   const [user] = useContext(UserContext)
