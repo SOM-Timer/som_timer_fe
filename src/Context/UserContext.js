@@ -9,7 +9,6 @@ export const UserProvider = ({ children }) => {
     const credentials = JSON.parse(localStorage.getItem('somTimerUser'))
     if (credentials) {
       setUser({
-        ...user,
         userName: credentials.userName,
         token: credentials.token,
         userId: credentials.userId
