@@ -8,38 +8,6 @@ import { SessionProvider } from '../../Context/SessionContext'
 import { UserProvider, UserContext } from '../../Context/UserContext'
 
 describe('HomeContainer', () => {
-  it('should render the login page on load', () => {
-    window.gapi = {
-      signin2: {
-        render: jest.fn()
-      }
-    }
-
-    const { getByRole } = render (
-      <UserProvider>
-        <ViewProvider>
-          <SettingsProvider>
-            <SessionProvider>
-              <HomeContainer/>
-            </SessionProvider>
-          </SettingsProvider>
-        </ViewProvider>
-      </UserProvider>
-    )
-
-    const welcomePrompt = getByRole('heading', { name: /welcome to som timer/i })
-    const homePagePrompt = getByRole('heading', { name: /home page/i })
-    const aboutPageHeader = getByRole('heading', { name: /about page/i })
-    const settingsPageHeader = getByRole('heading', { name: /settings page/i })
-    const statsPageHeader = getByRole('heading', { name: /stats page/i })
-
-    expect(welcomePrompt).toBeInTheDocument()
-    expect(homePagePrompt).toBeInTheDocument()
-    expect(aboutPageHeader).toBeInTheDocument()
-    expect(settingsPageHeader).toBeInTheDocument()
-    expect(statsPageHeader).toBeInTheDocument()
-  })
-
   it('should render the Timer view if a user is logged in', async () => {
     const { findByRole } = render (
       <UserContext.Provider value={[{userName: 'Fran', token:'200', userId: 3}]}>
