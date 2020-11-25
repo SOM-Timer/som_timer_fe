@@ -1,4 +1,5 @@
 @import '../../style/variables.scss';
+@import '../../style/mixins.scss';
 
 .loginContainer {
   display: flex;
@@ -9,7 +10,14 @@
 }
 
 .loginHeader {
-  margin-top: 1.5em;
+  margin-top: .5em;
+  margin-bottom: 0;
+  font-size: 3em;
+}
+
+.line {
+  @include line();
+  margin: 1.5em 0;
 }
 
 .somTimerWalkthrough {
@@ -19,6 +27,7 @@
 }
 
 .appDescription {
+  text-align: center;
   margin-top: 0;
   margin-bottom: 0.5em;
 }
