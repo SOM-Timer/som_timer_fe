@@ -67,22 +67,9 @@ const Stats = ({ toggleTimerView }) => {
     return intervalSum / sessions.length
   }
 
-  const createTableData = () => {
-    return sessionLog.map(session => {
-      return (
-        <tr className={style.tableRow}>
-          <td>{session['focus_interval']}</td>
-          <td>{session['rest_interval']}</td>
-          <td>{session['mood_rating_1']}</td>
-          <td>{session['content_selected']}</td>
-          <td>{session['mood_rating_2']}</td>
-        </tr>
-      )
-    })
-  }
-
   return (
     <>
+      <h2 className={style.prompt}>Usage</h2>
       <div className={style.frequencyStatisticsContainer}>
         <section className={style.pieChartContainer}>
           <PieChart
@@ -123,7 +110,7 @@ const Stats = ({ toggleTimerView }) => {
           </h3>
           <h3 className={style.frequencyModal}>
             Average focus interval
-            <h2 className={style.frequencyStatisticValue}>{frequencyStatistics.averageFocusInterval}</h2>
+            <h2 className={style.frequencyStatisticValue}>{frequencyStatistics.averageFocusInterval.toFixed(2)}</h2>
             in minutes
           </h3>
           <h3 className={style.frequencyModal}>
@@ -133,18 +120,6 @@ const Stats = ({ toggleTimerView }) => {
           </h3>
         </section>
       </div>
-      <table className={style.sessionLog}>
-        <tr className={style.tableHead}>
-          <th>Focus<br />Interval</th>
-          <th>Break<br />Interval</th>
-          <th>Mood<br />Rating 1</th>
-          <th>Content<br />Selected</th>
-          <th>Mood<br />Rating 2</th>
-        </tr>
-        <div className={style.tableRows}>
-          {createTableData()}
-        </div>
-      </table>
     </>
   )
 }
