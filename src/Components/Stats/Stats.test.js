@@ -71,7 +71,7 @@ describe('Stats', () => {
     )
   })
 
-  it('should display the correct content when rendered', () => {
+  it('should display the correct content when rendered', async() => {
     
     const { getByRole, getByText } = render(
       <BrowserRouter>
@@ -83,11 +83,17 @@ describe('Stats', () => {
     const somaticExerciseLabel = getByText(/somatic exercises/i)
     const movementLabel = getByText(/yoga\/movement/i)
     const meditationLabel = getByText(/meditation\/breathwork/i)
+    const sessionCountText = getByText(/you have completed/i)
+    const averageFocusIntervalText = getByText(/average focus interval/i)
+    const averageRestIntervalText = getByText(/average rest interval/i)
 
     expect(statsHeading).toBeInTheDocument()
     expect(somaticExerciseLabel).toBeInTheDocument()
     expect(movementLabel).toBeInTheDocument()
     expect(meditationLabel).toBeInTheDocument()
+    expect(sessionCountText).toBeInTheDocument()
+    expect(averageFocusIntervalText).toBeInTheDocument()
+    expect(averageRestIntervalText).toBeInTheDocument()
   })
 
   it('should hide the Homecontainer when rendered', () => {
