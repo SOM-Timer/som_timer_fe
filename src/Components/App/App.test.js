@@ -8,7 +8,7 @@ import { SettingsProvider, SettingsContext } from '../../Context/SettingsContext
 import { SessionProvider } from '../../Context/SessionContext'
 import { MemoryRouter } from 'react-router-dom'
 import { UserProvider, UserContext } from '../../Context/UserContext'
-import { getSettings, updateSettings, getRandomContent, postSession } from '../../apiCalls'
+import { getSettings, updateSettings, getRandomContent, postSession, getAllSessions } from '../../apiCalls'
 jest.mock('../../apiCalls.js')
 
 describe('App', () => {
@@ -29,17 +29,43 @@ describe('App', () => {
         sound: "chordCliff",
       },
     })
-    
-    const { getByRole } = render (
-      <SettingsProvider>
-        <UserProvider>
-          <ViewProvider>
-            <SessionProvider>
-              <App />
-            </SessionProvider>
-          </ViewProvider>
-        </UserProvider>
-      </SettingsProvider>
+
+  getAllSessions.mockResolvedValue({
+      "data": {
+        "count": 6,
+        "rests": [
+          {
+            "id": 1,
+            "mood_rating_1": 1,
+            "mood_rating_2": 5,
+            "content_selected": "MEDITATION",
+            "focus_interval": "25",
+            "rest_interval": "5"
+          },
+          {
+            "id": 2,
+            "mood_rating_1": 2,
+            "mood_rating_2": 4,
+            "content_selected": "SOMATIC",
+            "focus_interval": "45",
+            "rest_interval": "15"
+          }
+        ]
+      }
+    })
+
+    const { getByRole, getByAltText, getByText } = render(
+      <MemoryRouter>
+        <SettingsProvider>
+          <UserProvider>
+            <ViewProvider>
+              <SessionProvider>
+                <App />
+              </SessionProvider>
+            </ViewProvider>
+          </UserProvider>
+        </SettingsProvider>
+      </MemoryRouter>
     )
 
     const welcomePrompt = getByRole('heading', { name: /welcome to som timer/i })
@@ -83,13 +109,11 @@ describe('App', () => {
     expect(timerLength).toBeInTheDocument();
     expect(appHeading).toBeInTheDocument();
     expect(timerHeading).toBeInTheDocument();
-
+    
     const statsIcon = getByAltText("stats icon");
     fireEvent.click(statsIcon);
-
-    const statsHeading = getByRole("heading", {
-      name: /stats page coming soon!/i,
-    });
+    
+    const statsHeading = getByRole('heading', { name: /usage/i })
 
     expect(statsHeading).toBeInTheDocument();
 
