@@ -28,9 +28,9 @@ export const postSession = (session) => {
   })
 }
 
-export const loginUser = (userName, token) => {
+export const loginUser = (userName, email) => {
   return axios.post(`${rootUrl}/users`, {
     user_name: userName,
-    token
+    email
   })
 }

@@ -25,8 +25,8 @@ const App = () => {
   
   return (
     <>
-      {!user.token && <Login />}
-      {user.token &&
+      {!user.email && <Login />}
+      {user.email &&
       <section className="App">
         <ToastContainer
           position="top-center"
