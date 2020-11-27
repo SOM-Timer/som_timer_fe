@@ -23,19 +23,19 @@ const Login = () => {
   
   const onSignIn = googleUser => {
     const userName = googleUser.getBasicProfile().getName()
-    const token = googleUser.getAuthResponse().id_token
-    loginUser(userName, token)
+    const email = googleUser.getBasicProfile().getEmail()
+    loginUser(userName, email)
       .then(response => {
         const userData = response.data
         setUser({
           ...user,
           userName: userData.user_name,
-          token: userData.token,
+          email: userData.email,
           userId: userData.id
         })
         localStorage.setItem('somTimerUser', JSON.stringify({
           userName: userData.user_name,
-          token: userData.token,
+          email: userData.email,
           userId: userData.id
         }))
       })
