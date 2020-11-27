@@ -3,14 +3,14 @@ import React, { createContext, useState, useEffect } from 'react'
 export const UserContext = createContext()
 
 export const UserProvider = ({ children }) => {
-  const [user, setUser] = useState({ userName: '', token: '', userId: null })
+  const [user, setUser] = useState({ userName: '', email: '', userId: null })
 
   useEffect(() => {
     const credentials = JSON.parse(localStorage.getItem('somTimerUser'))
     if (credentials) {
       setUser({
         userName: credentials.userName,
-        token: credentials.token,
+        email: credentials.email,
         userId: credentials.userId
       })
     }
