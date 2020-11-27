@@ -61,7 +61,7 @@
 }
 
 .saveAutomatically {
-  margin-top: 1.6em;
+  margin-top: 1em;
   text-shadow: 0px 0px 2px;
   letter-spacing: 1px;
 }
@@ -113,10 +113,28 @@ input:checked + .slider:before {
   }
 }
 
+.skipBtn {
+  @include borderAndShadow(none, 8px, 0px 5px 6px $midBlue);
+  width: fit-content;
+  align-self: center;
+  background: radial-gradient($salmon, #e9adaa); 
+  margin-top: .5em;
+  padding: 0.5em 1em; 
+  font: 1.2em $primaryFont;
+  font-weight: 600;
+  box-shadow: 0px 0px 6px $midBlue, inset 0px 0px 5px rgba(0, 0, 0, 0.239);
+
+  &:hover {
+    background-color: $salmonHover;
+    background: radial-gradient(#e9adaa, $salmon);
+    box-shadow: 0px 0px 30px $lightBlueAccent, inset 0px 0px 5px rgba(0, 0, 0, 0.239);
+    text-shadow: 0px 0px 1px rgba(0, 0, 0, 0.239);
+  }
+}
 
 @media screen and (max-width: 688px) {
   .settingsContainer {
-    @include size(300px, 400px);
+    @include size(300px, fit-content);
     justify-content: flex-start;
   }
 
@@ -126,6 +144,7 @@ input:checked + .slider:before {
   }
 
   .saveAutomatically {
+    font-size: smaller;
     margin-top: 3em
   }
 }

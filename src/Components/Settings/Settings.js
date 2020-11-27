@@ -30,6 +30,12 @@ const Settings = ({ toggleTimerView }) => {
     })
   }
 
+  const signOut = () => {
+    var auth2 = window.gapi.auth2.getAuthInstance()
+    auth2.signOut()
+      .then(() => localStorage.clear())
+  }
+
   return (
     <div className={style.settingsContainer}>
       <h2 className={style.settingsHeader}>Settings</h2>
@@ -40,8 +46,8 @@ const Settings = ({ toggleTimerView }) => {
           type="number"
           min={0}
           max={240}
-          id='workInterval'
-          name='workInterval'
+          id="workInterval"
+          name="workInterval"
           placeholder={settings.workInterval}
           onBlur={onChange}
           className={style.minutesInput}
@@ -54,9 +60,9 @@ const Settings = ({ toggleTimerView }) => {
         <select
           onBlur={onChange}
           className={style.breakIntervalDropdown}
-          name='Break'
-          id='breakInterval'
-          data-testid='breakInterval'
+          name="Break"
+          id="breakInterval"
+          data-testid="breakInterval"
           defaultValue={settings.breakInterval}
         >
           <option value={5}>5</option>
@@ -76,22 +82,24 @@ const Settings = ({ toggleTimerView }) => {
           data-testid="sound"
           value={settings.sound}
         >
-          <option value={'reverbSplash'}>Reverb Splash</option>
-          <option value={'balineseGong'}>Balinese Gong</option>
-          <option value={'goodOldSynths'}>Good Ol' Synthesizers</option>
-          <option value={'pianoDreams'}>Piano Dreams</option>
-          <option value={'levelUp'}>Level Up</option>
-          <option value={'birdChord'}>Bird Chord</option>
-          <option value={'random'}>Randomize My Sounds</option>
+          <option value={"reverbSplash"}>Reverb Splash</option>
+          <option value={"balineseGong"}>Balinese Gong</option>
+          <option value={"goodOldSynths"}>Good Ol' Synthesizers</option>
+          <option value={"pianoDreams"}>Piano Dreams</option>
+          <option value={"levelUp"}>Level Up</option>
+          <option value={"birdChord"}>Bird Chord</option>
+          <option value={"random"}>Randomize My Sounds</option>
         </select>
       </div>
       <div className={style.line}></div>
       <div className={style.intervalContainer}>
-        <p className={style.intervalLabel}>{settings.moodRating ? 'Disable' : 'Enable'} mood ratings</p>
+        <p className={style.intervalLabel}>
+          {settings.moodRating ? "Disable" : "Enable"} mood ratings
+        </p>
         <label className={style.switch}>
-          <input 
-            type="checkbox" 
-            className={style.inputToggle} 
+          <input
+            type="checkbox"
+            className={style.inputToggle}
             checked={settings.moodRating}
             data-testid="moodRating"
             onClick={toggleMood}
@@ -109,6 +117,11 @@ const Settings = ({ toggleTimerView }) => {
           ✨
         </span>
       </p>
+      <a href="/">
+        <button className={style.skipBtn} onClick={signOut}>
+          Log Out
+        </button>
+      </a>
     </div>
   );
 }

@@ -22,7 +22,6 @@ const HomeContainer = () => {
       </VideoProvider>
     </div>
   );
-
 }
 
 export default HomeContainer

@@ -27,3 +27,10 @@ export const postSession = (session) => {
     mood_rating_2: session.moodRating2
   })
 }
+
+export const loginUser = (userName, token) => {
+  return axios.post(`${rootUrl}/users`, {
+    user_name: userName,
+    token
+  })
+}

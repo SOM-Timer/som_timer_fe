@@ -1,11 +1,20 @@
 import React from 'react'
-import { getByLabelText, render } from '@testing-library/react'
+import { render } from '@testing-library/react'
+import { UserProvider } from '../../Context/UserContext'
 import Login from './Login'
 
 describe('Login', () => {
   it('Should have the correct content when rendered', () => {
+    window.gapi = {
+      signin2: {
+        render: jest.fn()
+      }
+    }
+
     const { getByRole, getByText, getByLabelText } = render(
-      <Login />
+      <UserProvider>
+        <Login />
+      </UserProvider>
     )
 
     const loginHeading = getByRole('heading', { name: /welcome to som timer/i })
