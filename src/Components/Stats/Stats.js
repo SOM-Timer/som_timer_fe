@@ -54,12 +54,9 @@ const Stats = ({ toggleTimerView }) => {
 
   const getAverageInterval = (intervalType, sessions) => {
     let intervalSum = sessions.reduce((sum, session) => {
-      if (session[intervalType] !== null) {
-        console.log(session[intervalType])
+      if (session[intervalType]) {
         let num = parseFloat(session[intervalType])
-        console.log(num)
         let newSum = sum + num
-        console.log(newSum)
         return newSum
       }
     }, 0)
@@ -105,17 +102,30 @@ const Stats = ({ toggleTimerView }) => {
         <section className={style.frequencyModalsContainer}>
           <h3 className={style.frequencyModal}>
             You have completed
-            <h2 className={style.frequencyStatisticValue}>{frequencyStatistics.sessionCount}</h2>
+            <h2 
+              className={style.frequencyStatisticValue} data-testid='sessionCount'
+            >
+              {frequencyStatistics.sessionCount}
+            </h2>
             sessions
           </h3>
           <h3 className={style.frequencyModal}>
             Average focus interval
-            <h2 className={style.frequencyStatisticValue}>{frequencyStatistics.averageFocusInterval.toFixed(2)}</h2>
+            <h2 
+              className={style.frequencyStatisticValue} data-testid='focusIntervalAverage'
+            >
+              {frequencyStatistics.averageFocusInterval.toFixed(2)}
+            </h2>
             in minutes
           </h3>
           <h3 className={style.frequencyModal}>
             Average rest interval
-            <h2 className={style.frequencyStatisticValue}>{frequencyStatistics.averageRestInterval.toFixed(2)}</h2>
+            <h2 
+              className={style.frequencyStatisticValue} 
+              data-testid='restIntervalAverage'
+            >
+              {frequencyStatistics.averageRestInterval.toFixed(2)}
+            </h2>
             in minutes
           </h3>
         </section>
