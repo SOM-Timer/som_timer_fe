@@ -29,7 +29,7 @@ describe('Stats', () => {
               "id": 2,
               "mood_rating_1": 2,
               "mood_rating_2": 4,
-              "content_selected": "MEDITATION",
+              "content_selected": "SOMATIC",
               "focus_interval": "45",
               "rest_interval": "15"
             },
@@ -71,7 +71,7 @@ describe('Stats', () => {
     )
   })
 
-  it('should display the correct content when rendered', async() => {
+  it('should display the correct content when rendered', () => {
     
     const { getByRole, getByText } = render(
       <BrowserRouter>
@@ -94,6 +94,29 @@ describe('Stats', () => {
     expect(sessionCountText).toBeInTheDocument()
     expect(averageFocusIntervalText).toBeInTheDocument()
     expect(averageRestIntervalText).toBeInTheDocument()
+  })
+
+  it('should render the correct statistics when rendered', async () => {
+    
+    const { findByText, findByTestId } = render(
+      <BrowserRouter>
+        <Stats toggleTimerView={toggleTimerView} />
+      </BrowserRouter>
+    )
+
+    const somaticPercentage = await findByText(/50%/i)
+    const movementPercentage = await findByText(/33%/i)
+    const meditationPercentage = await findByText(/17%/i)
+    const sessionCount = await findByTestId(/sessionCount/i)
+    const focusIntervalAverage = await findByTestId(/focusIntervalAverage/i)
+    const restIntervalAverage = await findByTestId(/restIntervalAverage/i)
+
+    expect(somaticPercentage).toBeInTheDocument()
+    expect(movementPercentage).toBeInTheDocument()
+    expect(meditationPercentage).toBeInTheDocument()
+    expect(sessionCount).toBeInTheDocument()
+    expect(focusIntervalAverage).toBeInTheDocument()
+    expect(restIntervalAverage).toBeInTheDocument()
   })
 
   it('should hide the Homecontainer when rendered', () => {
