@@ -4,7 +4,7 @@ import App from './App';
 import '@testing-library/jest-dom'
 import { ViewProvider } from '../../Context/ViewContext'
 import { VideoProvider } from '../../Context/VideoContext'
-import { SettingsProvider } from '../../Context/SettingsContext'
+import { SettingsProvider, SettingsContext } from '../../Context/SettingsContext'
 import { SessionProvider } from '../../Context/SessionContext'
 import { MemoryRouter } from 'react-router-dom'
 import { UserProvider, UserContext } from '../../Context/UserContext'
@@ -31,15 +31,15 @@ describe('App', () => {
     })
     
     const { getByRole } = render (
-      <UserProvider>
-        <ViewProvider>
-          <SettingsProvider>
+      <SettingsProvider>
+        <UserProvider>
+          <ViewProvider>
             <SessionProvider>
               <App />
             </SessionProvider>
-          </SettingsProvider>
-        </ViewProvider>
-      </UserProvider>
+          </ViewProvider>
+        </UserProvider>
+      </SettingsProvider>
     )
 
     const welcomePrompt = getByRole('heading', { name: /welcome to som timer/i })
@@ -56,21 +56,12 @@ describe('App', () => {
   })
 
   it("should bring users to the timer view on load when a user is logged in and allow them to visit the Stats, About, and Settings pages", async () => {
-    getSettings.mockResolvedValue({
-      data: {
-        id: 1,
-        rest_interval: "5",
-        work_interval: "30",
-        sound: "chordCliff",
-      },
-    });
 
     const { getByRole, getByAltText, getByText } = render(
       <MemoryRouter>
-        <UserContext.Provider
-          value={[{ userName: "Fran", token: "200", userId: 3 }]}
-        >
-          <SettingsProvider>
+        <SettingsContext.Provider value={[{ workInterval: "30", breakInterval: "5", sound: "reverbSplash", moodRating: true}]}>
+          <UserContext.Provider value={[{ userName: "Fran", email: "fran@gmail.com", userId: 3 }]}
+          >
             <ViewProvider>
               <SessionProvider>
                 <VideoProvider>
@@ -78,8 +69,8 @@ describe('App', () => {
                 </VideoProvider>
               </SessionProvider>
             </ViewProvider>
-          </SettingsProvider>
-        </UserContext.Provider>
+          </UserContext.Provider>
+        </SettingsContext.Provider>
       </MemoryRouter>
     );
 
@@ -136,14 +127,20 @@ describe('App', () => {
       },
     });
 
-    updateSettings.mockResolvedValue("Success!");
+    updateSettings.mockResolvedValue({
+      "id": 1,
+      "work_interval": "45",
+      "rest_interval": "5",
+      "sound": "reverbSplash",
+      "mood": true,
+      "user_id": 1
+    });
 
     const { getByRole, getByAltText, getByText } = render(
       <MemoryRouter>
-        <UserContext.Provider
-          value={[{ userName: "Fran", token: "200", userId: 3 }]}
-        >
-          <SettingsProvider>
+        <SettingsContext.Provider value={[{ workInterval: "45", breakInterval: "5", sound: "reverbSplash", moodRating: true }, jest.fn()]}>
+          <UserContext.Provider value={[{ userName: "Fran", email: "fran@gmail.com", userId: 3 }]}
+          >
             <ViewProvider>
               <SessionProvider>
                 <VideoProvider>
@@ -151,8 +148,8 @@ describe('App', () => {
                 </VideoProvider>
               </SessionProvider>
             </ViewProvider>
-          </SettingsProvider>
-        </UserContext.Provider>
+          </UserContext.Provider>
+        </SettingsContext.Provider>
       </MemoryRouter>
     );
 
@@ -184,10 +181,9 @@ describe('App', () => {
 
     const { getByRole } = render(
       <MemoryRouter>
-        <UserContext.Provider
-          value={[{ userName: "Fran", token: "200", userId: 3 }]}
-        >
-          <SettingsProvider>
+        <SettingsContext.Provider value={[{ workInterval: "45", breakInterval: "5", sound: "reverbSplash", moodRating: true }, jest.fn()]}>
+          <UserContext.Provider value={[{ userName: "Fran", email: "fran@gmail.com", userId: 3 }]}
+          >
             <ViewProvider>
               <SessionProvider>
                 <VideoProvider>
@@ -195,8 +191,8 @@ describe('App', () => {
                 </VideoProvider>
               </SessionProvider>
             </ViewProvider>
-          </SettingsProvider>
-        </UserContext.Provider>
+          </UserContext.Provider>
+        </SettingsContext.Provider>
       </MemoryRouter>
     );
 
@@ -226,10 +222,9 @@ describe('App', () => {
 
     const { getByRole } = render(
       <MemoryRouter>
-        <UserContext.Provider
-          value={[{ userName: "Fran", token: "200", userId: 3 }]}
-        >
-          <SettingsProvider>
+        <SettingsContext.Provider value={[{ workInterval: "45", breakInterval: "5", sound: "reverbSplash", moodRating: false }, jest.fn()]}>
+          <UserContext.Provider value={[{ userName: "Fran", email: "fran@gmail.com", userId: 3 }]}
+          >
             <ViewProvider>
               <SessionProvider>
                 <VideoProvider>
@@ -237,8 +232,8 @@ describe('App', () => {
                 </VideoProvider>
               </SessionProvider>
             </ViewProvider>
-          </SettingsProvider>
-        </UserContext.Provider>
+          </UserContext.Provider>
+        </SettingsContext.Provider>
       </MemoryRouter>
     );
 
@@ -268,10 +263,9 @@ describe('App', () => {
 
     const { getByRole } = render(
       <MemoryRouter>
-        <UserContext.Provider
-          value={[{ userName: "Fran", token: "200", userId: 3 }]}
-        >
-          <SettingsProvider>
+        <SettingsContext.Provider value={[{ workInterval: "45", breakInterval: "5", sound: "reverbSplash", moodRating: true }, jest.fn()]}>
+          <UserContext.Provider value={[{ userName: "Fran", email: "fran@gmail.com", userId: 3 }]}
+          >
             <ViewProvider>
               <SessionProvider>
                 <VideoProvider>
@@ -279,8 +273,8 @@ describe('App', () => {
                 </VideoProvider>
               </SessionProvider>
             </ViewProvider>
-          </SettingsProvider>
-        </UserContext.Provider>
+          </UserContext.Provider>
+        </SettingsContext.Provider>
       </MemoryRouter>
     );
 
@@ -325,10 +319,9 @@ describe('App', () => {
 
     const { getByRole } = render(
       <MemoryRouter>
-        <UserContext.Provider
-          value={[{ userName: "Fran", token: "200", userId: 3 }]}
-        >
-          <SettingsProvider>
+        <SettingsContext.Provider value={[{ workInterval: "45", breakInterval: "5", sound: "reverbSplash", moodRating: true }, jest.fn()]}>
+          <UserContext.Provider value={[{ userName: "Fran", email: "fran@gmail.com", userId: 3 }]}
+          >
             <ViewProvider>
               <SessionProvider>
                 <VideoProvider>
@@ -336,8 +329,8 @@ describe('App', () => {
                 </VideoProvider>
               </SessionProvider>
             </ViewProvider>
-          </SettingsProvider>
-        </UserContext.Provider>
+          </UserContext.Provider>
+        </SettingsContext.Provider>
       </MemoryRouter>
     );
 
@@ -374,11 +367,9 @@ describe('App', () => {
         mood: false,
       },
     });
-
-    //change to meditation video
     getRandomContent.mockResolvedValue({
       data: {
-        category: "SomaticCategory.SOMATIC",
+        category: "SomaticCategory.MEDITATION",
         duration: "5:00",
         id: 1,
         url: "https://www.youtube.com/watch?v=dsmfIAyiois",
@@ -387,10 +378,9 @@ describe('App', () => {
 
     const { getByRole } = render(
       <MemoryRouter>
-        <UserContext.Provider
-          value={[{ userName: "Fran", token: "200", userId: 3 }]}
-        >
-          <SettingsProvider>
+        <SettingsContext.Provider value={[{ workInterval: "45", breakInterval: "5", sound: "reverbSplash", moodRating: false }, jest.fn()]}>
+          <UserContext.Provider value={[{ userName: "Fran", email: "fran@gmail.com", userId: 3 }]}
+          >
             <ViewProvider>
               <SessionProvider>
                 <VideoProvider>
@@ -398,8 +388,8 @@ describe('App', () => {
                 </VideoProvider>
               </SessionProvider>
             </ViewProvider>
-          </SettingsProvider>
-        </UserContext.Provider>
+          </UserContext.Provider>
+        </SettingsContext.Provider>
       </MemoryRouter>
     );
 
@@ -433,10 +423,9 @@ describe('App', () => {
       },
     });
 
-    //get yoga video back
     getRandomContent.mockResolvedValue({
       data: {
-        category: "SomaticCategory.SOMATIC",
+        category: "SomaticCategory.MOVEMENT",
         duration: "5:00",
         id: 1,
         url: "https://www.youtube.com/watch?v=dsmfIAyiois",
@@ -445,10 +434,9 @@ describe('App', () => {
 
     const { getByRole } = render(
       <MemoryRouter>
-        <UserContext.Provider
-          value={[{ userName: "Fran", token: "200", userId: 3 }]}
-        >
-          <SettingsProvider>
+        <SettingsContext.Provider value={[{ workInterval: "45", breakInterval: "5", sound: "reverbSplash", moodRating: true }, jest.fn()]}>
+          <UserContext.Provider value={[{ userName: "Fran", email: "fran@gmail.com", userId: 3 }]}
+          >
             <ViewProvider>
               <SessionProvider>
                 <VideoProvider>
@@ -456,8 +444,8 @@ describe('App', () => {
                 </VideoProvider>
               </SessionProvider>
             </ViewProvider>
-          </SettingsProvider>
-        </UserContext.Provider>
+          </UserContext.Provider>
+        </SettingsContext.Provider>
       </MemoryRouter>
     );
 
@@ -506,10 +494,9 @@ describe('App', () => {
 
     const { getByRole } = render(
       <MemoryRouter>
-        <UserContext.Provider
-          value={[{ userName: "Fran", token: "200", userId: 3 }]}
-        >
-          <SettingsProvider>
+        <SettingsContext.Provider value={[{ workInterval: "45", breakInterval: "5", sound: "reverbSplash", moodRating: true }, jest.fn()]}>
+          <UserContext.Provider value={[{ userName: "Fran", email: "fran@gmail.com", userId: 3 }]}
+          >
             <ViewProvider>
               <SessionProvider>
                 <VideoProvider>
@@ -517,8 +504,8 @@ describe('App', () => {
                 </VideoProvider>
               </SessionProvider>
             </ViewProvider>
-          </SettingsProvider>
-        </UserContext.Provider>
+          </UserContext.Provider>
+        </SettingsContext.Provider>
       </MemoryRouter>
     );
 
@@ -573,10 +560,9 @@ describe('App', () => {
 
     const { getByRole } = render(
       <MemoryRouter>
-        <UserContext.Provider
-          value={[{ userName: "Fran", token: "200", userId: 3 }]}
-        >
-          <SettingsProvider>
+        <SettingsContext.Provider value={[{ workInterval: "45", breakInterval: "5", sound: "reverbSplash", moodRating: false }, jest.fn()]}>
+          <UserContext.Provider value={[{ userName: "Fran", email: "fran@gmail.com", userId: 3 }]}
+          >
             <ViewProvider>
               <SessionProvider>
                 <VideoProvider>
@@ -584,8 +570,8 @@ describe('App', () => {
                 </VideoProvider>
               </SessionProvider>
             </ViewProvider>
-          </SettingsProvider>
-        </UserContext.Provider>
+          </UserContext.Provider>
+        </SettingsContext.Provider>
       </MemoryRouter>
     );
 
@@ -639,14 +625,14 @@ describe('App', () => {
       content_selected: "MOVEMENT",
       focus_interval: "30",
       rest_interval: "5",
+      user_id: 3
     });
 
     const { getByRole } = render(
       <MemoryRouter>
-        <UserContext.Provider
-          value={[{ userName: "Fran", token: "200", userId: 3 }]}
-        >
-          <SettingsProvider>
+        <SettingsContext.Provider value={[{ workInterval: "45", breakInterval: "5", sound: "reverbSplash", moodRating: true }, jest.fn()]}>
+          <UserContext.Provider value={[{ userName: "Fran", email: "fran@gmail.com", userId: 3 }]}
+          >
             <ViewProvider>
               <SessionProvider>
                 <VideoProvider>
@@ -654,8 +640,8 @@ describe('App', () => {
                 </VideoProvider>
               </SessionProvider>
             </ViewProvider>
-          </SettingsProvider>
-        </UserContext.Provider>
+          </UserContext.Provider>
+        </SettingsContext.Provider>
       </MemoryRouter>
     );
 
@@ -698,6 +684,6 @@ describe('App', () => {
       //we expect timer to return 0 for focusInterval when skipped immediately
       focusInterval: "0.00",
       restInterval: "5",
-    });
+    }, 3);
   });
 })
