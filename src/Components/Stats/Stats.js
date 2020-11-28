@@ -170,12 +170,93 @@ const Stats = ({ toggleTimerView }) => {
       <section className={style.moodWidgetsContainer}>
         <h4 className={style.moodWidget}>
           Somatic Exercises
+          <p className={style.moodAverageLabel}>
+            Average Mood
+          </p>
+          <div className={style.moodStatsContainer}>
+            <div className={style.moodStatsSection}>
+              <p className={style.moodWidgetLabel}>
+                Before rest interval
+              </p>
+              <p 
+                className={style.moodStatistic}
+                data-testid='somaticMood1'
+              >
+                {mood1Statistics.somatic.toFixed(2)}
+              </p>
+            </div>
+            <div className={style.moodStatsSection}>
+              <p className={style.moodWidgetLabel}>
+                After rest interval
+              </p>
+              <p
+                className={style.moodStatistic}
+                data-testid='somaticMood2'
+              >
+                {mood2Statistics.somatic.toFixed(2)}
+              </p>
+            </div>
+          </div>
         </h4>
         <h4 className={style.moodWidget}>
           Yoga/Movement
+          <p className={style.moodAverageLabel}>
+            Average Mood
+          </p>
+          <div className={style.moodStatsContainer}>
+            <div className={style.moodStatsSection}>
+              <p className={style.moodWidgetLabel}>
+                Before rest interval
+              </p>
+              <p 
+                className={style.moodStatistic}
+                data-testid='movementMood1'
+              >
+                {mood1Statistics.movement.toFixed(2)}
+              </p>
+            </div>
+            <div className={style.moodStatsSection}>
+              <p className={style.moodWidgetLabel}>
+                After rest interval
+              </p>
+              <p 
+                className={style.moodStatistic}
+                data-testid='movementMood2'
+              >
+                {mood2Statistics.movement.toFixed(2)}
+              </p>
+            </div>
+          </div>
         </h4>
         <h4 className={style.moodWidget}>
           Meditation/Breathwork
+          <p className={style.moodAverageLabel}>
+            Average Mood
+          </p>
+          <div className={style.moodStatsContainer}>
+            <div className={style.moodStatsSection}>
+              <p className={style.moodWidgetLabel}>
+                Before rest interval
+              </p>
+              <p 
+                className={style.moodStatistic}
+                data-testid='meditationMood1'
+              >
+                {mood1Statistics.meditation.toFixed(2)}
+              </p>
+            </div>
+            <div className={style.moodStatsSection}>
+              <p className={style.moodWidgetLabel}>
+                After rest interval
+              </p>
+              <p 
+                className={style.moodStatistic}
+                data-testid='meditationMood2'
+              >
+                {mood2Statistics.meditation.toFixed(2)}
+              </p>
+            </div>
+          </div>
         </h4>
       </section>
     </>
