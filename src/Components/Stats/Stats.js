@@ -136,8 +136,8 @@ const Stats = ({ toggleTimerView }) => {
             </div>
           </section>
         </section>
-        <section className={style.frequencyModalsContainer}>
-          <h3 className={style.frequencyModal}>
+        <section className={style.frequencyWidgetsContainer}>
+          <h3 className={style.frequencyWidget}>
             You have completed
             <h2 
               className={style.frequencyStatisticValue} data-testid='sessionCount'
@@ -146,7 +146,7 @@ const Stats = ({ toggleTimerView }) => {
             </h2>
             sessions
           </h3>
-          <h3 className={style.frequencyModal}>
+          <h3 className={style.frequencyWidget}>
             Average focus interval
             <h2 
               className={style.frequencyStatisticValue} data-testid='focusIntervalAverage'
@@ -155,7 +155,7 @@ const Stats = ({ toggleTimerView }) => {
             </h2>
             in minutes
           </h3>
-          <h3 className={style.frequencyModal}>
+          <h3 className={style.frequencyWidget}>
             Average rest interval
             <h2 
               className={style.frequencyStatisticValue} 
@@ -167,8 +167,16 @@ const Stats = ({ toggleTimerView }) => {
           </h3>
         </section>
       </div>
-      <section className={style.moodStatisticsContainer}>
-        
+      <section className={style.moodWidgetsContainer}>
+        <h4 className={style.moodWidget}>
+          Somatic Exercises
+        </h4>
+        <h4 className={style.moodWidget}>
+          Yoga/Movement
+        </h4>
+        <h4 className={style.moodWidget}>
+          Meditation/Breathwork
+        </h4>
       </section>
     </>
   )
