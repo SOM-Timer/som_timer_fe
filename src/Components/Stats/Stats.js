@@ -12,10 +12,20 @@ const Stats = ({ toggleTimerView }) => {
     averageFocusInterval: 0,
     averageRestInterval: 0
   })
+  const [ mood1Statistics, setMood1Statistics ] = useState({
+    somatic: 0,
+    movement: 0,
+    meditation: 0
+  })
+  const [ mood2Statistics, setMood2Statistics ] = useState({
+    somatic: 0,
+    movement: 0,
+    meditation: 0
+  })
 
   useEffect(() => {
     toggleTimerView(true)
-    getAllSessions()
+    getAllSessions(1)
     .then(results => results.data)
     .then(results => {
       setSessionLog(results.rests)
@@ -25,6 +35,18 @@ const Stats = ({ toggleTimerView }) => {
         sessionCount: results.count,
         averageFocusInterval: getAverageInterval('focus_interval', results.rests),
         averageRestInterval: getAverageInterval('rest_interval', results.rests)
+      })
+      setMood1Statistics({
+        ...mood1Statistics,
+        somatic: getAverageMood('SOMATIC', results.rests, 'mood_rating_1'),
+        movement: getAverageMood('MOVEMENT', results.rests, 'mood_rating_1'),
+        meditation: getAverageMood('MEDITATION', results.rests, 'mood_rating_1')
+      })
+      setMood2Statistics({
+        ...mood2Statistics,
+        somatic: getAverageMood('SOMATIC', results.rests, 'mood_rating_2'),
+        movement: getAverageMood('MOVEMENT', results.rests, 'mood_rating_2'),
+        meditation: getAverageMood('MEDITATION', results.rests, 'mood_rating_2')
       })
     })
     .catch(error => console.log(error))
@@ -62,6 +84,21 @@ const Stats = ({ toggleTimerView }) => {
     }, 0)
 
     return intervalSum / sessions.length
+  }
+
+  const getAverageMood = (contentSelected, sessions, moodRating) => {
+    let sessionData = sessions.reduce((data, session) => {
+      if(session.content_selected === contentSelected) {
+        let num = parseInt(session[moodRating])
+        let newSum = data[0] + num
+        let newCount = data[1] + 1
+        data = [newSum, newCount]
+      }
+      return data
+
+    }, [0, 0])
+
+    return sessionData[0] / sessionData[1]
   }
 
   return (
@@ -130,6 +167,9 @@ const Stats = ({ toggleTimerView }) => {
           </h3>
         </section>
       </div>
+      <section className={style.moodStatisticsContainer}>
+        
+      </section>
     </>
   )
 }
