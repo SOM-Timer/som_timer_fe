@@ -97,6 +97,11 @@
   font-size: 12px;
 }
 
+.moodIcon {
+  border-radius: 50%;
+  @include size(40px, 40px)
+}
+
 // Container for legend beneath pie chart
 .pieChartLegend {
   display: flex;
