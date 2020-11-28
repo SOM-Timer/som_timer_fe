@@ -27,7 +27,6 @@ const Login = () => {
   const getTimerSettings = (userId) => {
     getSettings(userId)
       .then(response => {
-        console.log('timer response', response)
         if (response.data.work_interval) {
           const workInterval = response.data.work_interval.split(':')[0]
           const breakInterval = response.data.rest_interval.split(':')[0]
