@@ -1,6 +1,8 @@
 import React, { useContext, useEffect } from 'react'
 import { loginUser } from '../../apiCalls'
 import { UserContext } from '../../Context/UserContext'
+import { SettingsContext } from '../../Context/SettingsContext'
+import { getSettings } from '../../apiCalls'
 import style from './Login.module.scss'
 import aboutIcon from '../../assets/navbar/aboutNavIcon.png'
 import settingsIcon from '../../assets/navbar/settingsNavIcon.png'
@@ -8,7 +10,8 @@ import statsIcon from '../../assets/navbar/statsNavIcon.png'
 import timerIcon from '../../assets/navbar/timerNavIcon.png'
 
 const Login = () => {
-  const [user, setUser] = useContext(UserContext)
+  const [ user, setUser ] = useContext(UserContext)
+  const setSettings = useContext(SettingsContext)[1]
 
   useEffect(() => {
     window.gapi.signin2.render("g-signin2", {
@@ -20,6 +23,25 @@ const Login = () => {
       onsuccess: onSignIn,
     })
   })
+
+  const getTimerSettings = (userId) => {
+    getSettings(userId)
+      .then(response => {
+        console.log('timer response', response)
+        if (response.data.work_interval) {
+          const workInterval = response.data.work_interval.split(':')[0]
+          const breakInterval = response.data.rest_interval.split(':')[0]
+          const sound = response.data.sound
+          const moodRating = response.data.mood
+          setSettings({ workInterval, breakInterval, sound, moodRating })
+        }
+      })
+      .catch(err => {
+        if (err.response) {
+          console.log(err.response.status)
+        }
+      })
+  }
   
   const onSignIn = googleUser => {
     const userName = googleUser.getBasicProfile().getName()
@@ -38,9 +60,10 @@ const Login = () => {
           email: userData.email,
           userId: userData.id
         }))
+        getTimerSettings(userData.id)
       })
       .catch(error => console.log(error))
-  }
+  } 
 
   return (
     <section className={style.loginContainer}>
