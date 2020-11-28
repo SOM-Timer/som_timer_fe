@@ -2,6 +2,7 @@ import React from 'react'
 import Settings from './Settings'
 import { fireEvent, render } from '@testing-library/react'
 import { SettingsProvider } from '../../Context/SettingsContext'
+import { UserProvider } from '../../Context/UserContext'
 jest.mock('../../helpers/audioHelper.js')
 
 describe('Settings', () => {
@@ -16,7 +17,9 @@ describe('Settings', () => {
 
     const { getByRole, getByTestId } = render(
       <SettingsProvider>
-        <Settings toggleTimerView={toggleTimerView} />
+        <UserProvider>
+          <Settings toggleTimerView={toggleTimerView} />
+        </UserProvider>
       </SettingsProvider>
     )
 
@@ -35,11 +38,13 @@ describe('Settings', () => {
     expect(logOutButton).toBeInTheDocument()
   })
 
-  it('should hide the Homecontainer when rendered', () => {
+  it('should hide the Home Container when rendered', () => {
 
     render(
       <SettingsProvider>
-        <Settings toggleTimerView={toggleTimerView} />
+        <UserProvider>
+          <Settings toggleTimerView={toggleTimerView} />
+        </UserProvider>
       </SettingsProvider>
     )
 
@@ -51,7 +56,9 @@ describe('Settings', () => {
     
     const { getByTestId } = render(
       <SettingsProvider>
-        <Settings toggleTimerView={toggleTimerView} />
+        <UserProvider>
+          <Settings toggleTimerView={toggleTimerView} />
+        </UserProvider>
       </SettingsProvider>
     )
 
@@ -66,7 +73,9 @@ describe('Settings', () => {
 
     const { getByTestId } = render(
       <SettingsProvider>
-        <Settings toggleTimerView={toggleTimerView} />
+        <UserProvider>
+          <Settings toggleTimerView={toggleTimerView} />
+        </UserProvider>
       </SettingsProvider>
     )
 
