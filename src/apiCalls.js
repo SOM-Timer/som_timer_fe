@@ -1,16 +1,17 @@
 import axios from 'axios'
 const rootUrl = 'https://som-timer-be.herokuapp.com/api'
 
-export const getSettings = () => {
-  return axios.get(`${rootUrl}/timers/1`)
+export const getSettings = (userId) => {
+  return axios.get(`${rootUrl}/users/${userId}/timer`)
 }
 
-export const updateSettings = (settings) => {
-  return axios.put(`${rootUrl}/timers/1`, {
+export const updateSettings = (settings, userId) => {
+  return axios.put(`${rootUrl}/users/${userId}/timer`, {
     work_interval: settings.workInterval,
     rest_interval: settings.breakInterval,
     sound: settings.sound,
-    mood: settings.moodRating
+    mood: settings.mood,
+    user_id: userId
   })
 }
 
