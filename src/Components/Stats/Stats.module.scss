@@ -19,7 +19,8 @@
 }
 
 .line {
-  @include line()
+  @include line();
+  margin: auto;
 }
 
 .strong {

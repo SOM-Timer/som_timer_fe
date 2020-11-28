@@ -226,6 +226,7 @@ const Stats = ({ toggleTimerView }) => {
                 {mood1Statistics.somatic.toFixed(2)}
               </p>
             </div>
+            <div className={style.line} />
             <div className={style.moodStatsSection}>
               <p className={style.moodWidgetLabel}>
                 After rest interval
@@ -270,6 +271,7 @@ const Stats = ({ toggleTimerView }) => {
                 {mood1Statistics.movement.toFixed(2)}
               </p>
             </div>
+            <div className={style.line} />
             <div className={style.moodStatsSection}>
               <p className={style.moodWidgetLabel}>
                 After rest interval
@@ -314,6 +316,7 @@ const Stats = ({ toggleTimerView }) => {
                 {mood1Statistics.meditation.toFixed(2)}
               </p>
             </div>
+            <div className={style.line} />
             <div className={style.moodStatsSection}>
               <p className={style.moodWidgetLabel}>
                 After rest interval
