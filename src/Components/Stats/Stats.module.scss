@@ -21,6 +21,8 @@
 .line {
   @include line();
   margin: auto;
+  margin-top: 0.3em;
+  margin-bottom: 0.3em;
 }
 
 .strong {
@@ -82,12 +84,14 @@
 // contains before/after interval, smiley, and avg mood
 .moodStatsSection {
   display: flex;
+  align-items: center;
 }
 
 // text for before / after rest interval
 .moodWidgetLabel {
   width: 50%;
   font-size: 12px;
+  margin: 0;
 }
 
 // text beneath mood widget header
@@ -101,6 +105,7 @@
   width: 30%;
   color: $darkBlue;
   font-weight: bolder;
+  margin: 0;
 }
 
 // mood icon styling on each mood widget
