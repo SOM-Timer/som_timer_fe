@@ -72,31 +72,37 @@
   color: $darkBlue
 }
 
+// holds three mood stats widgets
 .moodStatsContainer {
   display: flex;
   flex-direction: column;
 }
 
+// contains before/after interval, smiley, and avg mood
 .moodStatsSection {
   display: flex;
 }
 
+// text for before / after rest interval
 .moodWidgetLabel {
   width: 50%;
   font-size: 12px;
 }
 
-.moodStatistic {
-  width: 30%;
-  color: $darkBlue;
-  font-weight: bolder;
-}
-
+// text beneath mood widget header
 .moodAverageLabel {
   margin-top: 0;
   font-size: 12px;
 }
 
+// average mood statistic text
+.moodStatisticValue {
+  width: 30%;
+  color: $darkBlue;
+  font-weight: bolder;
+}
+
+// mood icon styling on each mood widget
 .moodIcon {
   border-radius: 50%;
   @include size(40px, 40px)

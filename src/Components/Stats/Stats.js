@@ -220,7 +220,7 @@ const Stats = ({ toggleTimerView }) => {
                 />
               }
               <p 
-                className={style.moodStatistic}
+                className={style.moodStatisticValue}
                 data-testid='somaticMood1'
               >
                 {mood1Statistics.somatic.toFixed(2)}
@@ -238,7 +238,7 @@ const Stats = ({ toggleTimerView }) => {
                 />
               }
               <p
-                className={style.moodStatistic}
+                className={style.moodStatisticValue}
                 data-testid='somaticMood2'
               >
                 {mood2Statistics.somatic.toFixed(2)}
@@ -264,7 +264,7 @@ const Stats = ({ toggleTimerView }) => {
                 />
               }
               <p 
-                className={style.moodStatistic}
+                className={style.moodStatisticValue}
                 data-testid='movementMood1'
               >
                 {mood1Statistics.movement.toFixed(2)}
@@ -282,7 +282,7 @@ const Stats = ({ toggleTimerView }) => {
                 />
               }
               <p 
-                className={style.moodStatistic}
+                className={style.moodStatisticValue}
                 data-testid='movementMood2'
               >
                 {mood2Statistics.movement.toFixed(2)}
@@ -308,7 +308,7 @@ const Stats = ({ toggleTimerView }) => {
                 />
               }
               <p 
-                className={style.moodStatistic}
+                className={style.moodStatisticValue}
                 data-testid='meditationMood1'
               >
                 {mood1Statistics.meditation.toFixed(2)}
@@ -326,7 +326,7 @@ const Stats = ({ toggleTimerView }) => {
                 />
               }
               <p 
-                className={style.moodStatistic}
+                className={style.moodStatisticValue}
                 data-testid='meditationMood2'
               >
                 {mood2Statistics.meditation.toFixed(2)}
