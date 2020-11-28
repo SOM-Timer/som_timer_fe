@@ -96,7 +96,7 @@ describe('Stats', () => {
     expect(averageRestIntervalText).toBeInTheDocument()
   })
 
-  it('should render the correct statistics when rendered', async () => {
+  it('should render the correct frequency statistics on load', async() => {
     
     const { findByText, findByTestId } = render(
       <BrowserRouter>
@@ -117,6 +117,27 @@ describe('Stats', () => {
     expect(sessionCount).toBeInTheDocument()
     expect(focusIntervalAverage).toBeInTheDocument()
     expect(restIntervalAverage).toBeInTheDocument()
+  })
+
+  it('should render the correct mood statistics on load', async() => {
+    const { findByTestId } = render(
+      <BrowserRouter>
+        <Stats toggleTimerView={toggleTimerView} />
+      </BrowserRouter>
+    )
+    const somaticMood1Average = await findByTestId(/somaticMood1/i)
+    const movementMood1Average = await findByTestId(/movementMood1/i)
+    const meditationMood1Average = await findByTestId(/meditationMood1/i)
+    const somaticMood2Average = await findByTestId(/somaticMood2/i)
+    const movementMood2Average = await findByTestId(/movementMood2/i)
+    const meditationMood2Average = await findByTestId(/meditationMood2/i)
+
+    expect(somaticMood1Average).toBeInTheDocument()
+    expect(somaticMood2Average).toBeInTheDocument()
+    expect(movementMood1Average).toBeInTheDocument()
+    expect(movementMood2Average).toBeInTheDocument()
+    expect(meditationMood1Average).toBeInTheDocument()
+    expect(meditationMood2Average).toBeInTheDocument()
   })
 
   it('should hide the Homecontainer when rendered', () => {
