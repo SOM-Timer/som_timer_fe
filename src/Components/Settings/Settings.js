@@ -1,16 +1,18 @@
 import React, { useContext, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { SettingsContext } from '../../Context/SettingsContext'
+import { UserContext } from '../../Context/UserContext'
 import { updateSettings } from '../../apiCalls'
 import { playAlertSound } from '../../helpers/audioHelper'
 import style from './Settings.module.scss'
 
 const Settings = ({ toggleTimerView }) => {
   const [settings, setSettings] = useContext(SettingsContext)
+  const user = useContext(UserContext)[0]
 
   useEffect(() => {
     toggleTimerView(true)
-    updateSettings(settings)
+    updateSettings(settings, user.userId)
   }, [ settings, toggleTimerView ])
 
   const onChange = (event) => {

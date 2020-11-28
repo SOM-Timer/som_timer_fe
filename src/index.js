@@ -11,15 +11,15 @@ import * as serviceWorker from './serviceWorker'
 
 ReactDOM.render(
   <Router>
-    <UserProvider>
-      <SettingsProvider>
+    <SettingsProvider>
+      <UserProvider>
         <ViewProvider>
           <SessionProvider>
             <App />
           </SessionProvider>
         </ViewProvider>
-      </SettingsProvider>
-    </UserProvider>
+      </UserProvider>
+    </SettingsProvider>
   </Router>,
   document.getElementById('root')
 );
