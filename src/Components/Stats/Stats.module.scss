@@ -72,6 +72,31 @@
   color: $darkBlue
 }
 
+.moodStatsContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.moodStatsSection {
+  display: flex;
+}
+
+.moodWidgetLabel {
+  width: 50%;
+  font-size: 12px;
+}
+
+.moodStatistic {
+  width: 30%;
+  color: $darkBlue;
+  font-weight: bolder;
+}
+
+.moodAverageLabel {
+  margin-top: 0;
+  font-size: 12px;
+}
+
 // Container for legend beneath pie chart
 .pieChartLegend {
   display: flex;
