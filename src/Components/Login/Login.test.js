@@ -1,6 +1,7 @@
 import React from 'react'
 import { render } from '@testing-library/react'
 import { UserProvider } from '../../Context/UserContext'
+import { SettingsProvider } from '../../Context/SettingsContext'
 import Login from './Login'
 
 describe('Login', () => {
@@ -12,9 +13,11 @@ describe('Login', () => {
     }
 
     const { getByRole, getByText, getByLabelText } = render(
-      <UserProvider>
-        <Login />
-      </UserProvider>
+      <SettingsProvider>
+        <UserProvider>
+          <Login />
+        </UserProvider>
+      </SettingsProvider>
     )
 
     const loginHeading = getByRole('heading', { name: /welcome to som timer/i })
