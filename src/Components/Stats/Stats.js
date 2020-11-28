@@ -3,6 +3,11 @@ import PropTypes from 'prop-types'
 import style from './Stats.module.scss'
 import { getAllSessions } from '../../apiCalls'
 import { PieChart } from 'react-minimal-pie-chart'
+import moodIcon1 from '../../assets/moodIcons/moodIcon1.png'
+import moodIcon2 from '../../assets/moodIcons/moodIcon2.png'
+import moodIcon3 from '../../assets/moodIcons/moodIcon3.png'
+import moodIcon4 from '../../assets/moodIcons/moodIcon4.png'
+import moodIcon5 from '../../assets/moodIcons/moodIcon5.png'
 
 const Stats = ({ toggleTimerView }) => {
   const [ sessionLog, setSessionLog ] = useState([])
@@ -101,6 +106,35 @@ const Stats = ({ toggleTimerView }) => {
     return sessionData[0] / sessionData[1]
   }
 
+  const determineFace = (moodStatistic) => {
+    if (moodStatistic >= 0.5 && moodStatistic < 1.5) {
+      return {
+        icon: moodIcon1, 
+        color: '#9A031E'
+      }
+    } else if (moodStatistic >= 1.5 && moodStatistic < 2.5) {
+      return {
+        icon: moodIcon2, 
+        color: '#DF6407'
+      }
+    } else if (moodStatistic >= 2.5 && moodStatistic < 3.5) {
+      return { 
+        icon: moodIcon3, 
+        color: '#DFAC07'
+      }
+    } else if (moodStatistic >= 3.5 && moodStatistic < 4.5) {
+      return {
+        icon: moodIcon4, 
+        color: '#55A630'
+      }
+    } else if (moodStatistic >= 4.5 && moodStatistic <= 5) {
+      return {
+        icon: moodIcon5, 
+        color: '#007F5F'
+      }
+    }
+  }
+
   return (
     <>
       <h2 className={style.prompt}>Usage</h2>
@@ -178,6 +212,13 @@ const Stats = ({ toggleTimerView }) => {
               <p className={style.moodWidgetLabel}>
                 Before rest interval
               </p>
+              {mood1Statistics.somatic > 0 &&
+                <img
+                  src={determineFace(mood1Statistics.somatic).icon}
+                  className={style.moodIcon}
+                  style={{ backgroundColor: determineFace(mood1Statistics.somatic).color}}
+                />
+              }
               <p 
                 className={style.moodStatistic}
                 data-testid='somaticMood1'
@@ -189,6 +230,13 @@ const Stats = ({ toggleTimerView }) => {
               <p className={style.moodWidgetLabel}>
                 After rest interval
               </p>
+              {mood2Statistics.somatic > 0 &&
+                <img
+                  src={determineFace(mood2Statistics.somatic).icon}
+                  className={style.moodIcon}
+                  style={{ backgroundColor: determineFace(mood2Statistics.somatic).color }}
+                />
+              }
               <p
                 className={style.moodStatistic}
                 data-testid='somaticMood2'
@@ -208,6 +256,13 @@ const Stats = ({ toggleTimerView }) => {
               <p className={style.moodWidgetLabel}>
                 Before rest interval
               </p>
+              {mood1Statistics.movement > 0 &&
+                <img
+                  src={determineFace(mood1Statistics.movement).icon}
+                  className={style.moodIcon}
+                  style={{ backgroundColor: determineFace(mood1Statistics.movement).color }}
+                />
+              }
               <p 
                 className={style.moodStatistic}
                 data-testid='movementMood1'
@@ -219,6 +274,13 @@ const Stats = ({ toggleTimerView }) => {
               <p className={style.moodWidgetLabel}>
                 After rest interval
               </p>
+              {mood2Statistics.movement > 0 &&
+                <img
+                  src={determineFace(mood2Statistics.movement).icon}
+                  className={style.moodIcon}
+                  style={{ backgroundColor: determineFace(mood2Statistics.movement).color }}
+                />
+              }
               <p 
                 className={style.moodStatistic}
                 data-testid='movementMood2'
@@ -238,6 +300,13 @@ const Stats = ({ toggleTimerView }) => {
               <p className={style.moodWidgetLabel}>
                 Before rest interval
               </p>
+              {mood1Statistics.meditation > 0 &&
+                <img
+                  src={determineFace(mood1Statistics.meditation).icon}
+                  className={style.moodIcon}
+                  style={{ backgroundColor: determineFace(mood1Statistics.meditation).color }}
+                />
+              }
               <p 
                 className={style.moodStatistic}
                 data-testid='meditationMood1'
@@ -249,6 +318,13 @@ const Stats = ({ toggleTimerView }) => {
               <p className={style.moodWidgetLabel}>
                 After rest interval
               </p>
+              {mood2Statistics.meditation > 0 &&
+                <img
+                  src={determineFace(mood2Statistics.meditation).icon}
+                  className={style.moodIcon}
+                  style={{ backgroundColor: determineFace(mood2Statistics.meditation).color }}
+                />
+              }
               <p 
                 className={style.moodStatistic}
                 data-testid='meditationMood2'
