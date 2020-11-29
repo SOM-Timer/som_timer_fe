@@ -2,6 +2,7 @@
 @import '../../style/mixins.scss';
 
 .prompt {
+  letter-spacing: 1px;
   margin-top: 1.5em;
 }
 
@@ -18,11 +19,168 @@
 }
 
 .line {
-  @include line()
+  @include line();
+  margin: auto;
+  margin-top: 0.3em;
+  margin-bottom: 0.3em;
 }
 
 .strong {
   filter: drop-shadow(0px 0px 1.5px  $salmonHover);
+}
+
+// Container that holds pie chart & descriptive stats widgets
+.frequencyStatisticsContainer {
+  display: flex;
+  flex-direction: row;
+  margin: auto;
+  margin-top: 2.4em;
+  width: 600px;
+}
+
+// Containers for pie chart, descriptive stats, and mood stats
+.pieChartContainer,
+.frequencyWidgetsContainer {
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+}
+
+.frequencyWidgetsContainer {
+  justify-content: space-around;
+  align-items: center;
+}
+
+.moodWidgetsContainer {
+  display: flex;
+  width: 600px;
+  margin: auto;
+  margin-top: 1.2em;
+  justify-content: space-between;
+}
+
+// Frequency & mood widget styling
+.frequencyWidget,
+.moodWidget {
+  background-color: #FFFFFF;
+  border-radius: 1em;
+  box-shadow: 0px 0px 20px $darkBlue, inset 0px 0px 5px rgba(0, 0, 0, 0.239);
+  margin: 0;
+  width: 90%;
+  padding: 2% 0 2% 0;
+}
+
+// Additional mood widget styling
+.moodWidget {
+  margin-left: 0.4em;
+  margin-right: 0.4em;
+}
+
+.frequencyStatisticValue {
+  margin: 0;
+  color: $darkBlue
+}
+
+// holds three mood stats widgets
+.moodStatsContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+// contains before/after interval, smiley, and avg mood
+.moodStatsSection {
+  display: flex;
+  align-items: center;
+}
+
+// text for before / after rest interval
+.moodWidgetLabel {
+  width: 50%;
+  font-size: 12px;
+  margin: 0;
+}
+
+// text beneath mood widget header
+.moodAverageLabel {
+  margin-top: 0;
+  font-size: 12px;
+}
+
+// average mood statistic text
+.moodStatisticValue {
+  width: 30%;
+  color: $darkBlue;
+  font-weight: bolder;
+  margin: 0;
+}
+
+// mood icon styling on each mood widget
+.moodIcon {
+  border-radius: 50%;
+  @include size(40px, 40px)
+}
+
+// Container for legend beneath pie chart
+.pieChartLegend {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+}
+
+// Container that holds legend text & color swatch
+.labelContainer {
+  display: flex;
+  justify-content: space-between;
+  width: 250px;
+}
+
+// Text formatting for pie chart legend
+.legendLabel {
+  margin-top: 0.3em;
+  font-weight: 600;
+  margin-bottom: 0;
+}
+
+.somaticLabelSwatch,
+.movementLabelSwatch,
+.meditationLabelSwatch {
+  @include size(50px, 18px);
+  stroke-linecap: round;
+  margin-top: 4px;
+  box-shadow: 0px 0px 5px $darkBlue, inset 0px 0px 5px rgba(0, 0, 0, 0.239);
+}
+
+.somaticLabelSwatch {
+  background-color: #FFFFFF;
+  border-radius: 35%;
+}
+
+.movementLabelSwatch {
+  background-color: #F4D2D0;
+  border-radius: 35%;
+}
+
+.meditationLabelSwatch {
+  background-color: #7987A1;
+  border-radius: 35%;
+}
+
+.newUserMessage {
+  text-align: left; 
+  font-size: 1.2em;
+  margin: 2em auto;
+  width: 505px;
+  padding: .7em 2em; 
+  color: white;
+  background-color: $darkBlue;
+  box-shadow: 0px 0px 20px $darkBlue, inset 0px 0px 5px rgba(0, 0, 0, 0.239);
+  border-radius: 1em;
+}
+
+@media screen and (max-width: 1200px) {
+  .statsDesc {
+    margin: 2em 8em;
+  }
 }
 
 @media screen and (max-width: 688px) {

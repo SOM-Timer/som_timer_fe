@@ -36,3 +36,7 @@ export const loginUser = (userName, email) => {
     email
   })
 }
+
+export const getAllSessions = (id) => {
+  return axios.get(`${rootUrl}/users/${id}/rests`)
+}
