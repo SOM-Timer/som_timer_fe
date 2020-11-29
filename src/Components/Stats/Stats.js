@@ -12,7 +12,11 @@ import { UserContext } from '../../Context/UserContext'
 
 const Stats = ({ toggleTimerView }) => {
   const [ sessionLog, setSessionLog ] = useState([])
-  const [ pieChartData, setPieChartData ] = useState([])
+  const [ pieChartData, setPieChartData ] = useState({
+    SOMATIC: 0,
+    MOVEMENT: 0,
+    MEDITATION: 0
+  })
   const [ frequencyStatistics, setFrequencyStatistics ] = useState({
     sessionCount: 0,
     averageFocusInterval: 0,
@@ -56,22 +60,15 @@ const Stats = ({ toggleTimerView }) => {
 
   const createPieChart = (rests) => {
     const newPieChartData = { 
-      somaticTotal: 0, 
-      movementTotal: 0, 
-      meditationTotal: 0 
+      SOMATIC: 0, 
+      MOVEMENT: 0, 
+      MEDITATION: 0 
     }
 
-    for(let i = 0; i < rests.length; i++) {
-      if(rests[i]['content_selected'] === 'MOVEMENT') {
-        newPieChartData.movementTotal += 1
-      }
-      if (rests[i]['content_selected'] === 'SOMATIC') {
-        newPieChartData.somaticTotal += 1
-      }
-      if (rests[i]['content_selected'] === 'MEDITATION') {
-        newPieChartData.meditationTotal += 1
-      }
-    }
+    rests.forEach(rest => {
+      const category = rest.content_selected
+      return newPieChartData[category] += 1
+    })
 
     return setPieChartData(newPieChartData)
   }
@@ -144,9 +141,9 @@ const Stats = ({ toggleTimerView }) => {
               <PieChart
                 data={
                   [
-                    { title: 'Yoga', value: pieChartData.movementTotal, color: '#F4D2D0'},
-                    { title: 'Meditation', value: pieChartData.meditationTotal, color: '#7987A1' },
-                    { title: 'Somatics', value: pieChartData.somaticTotal, color: '#FFFFFF' },
+                    { title: 'Yoga', value: pieChartData['MOVEMENT'], color: '#F4D2D0'},
+                    { title: 'Meditation', value: pieChartData['MEDITATION'], color: '#7987A1' },
+                    { title: 'Somatics', value: pieChartData['SOMATIC'], color: '#FFFFFF' },
                   ]
                 }
                 style={{ height: '250px' }}
