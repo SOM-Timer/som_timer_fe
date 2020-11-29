@@ -4,6 +4,7 @@ import { render } from '@testing-library/react'
 import '@testing-library/jest-dom'
 import { BrowserRouter } from 'react-router-dom'
 import { getAllSessions } from '../../apiCalls'
+import { UserContext } from '../../Context/UserContext'
 jest.mock('../../apiCalls')
 
 describe('Stats', () => {
@@ -23,7 +24,8 @@ describe('Stats', () => {
               "mood_rating_2": 5,
               "content_selected": "MEDITATION",
               "focus_interval": "25",
-              "rest_interval": "5"
+              "rest_interval": "5",
+              "user_id": 4
             },
             {
               "id": 2,
@@ -31,7 +33,8 @@ describe('Stats', () => {
               "mood_rating_2": 4,
               "content_selected": "SOMATIC",
               "focus_interval": "45",
-              "rest_interval": "15"
+              "rest_interval": "15",
+              "user_id": 4
             },
             {
               "id": 3,
@@ -39,7 +42,8 @@ describe('Stats', () => {
               "mood_rating_2": 5,
               "content_selected": "SOMATIC",
               "focus_interval": "30",
-              "rest_interval": "7"
+              "rest_interval": "7",
+              "user_id": 4
             },
             {
               "id": 4,
@@ -47,7 +51,8 @@ describe('Stats', () => {
               "mood_rating_2": 3,
               "content_selected": "SOMATIC",
               "focus_interval": "25",
-              "rest_interval": "5"
+              "rest_interval": "5",
+              "user_id": 4
             },
             {
               "id": 5,
@@ -55,7 +60,8 @@ describe('Stats', () => {
               "mood_rating_2": 5,
               "content_selected": "MOVEMENT",
               "focus_interval": "25",
-              "rest_interval": "5"
+              "rest_interval": "5",
+              "user_id": 4
             },
             {
               "id": 6,
@@ -63,7 +69,8 @@ describe('Stats', () => {
               "mood_rating_2": 3,
               "content_selected": "MOVEMENT",
               "focus_interval": "30",
-              "rest_interval": "15"
+              "rest_interval": "15",
+              "user_id": 4
             },
           ]
         }
@@ -75,7 +82,13 @@ describe('Stats', () => {
     
     const { findByRole, getByText, getAllByText } = render(
       <BrowserRouter>
-        <Stats toggleTimerView={toggleTimerView} />
+        <UserContext.Provider value={[{
+          userName: "Cher",
+          email: "cher@gmail.com",
+          userId: 4
+        }]}>
+          <Stats toggleTimerView={toggleTimerView} />
+        </UserContext.Provider>
       </BrowserRouter>
     )
 
@@ -106,7 +119,13 @@ describe('Stats', () => {
     
     const { findByText, findByTestId } = render(
       <BrowserRouter>
-        <Stats toggleTimerView={toggleTimerView} />
+        <UserContext.Provider value={[{
+          userName: "Cher",
+          email: "cher@gmail.com",
+          userId: 4
+        }]}>
+          <Stats toggleTimerView={toggleTimerView} />
+        </UserContext.Provider>
       </BrowserRouter>
     )
 
@@ -128,7 +147,13 @@ describe('Stats', () => {
   it('should render the correct mood statistics on load', async() => {
     const { findByTestId } = render(
       <BrowserRouter>
-        <Stats toggleTimerView={toggleTimerView} />
+        <UserContext.Provider value={[{
+          userName: "Cher",
+          email: "cher@gmail.com",
+          userId: 4
+        }]}>
+          <Stats toggleTimerView={toggleTimerView} />
+        </UserContext.Provider>
       </BrowserRouter>
     )
     const somaticMood1Average = await findByTestId(/somaticMood1/i)
@@ -150,7 +175,13 @@ describe('Stats', () => {
 
     render(
       <BrowserRouter>
-        <Stats toggleTimerView={toggleTimerView} />
+        <UserContext.Provider value={[{
+          userName: "Cher",
+          email: "cher@gmail.com",
+          userId: 4
+        }]}>
+          <Stats toggleTimerView={toggleTimerView} />
+        </UserContext.Provider>
       </BrowserRouter>
     )
 

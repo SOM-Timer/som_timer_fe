@@ -28,7 +28,7 @@ const Stats = ({ toggleTimerView }) => {
     movement: 0,
     meditation: 0
   })
-  const [user] = useContext(UserContext)
+  const [ user ] = useContext(UserContext)
 
   useEffect(() => {
     toggleTimerView(true)
