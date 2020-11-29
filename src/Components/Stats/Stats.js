@@ -139,207 +139,216 @@ const Stats = ({ toggleTimerView }) => {
 
   return (
     <>
-      <h2 className={style.prompt}>Usage</h2>
-      <div className={style.frequencyStatisticsContainer}>
-        <section className={style.pieChartContainer}>
-          <PieChart
-            data={
-              [
-                { title: 'Yoga', value: pieChartData.movementTotal, color: '#F4D2D0'},
-                { title: 'Meditation', value: pieChartData.meditationTotal, color: '#7987A1' },
-                { title: 'Somatics', value: pieChartData.somaticTotal, color: '#FFFFFF' },
-              ]
-            }
-            style={{ height: '250px' }}
-            lineWidth={60}
-            labelStyle={{ fontSize: '12px', fontWeight: '600' }}
-            label={({ dataEntry }) => Math.round(dataEntry.percentage) + '%'}
-            labelPosition={68}
-            className={style.pieChart}
-          />
-          <section className={style.pieChartLegend}>
-            <div className={style.labelContainer}>
-              <p className={style.legendLabel}>Somatic Exercises</p>
-              <div className={style.somaticLabelSwatch} />
-            </div>
-            <div className={style.labelContainer}>
-              <p className={style.legendLabel}>Yoga/Movement </p>
-              <div className={style.movementLabelSwatch} />
-            </div>
-            <div className={style.labelContainer}>
-              <p className={style.legendLabel}>Meditation/Breathwork</p>
-              <div className={style.meditationLabelSwatch} />
-            </div>
+      {!sessionLog.length && 
+        <h2 className={style.newUserMessage}>
+          You don't have any information to display yet! Spend some time using Som-Timer and then visit this page again to see your Stats.
+        </h2>
+      }
+      {sessionLog.length && 
+        <>
+          <h2 className={style.prompt}>Usage</h2>
+          <div className={style.frequencyStatisticsContainer}>
+            <section className={style.pieChartContainer}>
+              <PieChart
+                data={
+                  [
+                    { title: 'Yoga', value: pieChartData.movementTotal, color: '#F4D2D0'},
+                    { title: 'Meditation', value: pieChartData.meditationTotal, color: '#7987A1' },
+                    { title: 'Somatics', value: pieChartData.somaticTotal, color: '#FFFFFF' },
+                  ]
+                }
+                style={{ height: '250px' }}
+                lineWidth={60}
+                labelStyle={{ fontSize: '12px', fontWeight: '600' }}
+                label={({ dataEntry }) => Math.round(dataEntry.percentage) + '%'}
+                labelPosition={68}
+                className={style.pieChart}
+              />
+              <section className={style.pieChartLegend}>
+                <div className={style.labelContainer}>
+                  <p className={style.legendLabel}>Somatic Exercises</p>
+                  <div className={style.somaticLabelSwatch} />
+                </div>
+                <div className={style.labelContainer}>
+                  <p className={style.legendLabel}>Yoga/Movement </p>
+                  <div className={style.movementLabelSwatch} />
+                </div>
+                <div className={style.labelContainer}>
+                  <p className={style.legendLabel}>Meditation/Breathwork</p>
+                  <div className={style.meditationLabelSwatch} />
+                </div>
+              </section>
+            </section>
+            <section className={style.frequencyWidgetsContainer}>
+              <h3 className={style.frequencyWidget}>
+                You have completed
+                <h2 
+                  className={style.frequencyStatisticValue} data-testid='sessionCount'
+                >
+                  {frequencyStatistics.sessionCount}
+                </h2>
+                sessions
+              </h3>
+              <h3 className={style.frequencyWidget}>
+                Average focus interval
+                <h2 
+                  className={style.frequencyStatisticValue} data-testid='focusIntervalAverage'
+                >
+                  {frequencyStatistics.averageFocusInterval.toFixed(2)}
+                </h2>
+                in minutes
+              </h3>
+              <h3 className={style.frequencyWidget}>
+                Average rest interval
+                <h2 
+                  className={style.frequencyStatisticValue} 
+                  data-testid='restIntervalAverage'
+                >
+                  {frequencyStatistics.averageRestInterval.toFixed(2)}
+                </h2>
+                in minutes
+              </h3>
+            </section>
+          </div>
+          <section className={style.moodWidgetsContainer}>
+            <h4 className={style.moodWidget}>
+              Somatic Exercises
+              <p className={style.moodAverageLabel}>
+                Average Mood
+              </p>
+              <div className={style.moodStatsContainer}>
+                <div className={style.moodStatsSection}>
+                  <p className={style.moodWidgetLabel}>
+                    Before rest interval
+                  </p>
+                  {mood1Statistics.somatic > 0 &&
+                    <img
+                      src={determineFace(mood1Statistics.somatic).icon}
+                      className={style.moodIcon}
+                      style={{ backgroundColor: determineFace(mood1Statistics.somatic).color}}
+                    />
+                  }
+                  <p 
+                    className={style.moodStatisticValue}
+                    data-testid='somaticMood1'
+                  >
+                    {mood1Statistics.somatic.toFixed(2)}
+                  </p>
+                </div>
+                <div className={style.line} />
+                <div className={style.moodStatsSection}>
+                  <p className={style.moodWidgetLabel}>
+                    After rest interval
+                  </p>
+                  {mood2Statistics.somatic > 0 &&
+                    <img
+                      src={determineFace(mood2Statistics.somatic).icon}
+                      className={style.moodIcon}
+                      style={{ backgroundColor: determineFace(mood2Statistics.somatic).color }}
+                    />
+                  }
+                  <p
+                    className={style.moodStatisticValue}
+                    data-testid='somaticMood2'
+                  >
+                    {mood2Statistics.somatic.toFixed(2)}
+                  </p>
+                </div>
+              </div>
+            </h4>
+            <h4 className={style.moodWidget}>
+              Yoga/Movement
+              <p className={style.moodAverageLabel}>
+                Average Mood
+              </p>
+              <div className={style.moodStatsContainer}>
+                <div className={style.moodStatsSection}>
+                  <p className={style.moodWidgetLabel}>
+                    Before rest interval
+                  </p>
+                  {mood1Statistics.movement > 0 &&
+                    <img
+                      src={determineFace(mood1Statistics.movement).icon}
+                      className={style.moodIcon}
+                      style={{ backgroundColor: determineFace(mood1Statistics.movement).color }}
+                    />
+                  }
+                  <p 
+                    className={style.moodStatisticValue}
+                    data-testid='movementMood1'
+                  >
+                    {mood1Statistics.movement.toFixed(2)}
+                  </p>
+                </div>
+                <div className={style.line} />
+                <div className={style.moodStatsSection}>
+                  <p className={style.moodWidgetLabel}>
+                    After rest interval
+                  </p>
+                  {mood2Statistics.movement > 0 &&
+                    <img
+                      src={determineFace(mood2Statistics.movement).icon}
+                      className={style.moodIcon}
+                      style={{ backgroundColor: determineFace(mood2Statistics.movement).color }}
+                    />
+                  }
+                  <p 
+                    className={style.moodStatisticValue}
+                    data-testid='movementMood2'
+                  >
+                    {mood2Statistics.movement.toFixed(2)}
+                  </p>
+                </div>
+              </div>
+            </h4>
+            <h4 className={style.moodWidget}>
+              Meditation/Breathwork
+              <p className={style.moodAverageLabel}>
+                Average Mood
+              </p>
+              <div className={style.moodStatsContainer}>
+                <div className={style.moodStatsSection}>
+                  <p className={style.moodWidgetLabel}>
+                    Before rest interval
+                  </p>
+                  {mood1Statistics.meditation > 0 &&
+                    <img
+                      src={determineFace(mood1Statistics.meditation).icon}
+                      className={style.moodIcon}
+                      style={{ backgroundColor: determineFace(mood1Statistics.meditation).color }}
+                    />
+                  }
+                  <p 
+                    className={style.moodStatisticValue}
+                    data-testid='meditationMood1'
+                  >
+                    {mood1Statistics.meditation.toFixed(2)}
+                  </p>
+                </div>
+                <div className={style.line} />
+                <div className={style.moodStatsSection}>
+                  <p className={style.moodWidgetLabel}>
+                    After rest interval
+                  </p>
+                  {mood2Statistics.meditation > 0 &&
+                    <img
+                      src={determineFace(mood2Statistics.meditation).icon}
+                      className={style.moodIcon}
+                      style={{ backgroundColor: determineFace(mood2Statistics.meditation).color }}
+                    />
+                  }
+                  <p 
+                    className={style.moodStatisticValue}
+                    data-testid='meditationMood2'
+                  >
+                    {mood2Statistics.meditation.toFixed(2)}
+                  </p>
+                </div>
+              </div>
+            </h4>
           </section>
-        </section>
-        <section className={style.frequencyWidgetsContainer}>
-          <h3 className={style.frequencyWidget}>
-            You have completed
-            <h2 
-              className={style.frequencyStatisticValue} data-testid='sessionCount'
-            >
-              {frequencyStatistics.sessionCount}
-            </h2>
-            sessions
-          </h3>
-          <h3 className={style.frequencyWidget}>
-            Average focus interval
-            <h2 
-              className={style.frequencyStatisticValue} data-testid='focusIntervalAverage'
-            >
-              {frequencyStatistics.averageFocusInterval.toFixed(2)}
-            </h2>
-            in minutes
-          </h3>
-          <h3 className={style.frequencyWidget}>
-            Average rest interval
-            <h2 
-              className={style.frequencyStatisticValue} 
-              data-testid='restIntervalAverage'
-            >
-              {frequencyStatistics.averageRestInterval.toFixed(2)}
-            </h2>
-            in minutes
-          </h3>
-        </section>
-      </div>
-      <section className={style.moodWidgetsContainer}>
-        <h4 className={style.moodWidget}>
-          Somatic Exercises
-          <p className={style.moodAverageLabel}>
-            Average Mood
-          </p>
-          <div className={style.moodStatsContainer}>
-            <div className={style.moodStatsSection}>
-              <p className={style.moodWidgetLabel}>
-                Before rest interval
-              </p>
-              {mood1Statistics.somatic > 0 &&
-                <img
-                  src={determineFace(mood1Statistics.somatic).icon}
-                  className={style.moodIcon}
-                  style={{ backgroundColor: determineFace(mood1Statistics.somatic).color}}
-                />
-              }
-              <p 
-                className={style.moodStatisticValue}
-                data-testid='somaticMood1'
-              >
-                {mood1Statistics.somatic.toFixed(2)}
-              </p>
-            </div>
-            <div className={style.line} />
-            <div className={style.moodStatsSection}>
-              <p className={style.moodWidgetLabel}>
-                After rest interval
-              </p>
-              {mood2Statistics.somatic > 0 &&
-                <img
-                  src={determineFace(mood2Statistics.somatic).icon}
-                  className={style.moodIcon}
-                  style={{ backgroundColor: determineFace(mood2Statistics.somatic).color }}
-                />
-              }
-              <p
-                className={style.moodStatisticValue}
-                data-testid='somaticMood2'
-              >
-                {mood2Statistics.somatic.toFixed(2)}
-              </p>
-            </div>
-          </div>
-        </h4>
-        <h4 className={style.moodWidget}>
-          Yoga/Movement
-          <p className={style.moodAverageLabel}>
-            Average Mood
-          </p>
-          <div className={style.moodStatsContainer}>
-            <div className={style.moodStatsSection}>
-              <p className={style.moodWidgetLabel}>
-                Before rest interval
-              </p>
-              {mood1Statistics.movement > 0 &&
-                <img
-                  src={determineFace(mood1Statistics.movement).icon}
-                  className={style.moodIcon}
-                  style={{ backgroundColor: determineFace(mood1Statistics.movement).color }}
-                />
-              }
-              <p 
-                className={style.moodStatisticValue}
-                data-testid='movementMood1'
-              >
-                {mood1Statistics.movement.toFixed(2)}
-              </p>
-            </div>
-            <div className={style.line} />
-            <div className={style.moodStatsSection}>
-              <p className={style.moodWidgetLabel}>
-                After rest interval
-              </p>
-              {mood2Statistics.movement > 0 &&
-                <img
-                  src={determineFace(mood2Statistics.movement).icon}
-                  className={style.moodIcon}
-                  style={{ backgroundColor: determineFace(mood2Statistics.movement).color }}
-                />
-              }
-              <p 
-                className={style.moodStatisticValue}
-                data-testid='movementMood2'
-              >
-                {mood2Statistics.movement.toFixed(2)}
-              </p>
-            </div>
-          </div>
-        </h4>
-        <h4 className={style.moodWidget}>
-          Meditation/Breathwork
-          <p className={style.moodAverageLabel}>
-            Average Mood
-          </p>
-          <div className={style.moodStatsContainer}>
-            <div className={style.moodStatsSection}>
-              <p className={style.moodWidgetLabel}>
-                Before rest interval
-              </p>
-              {mood1Statistics.meditation > 0 &&
-                <img
-                  src={determineFace(mood1Statistics.meditation).icon}
-                  className={style.moodIcon}
-                  style={{ backgroundColor: determineFace(mood1Statistics.meditation).color }}
-                />
-              }
-              <p 
-                className={style.moodStatisticValue}
-                data-testid='meditationMood1'
-              >
-                {mood1Statistics.meditation.toFixed(2)}
-              </p>
-            </div>
-            <div className={style.line} />
-            <div className={style.moodStatsSection}>
-              <p className={style.moodWidgetLabel}>
-                After rest interval
-              </p>
-              {mood2Statistics.meditation > 0 &&
-                <img
-                  src={determineFace(mood2Statistics.meditation).icon}
-                  className={style.moodIcon}
-                  style={{ backgroundColor: determineFace(mood2Statistics.meditation).color }}
-                />
-              }
-              <p 
-                className={style.moodStatisticValue}
-                data-testid='meditationMood2'
-              >
-                {mood2Statistics.meditation.toFixed(2)}
-              </p>
-            </div>
-          </div>
-        </h4>
-      </section>
+        </>
+      }
     </>
   )
 }
