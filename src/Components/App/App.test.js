@@ -113,7 +113,7 @@ describe('App', () => {
     const statsIcon = getByAltText("stats icon");
     fireEvent.click(statsIcon);
     
-    const statsHeading = getByRole('heading', { name: /usage/i })
+    const statsHeading = getByRole('heading', { name: /personal statistics/i })
 
     expect(statsHeading).toBeInTheDocument();
 

@@ -92,7 +92,7 @@ describe('Stats', () => {
       </BrowserRouter>
     )
 
-    const statsHeading = await findByRole('heading', { name: /usage/i })
+    const statsHeading = await findByRole('heading', { name: /personal statistics/i })
     const somaticExerciseLabel = getAllByText(/somatic exercises/i)
     const movementLabel = getAllByText(/yoga\/movement/i)
     const meditationLabel = getAllByText(/meditation\/breathwork/i)
