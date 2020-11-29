@@ -18,15 +18,13 @@ const Stats = ({ toggleTimerView }) => {
     averageFocusInterval: 0,
     averageRestInterval: 0
   })
-  const [ mood1Statistics, setMood1Statistics ] = useState({
-    somatic: 0,
-    movement: 0,
-    meditation: 0
-  })
-  const [ mood2Statistics, setMood2Statistics ] = useState({
-    somatic: 0,
-    movement: 0,
-    meditation: 0
+  const [ moodStatistics, setMoodStatistics ] = useState({
+    somaticAverageMood1: 0,
+    movementAverageMood1: 0,
+    meditationAverageMood1: 0,
+    somaticAverageMood2: 0,
+    movementAverageMood2: 0,
+    meditationAverageMood2: 0
   })
   const [ user ] = useContext(UserContext)
 
@@ -43,17 +41,14 @@ const Stats = ({ toggleTimerView }) => {
         averageFocusInterval: getAverageInterval('focus_interval', results.rests),
         averageRestInterval: getAverageInterval('rest_interval', results.rests)
       })
-      setMood1Statistics({
-        ...mood1Statistics,
-        somatic: getAverageMood('SOMATIC', results.rests, 'mood_rating_1'),
-        movement: getAverageMood('MOVEMENT', results.rests, 'mood_rating_1'),
-        meditation: getAverageMood('MEDITATION', results.rests, 'mood_rating_1')
-      })
-      setMood2Statistics({
-        ...mood2Statistics,
-        somatic: getAverageMood('SOMATIC', results.rests, 'mood_rating_2'),
-        movement: getAverageMood('MOVEMENT', results.rests, 'mood_rating_2'),
-        meditation: getAverageMood('MEDITATION', results.rests, 'mood_rating_2')
+      setMoodStatistics({
+        ...moodStatistics,
+        somaticAverageMood1: getAverageMood('SOMATIC', results.rests, 'mood_rating_1'),
+        movementAverageMood1: getAverageMood('MOVEMENT', results.rests, 'mood_rating_1'),
+        meditationAverageMood1: getAverageMood('MEDITATION', results.rests, 'mood_rating_1'),
+        somaticAverageMood2: getAverageMood('SOMATIC', results.rests, 'mood_rating_2'),
+        movementAverageMood2: getAverageMood('MOVEMENT', results.rests, 'mood_rating_2'),
+        meditationAverageMood2: getAverageMood('MEDITATION', results.rests, 'mood_rating_2')
       })
     })
     .catch(error => console.log(error))
@@ -218,18 +213,18 @@ const Stats = ({ toggleTimerView }) => {
                   <p className={style.moodWidgetLabel}>
                     Before rest interval
                   </p>
-                  {mood1Statistics.somatic > 0 &&
+                  {moodStatistics.somaticAverageMood1 > 0 &&
                     <img
-                      src={determineFace(mood1Statistics.somatic).icon}
+                      src={determineFace(moodStatistics.somaticAverageMood1).icon}
                       className={style.moodIcon}
-                      style={{ backgroundColor: determineFace(mood1Statistics.somatic).color}}
+                      style={{ backgroundColor: determineFace(moodStatistics.somaticAverageMood1).color}}
                     />
                   }
                   <p 
                     className={style.moodStatisticValue}
                     data-testid='somaticMood1'
                   >
-                    {mood1Statistics.somatic.toFixed(2)}
+                    {moodStatistics.somaticAverageMood1.toFixed(2)}
                   </p>
                 </div>
                 <div className={style.line} />
@@ -237,18 +232,18 @@ const Stats = ({ toggleTimerView }) => {
                   <p className={style.moodWidgetLabel}>
                     After rest interval
                   </p>
-                  {mood2Statistics.somatic > 0 &&
+                  {moodStatistics.somaticAverageMood2 > 0 &&
                     <img
-                      src={determineFace(mood2Statistics.somatic).icon}
+                      src={determineFace(moodStatistics.somaticAverageMood2).icon}
                       className={style.moodIcon}
-                      style={{ backgroundColor: determineFace(mood2Statistics.somatic).color }}
+                      style={{ backgroundColor: determineFace(moodStatistics.somaticAverageMood2).color }}
                     />
                   }
                   <p
                     className={style.moodStatisticValue}
                     data-testid='somaticMood2'
                   >
-                    {mood2Statistics.somatic.toFixed(2)}
+                    {moodStatistics.somaticAverageMood2.toFixed(2)}
                   </p>
                 </div>
               </div>
@@ -263,18 +258,18 @@ const Stats = ({ toggleTimerView }) => {
                   <p className={style.moodWidgetLabel}>
                     Before rest interval
                   </p>
-                  {mood1Statistics.movement > 0 &&
+                  {moodStatistics.movementAverageMood1 > 0 &&
                     <img
-                      src={determineFace(mood1Statistics.movement).icon}
+                      src={determineFace(moodStatistics.movementAverageMood1).icon}
                       className={style.moodIcon}
-                      style={{ backgroundColor: determineFace(mood1Statistics.movement).color }}
+                      style={{ backgroundColor: determineFace(moodStatistics.movementAverageMood1).color }}
                     />
                   }
                   <p 
                     className={style.moodStatisticValue}
                     data-testid='movementMood1'
                   >
-                    {mood1Statistics.movement.toFixed(2)}
+                    {moodStatistics.movementAverageMood1.toFixed(2)}
                   </p>
                 </div>
                 <div className={style.line} />
@@ -282,18 +277,18 @@ const Stats = ({ toggleTimerView }) => {
                   <p className={style.moodWidgetLabel}>
                     After rest interval
                   </p>
-                  {mood2Statistics.movement > 0 &&
+                  {moodStatistics.movementAverageMood2 > 0 &&
                     <img
-                      src={determineFace(mood2Statistics.movement).icon}
+                      src={determineFace(moodStatistics.movementAverageMood2).icon}
                       className={style.moodIcon}
-                      style={{ backgroundColor: determineFace(mood2Statistics.movement).color }}
+                      style={{ backgroundColor: determineFace(moodStatistics.movementAverageMood2).color }}
                     />
                   }
                   <p 
                     className={style.moodStatisticValue}
                     data-testid='movementMood2'
                   >
-                    {mood2Statistics.movement.toFixed(2)}
+                    {moodStatistics.movementAverageMood2.toFixed(2)}
                   </p>
                 </div>
               </div>
@@ -308,18 +303,18 @@ const Stats = ({ toggleTimerView }) => {
                   <p className={style.moodWidgetLabel}>
                     Before rest interval
                   </p>
-                  {mood1Statistics.meditation > 0 &&
+                  {moodStatistics.meditationAverageMood1 > 0 &&
                     <img
-                      src={determineFace(mood1Statistics.meditation).icon}
+                      src={determineFace(moodStatistics.meditationAverageMood1).icon}
                       className={style.moodIcon}
-                      style={{ backgroundColor: determineFace(mood1Statistics.meditation).color }}
+                      style={{ backgroundColor: determineFace(moodStatistics.meditationAverageMood1).color }}
                     />
                   }
                   <p 
                     className={style.moodStatisticValue}
                     data-testid='meditationMood1'
                   >
-                    {mood1Statistics.meditation.toFixed(2)}
+                    {moodStatistics.meditationAverageMood1.toFixed(2)}
                   </p>
                 </div>
                 <div className={style.line} />
@@ -327,18 +322,18 @@ const Stats = ({ toggleTimerView }) => {
                   <p className={style.moodWidgetLabel}>
                     After rest interval
                   </p>
-                  {mood2Statistics.meditation > 0 &&
+                  {moodStatistics.meditationAverageMood2 > 0 &&
                     <img
-                      src={determineFace(mood2Statistics.meditation).icon}
+                      src={determineFace(moodStatistics.meditationAverageMood2).icon}
                       className={style.moodIcon}
-                      style={{ backgroundColor: determineFace(mood2Statistics.meditation).color }}
+                      style={{ backgroundColor: determineFace(moodStatistics.meditationAverageMood2).color }}
                     />
                   }
                   <p 
                     className={style.moodStatisticValue}
                     data-testid='meditationMood2'
                   >
-                    {mood2Statistics.meditation.toFixed(2)}
+                    {moodStatistics.meditationAverageMood2.toFixed(2)}
                   </p>
                 </div>
               </div>
