@@ -165,6 +165,17 @@
   border-radius: 35%;
 }
 
+.newUserMessage {
+  text-align: left; 
+  font-size: 1.2em;
+  margin: 2em auto;
+  width: 505px;
+  padding: .7em 2em; 
+  color: white;
+  background-color: $darkBlue;
+  box-shadow: 0px 0px 20px $darkBlue, inset 0px 0px 5px rgba(0, 0, 0, 0.239);
+  border-radius: 1em;
+}
 
 @media screen and (max-width: 1200px) {
   .statsDesc {
