@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import PropTypes from 'prop-types'
 import style from './Stats.module.scss'
 import { getAllSessions } from '../../apiCalls'
@@ -8,6 +8,7 @@ import moodIcon2 from '../../assets/moodIcons/moodIcon2.png'
 import moodIcon3 from '../../assets/moodIcons/moodIcon3.png'
 import moodIcon4 from '../../assets/moodIcons/moodIcon4.png'
 import moodIcon5 from '../../assets/moodIcons/moodIcon5.png'
+import { UserContext } from '../../Context/UserContext'
 
 const Stats = ({ toggleTimerView }) => {
   const [ sessionLog, setSessionLog ] = useState([])
@@ -27,10 +28,11 @@ const Stats = ({ toggleTimerView }) => {
     movement: 0,
     meditation: 0
   })
+  const [user] = useContext(UserContext)
 
   useEffect(() => {
     toggleTimerView(true)
-    getAllSessions(1)
+    getAllSessions(user.userId)
     .then(results => results.data)
     .then(results => {
       setSessionLog(results.rests)
