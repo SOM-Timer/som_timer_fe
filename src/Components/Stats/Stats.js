@@ -139,14 +139,9 @@ const Stats = ({ toggleTimerView }) => {
 
   return (
     <>
-      {!sessionLog.length && 
-        <h2 className={style.newUserMessage}>
-          You don't have any information to display yet! Spend some time using Som-Timer and then visit this page again to see your Stats.
-        </h2>
-      }
-      {sessionLog.length && 
+      <h2 className={style.prompt}>Usage</h2>
+      {sessionLog.length ? 
         <>
-          <h2 className={style.prompt}>Usage</h2>
           <div className={style.frequencyStatisticsContainer}>
             <section className={style.pieChartContainer}>
               <PieChart
@@ -347,7 +342,10 @@ const Stats = ({ toggleTimerView }) => {
               </div>
             </h4>
           </section>
-        </>
+        </> :
+        <h2 className={style.newUserMessage}>
+          You don't have any information to display yet! Spend some time using Som-Timer and then visit this page again to see your Stats.
+        </h2>
       }
     </>
   )
