@@ -136,7 +136,7 @@ const Stats = ({ toggleTimerView }) => {
 
   return (
     <>
-      <h2 className={style.prompt}>Usage</h2>
+      <h2 className={style.prompt}>Personal Statistics</h2>
       {sessionLog.length ? 
         <>
           <div className={style.frequencyStatisticsContainer}>
@@ -341,7 +341,7 @@ const Stats = ({ toggleTimerView }) => {
           </section>
         </> :
         <h2 className={style.newUserMessage}>
-          You don't have any information to display yet! Spend some time using Som-Timer and then visit this page again to see your Stats.
+          You don't have any information to display yet! Spend some time using Som Timer and then visit this page again to see your Stats.
         </h2>
       }
     </>
