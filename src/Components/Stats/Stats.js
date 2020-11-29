@@ -36,27 +36,29 @@ const Stats = ({ toggleTimerView }) => {
     toggleTimerView(true)
     getAllSessions(user.userId)
     .then(results => results.data)
-    .then(results => {
-      setSessionLog(results.rests)
-      createPieChart(results.rests)
-      setFrequencyStatistics({
-        ...frequencyStatistics,
-        sessionCount: results.count,
-        averageFocusInterval: getAverageInterval('focus_interval', results.rests),
-        averageRestInterval: getAverageInterval('rest_interval', results.rests)
-      })
-      setMoodStatistics({
-        ...moodStatistics,
-        somaticAverageMood1: getAverageMood('SOMATIC', results.rests, 'mood_rating_1'),
-        movementAverageMood1: getAverageMood('MOVEMENT', results.rests, 'mood_rating_1'),
-        meditationAverageMood1: getAverageMood('MEDITATION', results.rests, 'mood_rating_1'),
-        somaticAverageMood2: getAverageMood('SOMATIC', results.rests, 'mood_rating_2'),
-        movementAverageMood2: getAverageMood('MOVEMENT', results.rests, 'mood_rating_2'),
-        meditationAverageMood2: getAverageMood('MEDITATION', results.rests, 'mood_rating_2')
-      })
-    })
+    .then(results => calculatePersonalStatistics(results))
     .catch(error => console.log(error))
   }, [])
+
+  const calculatePersonalStatistics = (results) => {
+    setSessionLog(results.rests)
+    createPieChart(results.rests)
+    setFrequencyStatistics({
+      ...frequencyStatistics,
+      sessionCount: results.count,
+      averageFocusInterval: getAverageInterval('focus_interval', results.rests),
+      averageRestInterval: getAverageInterval('rest_interval', results.rests)
+    })
+    setMoodStatistics({
+      ...moodStatistics,
+      somaticAverageMood1: getAverageMood('SOMATIC', results.rests, 'mood_rating_1'),
+      movementAverageMood1: getAverageMood('MOVEMENT', results.rests, 'mood_rating_1'),
+      meditationAverageMood1: getAverageMood('MEDITATION', results.rests, 'mood_rating_1'),
+      somaticAverageMood2: getAverageMood('SOMATIC', results.rests, 'mood_rating_2'),
+      movementAverageMood2: getAverageMood('MOVEMENT', results.rests, 'mood_rating_2'),
+      meditationAverageMood2: getAverageMood('MEDITATION', results.rests, 'mood_rating_2')
+    })
+  }
 
   const createPieChart = (rests) => {
     const newPieChartData = { 
