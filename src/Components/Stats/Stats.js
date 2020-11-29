@@ -94,10 +94,12 @@ const Stats = ({ toggleTimerView }) => {
   const getAverageMood = (contentSelected, sessions, moodRating) => {
     let sessionData = sessions.reduce((data, session) => {
       if(session.content_selected === contentSelected) {
-        let num = parseInt(session[moodRating])
-        let newSum = data[0] + num
-        let newCount = data[1] + 1
-        data = [newSum, newCount]
+        if(session[moodRating]) {
+          let num = parseInt(session[moodRating])
+          let newSum = data[0] + num
+          let newCount = data[1] + 1
+          data = [newSum, newCount] 
+        }
       }
       return data
 
