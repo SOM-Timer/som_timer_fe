@@ -71,29 +71,35 @@ describe('Stats', () => {
     )
   })
 
-  it('should display the correct content when rendered', () => {
+  it('should display the correct content when rendered', async () => {
     
-    const { getByRole, getByText } = render(
+    const { findByRole, getByText, getAllByText } = render(
       <BrowserRouter>
         <Stats toggleTimerView={toggleTimerView} />
       </BrowserRouter>
     )
 
-    const statsHeading = getByRole('heading', { name: /usage/i })
-    const somaticExerciseLabel = getByText(/somatic exercises/i)
-    const movementLabel = getByText(/yoga\/movement/i)
-    const meditationLabel = getByText(/meditation\/breathwork/i)
+    const statsHeading = await findByRole('heading', { name: /usage/i })
+    const somaticExerciseLabel = getAllByText(/somatic exercises/i)
+    const movementLabel = getAllByText(/yoga\/movement/i)
+    const meditationLabel = getAllByText(/meditation\/breathwork/i)
     const sessionCountText = getByText(/you have completed/i)
     const averageFocusIntervalText = getByText(/average focus interval/i)
     const averageRestIntervalText = getByText(/average rest interval/i)
+    const averageMoodText = getAllByText(/average mood/i)
+    const beforeRestText = getAllByText(/before rest interval/i)
+    const afterRestText = getAllByText(/after rest interval/i)
 
     expect(statsHeading).toBeInTheDocument()
-    expect(somaticExerciseLabel).toBeInTheDocument()
-    expect(movementLabel).toBeInTheDocument()
-    expect(meditationLabel).toBeInTheDocument()
+    expect(somaticExerciseLabel).toHaveLength(2)
+    expect(movementLabel).toHaveLength(2)
+    expect(meditationLabel).toHaveLength(2)
     expect(sessionCountText).toBeInTheDocument()
     expect(averageFocusIntervalText).toBeInTheDocument()
     expect(averageRestIntervalText).toBeInTheDocument()
+    expect(averageMoodText).toHaveLength(3)
+    expect(beforeRestText).toHaveLength(3)
+    expect(afterRestText).toHaveLength(3)
   })
 
   it('should render the correct frequency statistics on load', async() => {
