@@ -11,6 +11,8 @@ Som Timer is a timer that cares. Based on the Pomodoro technique™️, this app
 
 This application was created as our capstone project for the Front End Engineering program at the Turing School of Software & Design. 
 
+Som Timer won 2nd place at [Turing's demo competition](https://www.linkedin.com/feed/update/urn:li:activity:6742110162330484736/) in November of 2020 as decided by a panel of industry judges and the Director of the Turing School.
+
 [Deployed Front End](https://som-timer.herokuapp.com/) | [Deployed Back End](https://som-timer-be.herokuapp.com/)
 
 ## Table of Contents
@@ -67,7 +69,7 @@ On the main timer view, the heading will change based on whether the user has no
 
 
 #### 404 Page
-If users visit a url they shouldn't, they receive a 404 screen.
+If users visit a url that does not exist, they receive a 404 message with helpful links to get back on track.
 
 
 ![404 page](src/assets/readme-gifs/404-page.png)
@@ -91,13 +93,12 @@ When users visit the About Page, they receive information about our application,
 - [React Compound Timer](https://github.com/volkov97/react-compound-timer)
 - [React Player](https://github.com/CookPete/react-player)
 - [React Toastify](https://github.com/fkhadra/react-toastify)
+- Google OAuth
 
 ## Future Directions
 This current version of the app is just the beginning, and we would like to significantly expand our scope. The following are our plans for future iterations: 
-#### Add Users
-  - As this app was initially built in just 2 weeks, the demo does not include unique users. We would like to add the ability to create users, complete with sign-up and log-in screens. 
 #### Expand customization
-  - We want to ensure that Som Timer works well for all users, so we would like to expand our customization options on the Settings page. Current ideas for this include adding the ability to disable mood ratings, toggle between themes, such as light and dark mode, and select the categories of content the user can then choose from during breaks. 
+  - We want to ensure that Som Timer works well for all users, so we would like to expand our customization options on the Settings page. Current ideas for this include adding the ability to toggle between themes, such as light and dark mode, and select the categories of content the user can then choose from during breaks. 
 #### Allow a user to upload content
   - In the vein of expanding customization, we would also like to give the user the ability to add new content to their personal library by uploading links from YouTube, Vimeo, SoundCloud, and other platforms. 
 
