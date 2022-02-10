@@ -7,7 +7,7 @@
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^7.2.1",
     "axios": "^0.21.0",
-    "node-sass": "^4.14.1",
+    "node-sass": "^7.0.0",
     "react": "^17.0.0",
     "react-dom": "^17.0.0",
     "react-minimal-pie-chart": "^8.0.1",
