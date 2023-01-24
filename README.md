@@ -115,7 +115,7 @@ Front End Developers
 
 Back End Developers 
   - Chandler Hulstrom: [GitHub](https://github.com/Chulstro) | [LinkedIn](https://www.linkedin.com/in/chandler-hulstrom-34ab81150/)
-  - Dorion: [GitHub](https://github.com/sciencefixion)
+  - Rion Hutsell: [GitHub](https://github.com/sciencefixion)
   - Sienna Kopf: [GitHub](https://github.com/sienna-kopf) | [LinkedIn](https://www.linkedin.com/in/sienna-kopf-b22b701b1/)
 
 
